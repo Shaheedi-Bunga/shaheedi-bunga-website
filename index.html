@@ -3929,6 +3929,7 @@ RAF = requestAnimationFrame(tick);
      flight - 0 nocked, 1 in the air, 2 gone.
      aZ/aV  - the arrow's own position and speed along the bow's local Z. */
   var draw = 0, drawT = 0, drawV = 0, released = false, wob = 0;
+  var shotDraw = 0, recoil = 0, recoilV = 0;   // the loose's strength, and the kick
   var flight = 0, aZ = 0, aV = 0, aAge = 0, lastNow = 0;
   var hero = document.getElementById("akhero");
   var pin  = document.getElementById("akpin");
@@ -3963,17 +3964,30 @@ RAF = requestAnimationFrame(tick);
      spring, carries the arrow forward off the bow; the arrow leaves the string
      as the string passes brace height, keeping the string's speed, and flies
      on downrange, the way it was pointing. Nothing jumps. */
-  var STRING_K = 480;           // spring stiffness: ~70ms from full draw to brace
-  var STRING_C = 20;            // damping: one small overshoot, a wobble, then still
-  var MIN_LAUNCH = 9;           // local units/s, so a half-drawn loose still flies
+  var STRING_K = 1500;          // spring stiffness: ~40ms from full draw to brace
+  var STRING_C = 28;            // damping: one small overshoot, a wobble, then still
+  /* Launch speed, in local units per second. The arrow used to leave at the
+     string's own speed, clamped to 9, and 9 took nearly two seconds to cross
+     the frame - which is why the shot read as a lob rather than a loose. A
+     real arrow is gone before you have registered it. These numbers put a
+     full-draw arrow off the right edge in about a fifth of a second, and
+     scale it with how far the bow was actually drawn, the way a bow does. */
+  var LAUNCH_BASE = 26;         // a half-drawn loose still snaps away
+  var LAUNCH_DRAW = 48;         // added at full draw
   var GONE_AT = -16;            // local Z well past the right edge, at any width
+  /* The bow's own kick. A loosed bow jumps back in the hand; without it the
+     limbs snap and the riser sits there like a photograph. */
+  var RECOIL_K = 260, RECOIL_C = 15;
 
   function release(){
     if(released) return;
     released = true; drawV = 0; wob = Math.max(.25, draw);
+    shotDraw = Math.min(1, Math.max(.25, draw));   // how hard it was drawn
+    recoilV = 2.6 * shotDraw;                      // the kick, same scale
     hero.classList.add("shot");
   }
   function reset(){ released = false; drawT = 0; drawV = 0; flight = 0; aAge = 0;
+    shotDraw = 0; recoil = 0; recoilV = 0; BOW.position.z = 0;
     ARROW.visible = true; ARROW.rotation.set(0, 0, 0);
     hero.classList.remove("shot"); }
 
@@ -3996,10 +4010,13 @@ RAF = requestAnimationFrame(tick);
     }else{
       /* the string snaps home. Sub-stepped: a stiff spring integrated in one
          50ms step would blow up. */
-      for(var s = 0, n = Math.ceil(dt / (1/240)), sdt = dt / n; s < n; s++){
+      for(var s = 0, n = Math.ceil(dt / (1/480)), sdt = dt / n; s < n; s++){
         drawV += (-STRING_K * draw - STRING_C * drawV) * sdt;
         draw  += drawV * sdt;
+        recoilV += (-RECOIL_K * recoil - RECOIL_C * recoilV) * sdt;
+        recoil  += recoilV * sdt;
       }
+      BOW.position.z = recoil * 0.55;
     }
 
     /* limbs bend progressively toward the tips. The lower limb hangs the
@@ -4036,14 +4053,16 @@ RAF = requestAnimationFrame(tick);
       ARROW.position.set(REST_X, nockY, nockZ - NOCK);
       if(released && draw <= 0){
         flight = 1; aZ = ARROW.position.z;
-        aV = Math.min(drawV * 0.72, -MIN_LAUNCH);
+        aV = -(LAUNCH_BASE + LAUNCH_DRAW * shotDraw);
       }
     }else if(flight === 1){
       aAge += dt;
       aV *= Math.exp(-dt * 0.5);                         // a little air drag
       aZ += aV * dt;
-      ARROW.position.set(REST_X, nockY - 0.35 * aAge * aAge, aZ);
-      ARROW.rotation.z += dt * 14;                       // fletching spin
+      /* Drop is small because the flight is short - a fast arrow flies flat
+         over this distance, and a visible sag is what made it look thrown. */
+      ARROW.position.set(REST_X, nockY - 1.1 * aAge * aAge, aZ);
+      ARROW.rotation.z += dt * 46;                       // fletching spin
       if(aZ < GONE_AT){ flight = 2; ARROW.visible = false; }
     }
 
