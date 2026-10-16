@@ -3617,7 +3617,15 @@ RAF = requestAnimationFrame(tick);
       cam.aspect = w/h; cam.updateProjectionMatrix();
     }
     ex += (mx - ex) * 0.06; ey += (my - ey) * 0.06;
-    if(leaf) leaf.rotation.z = -Math.max(0, Math.min(1, (ex + 1) / 2)) * 2.5;
+    /* The ang lifts UP and over the spine. The sign here is the whole thing:
+       the leaf hangs off the hinge at +x, and a NEGATIVE rotation about Z
+       takes +x toward -y - so it used to sweep downward, through the right
+       page block and out through the rehal, instead of turning over. Positive
+       arcs it up, across the spine, and down onto the left side, which is
+       what turning an ang looks like. 2.5 rad is 143 degrees, so it comes to
+       rest leaning on the left block rather than lying flat - mid-turn, which
+       reads better than finished. */
+    if(leaf) leaf.rotation.z = Math.max(0, Math.min(1, (ex + 1) / 2)) * 2.5;
     cam.position.set(1.1 + ex * 0.7, 2.3 - ey * 0.4, 11.4);
     cam.lookAt(0.15, 0.35, 0);
     if(typ) typ.style.transform =
