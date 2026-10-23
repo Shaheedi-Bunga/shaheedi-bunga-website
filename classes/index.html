@@ -22,7 +22,7 @@
   border-bottom:1px solid var(--line); padding:calc(var(--u)*2.8) 0;
   text-decoration:none; color:inherit; }
 .cls .media{ position:relative; aspect-ratio:3/2; overflow:hidden;
-  background:#101217; border:1px solid var(--line); }
+  background:#EFE7D6; border:1px solid var(--line); }
 .cls .media img{ width:100%; height:100%; object-fit:cover; display:block;
   transition:transform .6s cubic-bezier(.2,.7,.2,1); }
 a.cls:hover .media img{ transform:scale(1.035); }
@@ -33,8 +33,10 @@ a.cls:hover .media img{ transform:scale(1.035); }
 .cls .soon{ display:flex; align-items:center; justify-content:center;
   height:100%; font-family:var(--mono); letter-spacing:.18em;
   text-transform:uppercase; font-size:max(9.5px,calc(var(--u)*0.66));
-  color:var(--faint); background:
-    repeating-linear-gradient(135deg,rgba(255,255,255,.022) 0 10px,transparent 10px 20px); }
+  /* --faint is measured against the page ground; on this slightly darker
+     tile it lands at 4.45:1, just under, so this one steps up to --muted */
+  color:var(--muted); background:
+    repeating-linear-gradient(135deg,rgba(22,41,74,.05) 0 10px,transparent 10px 20px); }
 
 .cls .n{ font-family:var(--mono); font-size:max(9.5px,calc(var(--u)*0.64));
   letter-spacing:.2em; color:var(--gold); }

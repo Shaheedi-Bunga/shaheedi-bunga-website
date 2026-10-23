@@ -1,12 +1,30 @@
-/* Shared by the resources, gallery and contact pages.
-   Not used by Mockup/parikrama.built.html, which carries its own CSS inline.
-   These pages are deliberately light: linked assets rather than inlined ones,
-   because the main page is already 11MB and these are read, not experienced. */
+/* Shared by every page outside the parikrama: classes, resources, gallery,
+   about, contact, donate, privacy, safeguarding.
+   Not used by index.html, which carries its own CSS inline.
+   These pages are deliberately LIGHTWEIGHT - linked assets rather than inlined
+   ones, because the main page is already 11MB and these are read rather than
+   experienced. Since October 2026 they are also light in colour: Ustad Ji
+   asked for everything except the parikrama itself to look like the dilruba
+   panel, and the ground, ink and gold below are that panel's own values
+   rather than a second set invented here.
+
+   The gold had to change with the ground, twice. #E9CE83 was picked to sit on
+   near black; on cream it measures 1.6:1, which is a decoration rather than a
+   colour anyone can read a link in. The dilruba panel's own #B4892C was the
+   obvious replacement, but measured on this ground it is 2.97:1 - it fails
+   even the large-text floor, and the eyebrow labels it is used for are small
+   uppercase mono. #8E681D is the same brass hue carried down until it passes:
+   4.70:1. Everything on these pages was measured rather than eyeballed, and
+   every value below clears 4.5:1 against the ground.
+
+   NOTE FOR LATER: the dilruba panel still uses #B4892C on the same cream, so
+   its eyebrows have the same 2.97:1 problem. Changing it is a change to a
+   live page Ustad Ji designed, so it is flagged rather than done. */
 
 :root{
-  --bg:#08090C; --ink:#F4F5F7; --muted:rgba(244,245,247,.62);
-  --faint:rgba(244,245,247,.40); --line:rgba(255,255,255,.10);
-  --gold:#E9CE83; --gold-dim:rgba(233,206,131,.5);
+  --bg:#FAF6EE; --ink:#16294A; --muted:rgba(22,41,74,.70);   /* 5.32:1 */
+  --faint:rgba(22,41,74,.66); --line:rgba(22,41,74,.14);     /* 4.71:1 */
+  --gold:#8E681D; --gold-dim:rgba(142,104,29,.55);           /* 4.70:1 */
   --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
   --sans:"Archivo","Helvetica Neue",Arial,sans-serif;
   --serif:"Source Serif 4",Georgia,serif;
@@ -26,7 +44,7 @@ a{ color:var(--gold); }
 /* masthead, the same shape as the panels' nav */
 .top{ position:sticky; top:0; z-index:10; display:flex; align-items:center;
   gap:calc(var(--u)*1.2); padding:calc(var(--u)*1.1) calc(var(--u)*2.3);
-  background:rgba(8,9,12,.92); backdrop-filter:blur(8px);
+  background:rgba(250,246,238,.94); backdrop-filter:blur(8px);
   border-bottom:1px solid var(--line); }
 .top img{ width:42px; height:42px; display:block; }
 .top .mark b{ display:block; font-family:var(--serif); font-weight:600;

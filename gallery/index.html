@@ -16,12 +16,13 @@
 .grp-head{ display:flex; align-items:baseline; justify-content:space-between;
   gap:calc(var(--u)*1.4); flex-wrap:wrap; }
 .grp-n{ font-family:var(--mono); font-size:max(10px,calc(var(--u)*0.7));
-  letter-spacing:.14em; text-transform:uppercase; color:var(--gold-dim); }
+  /* --gold-dim is a border colour; as text on cream it is 2.14:1 */
+  letter-spacing:.14em; text-transform:uppercase; color:var(--faint); }
 .about{ max-width:58ch; color:var(--muted); margin:calc(var(--u)*0.7) 0 0; }
 .grid{ margin-top:calc(var(--u)*1.8); display:grid; gap:calc(var(--u)*0.9);
   grid-template-columns:repeat(auto-fill, minmax(190px,1fr)); }
 .grid figure{ margin:0; aspect-ratio:4/5; overflow:hidden; border-radius:3px;
-  background:#101218; }
+  background:#EFE7D6; }
 .grid img{ width:100%; height:100%; object-fit:cover; display:block;
   transition:transform .5s ease, filter .5s ease;
   filter:saturate(.92) contrast(1.02); }

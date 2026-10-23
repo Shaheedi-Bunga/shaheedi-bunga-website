@@ -18,7 +18,8 @@
 .coll-head{ display:flex; align-items:baseline; justify-content:space-between;
   gap:calc(var(--u)*1.6); flex-wrap:wrap; }
 .coll-meta{ font-family:var(--mono); font-size:max(10px,calc(var(--u)*0.7));
-  letter-spacing:.14em; text-transform:uppercase; color:var(--gold-dim); white-space:nowrap; }
+  /* --gold-dim is a border colour; as text on cream it is 2.14:1 */
+  letter-spacing:.14em; text-transform:uppercase; color:var(--faint); white-space:nowrap; }
 .coll p.about{ max-width:58ch; color:var(--muted); margin:calc(var(--u)*0.8) 0 0; }
 .files{ list-style:none; margin:calc(var(--u)*1.6) 0 0; padding:0;
   display:grid; gap:1px; background:var(--line); border:1px solid var(--line); }
@@ -35,7 +36,7 @@
   text-transform:uppercase; text-decoration:none; color:var(--gold);
   border:1px solid var(--gold-dim); border-radius:2px;
   padding:calc(var(--u)*0.7) calc(var(--u)*1.2); transition:background .2s ease; }
-.open:hover{ background:rgba(233,206,131,.1); }
+.open:hover{ background:rgba(142,104,29,.12); }
 .soon-card{ opacity:.5; }
 .soon-tag{ font-family:var(--mono); font-size:max(10px,calc(var(--u)*0.7));
   letter-spacing:.16em; text-transform:uppercase; color:var(--faint); }
