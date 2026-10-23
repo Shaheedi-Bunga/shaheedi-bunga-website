@@ -4,6 +4,7 @@
      meta on each file. These URLs only resolve once DNS points here. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://www.shaheedibunga.com/</loc><changefreq>monthly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://www.shaheedibunga.com/santhiya/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://www.shaheedibunga.com/classes/</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://www.shaheedibunga.com/saaj/dilruba/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://www.shaheedibunga.com/akhara/archery/</loc></url>

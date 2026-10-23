@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<title>Santhiya Vidyala &middot; Shaheedi Bunga</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- A real page at a real path, so the santhiya link can be shared. The site
+     is one file with client-side routes, so /santhiya only ever existed as a
+     pushState address - every shared link, every "open in new tab" and every
+     refresh on that panel would return a 404. This page is what the URL
+     resolves to: it carries the share card, then hands over to the site with
+     ?vid, which opens the panel.
+
+     Modelled on saaj/dilruba/index.html. The card is a render of the panel's
+     own hero - the pothi open on a rumala over a rehal - rather than a
+     photograph: it is the page's own image, and it puts no child's face on a
+     link preview.
+
+     og:image and og:url are absolute: a crawler has no page to resolve a
+     relative path against. -->
+<link rel="canonical" href="https://www.shaheedibunga.com/santhiya/">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Shaheedi Bunga">
+<meta property="og:title" content="Santhiya Vidyala &middot; Shaheedi Bunga">
+<meta property="og:description" content="Learn to read sudh Gurbani. Every day at Gurudwara Shri Guru Dashmesh Sahib, Gipsy Lane, Leicester — no fee, no audition, and no Gurmukhi needed to start.">
+<meta property="og:url" content="https://www.shaheedibunga.com/santhiya/">
+<meta property="og:image" content="https://www.shaheedibunga.com/santhiya/preview.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="An open pothi resting on a saffron rumala over a wooden rehal.">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Santhiya Vidyala &middot; Shaheedi Bunga">
+<meta name="twitter:description" content="Learn to read sudh Gurbani. Every day at Gipsy Lane, Leicester — no fee, no audition, and no Gurmukhi needed to start.">
+<meta name="twitter:image" content="https://www.shaheedibunga.com/santhiya/preview.jpg">
+
+<meta name="theme-color" content="#FAF6EE">
+<meta name="description" content="Learn to read sudh Gurbani. Every day at Gurudwara Shri Guru Dashmesh Sahib, Gipsy Lane, Leicester — no fee, no audition, and no Gurmukhi needed to start.">
+
+<!-- Crawlers read the tags above and ignore the refresh; people get sent on. -->
+<meta http-equiv="refresh" content="0; url=../?vid">
+
+<style>
+  html{ background:#FAF6EE; color:#16294A;
+        font:15px/1.6 "Archivo","Helvetica Neue",Arial,sans-serif; }
+  body{ margin:0; display:grid; place-items:center; min-height:100vh;
+        text-align:center; padding:24px; }
+  img{ width:min(420px,80vw); height:auto; }
+  a{ color:#8E681D; }
+</style>
+
+<div>
+  <img src="preview.jpg" alt="An open pothi resting on a saffron rumala over a wooden rehal.">
+  <p>Opening the Santhiya Vidyala&hellip;</p>
+  <p><a href="../?vid">Open it directly</a></p>
+</div>

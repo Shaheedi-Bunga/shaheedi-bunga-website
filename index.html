@@ -940,7 +940,7 @@ html.still .drift img{ animation:none; }
     <div class="vdrop">
       <button type="button" class="vdrop-btn" aria-expanded="false">Vidyale <i aria-hidden="true">&#9662;</i></button>
       <div class="vdrop-menu" hidden>
-        <span class="soon">Santhiya Vidyala &middot; soon</span>
+        <a href="/santhiya" data-route="santhiya">Santhiya Vidyala</a>
         <a href="/saaj/dilruba" data-route="dilruba">Kirtan Vidyala</a>
         <a href="/akhara/archery" data-route="archery">Archery Akhara</a>
         <span class="soon">Tabla &amp; Jori Vidyala &middot; soon</span>
@@ -962,7 +962,7 @@ html.still .drift img{ animation:none; }
 
 <div class="menu" id="menu" hidden>
   <nav aria-label="All pages">
-    <span class="soon"><b>Santhiya Vidyala</b><i>Learn to read sudh Gurbani — coming soon</i></span>
+    <a href="/santhiya" data-route="santhiya"><b>Santhiya Vidyala</b><i>Learn to read sudh Gurbani</i></a>
     <!-- Real pages, not panels: they are read rather than experienced, and
          keeping them out of this file keeps them off its 11MB. -->
     <a href="gallery/"><b>Gallery</b><i>Photographs from the classes and samagams</i></a>
@@ -1056,7 +1056,7 @@ html.still .drift img{ animation:none; }
     <div class="vdrop">
       <button type="button" class="vdrop-btn" aria-expanded="false">Vidyale <i aria-hidden="true">&#9662;</i></button>
       <div class="vdrop-menu" hidden>
-        <span class="soon">Santhiya Vidyala &middot; soon</span>
+        <a href="/santhiya" data-route="santhiya">Santhiya Vidyala</a>
         <a data-route="archery">Archery Akhara</a>
         <a data-route="dilruba">Kirtan Vidyala</a>
         <span class="soon">Tabla &amp; Jori &middot; soon</span>
@@ -1152,11 +1152,11 @@ html.still .drift img{ animation:none; }
           var r=document.querySelector('#jantri .j-row[data-d="'+d+'"]'); if(r)r.classList.add("today");})();</script>
         <p class="vnote" style="margin-top:calc(var(--u)*0.9)">Gipsy Lane only, santhiya
           sessions only. The four gurdwaras below run their own santhiya alongside this
-          &mdash; times still being confirmed.</p>
+          &mdash; message us for theirs.</p>
         <div class="venues">
           <div><b>Gurudwara Shri Guru Dashmesh Sahib</b><span>49 Gipsy Lane, Leicester LE4 6RB<br>The timetable above</span>
             <a href="https://maps.google.com/?q=49+Gipsy+Lane+Leicester+LE4+6RB" target="_blank" rel="noopener">Maps &nearr;</a></div>
-          <div><b>Guru Tegh Bahadur Gurdwara</b><span>106 East Park Road, LE5 4QB<br>Mon &amp; Fri evenings &mdash; confirm</span>
+          <div><b>Guru Tegh Bahadur Gurdwara</b><span>106 East Park Road, LE5 4QB<br>Santhiya runs here too &mdash; ask for times</span>
             <a href="https://maps.google.com/?q=106+East+Park+Road+Leicester+LE5+4QB" target="_blank" rel="noopener">Maps &nearr;</a></div>
           <div><b>Gurdwara Sahib Ramgarhia Board</b><span>2 Sri Guru Ramdas Way, LE5 1GN<br>Tuesday from 6pm</span>
             <a href="https://maps.google.com/?q=2+Sri+Guru+Ramdas+Way+Leicester+LE5+1GN" target="_blank" rel="noopener">Maps &nearr;</a></div>
@@ -1164,7 +1164,7 @@ html.still .drift img{ animation:none; }
             <a href="https://maps.google.com/?q=19+Ashford+Road+Leicester+LE2+6AA" target="_blank" rel="noopener">Maps &nearr;</a></div>
           <div><b>Gurdwara Shri Guru Harkrishan Sahib</b><span>48 Kenilworth Drive, Oadby LE2 5LG<br>Friday from 6pm</span>
             <a href="https://maps.google.com/?q=48+Kenilworth+Drive+Oadby+LE2+5LG" target="_blank" rel="noopener">Maps &nearr;</a></div>
-          <div><b>Online</b><span>Wherever you are<br>Days &amp; platform to be announced</span></div>
+          <div><b>Online</b><span>Wherever you are<br>Ask us how to join</span></div>
         </div>
       </div>
     </div>
@@ -1191,7 +1191,7 @@ html.still .drift img{ animation:none; }
     <div class="vdrop">
       <button type="button" class="vdrop-btn" aria-expanded="false">Vidyale <i aria-hidden="true">&#9662;</i></button>
       <div class="vdrop-menu" hidden>
-        <span class="soon">Santhiya Vidyala &middot; soon</span>
+        <a href="/santhiya" data-route="santhiya">Santhiya Vidyala</a>
         <a data-route="archery">Archery Akhara</a>
         <a data-route="dilruba">Kirtan Vidyala</a>
         <span class="soon">Gatka &middot; soon</span>
@@ -1333,7 +1333,7 @@ html.still .drift img{ animation:none; }
     <div class="vdrop">
       <button type="button" class="vdrop-btn" aria-expanded="false">Vidyale <i aria-hidden="true">&#9662;</i></button>
       <div class="vdrop-menu" hidden>
-        <span class="soon">Santhiya Vidyala &middot; soon</span>
+        <a href="/santhiya" data-route="santhiya">Santhiya Vidyala</a>
         <a data-route="archery">Archery Akhara</a>
         <a data-route="dilruba">Kirtan Vidyala</a>
         <span class="soon">Tabla &amp; Jori &middot; soon</span>
@@ -4051,9 +4051,7 @@ RAF = requestAnimationFrame(tick);
 
   /* ── the router: one flood transition, any number of vidyala panels ── */
   var PANELS = {
-    /* Santhiya is coming soon on Ustad Ji's word. The route is removed so the
-       panel cannot be opened; the panel's own markup is left untouched in the
-       page, ready to come back by restoring this one line and its nav links. */
+    santhiya: { el: document.getElementById("vid"),  url:"/santhiya",          title:"Santhiya Vidyala · Shaheedi Bunga" },
     archery:  { el: document.getElementById("vida"), url:"/akhara/archery",   title:"Archery Akhara · Shaheedi Bunga" },
     dilruba:  { el: document.getElementById("vidd"), url:"/saaj/dilruba",     title:"Kirtan Vidyala · Shaheedi Bunga" }
   };
@@ -4138,8 +4136,10 @@ RAF = requestAnimationFrame(tick);
      The old ?vidk branch is gone with the Kirtan panel it opened: PANELS no
      longer has that key, so it threw on PANELS[key].el. */
   else if(/[?&]vidd\b/.test(location.search)) go("dilruba", false);
-  /* ?vid opened santhiya. With the route gone it would throw on PANELS[key].el,
-     the same way ?vidk did when Kirtan was replaced. */
+  /* ?vid opens santhiya - what /santhiya/ hands over to. It is last because
+     \b keeps it clear of ?vida and ?vidd, which would otherwise match this
+     prefix. */
+  else if(/[?&]vid\b/.test(location.search)) go("santhiya", false);
 })();
 
 
