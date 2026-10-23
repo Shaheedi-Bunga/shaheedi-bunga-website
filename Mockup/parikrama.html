@@ -223,6 +223,52 @@ body.nogl canvas,body.nogl .stage,body.nogl .rail,body.nogl .cue,body.nogl .scri
 .flood.warm{ background:
   radial-gradient(58% 50% at 50% 46%, #F6EFE0 0%, #EFE7D6 100%); }
 
+/* ── archery panel: the same light plate again, and the most work of the
+      three, because its whole hero was composed against black. Everything
+      below is an override inside #vida - the shared .vid, .rib and .ak rules
+      are left alone so the parikrama, which stays dark, is untouched. ── */
+#vida{
+  --vbg:#FAF6EE; --vtext:#16294A; --vmuted:rgba(22,41,74,.70);
+  --vline:rgba(22,41,74,.14); --gold:#8E681D;
+}
+#vida p{ color:rgba(22,41,74,.76); }
+#vida .vid-nav{ background:rgba(250,246,238,.94); }
+#vida .vdrop-menu{ background:rgba(250,246,238,.98); border-color:rgba(142,104,29,.34);
+  box-shadow:0 22px 44px -22px rgba(22,41,74,.3); }
+#vida .vdrop-menu a, #vida .vdrop-menu span{ color:rgba(22,41,74,.85); }
+#vida .vdrop-menu a:hover{ background:rgba(142,104,29,.1); }
+#vida .vid-back:hover{ border-color:rgba(142,104,29,.5); background:rgba(142,104,29,.09); }
+
+/* The hero vignette pooled near-black at the foot of the frame to sit the bow
+   on something. On cream that was a black bar across the bottom of the page. */
+#vida .akmist{ background:
+  radial-gradient(60% 50% at 50% 55%, rgba(142,104,29,.06), transparent 70%),
+  radial-gradient(90% 70% at 50% 100%, rgba(234,225,205,.92), transparent 65%); }
+
+/* both ribbons: the tile behind a photograph, and the caption's scrim */
+#vida .rib-card, #vida .arib-card{ background:#EFE7D6;
+  box-shadow:0 40px 70px -48px rgba(22,41,74,.55); }
+#vida .rib-card img, #vida .arib-card img{ filter:brightness(.97) contrast(1.02); }
+#vida .rib-card figcaption{ color:#FAF6EE;
+  background:linear-gradient(to top, rgba(22,41,74,.86), rgba(22,41,74,0)); }
+#vida .aflight{ background:linear-gradient(to right, transparent, rgba(142,104,29,.8), transparent); }
+
+/* THE BULLSEYE. The scrim and the halo both existed to keep the copy legible
+   when the target grows past it, and both were made of the panel's near-black.
+   Inverted here, or they would be a black smear over a cream page - and then
+   the copy would be camouflaged all over again, which is the exact bug they
+   were written to fix. */
+#vida .bulls-text::before{ background:linear-gradient(to bottom,
+  rgba(250,246,238,.97) 0%, rgba(250,246,238,.96) 74%,
+  rgba(250,246,238,.78) 88%, rgba(250,246,238,0) 100%); }
+#vida .pillar h3, #vida .pillar p{
+  text-shadow:0 1px 10px rgba(250,246,238,.95), 0 0 3px rgba(250,246,238,.9); }
+/* The target's rings are the target's own colours and stay. The outer one is
+   white, though, which on cream is a disc with no edge - so it gets a rim
+   rather than a repaint. */
+#vida .boss{ box-shadow:0 40px 80px -42px rgba(22,41,74,.5); }
+#vida .boss .r1{ background:#FFFFFF; box-shadow:inset 0 0 0 1px rgba(22,41,74,.22); }
+
 /* ── santhiya panel: the same light plate as the dilruba one. Ustad Ji asked
       for everything except the parikrama itself to be light, and the plate
       below is his own - the variables, the nav and the dropdown are lifted
@@ -4121,7 +4167,10 @@ RAF = requestAnimationFrame(tick);
 
   (function(){                                   // studio env for the lacquer + gilt
     var c = document.createElement("canvas"); c.width = 512; c.height = 256;
-    var x = c.getContext("2d"); x.fillStyle = "#0A0B10"; x.fillRect(0,0,512,256);
+    /* bright, because the panel is a light plate now: a dark environment left
+       the horn and the gilt lit for a different room from the page */
+    var x = c.getContext("2d"); x.fillStyle = "#C9C4B6"; x.fillRect(0,0,512,256);
+    x.fillStyle = "#6E6A62"; x.fillRect(0,150,512,106);
     function bx(cx,cy,w,h,v){ var g=x.createRadialGradient(cx,cy,0,cx,cy,Math.max(w,h));
       g.addColorStop(0,"rgba(255,250,240,"+v+")"); g.addColorStop(1,"rgba(255,250,240,0)");
       x.fillStyle=g; x.fillRect(cx-w,cy-h,w*2,h*2); }
@@ -4131,14 +4180,17 @@ RAF = requestAnimationFrame(tick);
     var pm = new THREE.PMREMGenerator(R); sc.environment = pm.fromEquirectangular(t).texture;
     pm.dispose(); t.dispose();
   })();
-  var key = new THREE.DirectionalLight(0xFFF4E2, 2.0); key.position.set(-3,4,5); sc.add(key);
-  sc.add(new THREE.AmbientLight(0x2A3040, .85));
+  var key = new THREE.DirectionalLight(0xFFF4E2, 2.1); key.position.set(-3,4,5); sc.add(key);
+  var fill = new THREE.DirectionalLight(0xDCE4FF, .5); fill.position.set(5,1.5,-3); sc.add(fill);
+  sc.add(new THREE.AmbientLight(0xFFF6E8, 1.1));
 
   var mHorn  = new THREE.MeshStandardMaterial({ color:0x241A14, roughness:.38, envMapIntensity:1.3 });
   var mLac   = new THREE.MeshStandardMaterial({ color:0x7E1F1B, roughness:.3,  envMapIntensity:1.5 });
   var mGold  = new THREE.MeshStandardMaterial({ color:0xC9A24C, roughness:.24, metalness:1, envMapIntensity:1.8 });
   var mGrip  = new THREE.MeshStandardMaterial({ color:0x3B2A1E, roughness:.8 });
-  var mString= new THREE.MeshStandardMaterial({ color:0xD8D2C2, roughness:.7 });
+  /* the string was #D8D2C2, chosen to read against black. On cream it is a
+     string you cannot see, which on a bow is most of the drawing. */
+  var mString= new THREE.MeshStandardMaterial({ color:0x4A4336, roughness:.7 });
   var mShaft = new THREE.MeshStandardMaterial({ color:0x9C7A4E, roughness:.6 });
 
   var BOW = new THREE.Group(); sc.add(BOW);
@@ -4183,7 +4235,7 @@ RAF = requestAnimationFrame(tick);
     pts.push(new THREE.Vector3(0, y, 0)); prevPts.push(new THREE.Vector3(0, y, 0));
   }
   var strGeo = new THREE.BufferGeometry().setFromPoints(pts);
-  var strMesh = new THREE.Line(strGeo, new THREE.LineBasicMaterial({ color:0xD8D2C2 }));
+  var strMesh = new THREE.Line(strGeo, new THREE.LineBasicMaterial({ color:0x4A4336 }));
   BOW.add(strMesh);
   var strTube = new THREE.Mesh(new THREE.CylinderGeometry(.008,.008,2.0,6), mString);
   BOW.add(strTube);
