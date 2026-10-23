@@ -224,6 +224,52 @@ body.nogl canvas,body.nogl .stage,body.nogl .rail,body.nogl .cue,body.nogl .scri
 .flood.warm{ background:
   radial-gradient(58% 50% at 50% 46%, #F6EFE0 0%, #EFE7D6 100%); }
 
+/* ── archery panel: the same light plate again, and the most work of the
+      three, because its whole hero was composed against black. Everything
+      below is an override inside #vida - the shared .vid, .rib and .ak rules
+      are left alone so the parikrama, which stays dark, is untouched. ── */
+#vida{
+  --vbg:#FAF6EE; --vtext:#16294A; --vmuted:rgba(22,41,74,.70);
+  --vline:rgba(22,41,74,.14); --gold:#8E681D;
+}
+#vida p{ color:rgba(22,41,74,.76); }
+#vida .vid-nav{ background:rgba(250,246,238,.94); }
+#vida .vdrop-menu{ background:rgba(250,246,238,.98); border-color:rgba(142,104,29,.34);
+  box-shadow:0 22px 44px -22px rgba(22,41,74,.3); }
+#vida .vdrop-menu a, #vida .vdrop-menu span{ color:rgba(22,41,74,.85); }
+#vida .vdrop-menu a:hover{ background:rgba(142,104,29,.1); }
+#vida .vid-back:hover{ border-color:rgba(142,104,29,.5); background:rgba(142,104,29,.09); }
+
+/* The hero vignette pooled near-black at the foot of the frame to sit the bow
+   on something. On cream that was a black bar across the bottom of the page. */
+#vida .akmist{ background:
+  radial-gradient(60% 50% at 50% 55%, rgba(142,104,29,.06), transparent 70%),
+  radial-gradient(90% 70% at 50% 100%, rgba(234,225,205,.92), transparent 65%); }
+
+/* both ribbons: the tile behind a photograph, and the caption's scrim */
+#vida .rib-card, #vida .arib-card{ background:#EFE7D6;
+  box-shadow:0 40px 70px -48px rgba(22,41,74,.55); }
+#vida .rib-card img, #vida .arib-card img{ filter:brightness(.97) contrast(1.02); }
+#vida .rib-card figcaption{ color:#FAF6EE;
+  background:linear-gradient(to top, rgba(22,41,74,.86), rgba(22,41,74,0)); }
+#vida .aflight{ background:linear-gradient(to right, transparent, rgba(142,104,29,.8), transparent); }
+
+/* THE BULLSEYE. The scrim and the halo both existed to keep the copy legible
+   when the target grows past it, and both were made of the panel's near-black.
+   Inverted here, or they would be a black smear over a cream page - and then
+   the copy would be camouflaged all over again, which is the exact bug they
+   were written to fix. */
+#vida .bulls-text::before{ background:linear-gradient(to bottom,
+  rgba(250,246,238,.97) 0%, rgba(250,246,238,.96) 74%,
+  rgba(250,246,238,.78) 88%, rgba(250,246,238,0) 100%); }
+#vida .pillar h3, #vida .pillar p{
+  text-shadow:0 1px 10px rgba(250,246,238,.95), 0 0 3px rgba(250,246,238,.9); }
+/* The target's rings are the target's own colours and stay. The outer one is
+   white, though, which on cream is a disc with no edge - so it gets a rim
+   rather than a repaint. */
+#vida .boss{ box-shadow:0 40px 80px -42px rgba(22,41,74,.5); }
+#vida .boss .r1{ background:#FFFFFF; box-shadow:inset 0 0 0 1px rgba(22,41,74,.22); }
+
 /* ── santhiya panel: the same light plate as the dilruba one. Ustad Ji asked
       for everything except the parikrama itself to be light, and the plate
       below is his own - the variables, the nav and the dropdown are lifted
@@ -249,11 +295,30 @@ body.nogl canvas,body.nogl .stage,body.nogl .rail,body.nogl .cue,body.nogl .scri
 /* the second headline line was a near-white set for the dark panel, which on
    cream left "sudh Gurbani." invisible */
 #vid .s2type h1 span:nth-child(2){ color:rgba(22,41,74,.58); }
-/* on a narrow frame the copy was squeezed into the 52% the 3D object was not
-   using, which on a phone is about 190px of column. The object lifts above it
-   instead - see fitObj(). */
-@media(max-width:900px){ #vid .s2copy{ padding-right:calc(var(--u)*2.3);
-  justify-content:flex-end; } }
+/* THE FALLBACK. Below 900px, and whenever reduced motion is asked for, the
+   pin is not used: the runway collapses to its content, the canvas becomes an
+   ordinary block with an aspect ratio rather than a cropped absolute layer,
+   and all four captions are shown stacked. Both the pinned rules the fallback
+   inherits are fatal here - a fixed pin height crops three captions off, and
+   overflow:hidden hides what is left - so each one is unwound explicitly. The
+   object is drawn once, fully assembled; on a phone this section is meant to
+   be static, and that is not the animation failing. */
+@media(max-width:900px), (prefers-reduced-motion:reduce){
+  #vid .s2hero{ height:auto; min-height:0; }
+  #vid .s2pin{ position:static; height:auto; min-height:0; overflow:visible;
+    padding-bottom:calc(var(--u)*3.2); }
+  #vid .s2stage{ position:relative; inset:auto; aspect-ratio:4/3; width:100%; }
+  #vid .s2stage canvas{ position:relative !important; inset:auto !important;
+    height:100% !important; }
+  #vid .s2meta{ position:relative; top:auto; left:auto;
+    padding:calc(var(--u)*2.2) calc(var(--u)*2.3) 0; }
+  #vid .s2copy{ position:static; inset:auto; display:block;
+    padding:calc(var(--u)*1.6) calc(var(--u)*2.3) 0; perspective:none; }
+  #vid .s2caps{ position:static; min-height:0; max-width:46ch; }
+  #vid .s2cap{ position:static; opacity:1; transform:none;
+    margin:0 0 calc(var(--u)*1.1); }
+  #vid .s2hint{ display:none; }
+}
 
 /* ── dilruba panel: a light plate, like pages/santhiya.html. It paints its
       own ground rather than following the surrounding dark panels, so every
@@ -584,7 +649,14 @@ body.vid-open > canvas{ display:none; }
    Same techniques, no CDN, no build step. */
 
 /* ---------- hero: layered 3D typography over the turning page ---------- */
-.s2hero{ position:relative; height:100vh; min-height:580px; overflow:hidden; }
+/* The runway. 420vh: below about 300 the pin feels rushed and the scrub goes
+   twitchy, and much above 500 people start scrolling hard to get out of it.
+   The pin sits below the sticky nav and takes the nav's measured height off
+   its own, or it runs past the bottom of the screen - the same correction the
+   archery hero needed, and --navh is measured by the same ResizeObserver. */
+.s2hero{ position:relative; height:420vh; min-height:2100px; }
+.s2pin{ position:sticky; top:var(--navh, 0px); height:calc(100vh - var(--navh, 0px));
+  min-height:560px; overflow:hidden; }
 .s2stage{ position:absolute; inset:0; z-index:1; }
 /* the page-level `canvas{position:fixed}` is for the parikrama scene; without
    this override the hero canvas floats over every section below it. */
@@ -603,7 +675,16 @@ body.vid-open > canvas{ display:none; }
 .s2type h1 span:nth-child(1){ transform:translateZ(88px); }
 .s2type h1 span:nth-child(2){ transform:translateZ(34px); color:rgba(244,245,247,.9); }
 .s2lede{ margin-top:calc(var(--u)*1.2); max-width:34ch; transform:translateZ(12px); transform-origin:left center; }
+/* the caption layer: its own stacking context, one line shown at a time */
+.s2caps{ position:relative; margin-top:calc(var(--u)*1.3); max-width:34ch;
+  min-height:calc(var(--u)*7.2); }
+.s2cap{ position:absolute; left:0; top:0; right:0; margin:0; opacity:0;
+  transform:translateY(9px); transition:opacity .18s ease, transform .18s ease;
+  pointer-events:none; }
+.s2cap.on{ opacity:1; transform:none; }
+@media (prefers-reduced-motion:reduce){ .s2cap{ transition:none; } }
 .s2meta{ position:absolute; top:calc(var(--u)*5.5); left:calc(var(--u)*2.3); z-index:2; }
+.s2hint{ transition:opacity .4s ease; }
 .akhero .s2hint{ transition:opacity .5s ease; }
 .akhero.shot .s2hint{ opacity:0; }      /* the arrow has gone; stop asking */
 @media (prefers-reduced-motion:reduce){ .akhero .s2hint{ transition:none; } }
@@ -988,20 +1069,41 @@ html.still .drift img{ animation:none; }
     <button class="vid-back" type="button">&larr; Parikrama</button>
   </div>
 
-  <!-- 1 ─ hero: layered 3D type over the turning page -->
-  <header class="s2hero">
+  <!-- 1 ─ hero: the scroll sets the vidyala out. The rehal comes down and
+       lands, the rumala falls over it, the pothi comes down open on top, and
+       the ang turns at the end. One progress value drives every part of it,
+       and the copy beside it changes at each beat.
+
+       Below 900px, and for anyone who asked for reduced motion, the pin is
+       not used at all: the object is drawn once fully assembled and all four
+       lines are stacked and shown at once. That static version is the only
+       one a phone visitor ever sees, and it is meant to be static. -->
+  <header class="s2hero" id="s2hero">
+   <div class="s2pin" id="s2pin">
     <div class="s2stage"><canvas id="s2c" aria-hidden="true"></canvas></div>
     <p class="lbl s2meta">01 &mdash; <b>Santhiya Vidyala</b> &middot; Gipsy Lane, Leicester</p>
     <div class="s2copy">
       <div class="s2type" id="s2type">
         <span class="gur">ਸ਼ੁੱਧ ਗੁਰਬਾਣੀ ਪੜ੍ਹਨੀ ਸਿੱਖੋ</span>
         <h1><span>Learn to read</span><span>sudh Gurbani.</span></h1>
-        <p class="lede s2lede">Every day at Gurudwara Shri Guru Dashmesh Sahib. You do not
-          need to read a word of Gurmukhi to start, and you will not be the oldest
-          person in the room.</p>
+      </div>
+      <!-- One caption on screen at a time, swapped at a threshold and
+           cross-faded in 180ms. Driving four opacities straight off the
+           progress value instead would stack two half-faded headlines on
+           each other on a fast flick. -->
+      <div class="s2caps" id="s2caps">
+        <p class="lede s2cap on" data-i="0">Santhiya is Gurbani read the way it was
+          given &mdash; every lagga matra, every bisraam, nothing hurried.</p>
+        <p class="lede s2cap" data-i="1">There is no fee, no audition and no age. You
+          do not need to read a word of Gurmukhi before you start.</p>
+        <p class="lede s2cap" data-i="2">Every day at Gurudwara Shri Guru Dashmesh
+          Sahib on Gipsy Lane, and online.</p>
+        <p class="lede s2cap" data-i="3">Sit at the back if you want to. Nobody will
+          ask you to read.</p>
       </div>
     </div>
-    <p class="s2hint">Move &middot; then scroll</p>
+    <p class="s2hint" id="s2hint">Keep scrolling</p>
+   </div>
   </header>
 
   <!-- 2 ─ the pinned convex ribbon -->
@@ -3588,8 +3690,12 @@ RAF = requestAnimationFrame(tick);
      rather than for black - the old scene was a grey-brown box on a dark
      ground and read as neither. */
   var cv = document.getElementById("s2c"), R = null, sc = null, cam = null, leaf = null;
-  var intro = 0, heroLast = 0;              // the pull-back, 0 close .. 1 settled
+  var heroP = 1, clothWas = -1;             // scroll progress through the pin
   var OBJ = null, HALF_V = Math.tan(32 * Math.PI / 360);   // tan(fov/2), per unit of depth
+  /* the three parts the scroll brings down, and the cloth's own geometry,
+     which is re-draped each frame while it is still falling */
+  var REHAL = null, CLOTH = null, BOOK = null, clothGeo = null, drape = null;
+  var BOOKL = null, BOOKR = null;
   var CAM_NEAR_P = null, CAM_NEAR_T = null, CAM_FAR_P = null, CAM_FAR_T = null;
   var cP = null, cT = null;
   (function(){
@@ -3641,15 +3747,16 @@ RAF = requestAnimationFrame(tick);
     OBJ = new THREE.Group(); sc.add(OBJ);
 
     /* the rehal: two crossed frames, front and back */
+    REHAL = new THREE.Group(); OBJ.add(REHAL);
     [1,-1].forEach(function(sg){
       var g = new THREE.Group();
       g.add(slab(.15,1.94,.11,mWood).translateX(-.52*sg));
       g.add(slab(.15,1.94,.11,mWood).translateX( .52*sg));
       g.add(slab(1.22,.12,.10,mWood).translateY(-.56));
-      g.rotation.z = .30*sg; g.position.set(0,-.72,.34*sg); OBJ.add(g);
+      g.rotation.z = .30*sg; g.position.set(0,-.72,.34*sg); REHAL.add(g);
     });
     var peg = new THREE.Mesh(new THREE.CylinderGeometry(.045,.045,.84,16), mGilt);
-    peg.rotation.x = Math.PI/2; peg.position.y = .02; OBJ.add(peg);
+    peg.rotation.x = Math.PI/2; peg.position.y = .02; REHAL.add(peg);
 
     /* The rumala. A cloth solver is out of the question here, and it would be
        wasted: in the shot the cloth is already at rest. So the drape is a
@@ -3660,42 +3767,55 @@ RAF = requestAnimationFrame(tick);
        folds catch the key light. */
     (function(){
       var NU = 112, NV = 30, W = 3.70, D = 1.72;
-      var g = new THREE.BufferGeometry(), pos = [], idx = [];
-      for(var j = 0; j <= NV; j++){
-        var v = j/NV*2 - 1;
-        for(var i = 0; i <= NU; i++){
-          var u = i/NU*2 - 1, a = Math.abs(u);
-          var fall = a < .24 ? 0 : Math.pow((a - .24)/.76, 1.65);
-          var y = -fall * 1.02 + Math.cos(u * 1.3) * .07;
-          if(a > .85) y += (a - .85)/.15 * .34;                 // the flick
-          y += Math.sin(u * 12.5 + .7) * .042 * fall;           // folds in the fall
-          y += Math.sin(v * 2.1 + u * 4.2) * .026 * (.22 + fall);
-          y -= Math.pow(Math.max(0, v), 2) * .17;            // the front edge hangs
-          pos.push(u * W/2,
-                   y,
-                   v * D/2 + Math.sin(u * 4.3) * .05 * Math.abs(v));
+      clothGeo = new THREE.BufferGeometry();
+      var pos = new Float32Array((NU+1)*(NV+1)*3), idx = [];
+      /* s is how far the cloth has settled, 0 held flat in the air, 1 lying on
+         the rehal. Re-run per frame while it is falling, which is what makes
+         it look like cloth arriving rather than a shape sliding down. */
+      drape = function(s){
+        var k = 0;
+        for(var j = 0; j <= NV; j++){
+          var v = j/NV*2 - 1;
+          for(var i = 0; i <= NU; i++){
+            var u = i/NU*2 - 1, a = Math.abs(u);
+            var fall = a < .24 ? 0 : Math.pow((a - .24)/.76, 1.65);
+            var y = (-fall * 1.02 + Math.cos(u * 1.3) * .07) * s;
+            if(a > .85) y += (a - .85)/.15 * .34 * s;              // the flick
+            y += Math.sin(u * 12.5 + .7) * .042 * fall * s;        // folds in the fall
+            y += Math.sin(v * 2.1 + u * 4.2) * .026 * (.22 + fall) * s;
+            y -= Math.pow(Math.max(0, v), 2) * .17 * s;            // the front edge hangs
+            /* held in the air it is not flat either - a thrown cloth ripples */
+            y += Math.sin(u * 3.1 + v * 2.2) * .085 * (1 - s);
+            pos[k++] = u * W/2;
+            pos[k++] = y;
+            pos[k++] = v * D/2 + Math.sin(u * 4.3) * .05 * Math.abs(v) * s;
+          }
         }
-      }
+        clothGeo.attributes.position.needsUpdate = true;
+        clothGeo.computeVertexNormals();
+      };
       for(var jj = 0; jj < NV; jj++) for(var ii = 0; ii < NU; ii++){
         var A = jj*(NU+1)+ii, B = A+1, C = A+NU+1, Dd = C+1;
         idx.push(A, C, B, B, C, Dd);
       }
-      g.setAttribute("position", new THREE.Float32BufferAttribute(pos, 3));
-      g.setIndex(idx); g.computeVertexNormals();
-      var cloth = new THREE.Mesh(g, mSilk);
-      cloth.position.set(0, .26, 0); OBJ.add(cloth);
+      clothGeo.setAttribute("position", new THREE.BufferAttribute(pos, 3));
+      clothGeo.setIndex(idx);
+      drape(1);
+      CLOTH = new THREE.Mesh(clothGeo, mSilk);
+      CLOTH.position.set(0, .26, 0); OBJ.add(CLOTH);
     })();
 
     /* the pothi, open on the cloth - steeper than a book on a table, which is
        how it sits on a rehal, and how the reference frames it */
     var book = new THREE.Group(); book.position.set(0,.52,.06); book.rotation.x = .40;
-    var ANG = .40;
+    BOOK = book;
     [1,-1].forEach(function(sg){
       var g = new THREE.Group();
       g.add(slab(1.22,.14,1.54,mPage).translateX(.66*sg));
       g.add(slab(.035,.145,1.55,mGilt).translateX(1.27*sg));    // the gilt fore-edge
       g.add(slab(1.34,.055,1.66,mCover).translateX(.66*sg).translateY(-.10));
-      g.rotation.z = -ANG*sg; book.add(g);
+      book.add(g);
+      if(sg > 0) BOOKR = g; else BOOKL = g;
     });
     book.add(slab(.15,.22,1.60,mCover));
     /* the single turning ang - pivot ON the spine, which is the whole trick */
@@ -3751,18 +3871,47 @@ RAF = requestAnimationFrame(tick);
       lastW = w; lastH = h; R.setSize(w,h,false);
       cam.aspect = w/h; cam.updateProjectionMatrix(); fitObj();
     }
-    /* The pull-back. The panel opens close on the pothi's gilt edge and
-       settles to the whole composition over about two and a half seconds -
-       the shape of the reference intro, minus its nine seconds of fly-
-       through, which would be a long time to hold someone who came to find
-       out when the class is. Time-based, so it is the same move at any
-       refresh rate, and it restarts whenever the panel is opened again. */
-    var now = performance.now();
-    var dt = heroLast ? Math.max(0, Math.min(0.05, (now - heroLast)/1000)) : 1/60;
-    heroLast = now;
-    if(intro < 1){ intro = Math.min(1, intro + dt / 2.5); }
-    var e = 1 - Math.pow(1 - intro, 3);                    // ease out
+    /* ── the build ──────────────────────────────────────────────────────
+       One progress value, 0 as the pin takes the screen and 1 as it lets go,
+       drives all of it. The beats overlap by a few per cent on purpose:
+       parts arriving in a strict queue looks mechanical, parts that overlap
+       look choreographed. The camera pushes in across the whole range, which
+       is what keeps something moving between the landings.
+
+         REHAL  .06 → .34    comes down and lands
+         CLOTH  .30 → .62    falls over it and settles into its drape
+         POTHI  .56 → .84    comes down, opens as it arrives
+         ANG    .80 → .98    one ang lifts and turns over                    */
     ex += (mx - ex) * 0.06; ey += (my - ey) * 0.06;
+    var p = heroP;
+    function seg(a, b){ return Math.max(0, Math.min(1, (p - a) / (b - a))); }
+    function outCubic(t){ return 1 - Math.pow(1 - t, 3); }
+    function outBack(t){ var c = 1.28; t = 1 - t; return 1 - (t*t*t - c*t*t*(1-t)); }
+
+    if(REHAL){
+      var r = outBack(seg(.06, .34));
+      REHAL.position.y = (1 - r) * 3.4;
+      REHAL.rotation.x = (1 - r) * -.42;
+      REHAL.rotation.z = (1 - r) * .16;
+    }
+    if(CLOTH && drape){
+      var c = seg(.30, .62), ce = outCubic(c);
+      CLOTH.position.y = .26 + (1 - ce) * 2.9;
+      CLOTH.rotation.z = (1 - ce) * -.10;
+      /* only re-drape while it is actually falling; once settled the
+         geometry is left alone rather than recomputed every frame */
+      if(c !== clothWas){ drape(ce); clothWas = c; }
+    }
+    if(BOOK){
+      var b = seg(.56, .84), be = outCubic(b);
+      BOOK.position.y = .52 + (1 - be) * 2.6;
+      BOOK.rotation.x = .40 * be + (1 - be) * .95;
+      /* it opens as it comes down: shut in the air, open by the time it
+         lands, which is the one gesture that says pothi rather than box */
+      var ang = .40 * be + (1 - be) * .035;
+      if(BOOKR) BOOKR.rotation.z = -ang;
+      if(BOOKL) BOOKL.rotation.z =  ang;
+    }
     /* The ang lifts UP and over the spine. The sign here is the whole thing:
        the leaf hangs off the hinge at +x, and a NEGATIVE rotation about Z
        takes +x toward -y - so it used to sweep downward, through the right
@@ -3771,12 +3920,15 @@ RAF = requestAnimationFrame(tick);
        what turning an ang looks like. 2.5 rad is 143 degrees, so it comes to
        rest leaning on the left block rather than lying flat - mid-turn, which
        reads better than finished. */
-    if(leaf) leaf.rotation.z = Math.max(0, Math.min(1, (ex + 1) / 2)) * 2.5;
-    /* The cursor only takes the camera once the move has landed; a parallax
-       fighting a dolly reads as a wobble. */
-    cP.lerpVectors(CAM_NEAR_P, CAM_FAR_P, e);
-    cT.lerpVectors(CAM_NEAR_T, CAM_FAR_T, e);
-    cam.position.set(cP.x + ex * 0.7 * e, cP.y - ey * 0.4 * e, cP.z);
+    if(leaf) leaf.rotation.z = outCubic(seg(.80, .98)) * 2.5;
+
+    /* The push-in, continuous across the whole runway. It ends exactly on
+       the framing the composition was tuned for and starts wider than it -
+       lerpVectors extrapolates past 1, so one mark serves for both. */
+    var e = outCubic(Math.max(0, Math.min(1, p * 1.06))), t = 1.38 - .38 * e;
+    cP.lerpVectors(CAM_NEAR_P, CAM_FAR_P, t);
+    cT.lerpVectors(CAM_NEAR_T, CAM_FAR_T, t);
+    cam.position.set(cP.x + ex * 0.5, cP.y - ey * 0.3, cP.z);
     cam.lookAt(cT);
     if(typ) typ.style.transform =
       "translate3d(" + (-ex*7).toFixed(1) + "px," + (-ey*5).toFixed(1) + "px,0)" +
@@ -3846,10 +3998,54 @@ RAF = requestAnimationFrame(tick);
   }
 
   /* one loop for both, only while the panel is open */
+  /* ── the pin, and the one progress value ──────────────────────────────
+     No GSAP here - nothing outside this file can be loaded - so the scrub is the same hand-
+     rolled thing the archery hero uses: progress straight off scrollTop, no
+     smoothing. Smoothing is pleasant on a slow drag and feels broken on a
+     flick, and it is the difference between "tied to my finger" and
+     "playing a video near my finger". */
+  var s2hero = document.getElementById("s2hero"), s2pin = document.getElementById("s2pin"),
+      s2hint = document.getElementById("s2hint");
+  /* The pin sits below this panel's own sticky nav and has to take the nav's
+     height off its own, or it runs that far past the bottom of the screen.
+     The panel is display:none until its route opens, so measuring at parse
+     time returns 0 - a ResizeObserver catches the moment it gains layout. */
+  (function(){
+    var nav = vid.querySelector(".vid-nav"), was = 0;
+    function navVar(){
+      if(!nav) return;
+      var nh = nav.offsetHeight;
+      if(!nh || nh === was) return;
+      was = nh; vid.style.setProperty("--navh", nh + "px");
+    }
+    navVar();
+    if(nav && window.ResizeObserver) new ResizeObserver(navVar).observe(nav);
+  })();
+  var CAPS_EL = [].slice.call(document.querySelectorAll("#s2caps .s2cap"));
+  var capWas = 0;
+  var CAP_AT = [0, .30, .56, .80];        // one threshold per beat
+  var noMotion = matchMedia("(prefers-reduced-motion:reduce)");
+  function pinned(){ return innerWidth > 900 && !noMotion.matches; }
+
+  function heroScroll(){
+    if(!s2hero || !s2pin) return;
+    if(!pinned()){ heroP = 1; return; }   // the fallback frame: fully assembled
+    var run = Math.max(1, s2hero.offsetHeight - s2pin.offsetHeight);
+    heroP = Math.max(0, Math.min(1, (vid.scrollTop - s2hero.offsetTop) / run));
+    var i = 0;
+    for(var k = CAP_AT.length - 1; k >= 0; k--){ if(heroP >= CAP_AT[k]){ i = k; break; } }
+    if(i !== capWas){
+      if(CAPS_EL[capWas]) CAPS_EL[capWas].classList.remove("on");
+      capWas = i;
+      if(CAPS_EL[i]) CAPS_EL[i].classList.add("on");
+    }
+    if(s2hint) s2hint.style.opacity = heroP > .06 ? "0" : "1";
+  }
+
   (function loop(){
     requestAnimationFrame(loop);
-    if(!vid.classList.contains("on")){ intro = 0; heroLast = 0; return; }
-    drawHero(); layoutRibbon();
+    if(!vid.classList.contains("on")) return;
+    heroScroll(); drawHero(); layoutRibbon();
   })();
   addEventListener("resize", function(){ lastW = 0; layoutRibbon(); });
 
@@ -3972,7 +4168,10 @@ RAF = requestAnimationFrame(tick);
 
   (function(){                                   // studio env for the lacquer + gilt
     var c = document.createElement("canvas"); c.width = 512; c.height = 256;
-    var x = c.getContext("2d"); x.fillStyle = "#0A0B10"; x.fillRect(0,0,512,256);
+    /* bright, because the panel is a light plate now: a dark environment left
+       the horn and the gilt lit for a different room from the page */
+    var x = c.getContext("2d"); x.fillStyle = "#C9C4B6"; x.fillRect(0,0,512,256);
+    x.fillStyle = "#6E6A62"; x.fillRect(0,150,512,106);
     function bx(cx,cy,w,h,v){ var g=x.createRadialGradient(cx,cy,0,cx,cy,Math.max(w,h));
       g.addColorStop(0,"rgba(255,250,240,"+v+")"); g.addColorStop(1,"rgba(255,250,240,0)");
       x.fillStyle=g; x.fillRect(cx-w,cy-h,w*2,h*2); }
@@ -3982,14 +4181,17 @@ RAF = requestAnimationFrame(tick);
     var pm = new THREE.PMREMGenerator(R); sc.environment = pm.fromEquirectangular(t).texture;
     pm.dispose(); t.dispose();
   })();
-  var key = new THREE.DirectionalLight(0xFFF4E2, 2.0); key.position.set(-3,4,5); sc.add(key);
-  sc.add(new THREE.AmbientLight(0x2A3040, .85));
+  var key = new THREE.DirectionalLight(0xFFF4E2, 2.1); key.position.set(-3,4,5); sc.add(key);
+  var fill = new THREE.DirectionalLight(0xDCE4FF, .5); fill.position.set(5,1.5,-3); sc.add(fill);
+  sc.add(new THREE.AmbientLight(0xFFF6E8, 1.1));
 
   var mHorn  = new THREE.MeshStandardMaterial({ color:0x241A14, roughness:.38, envMapIntensity:1.3 });
   var mLac   = new THREE.MeshStandardMaterial({ color:0x7E1F1B, roughness:.3,  envMapIntensity:1.5 });
   var mGold  = new THREE.MeshStandardMaterial({ color:0xC9A24C, roughness:.24, metalness:1, envMapIntensity:1.8 });
   var mGrip  = new THREE.MeshStandardMaterial({ color:0x3B2A1E, roughness:.8 });
-  var mString= new THREE.MeshStandardMaterial({ color:0xD8D2C2, roughness:.7 });
+  /* the string was #D8D2C2, chosen to read against black. On cream it is a
+     string you cannot see, which on a bow is most of the drawing. */
+  var mString= new THREE.MeshStandardMaterial({ color:0x4A4336, roughness:.7 });
   var mShaft = new THREE.MeshStandardMaterial({ color:0x9C7A4E, roughness:.6 });
 
   var BOW = new THREE.Group(); sc.add(BOW);
@@ -4034,7 +4236,7 @@ RAF = requestAnimationFrame(tick);
     pts.push(new THREE.Vector3(0, y, 0)); prevPts.push(new THREE.Vector3(0, y, 0));
   }
   var strGeo = new THREE.BufferGeometry().setFromPoints(pts);
-  var strMesh = new THREE.Line(strGeo, new THREE.LineBasicMaterial({ color:0xD8D2C2 }));
+  var strMesh = new THREE.Line(strGeo, new THREE.LineBasicMaterial({ color:0x4A4336 }));
   BOW.add(strMesh);
   var strTube = new THREE.Mesh(new THREE.CylinderGeometry(.008,.008,2.0,6), mString);
   BOW.add(strTube);
