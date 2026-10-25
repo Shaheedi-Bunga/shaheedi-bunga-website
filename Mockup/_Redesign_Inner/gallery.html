@@ -208,10 +208,14 @@
     btns.forEach(function(b){ b.setAttribute("aria-pressed", b.dataset.f === f); });
     current = f;
     if(animate){
-      Flip.from(state, { duration:.7, ease:"power3.inOut", absolute:true, stagger:.01,
+      /* not absolute:true: in this grid it left each tile translated by its
+         old offset (a 700px gap above the first photo after filtering).
+         Whatever Flip leaves, the end state is cleared to the grid's own. */
+      var tidy = function(){ gsap.set(tiles, { clearProps:"transform,translate,rotate,scale,opacity" });
+        if(window.ScrollTrigger) ScrollTrigger.refresh(); };
+      Flip.from(state, { duration:.7, ease:"power3.inOut", stagger:.01,
         onEnter:function(el){ return gsap.fromTo(el, { opacity:0, scale:.92 }, { opacity:1, scale:1, duration:.6 }); },
-        onLeave:function(el){ return gsap.to(el, { opacity:0, scale:.92, duration:.35 }); },
-        onComplete:function(){ if(window.ScrollTrigger) ScrollTrigger.refresh(); } });
+        onComplete:tidy, onInterrupt:tidy });
     }
   }
   btns.forEach(function(b){ b.addEventListener("click", function(){ if(b.dataset.f !== current) apply(b.dataset.f); }); });
