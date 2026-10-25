@@ -50,3 +50,9 @@ Screenshot*.png
 # local probe builds
 probe.html
 *.bak
+
+# Never publish derived social-media data here: this repo is served whole.
+# It lives in 1_Shaheedi_Bunga/Admin/Social_Media/Instagram_Derived/ (moved 2026-10-25).
+Content_Drafts/Instagram/
+Content_Drafts/instagram-findings.md
+*.before-*.html

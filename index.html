@@ -2061,27 +2061,27 @@ html.still .drift img{ animation:none; }
   var mount = document.getElementById("dwall");
   if (!mount) return;
 
-  var SRC = ["/Assets/Kirtan/tiles/k01.jpg","/Assets/Kirtan/tiles/k02.jpg","/Assets/Kirtan/tiles/k03.jpg","/Assets/Kirtan/tiles/k05.jpg","/Assets/Kirtan/tiles/k07.jpg","/Assets/Kirtan/tiles/k11.jpg","/Assets/Kirtan/tiles/k15.jpg","/Assets/Kirtan/tiles/k22.jpg","/Assets/Kirtan/tiles/k24.jpg","/Assets/Kirtan/tiles/k26.jpg","/Assets/Kirtan/tiles/k27.jpg","/Assets/Kirtan/tiles/k28.jpg"];
-  /* Index-matched to the sorted filenames in Assets/Kirtan/tiles:
-     k01 k02 k03 k05 k07 k11 k15 k22 k24 k26 k27 k28. Written from the
-     photographs themselves; four show a dilruba, the rest are the other
-     classes and the samagams. No titles — the panel carries no text. */
-  var ALT = [
-    "A student playing the dilruba at a samagam, gaj drawn across the strings.",
-    "A student bowing the dilruba, seated at the microphone.",
-    "The sangat gathered outside for a group photograph.",
-    "A student at the harmonium, tabla waiting beside them.",
-    "Several classes at once: tabla, dilruba and violin.",
-    "Close on the gaj crossing the dilruba's strings.",
-    "Two students on stage, one at the microphone and one at the tabla.",
-    "A student playing tabla, hands mid-stroke.",
-    "A student with a dilruba across the lap, its case open beside them.",
-    "Scenes from a samagam at the gurdwara.",
-    "A santhiya class, and a student playing violin.",
-    "Hands on the tabla, close in."
-  ];
+  var SRC = ["/Assets/Kirtan/tiles/k01.jpg","/Assets/Kirtan/tiles/k02.jpg","/Assets/Kirtan/tiles/k03.jpg","/Assets/Kirtan/tiles/k05.jpg","/Assets/Kirtan/tiles/k11.jpg","/Assets/Kirtan/tiles/k15.jpg","/Assets/Kirtan/tiles/k22.jpg","/Assets/Kirtan/tiles/k24.jpg","/Assets/Kirtan/tiles/k28.jpg","/Assets/Kirtan/tiles/k30.jpg","/Assets/Kirtan/tiles/k31.jpg"];
+  /* Written from the photographs themselves. Keyed by file name, not by
+     position: an index-matched list silently shifts every description onto
+     the wrong photo the moment a tile is added to or removed from
+     Assets/Kirtan/tiles (it did, 25 Oct 2026, when the collages came out).
+     No titles - the panel carries no text. */
+  var ALT = {
+    k01: "A student playing the dilruba at a samagam, gaj drawn across the strings.",
+    k02: "A student bowing the dilruba, seated at the microphone.",
+    k03: "The sangat gathered outside for a group photograph.",
+    k05: "A student at the harmonium, tabla waiting beside them.",
+    k11: "Close on the gaj crossing the dilruba's strings.",
+    k15: "Two students on stage, one at the microphone and one at the tabla.",
+    k22: "A student playing tabla, hands mid-stroke.",
+    k24: "A student with a dilruba across the lap, its case open beside them.",
+    k28: "Hands on the tabla, close in.",
+    k30: "Two students on stage playing tanti saaj at the microphones.",
+    k31: "A student bowing the dilruba on stage beside another player."
+  };
   buildWall(mount, SRC.map(function (src, i) {
-    return { src: src, alt: ALT[i] || "" };
+    return { src: src, alt: ALT[src.split("/").pop().replace(/\.\w+$/, "")] || "" };
   }), { columns: 4 });
 })();
 </script>
@@ -4160,7 +4160,7 @@ RAF = requestAnimationFrame(tick);
   var panel = document.getElementById("vida");
   if(!panel || typeof THREE === "undefined") return;
   var cv = document.getElementById("akc");
-  var TILES = ["/Assets/Archery/tiles/a01.jpg","/Assets/Archery/tiles/a02.jpg","/Assets/Archery/tiles/a03.jpg","/Assets/Archery/tiles/a04.jpg","/Assets/Archery/tiles/a05.jpg","/Assets/Archery/tiles/a06.jpg","/Assets/Archery/tiles/a07.jpg","/Assets/Archery/tiles/a08.jpg","/Assets/Archery/tiles/a09.jpg","/Assets/Archery/tiles/a10.jpg","/Assets/Archery/tiles/a11.jpg","/Assets/Archery/tiles/a12.jpg","/Assets/Archery/tiles/a13.jpg","/Assets/Archery/tiles/a14.jpg"];
+  var TILES = ["/Assets/Archery/tiles/a01.jpg","/Assets/Archery/tiles/a05.jpg","/Assets/Archery/tiles/a06.jpg","/Assets/Archery/tiles/a07.jpg","/Assets/Archery/tiles/a08.jpg","/Assets/Archery/tiles/a09.jpg","/Assets/Archery/tiles/a10.jpg","/Assets/Archery/tiles/a14.jpg"];
 
   /* ══ the bow ══ */
   var R = new THREE.WebGLRenderer({ canvas:cv, antialias:true, alpha:true });

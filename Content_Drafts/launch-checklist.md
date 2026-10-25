@@ -25,10 +25,9 @@ Hosting was deliberately left open.
 
 ### Cloudflare — the account is not visible yet
 
-`wrangler whoami` on this Mac shows only **`13hartegsingh@gmail.com's Account`**,
-which holds the Saarang client sites (Patel Brothers, Jannats Bakery, Punjabi
-Poppets…). The Shaheedi Bunga account is not listed, so **any deploy from here
-today would go to the client account.**
+`wrangler whoami` on this Mac shows only a personal Cloudflare account that
+holds another organisation's sites. The Shaheedi Bunga account is not listed, so
+**any deploy from here today would go to that other account.**
 
 Before any Cloudflare work: accept the invite, then re-run `wrangler login` so
 both accounts appear, and confirm the account id before deploying. Both logins

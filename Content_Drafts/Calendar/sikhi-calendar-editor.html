@@ -4,11 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
+<!-- self-hosted, as on the rest of the site: no request to Google -->
+<link rel="stylesheet" href="/lib/fonts.css">
 <title>Calendar editor · ਸਿੱਖੀ ਕੈਲੰਡਰ</title>
 <meta name="theme-color" content="#F5F0E6">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Spectral:wght@400;500;600&family=Jost:wght@400;500;600&family=Noto+Serif+Gurmukhi:wght@500;600&family=Noto+Sans+Gurmukhi:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 /* ============================================================================
    Sikhi Calendar — editor
@@ -2910,8 +2909,11 @@ const Overrides = (function () {
 
     var dates;
     if (r.kind === 'custom') {
-      dates = '<b>' + (r.custom.anchor === 'gregorian' ? fmt(r.custom.iso)
-              : r.custom.d + ' ' + Cal.monthMeta(r.custom.m).en) + '</b>' +
+      /* esc(): custom.d/m/iso come from the sync server, which checks only
+         size and type - a crafted string here would run in the editor, where
+         the passphrase lives. */
+      dates = '<b>' + esc(String(r.custom.anchor === 'gregorian' ? fmt(r.custom.iso)
+              : r.custom.d + ' ' + (Cal.monthMeta(r.custom.m) || {}).en)) + '</b>' +
               '<em>' + (r.custom.repeat === 'yearly' ? 'every year' : 'once') + '</em>';
     } else {
       dates = '<b>' + (r.count || '—') + '</b>' +

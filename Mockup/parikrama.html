@@ -2061,26 +2061,26 @@ html.still .drift img{ animation:none; }
   if (!mount) return;
 
   var SRC = __DTILES__;
-  /* Index-matched to the sorted filenames in Assets/Kirtan/tiles:
-     k01 k02 k03 k05 k07 k11 k15 k22 k24 k26 k27 k28. Written from the
-     photographs themselves; four show a dilruba, the rest are the other
-     classes and the samagams. No titles — the panel carries no text. */
-  var ALT = [
-    "A student playing the dilruba at a samagam, gaj drawn across the strings.",
-    "A student bowing the dilruba, seated at the microphone.",
-    "The sangat gathered outside for a group photograph.",
-    "A student at the harmonium, tabla waiting beside them.",
-    "Several classes at once: tabla, dilruba and violin.",
-    "Close on the gaj crossing the dilruba's strings.",
-    "Two students on stage, one at the microphone and one at the tabla.",
-    "A student playing tabla, hands mid-stroke.",
-    "A student with a dilruba across the lap, its case open beside them.",
-    "Scenes from a samagam at the gurdwara.",
-    "A santhiya class, and a student playing violin.",
-    "Hands on the tabla, close in."
-  ];
+  /* Written from the photographs themselves. Keyed by file name, not by
+     position: an index-matched list silently shifts every description onto
+     the wrong photo the moment a tile is added to or removed from
+     Assets/Kirtan/tiles (it did, 25 Oct 2026, when the collages came out).
+     No titles - the panel carries no text. */
+  var ALT = {
+    k01: "A student playing the dilruba at a samagam, gaj drawn across the strings.",
+    k02: "A student bowing the dilruba, seated at the microphone.",
+    k03: "The sangat gathered outside for a group photograph.",
+    k05: "A student at the harmonium, tabla waiting beside them.",
+    k11: "Close on the gaj crossing the dilruba's strings.",
+    k15: "Two students on stage, one at the microphone and one at the tabla.",
+    k22: "A student playing tabla, hands mid-stroke.",
+    k24: "A student with a dilruba across the lap, its case open beside them.",
+    k28: "Hands on the tabla, close in.",
+    k30: "Two students on stage playing tanti saaj at the microphones.",
+    k31: "A student bowing the dilruba on stage beside another player."
+  };
   buildWall(mount, SRC.map(function (src, i) {
-    return { src: src, alt: ALT[i] || "" };
+    return { src: src, alt: ALT[src.split("/").pop().replace(/\.\w+$/, "")] || "" };
   }), { columns: 4 });
 })();
 </script>
