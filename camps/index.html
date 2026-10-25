@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Camps &middot; Shaheedi Bunga</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="The camps and samagams Shaheedi Bunga runs in Leicester — Gurbani Vidhya Camp, Gurbani Santhiya Camp, Sikhi Camp for children, and Hola Mohalla UK.">
+<!-- NOT FINISHED, NOT LINKED, NOT IN THE SITEMAP. The structure is built and
+     the camps are named; the dates, the detail and the wording are Harteg's
+     to give. noindex stays until it is signed off - see
+     Content_Drafts/camps-and-library-notes.md. -->
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="/lib/fonts.css">
+<link rel="stylesheet" href="../site.css">
+<link rel="icon" href="../Assets/Brand/gurmat-vidyala-84.png">
+<style>
+.intro{ max-width:62ch; }
+
+/* one camp per band, the way the classes page does it, because a camp is the
+   same kind of object: a name, a line about it, where it happens */
+.camps{ margin-top:calc(var(--u)*3.2); border-top:1px solid var(--line); }
+.camp{ display:grid; grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);
+  gap:calc(var(--u)*2.4); align-items:start;
+  border-bottom:1px solid var(--line); padding:calc(var(--u)*2.6) 0; }
+@media(max-width:780px){ .camp{ grid-template-columns:1fr; gap:calc(var(--u)*1.2); } }
+.camp .n{ font-family:var(--mono); font-size:max(9.5px,calc(var(--u)*0.64));
+  letter-spacing:.2em; color:var(--gold); }
+.camp h2{ font-family:var(--sans); font-weight:700; letter-spacing:-.04em;
+  font-size:max(27px,calc(var(--u)*3.3)); line-height:1.0;
+  margin:calc(var(--u)*0.6) 0 0; }
+.camp h2 .gur{ display:block; font-size:.46em; color:var(--gold);
+  margin-bottom:calc(var(--u)*0.35); font-weight:600; letter-spacing:0; }
+.camp p{ color:var(--muted); margin:0; max-width:52ch; }
+.camp p + p{ margin-top:calc(var(--u)*0.9); }
+.facts{ margin:calc(var(--u)*1.2) 0 0; display:grid; gap:calc(var(--u)*0.5); }
+.facts div{ display:flex; gap:calc(var(--u)*0.9); align-items:baseline;
+  font-family:var(--mono); font-size:max(10px,calc(var(--u)*0.72));
+  letter-spacing:.08em; }
+.facts dt{ color:var(--faint); min-width:7.5em; text-transform:uppercase;
+  font-size:.92em; letter-spacing:.14em; }
+.facts dd{ margin:0; color:var(--ink); }
+
+.tail{ margin-top:calc(var(--u)*3); color:var(--muted); max-width:58ch; }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <img src="../Assets/Brand/gurmat-vidyala-84.png" alt="" width="42" height="42">
+  <span class="mark"><b>Shaheedi Bunga</b><i>Gurmat Vidyala</i></span>
+  <nav>
+    <a href="../">Home</a>
+    <a href="../classes/">Classes</a>
+    <a href="../camps/" aria-current="page">Camps</a>
+    <a href="../resources/">Resources</a>
+    <a href="../gallery/">Gallery</a>
+    <a href="../about/">About</a>
+    <a href="../contact/">Contact</a>
+    <a href="../donate/">Donate</a>
+  </nav>
+</header>
+
+<main class="wrap">
+  <p class="lbl">Camps</p>
+  <h1>A fortnight,<br>not an hour.</h1>
+  <p class="lede intro">The weekly classes keep going all year. The camps are
+    the other thing the vidyala does &mdash; whole days and whole weeks given
+    to one subject, with teachers who come in for it. They are free, like
+    everything else, and langar runs throughout.</p>
+
+  <div class="camps">
+
+    <section class="camp">
+      <div>
+        <p class="n">01</p>
+        <h2><span class="gur">ਗੁਰਬਾਣੀ ਵਿੱਦਿਆ ਕੈਂਪ</span>Gurbani Vidhya Camp</h2>
+      </div>
+      <div>
+        <p>A two-week intensive in the summer, and the most serious teaching
+          the charity does. One granth is taken and worked through properly
+          over the fortnight.</p>
+        <dl class="facts">
+          <div><dt>Where</dt><dd>Guru Tegh Bahadur Gurdwara</dd></div>
+          <div><dt>When</dt><dd>Two weeks each August</dd></div>
+          <div><dt>For</dt><dd>Older students and adults</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="camp">
+      <div>
+        <p class="n">02</p>
+        <h2><span class="gur">ਗੁਰਬਾਣੀ ਸੰਥਿਆ ਕੈਂਪ</span>Gurbani Santhiya Camp</h2>
+      </div>
+      <div>
+        <p>Several days of santhiya in a row, morning or afternoon, with
+          nothing else in the way. It is the quickest a reader moves &mdash;
+          a week of this is worth a term of Tuesdays.</p>
+        <dl class="facts">
+          <div><dt>Where</dt><dd>Gurudwara Shri Guru Dashmesh Sahib</dd></div>
+          <div><dt>When</dt><dd>Several times a year, in the holidays</dd></div>
+          <div><dt>For</dt><dd>Any age, any level</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="camp">
+      <div>
+        <p class="n">03</p>
+        <h2><span class="gur">ਸਿੱਖੀ ਕੈਂਪ</span>Sikhi Camp</h2>
+      </div>
+      <div>
+        <p>The children&rsquo;s camp, and the biggest thing the vidyala runs by
+          numbers. Whole days of itihaas, kirtan, games and langar, pitched at
+          children from about five upwards.</p>
+        <dl class="facts">
+          <div><dt>Where</dt><dd>Moves between the gurdware</dd></div>
+          <div><dt>When</dt><dd>School holidays</dd></div>
+          <div><dt>For</dt><dd>Children from 5</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="camp">
+      <div>
+        <p class="n">04</p>
+        <h2><span class="gur">ਹੋਲਾ ਮਹੱਲਾ</span>Hola Mohalla UK</h2>
+      </div>
+      <div>
+        <p>The national gathering the charity hosts: gatka, archery, horse
+          riding, axe and chakar throwing, rifle shooting. A day of shastar
+          vidya rather than a class.</p>
+        <dl class="facts">
+          <div><dt>Where</dt><dd>Leicester &mdash; the venue changes</dd></div>
+          <div><dt>When</dt><dd>Around Hola Mohalla, in March</dd></div>
+          <div><dt>For</dt><dd>Everyone</dd></div>
+        </dl>
+      </div>
+    </section>
+
+  </div>
+
+  <p class="tail">Camps are announced on
+    <a href="https://www.instagram.com/shaheedibunga/" target="_blank" rel="noopener">Instagram</a>
+    first. To be told directly when the next one opens,
+    <a href="../contact/">message us</a>.</p>
+</main>
+
+<p class="foot">Shaheedi Bunga &middot; Leicester, UK<br><a href="../privacy/">Privacy</a> &middot; <a href="../safeguarding/">Safeguarding</a></p>
+</body>
+</html>
