@@ -1,0 +1,116 @@
+<!--@head title="Privacy"-->
+<style>
+.promise{ display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); border-top:1px solid var(--line); border-bottom:1px solid var(--line); margin:0 0 calc(var(--u)*4); }
+.promise div{ padding:calc(var(--u)*2) calc(var(--u)*1.4); border-left:1px solid var(--line); }
+.promise div:first-child{ border-left:0; padding-left:0; }
+.promise b{ display:block; font-family:var(--display); font-weight:500; font-size:max(30px,calc(var(--u)*3)); line-height:1; }
+.promise span{ font-family:var(--mono); font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--gold-text); }
+@media(max-width:700px){ .promise{ grid-template-columns:1fr 1fr; } .promise div:nth-child(3){ border-left:0; padding-left:0; } }
+.stamp{ font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--hero-muted); margin-top:calc(var(--u)*2.4); }
+.forget{ margin-top:.4em; font:11px/1 var(--mono); letter-spacing:.14em; text-transform:uppercase; color:var(--gold-text); background:transparent;
+  border:1px solid var(--line); border-radius:100px; padding:11px 15px; cursor:pointer; }
+.forget:hover{ border-color:var(--gold); }
+</style>
+</head>
+<body>
+<!--@mast current=""-->
+
+<main id="main">
+<section class="phero no-art paper" data-hero>
+  <div class="phero-in" style="min-height:min(66svh,700px)">
+    <div>
+      <p class="eyebrow">Shaheedi Bunga · Privacy</p>
+      <span class="gur gur-line" lang="pa">ਨਿਜਤਾ</span>
+      <h1 class="display"><em>Privacy.</em></h1>
+      <p class="lede">This website sets no cookies, runs no analytics, tracks nobody and sends nothing to any other company.
+        You can read the whole site without telling us anything about yourself.</p>
+      <!-- DRAFT: the date and the dark-mode paragraph below are new with the redesign.
+           Both must go live together with the light/dark switch, or the page is wrong. -->
+      <p class="stamp">Last updated 25 October 2026 (draft)</p>
+    </div>
+  </div>
+</section>
+
+<div class="policy paper">
+  <nav class="toc" aria-label="On this page">
+    <a href="#collects">What this site collects</a><a href="#host">The one thing that happens anyway</a>
+    <a href="#message">If you message us</a><a href="#photos">Photographs</a><a href="#rights">Your rights</a>
+    <a href="#changes">Changes</a><a href="#who">Who we are</a>
+  </nav>
+  <div>
+    <div class="promise" data-fade>
+      <div><span>Cookies</span><b>None</b></div><div><span>Analytics</span><b>None</b></div>
+      <div><span>Tracking</span><b>None</b></div><div><span>Other companies</span><b>None</b></div>
+    </div>
+
+    <section id="collects">
+      <h2>What this website collects</h2>
+      <p><b>Nothing.</b> There is no account to make, no form to fill in, no advertising, no analytics and no tracking of any kind.
+        The site sets no cookies.</p>
+      <p><b>One setting stays on your device, and only if you choose it.</b> If you switch the site to dark mode, your browser
+        remembers that choice in its local storage, so the next page opens dark too. It is a single word, "dark" or "light". It
+        never leaves your device, it is not sent to us, and we cannot see it. If you never touch the switch, nothing is stored.</p>
+      <p><button type="button" class="forget" id="forget">Forget my setting</button> <span id="forgot" style="font-size:14px" aria-live="polite"></span></p>
+    </section>
+
+    <section id="host">
+      <h2>The one thing that happens anyway</h2>
+      <p><b>Our host keeps a record of requests.</b> The site is served by GitHub Pages. Like any web server, theirs records the
+        requests it answers, including the IP address they came from. We do not see those records and cannot link them to a person.</p>
+      <p>That is the only one. Everything the site needs (the lettering, the images, the animation, the code that draws the Darbar
+        Sahib on the front page) is served from this website itself. Your browser never contacts another company while you are
+        reading it. The typefaces used to come from Google Fonts, which meant Google received your IP address on every visit; they
+        were moved onto our own server on 8 October 2026 to stop that.</p>
+    </section>
+
+    <section id="message">
+      <h2>If you message us</h2>
+      <p>If you contact us on WhatsApp or by email, we hold what you send (your name, your number or address, and whatever you
+        tell us) so we can answer you and, if you come to a class, so we know who is in the room. We keep it no longer than we
+        need it, we do not sell it, and we do not pass it to anyone outside the charity unless the law requires it or a child is at risk.</p>
+      <p>WhatsApp is owned by Meta and has its own privacy terms. If you would rather not use it, email
+        <a href="mailto:gurmat@shaheedibunga.com">gurmat@shaheedibunga.com</a>.</p>
+    </section>
+
+    <section id="photos">
+      <h2>Photographs</h2>
+      <p>This site shows photographs of classes, camps and samagams, and children appear in some of them. If you or your child is
+        in a photograph here and you would rather you were not, <b>tell us and we will take it down</b>. You do not have to give
+        a reason, and nothing happens to your place in the class.</p>
+      <p>Email <a href="mailto:gurmat@shaheedibunga.com">gurmat@shaheedibunga.com</a>, or speak to whoever teaches your class.</p>
+    </section>
+
+    <section id="rights">
+      <h2>Your rights</h2>
+      <p>Under UK data protection law you can ask us what we hold about you, ask us to correct it, and ask us to delete it.
+        Write to the address below and we will reply.</p>
+      <p>If you are not happy with how we answer, you can complain to the Information Commissioner's Office at
+        <a href="https://ico.org.uk/make-a-complaint/" target="_blank" rel="noopener">ico.org.uk</a> or on 0303 123 1113.</p>
+    </section>
+
+    <section id="changes">
+      <h2>Changes</h2>
+      <p>If this notice changes, the new version goes on this page with a new date.</p>
+    </section>
+
+    <section id="who">
+      <h2>Who we are</h2>
+      <p>Shaheedi Bunga, a Charitable Incorporated Organisation registered in England and Wales, no. <b>1185103</b>.<br>
+        22 Beckett Road, Leicester LE5 0HE, United Kingdom.<br>
+        Email: <a href="mailto:gurmat@shaheedibunga.com">gurmat@shaheedibunga.com</a></p>
+    </section>
+  </div>
+</div>
+</main>
+
+<!--@foot-->
+<!--@scripts-->
+<script>
+document.getElementById("forget").addEventListener("click", function(){
+  try{ localStorage.removeItem("sb-mood"); }catch(e){}
+  document.getElementById("forgot").textContent = "Done. Nothing is stored now.";
+});
+KIT.start();
+</script>
+</body>
+</html>

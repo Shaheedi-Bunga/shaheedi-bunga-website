@@ -2,20 +2,21 @@
 # Are the generated files in this repository actually what their generators
 # produce?
 #
-# Two files here are built, not written, and both have already been edited by
+# These are built, not written, and the first two have already been edited by
 # hand at least once - which is silent, because the edit works perfectly until
 # the next rebuild throws it away:
 #
 #   index.html              <- Mockup/build-parikrama.js, from Mockup/parikrama.html
 #   sikhi-calendar/index.html <- the calendar app's generator, then _tools/fit-calendar.py
+#   new/ and Mockup/_Redesign_Inner/*.html  <- Mockup/_Redesign_Inner/build.js, from its src/
 #
-# This runs both and fails if either produces something different from what is
-# committed. Run it before pushing, or let the GitHub Action run it for you.
+# This runs every generator and fails if any produces something different from
+# what is committed. Run it before pushing, or let the GitHub Action run it for you.
 #
 #   bash _tools/check-generated.sh
 set -u
 cd "$(dirname "$0")/.."
-PATHS=("index.html" "sikhi-calendar/index.html")
+PATHS=("index.html" "sikhi-calendar/index.html" "new" "Mockup/_Redesign_Inner")
 fail=0
 
 # Refuse to run over someone else's work in progress. More than one session
@@ -43,8 +44,15 @@ if ! python3 _tools/fit-calendar.py; then
 fi
 
 echo
+echo "== rebuilding the redesign test pages (/new/) =="
+if ! node Mockup/_Redesign_Inner/build.js >/dev/null; then
+  echo "  Mockup/_Redesign_Inner/build.js failed"; fail=1
+fi
+
+echo
 for f in "${PATHS[@]}"; do
-  if git diff --quiet -- "$f"; then
+  # status, not diff: a stray new file under new/ must count too
+  if [ -z "$(git status --porcelain -- "$f")" ]; then
     echo "  $f  up to date"
   else
     echo "  $f  OUT OF DATE"
@@ -63,6 +71,8 @@ why this check exists.
 
   index.html                 edit Mockup/parikrama.html, or
                              Mockup/build-parikrama.js for anything templated
+  new/                       edit Mockup/_Redesign_Inner/src/, then run
+                             node Mockup/_Redesign_Inner/build.js
   sikhi-calendar/index.html  rebuild the calendar, then run
                              python3 _tools/fit-calendar.py
 
@@ -72,4 +82,4 @@ MSG
 fi
 
 echo
-echo "  both generated files match their generators"
+echo "  all generated files match their generators"

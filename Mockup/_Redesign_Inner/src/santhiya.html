@@ -1,0 +1,272 @@
+<!--@head title="Santhiya Vidyala"-->
+<style>
+/* ── 1 · hero ───────────────────────────────────────────────────────────
+   The resting layout is a plain two-column hero, which is all a phone or a
+   reduced-motion visitor ever sees. With .cine the hero pins, and the arch
+   the fresco sits in opens out to fill the screen. */
+.hero{ position:relative; background:var(--hero-bg); color:var(--hero-ink); }
+.hero-in{ min-height:100svh; display:grid; grid-template-columns:1.05fr .95fr; gap:calc(var(--u)*4); align-items:end;
+  padding:max(96px,calc(var(--u)*9)) var(--gx) calc(var(--u)*4); }
+.hero .eyebrow{ color:var(--hero-gold); }
+.hero .gur-line{ font-size:max(22px,calc(var(--u)*2.3)); color:var(--hero-gold); margin:calc(var(--u)*2.2) 0 calc(var(--u)*1); line-height:1.4; }
+.hero h1{ font-size:max(50px,calc(var(--u)*7.2)); }
+.hero h1 em{ color:var(--hero-gold); }
+.hero .lede{ color:var(--hero-muted); margin-top:calc(var(--u)*2.2); }
+.hero-meta{ display:flex; gap:calc(var(--u)*3); margin-top:calc(var(--u)*3.4); padding-top:calc(var(--u)*1.6);
+  border-top:1px solid var(--hero-line); font-family:var(--mono); font-size:max(11px,calc(var(--u)*.66));
+  letter-spacing:.16em; text-transform:uppercase; color:var(--hero-muted); flex-wrap:wrap; }
+.hero-meta b{ display:block; color:var(--hero-ink); font-weight:400; font-family:var(--display);
+  font-size:max(22px,calc(var(--u)*1.9)); letter-spacing:-.01em; text-transform:none; margin-top:.25em; }
+.hero-art{ position:relative; justify-self:end; width:min(100%, calc(var(--u)*40)); --archH:34%; }
+.hero-art .arch{ aspect-ratio:4/5; }
+.hero-art img{ width:100%; height:100%; object-fit:cover; object-position:30% 40%; }
+.hero-art figcaption{ font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--hero-muted); margin-top:12px; line-height:1.6; }
+html[data-mood="dark"] .hero-art img{ filter:saturate(.85) brightness(.88) contrast(1.05); }
+/* minmax(0,…): a bare 1fr let the column grow to its content and the page
+   ran 38px wider than a phone. The arch line's outset is clipped, not scrolled. */
+@media(max-width:800px){ .hero{ overflow-x:clip; } .hero-in{ grid-template-columns:minmax(0,1fr); }
+  .hero-art{ justify-self:stretch; width:auto; } .hero-art .arch-line{ inset:-8px -8px 0; } }
+
+/* the cinematic version */
+.cine .hero{ height:280vh; }
+.cine .hero-pin{ position:sticky; top:0; height:100vh; overflow:hidden; }
+.cine .hero-in{ height:100vh; min-height:0; position:relative; z-index:2; }
+.cine .hero-art{ visibility:hidden; }            /* its place is held; .stage paints it */
+.stage{ display:none; }
+/* The stage is one box that starts exactly over the framed fresco and grows
+   to the screen. Its size animates rather than a clip, so the fresco stays
+   composed the same way inside it the whole time. One element, once. */
+.cine .stage{ display:block; position:absolute; z-index:1; overflow:hidden;
+  top:var(--t); left:var(--l); width:var(--w); height:var(--h); border-radius:var(--rad) var(--rad) 0 0 / var(--radY) var(--radY) 0 0; }
+.cine .stage img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:30% 40%;
+  transform-origin:26% 58%; will-change:transform; }
+html[data-mood="dark"] .cine .stage img{ filter:saturate(.85) brightness(.85) contrast(1.06); }
+/* The line sits over the robes on the right, never over the painted page of
+   Gurbani on the left: nothing is laid on top of Gurbani. */
+.stage .veil{ position:absolute; inset:0; opacity:0;
+  background:linear-gradient(270deg,rgba(12,19,34,.88) 0,rgba(12,19,34,.6) 30%,rgba(12,19,34,0) 55%); }
+.stage .over{ position:absolute; right:var(--gx); bottom:calc(var(--u)*7); width:min(38vw,620px); color:#F4EFE4; text-align:right; }
+.stage .over p{ font-family:var(--display); font-weight:500; font-size:max(40px,calc(var(--u)*5.6)); line-height:.95;
+  letter-spacing:-.02em; margin:0 0 0 auto; max-width:11ch; }
+.stage .over p em{ color:var(--gold-lite); }
+.stage .over small{ display:block; margin-top:calc(var(--u)*2); font-family:var(--mono); font-size:10px;
+  letter-spacing:.16em; text-transform:uppercase; opacity:.75; }
+.scrollcue{ position:absolute; right:var(--gx); bottom:calc(var(--u)*3); z-index:3; font-family:var(--mono);
+  font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--hero-muted); display:none; align-items:center; gap:10px; }
+.cine .scrollcue{ display:flex; }
+.scrollcue i{ width:1px; height:42px; background:currentColor; transform-origin:top; animation:cue 2.2s var(--ease-out) infinite; }
+@keyframes cue{ 0%{ transform:scaleY(0); } 60%{ transform:scaleY(1); } 100%{ transform:scaleY(1); opacity:0; } }
+
+/* ── 2 · manifesto ── */
+.manifesto{ background:var(--hero-bg); color:var(--hero-ink); }
+.manifesto .eyebrow{ color:var(--hero-gold); }
+.manifesto .gur{ font-size:max(26px,calc(var(--u)*3)); color:var(--hero-gold); display:block; margin:calc(var(--u)*3) 0 calc(var(--u)*1.4); }
+.manifesto p.big{ font-family:var(--display); font-weight:500; font-size:max(30px,calc(var(--u)*4.6)); line-height:1.08;
+  letter-spacing:-.015em; margin:0; max-width:24ch; }
+/* dark mode is dark all the way down: a hairline marks where the hero's
+   ground meets the page's, rather than a blend to cream */
+html[data-mood="dark"] .manifesto{ border-bottom:1px solid var(--line); }
+
+/* ── 4 · the room ── */
+.room{ display:grid; grid-template-columns:repeat(12,1fr); gap:calc(var(--u)*1.6); }
+.room figure{ margin:0; overflow:hidden; border-radius:3px; position:relative; }
+.room figure img{ width:100%; height:115%; object-fit:cover; filter:var(--photo); }
+.room figcaption{ position:absolute; left:12px; bottom:10px; font-family:var(--mono); font-size:10px; letter-spacing:.14em;
+  text-transform:uppercase; color:#FAF6EE; text-shadow:0 1px 8px rgba(0,0,0,.6); }
+.room .f1{ grid-column:1/6; aspect-ratio:4/5; } .room .f2{ grid-column:6/10; aspect-ratio:1; margin-top:calc(var(--u)*10); }
+.room .f3{ grid-column:10/13; aspect-ratio:3/4; margin-top:calc(var(--u)*3); }
+.room .f4{ grid-column:2/5; aspect-ratio:1; } .room .f5{ grid-column:5/9; aspect-ratio:4/3; margin-top:calc(var(--u)*-6); }
+.room .quote{ grid-column:9/13; align-self:center; font-family:var(--display); font-size:max(24px,calc(var(--u)*2.6)); line-height:1.15; margin:0; }
+.room .quote small{ display:block; margin-top:1em; font-family:var(--mono); font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--gold-text); }
+@media(max-width:800px){ .room > *{ grid-column:1/-1 !important; margin-top:0 !important; } }
+
+</style>
+</head>
+<body>
+
+<!--@mast current="classes" wa="Santhiya classes (in person or online)"-->
+
+<main id="main">
+<!-- 1 · hero -->
+<section class="hero paper" data-hero aria-label="Santhiya Vidyala">
+ <div class="hero-pin">
+  <div class="stage" aria-hidden="true">
+    <img src="img/fresco-bhai-gurdas-ji.jpg" alt="">
+    <div class="veil"></div>
+    <div class="over"><p>Every lagga matra. Every bisraam. <em>Nothing hurried.</em></p>
+      <small>Bhai Gurdas Ji writing Sri Guru Granth Sahib Ji · fresco, Gurdwara Baba Atal Rai, Amritsar · mid-19th century</small></div>
+  </div>
+  <div class="hero-in">
+    <div class="hero-copy">
+      <p class="eyebrow">Gurmat Vidyala · 01 · Santhiya</p>
+      <p class="gur gur-line" lang="pa">ਸ਼ੁੱਧ ਗੁਰਬਾਣੀ ਪੜ੍ਹਨੀ ਸਿੱਖੋ</p>
+      <h1 class="display h-xl" data-intro>Learn to read <em>sudh</em> Gurbani.</h1>
+      <p class="lede" data-intro-fade>The pronunciation, the pauses and the meaning, taught one line at a
+        time by people who learnt it the same way.</p>
+      <div class="hero-meta" data-intro-fade>
+        <span>When<b>Every day</b></span><span>Where<b>Gipsy Lane &amp; online</b></span><span>Fee<b>None, ever</b></span>
+      </div>
+    </div>
+    <figure class="hero-art">
+      <div class="arch"><img src="img/fresco-bhai-gurdas-ji.jpg" alt="A fresco of Bhai Gurdas Ji seated, writing out Sri Guru Granth Sahib Ji, while an attendant waves a chaur." width="1600" height="2000"></div>
+      <span class="arch-line" aria-hidden="true"></span>
+      <figcaption>Bhai Gurdas Ji writing Sri Guru Granth Sahib Ji<br>Fresco, Gurdwara Baba Atal Rai · mid-19th c.</figcaption>
+    </figure>
+  </div>
+  <p class="scrollcue" aria-hidden="true"><i></i>Scroll</p>
+ </div>
+</section>
+
+<!-- 2 · manifesto -->
+<section class="sec manifesto paper">
+  <p class="eyebrow">What santhiya is</p>
+  <span class="gur" lang="pa">ਸੰਥਿਆ</span>
+  <p class="big" data-scrub>Santhiya is Gurbani read the way it was given. You sit with an ustad, they
+    read a line, you read it back, and nothing moves on until it is right. It is where
+    everything else at the vidyala starts.</p>
+</section>
+
+<!-- 3 · promises -->
+<section class="promises paper" id="promises">
+ <div class="ppin">
+  <div class="sec-head">
+    <div><p class="eyebrow">Before you come</p>
+      <h2 class="display h-l" data-split>Nothing stands in the way.</h2></div>
+    <p class="lede">Four things people ask before their first morning. The answer to all of them is the same.</p>
+  </div>
+  <div class="ptrack" id="ptrack">
+    <article class="pcard"><span class="num" aria-hidden="true">੧</span>
+      <div><h3>No fee.</h3><p>Not for the class, not for the gutka, not later. The sangat keeps it running.</p></div></article>
+    <article class="pcard"><span class="num" aria-hidden="true">੨</span>
+      <div><h3>No audition.</h3><p>Nobody tests you before you start. You come, you sit, you begin where you are.</p></div></article>
+    <article class="pcard"><span class="num" aria-hidden="true">੩</span>
+      <div><h3>No age.</h3><p>Children of six and grandparents of seventy read from the same pothi in the same room.</p></div></article>
+    <article class="pcard ink"><span class="num" aria-hidden="true">੪</span>
+      <div><h3>No Gurmukhi needed.</h3><p>You do not need to read a single letter before you start. Sit at the back if you want to. Nobody will ask you to read.</p></div></article>
+  </div>
+  <div class="pbar"><i id="pfill"></i></div>
+ </div>
+</section>
+
+<!-- 4 · the room -->
+<section class="sec paper" style="padding-top:calc(var(--u)*6)">
+  <div class="sec-head">
+    <div><p class="eyebrow">The room</p><h2 class="display h-l" data-split>Fifteen years of mornings.</h2></div>
+    <p class="lede">Camps, weekly classes and saptah paath. The same room, filling and emptying, for as long as anyone can remember.</p>
+  </div>
+  <div class="room">
+    <figure class="f1"><img data-parallax="10" src="img/s-d05.jpg" alt="An ustad and a student reading together at a low table." loading="lazy"><figcaption>Line by line</figcaption></figure>
+    <figure class="f2"><img data-parallax="14" src="img/s-e07.jpg" alt="A hand writing notes beside an open gutka." loading="lazy"><figcaption>Notes in the margin</figcaption></figure>
+    <figure class="f3"><img data-parallax="10" src="img/s-d08.jpg" alt="Gutkas laid out on cloth-covered tables." loading="lazy"><figcaption>The gutkas</figcaption></figure>
+    <figure class="f4"><img data-parallax="12" src="img/s-d32.jpg" alt="A speaker addressing the class with a microphone." loading="lazy"><figcaption>Vichar</figcaption></figure>
+    <figure class="f5"><img data-parallax="10" src="img/s-d16.jpg" alt="The class seated on the floor of the hall." loading="lazy"><figcaption>Gipsy Lane</figcaption></figure>
+    <p class="quote" data-fade>“We believe that education is essential in nurturing and strengthening our future generations, mentally and physically.”<small>Shaheedi Bunga</small></p>
+  </div>
+</section>
+
+<!-- 5 · the week -->
+<section class="sec paper" style="padding-top:calc(var(--u)*4)">
+  <div class="sec-head">
+    <div><p class="eyebrow">Gipsy Lane · santhiya sessions</p><h2 class="display h-l" data-split>Every day of the week.</h2></div>
+    <p class="lede">Gurudwara Shri Guru Dashmesh Sahib, 49 Gipsy Lane. Come to any one of these. You do not need to tell anyone first.</p>
+  </div>
+  <div class="week" id="week">
+    <div class="day" data-d="1"><span class="pa" lang="pa">ਸੋਮਵਾਰ</span><span class="en">Monday</span>
+      <ul><li><b>8am</b><span>Morning santhiya</span></li><li><b>6pm</b><span>Santhiya</span></li></ul></div>
+    <div class="day" data-d="2"><span class="pa" lang="pa">ਮੰਗਲਵਾਰ</span><span class="en">Tuesday</span>
+      <ul><li><b>8am</b><span>Morning santhiya</span></li><li><b>6pm</b><span>Santhiya</span></li></ul></div>
+    <div class="day" data-d="3"><span class="pa" lang="pa">ਬੁੱਧਵਾਰ</span><span class="en">Wednesday</span>
+      <ul><li><b>8am</b><span>Morning santhiya</span></li><li class="off"><b>6pm</b><span>Itihaas instead</span></li></ul></div>
+    <div class="day" data-d="4"><span class="pa" lang="pa">ਵੀਰਵਾਰ</span><span class="en">Thursday</span>
+      <ul><li><b>8am</b><span>Morning santhiya</span></li><li><b>6pm</b><span>Santhiya</span></li></ul></div>
+    <div class="day" data-d="5"><span class="pa" lang="pa">ਸ਼ੁੱਕਰਵਾਰ</span><span class="en">Friday</span>
+      <ul><li><b>8am</b><span>Morning santhiya</span></li><li><b>6pm</b><span>Santhiya</span></li></ul></div>
+    <div class="day" data-d="6"><span class="pa" lang="pa">ਸ਼ਨੀਵਾਰ</span><span class="en">Saturday</span>
+      <ul><li><b>3pm</b><span>Weekend school</span></li></ul></div>
+    <div class="day" data-d="0"><span class="pa" lang="pa">ਐਤਵਾਰ</span><span class="en">Sunday</span>
+      <ul><li><b>3pm</b><span>Weekend school</span></li></ul></div>
+  </div>
+</section>
+
+<!-- 6 · venues -->
+<section class="sec paper" style="padding-top:calc(var(--u)*4)">
+  <div class="sec-head">
+    <div><p class="eyebrow">Across Leicester</p><h2 class="display h-l" data-split>Five gurdwaras, and online.</h2></div>
+    <p class="lede">The four below run their own santhiya alongside Gipsy Lane. Message us for their times.</p>
+  </div>
+  <div class="venues">
+    <a class="venue" href="https://maps.google.com/?q=49+Gipsy+Lane+Leicester+LE4+6RB" target="_blank" rel="noopener" data-fade>
+      <span class="i">01</span><h3>Gurudwara Shri Guru Dashmesh Sahib</h3><span class="ad">49 Gipsy Lane, LE4 6RB</span><span class="t">Every day · the week above</span><span class="go" aria-hidden="true">↗</span></a>
+    <a class="venue" href="https://maps.google.com/?q=106+East+Park+Road+Leicester+LE5+4QB" target="_blank" rel="noopener" data-fade>
+      <span class="i">02</span><h3>Guru Tegh Bahadur Gurdwara</h3><span class="ad">106 East Park Road, LE5 4QB</span><span class="t">Ask for times</span><span class="go" aria-hidden="true">↗</span></a>
+    <a class="venue" href="https://maps.google.com/?q=2+Sri+Guru+Ramdas+Way+Leicester+LE5+1GN" target="_blank" rel="noopener" data-fade>
+      <span class="i">03</span><h3>Gurdwara Sahib Ramgarhia Board</h3><span class="ad">2 Sri Guru Ramdas Way, LE5 1GN</span><span class="t">Tuesday from 6pm</span><span class="go" aria-hidden="true">↗</span></a>
+    <a class="venue" href="https://maps.google.com/?q=19+Ashford+Road+Leicester+LE2+6AA" target="_blank" rel="noopener" data-fade>
+      <span class="i">04</span><h3>Gurdwara Gur Panth Parkash</h3><span class="ad">19 Ashford Road, LE2 6AA</span><span class="t">Saturday 11am</span><span class="go" aria-hidden="true">↗</span></a>
+    <a class="venue" href="https://maps.google.com/?q=48+Kenilworth+Drive+Oadby+LE2+5LG" target="_blank" rel="noopener" data-fade>
+      <span class="i">05</span><h3>Gurdwara Shri Guru Harkrishan Sahib</h3><span class="ad">48 Kenilworth Drive, Oadby LE2 5LG</span><span class="t">Friday from 6pm</span><span class="go" aria-hidden="true">↗</span></a>
+    <div class="venue" data-fade><span class="i">06</span><h3>Online</h3><span class="ad">Wherever you are</span><span class="t">Ask us how to join</span><span></span></div>
+  </div>
+</section>
+
+<!-- 7 · invitation -->
+<section class="sec invite paper">
+  <div class="frame">
+    <span class="arch-line" aria-hidden="true"></span><span class="arch-line two" aria-hidden="true"></span>
+    <span class="gur" lang="pa" data-fade>ਸੋਮਵਾਰ ਨੂੰ ਆਓ</span>
+    <h2 class="display h-l" data-split>Come on <em>Monday.</em></h2>
+    <p data-fade>Eight in the morning at 49 Gipsy Lane. No fee, no audition, no Gurmukhi.
+      Sit at the back if you want to. Nobody will ask you to read.</p>
+    <div class="acts" data-fade>
+      <a class="wa" href="https://wa.me/447394848407?text=Sat%20Sri%20Akal%20%E2%80%94%20I'd%20like%20to%20ask%20about%20Santhiya%20classes." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.6 2 2.18 6.42 2.18 11.86c0 1.74.46 3.44 1.32 4.94L2.1 22l5.34-1.4a9.8 9.8 0 0 0 4.6 1.17h.01c5.43 0 9.85-4.42 9.85-9.86 0-2.63-1.02-5.11-2.88-6.97A9.79 9.79 0 0 0 12.04 2z"/></svg>Message us on WhatsApp</a>
+      <a class="mail" href="mailto:gurmat@shaheedibunga.com">gurmat@shaheedibunga.com</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<!--@foot-->
+
+<!--@scripts-->
+<script>
+KIT.start(function(gsap, ST){
+  var E = "expo.out";
+
+  /* intro: the headline rises word by word, the rest follows */
+  var h1 = document.querySelector("[data-intro]");
+  var words = SplitText.create(h1, { type:"words", wordsClass:"w", mask:"words" }).words;
+  gsap.timeline({ defaults:{ ease:E } })
+    .from(".hero .eyebrow", { opacity:0, y:12, duration:.9 }, .1)
+    .from(".hero .gur-line", { opacity:0, y:22, duration:1.2 }, .2)
+    .from(words, { yPercent:115, duration:1.4, stagger:.07 }, .3)
+    .from("[data-intro-fade]", { opacity:0, y:24, duration:1.1, stagger:.12 }, .8)
+    .from(".hero-art, .stage", { opacity:0, duration:1.6, ease:"power2.out" }, .2);
+
+  if(!KIT.wide) return;
+
+  /* 1 · the arch opens. The stage starts clipped to exactly where the framed
+     fresco sits in the layout, so the hand-over is invisible. */
+  var stage = document.querySelector(".stage"), art = document.querySelector(".hero-art .arch");
+  var img = stage.querySelector("img");
+  function archVars(){
+    var r = art.getBoundingClientRect();
+    return { "--t":r.top+"px", "--l":r.left+"px", "--w":r.width+"px", "--h":r.height+"px",
+             "--rad":(r.width/2)+"px", "--radY":(r.height*0.34)+"px" };
+  }
+  gsap.set(stage, archVars());
+  var tl = gsap.timeline({ scrollTrigger:{ trigger:".hero", start:"top top", end:"bottom bottom", scrub:.8,
+    invalidateOnRefresh:true, onRefresh:function(){ if(tl.progress() === 0) gsap.set(stage, archVars()); } } });
+  tl.to(".hero-copy", { opacity:0, y:-60, duration:.35, ease:"power2.in" }, 0)
+    .to(".scrollcue", { opacity:0, duration:.1 }, 0)
+    .to(stage, { "--t":"0px", "--l":"0px", "--w":function(){ return innerWidth+"px"; }, "--h":function(){ return innerHeight+"px"; },
+                 "--rad":"0px", "--radY":"0px", duration:.6, ease:"power2.inOut" }, .05)
+    .fromTo(img, { scale:1 }, { scale:1.35, duration:1, ease:"none" }, .05)
+    .to(".stage .veil", { opacity:1, duration:.3 }, .5)
+    .from(".stage .over p", { opacity:0, y:50, duration:.3, ease:"power3.out" }, .6)
+    .from(".stage .over small", { opacity:0, duration:.2 }, .75)
+    .to({}, { duration:.15 });
+});
+</script>
+</body>
+</html>

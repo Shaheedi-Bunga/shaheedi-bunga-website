@@ -1,0 +1,98 @@
+<!--@head title="Contact"-->
+<style>
+/* the two ways in, as large lines that move on hover */
+.ways{ border-top:1px solid var(--navy); }
+.way{ display:grid; grid-template-columns:160px 1fr auto; gap:calc(var(--u)*2); align-items:baseline; padding:calc(var(--u)*2.6) 0;
+  border-bottom:1px solid var(--line); text-decoration:none; }
+.way dt, .way .k{ font-family:var(--mono); font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--gold-text); }
+.way .v{ font-family:var(--display); font-weight:500; font-size:max(30px,calc(var(--u)*4.6)); line-height:1; letter-spacing:-.015em;
+  transition:transform .7s var(--ease-out), color .3s; overflow-wrap:anywhere; }
+.way .go{ font-size:26px; transition:transform .6s var(--ease-out); }
+a.way:hover .v{ transform:translateX(calc(var(--u)*1.4)); color:var(--gold-text); }
+a.way:hover .go{ transform:translate(6px,-6px); }
+@media(max-width:700px){ .way{ grid-template-columns:1fr auto; } .way .k{ grid-column:1/-1; } }
+
+.vcards{ display:grid; grid-template-columns:1fr 1fr; gap:calc(var(--u)*1.6); }
+.vcard{ background:var(--cream-2); border-radius:4px; overflow:hidden; display:flex; flex-direction:column; }
+.vcard .pic{ aspect-ratio:16/9; overflow:hidden; }
+.vcard .pic img{ width:100%; height:100%; object-fit:cover; filter:var(--photo); }
+.vcard .t{ padding:calc(var(--u)*2.2); flex:1; display:flex; flex-direction:column; gap:.6em; }
+.vcard h3{ font-family:var(--display); font-weight:500; font-size:max(24px,calc(var(--u)*2.2)); margin:0; line-height:1.05; }
+.vcard p{ margin:0; color:var(--navy-70); font-size:max(14px,calc(var(--u)*.95)); }
+.vcard a{ margin-top:auto; font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--gold-text); text-decoration:none; }
+@media(max-width:700px){ .vcards{ grid-template-columns:1fr; } }
+
+.social{ display:flex; gap:calc(var(--u)*1.2); flex-wrap:wrap; }
+.social a{ font-family:var(--display); font-size:max(22px,calc(var(--u)*2)); text-decoration:none; padding:.4em 1em; border:1px solid var(--line);
+  border-radius:100px; transition:border-color .3s, background .3s; }
+.social a:hover{ border-color:var(--gold); background:var(--cream-2); }
+</style>
+</head>
+<body>
+<!--@mast current="contact"-->
+
+<main id="main">
+<section class="phero paper" data-hero>
+  <div class="phero-in">
+    <div>
+      <p class="eyebrow">Contact</p>
+      <h1 class="display">Come and <em>find us.</em></h1>
+      <p class="lede">The quickest way is WhatsApp: someone will tell you this week's classes and where to turn up.
+        You do not need to book, and there is no fee.</p>
+      <p data-intro-fade style="margin-top:calc(var(--u)*3)"><a class="wa" href="https://wa.me/447394848407?text=Sat%20Sri%20Akal%20%E2%80%94%20I'd%20like%20to%20ask%20about%20classes." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.6 2 2.18 6.42 2.18 11.86c0 1.74.46 3.44 1.32 4.94L2.1 22l5.34-1.4a9.8 9.8 0 0 0 4.6 1.17h.01c5.43 0 9.85-4.42 9.85-9.86 0-2.63-1.02-5.11-2.88-6.97A9.79 9.79 0 0 0 12.04 2z"/></svg>Message us on WhatsApp</a></p>
+    </div>
+    <figure class="phero-art">
+      <div class="arch"><img src="img/s-d16.jpg" alt="The class seated together on the floor of the hall."></div>
+      <span class="arch-line" aria-hidden="true"></span>
+      <figcaption>Gipsy Lane</figcaption>
+    </figure>
+  </div>
+</section>
+
+<div class="wrapx paper">
+  <div class="ways">
+    <a class="way" href="https://wa.me/447394848407" target="_blank" rel="noopener" data-fade><span class="k">WhatsApp</span><span class="v">+44 7394 848407</span><span class="go" aria-hidden="true">↗</span></a>
+    <a class="way" href="mailto:gurmat@shaheedibunga.com" data-fade><span class="k">Email</span><span class="v">gurmat@shaheedibunga.com</span><span class="go" aria-hidden="true">↗</span></a>
+  </div>
+
+  <section class="band" style="border-top:0">
+    <h2 data-fade><small>Where</small>Two gurdware in Leicester.</h2>
+    <div class="body">
+      <div class="vcards">
+        <div class="vcard" data-fade><div class="pic"><img src="img/a-a07.jpg" alt="An archer drawing on the indoor range." loading="lazy"></div>
+          <div class="t"><h3>Guru Tegh Bahadur Gurdwara</h3>
+            <p>106 East Park Road, Leicester LE5 4QB · santhiya, tabla, and the Archery Akhara on Sundays</p>
+            <a href="https://maps.google.com/?q=106+East+Park+Road+Leicester+LE5+4QB" target="_blank" rel="noopener">Open in Maps ↗</a></div></div>
+        <div class="vcard" data-fade><div class="pic"><img src="img/k-k02.jpg" alt="A student bowing the dilruba, seated at the microphone." loading="lazy"></div>
+          <div class="t"><h3>Gurudwara Shri Guru Dashmesh Sahib</h3>
+            <p>49 Gipsy Lane, Leicester · the Kirtan Vidyala, nine classes a week, and santhiya every day</p>
+            <a href="https://maps.google.com/?q=49+Gipsy+Lane+Leicester+LE4+6RB" target="_blank" rel="noopener">Open in Maps ↗</a></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <h2 data-fade><small>Online</small>Classes, talks and samagams.</h2>
+    <div class="body">
+      <div class="social" data-fade>
+        <a href="https://www.instagram.com/shaheedi_bunga_uk/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.youtube.com/@shaheedibunga" target="_blank" rel="noopener">YouTube</a>
+        <a href="https://linktr.ee/shaheedibunga" target="_blank" rel="noopener">Linktree</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <h2 data-fade><small>Charity</small>1185103</h2>
+    <div class="body"><p data-fade>Registered in England and Wales. If something about a child's safety worries you, see
+      <a href="safeguarding.html">raising a concern</a>.</p></div>
+  </section>
+  <div style="height:calc(var(--u)*8)"></div>
+</div>
+</main>
+
+<!--@foot-->
+<!--@scripts-->
+<script>KIT.start();</script>
+</body>
+</html>
