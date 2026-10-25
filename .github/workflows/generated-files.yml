@@ -1,0 +1,30 @@
+# Catch a hand-edited generated file before it ships.
+#
+# Two files in this repository are built rather than written, and both have
+# already been edited by hand at least once. That is an easy mistake to make
+# and an impossible one to see: the edit works, the page looks right, and it
+# disappears the next time anyone runs the generator. This check rebuilds both
+# and fails if the result differs from what was committed.
+name: Generated files
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Rebuild and compare
+        run: bash _tools/check-generated.sh
+      - name: Show what the generators would have written
+        if: failure()
+        run: git --no-pager diff -- index.html sikhi-calendar/index.html | head -200
