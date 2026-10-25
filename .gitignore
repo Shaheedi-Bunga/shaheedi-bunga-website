@@ -56,3 +56,6 @@ probe.html
 Content_Drafts/Instagram/
 Content_Drafts/instagram-findings.md
 *.before-*.html
+
+# local Claude Code skills (third-party, not published)
+.claude/
