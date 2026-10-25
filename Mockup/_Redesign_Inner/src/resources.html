@@ -1,0 +1,220 @@
+<!--@head title="Resources"-->
+<style>
+.cal{ display:grid; grid-template-columns:auto 1fr auto; gap:calc(var(--u)*3); align-items:center; background:var(--panel); color:var(--panel-ink);
+  border-radius:6px; padding:calc(var(--u)*3.4); margin:0 var(--gx); text-decoration:none; position:relative; overflow:hidden; transition:transform .5s var(--ease-out); }
+.cal:hover{ transform:translateY(-3px); }
+.cal::before{ content:""; position:absolute; inset:10px; border:1px solid rgba(226,194,122,.32); border-radius:3px; pointer-events:none; }
+.cal .gur{ font-size:max(34px,calc(var(--u)*3.6)); color:var(--gold-lite); line-height:1.2; }
+.cal b{ display:block; font-family:var(--display); font-weight:500; font-size:max(26px,calc(var(--u)*2.6)); line-height:1; }
+.cal p{ margin:.5em 0 0; color:rgba(244,239,228,.78); max-width:56ch; }
+.cal .go{ font-family:var(--mono); font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--gold-lite); white-space:nowrap; }
+@media(max-width:800px){ .cal{ grid-template-columns:1fr; } }
+
+.lib{ display:grid; grid-template-columns:240px minmax(0,1fr); gap:calc(var(--u)*5); padding:calc(var(--u)*6) var(--gx) calc(var(--u)*10); }
+.toc{ position:sticky; top:90px; align-self:start; display:grid; gap:4px; }
+.toc a{ display:flex; justify-content:space-between; gap:1em; padding:10px 0; border-bottom:1px solid var(--line); text-decoration:none;
+  font-family:var(--display); font-size:19px; transition:color .3s, padding .5s var(--ease-out); }
+.toc a span{ font-family:var(--mono); font-size:11px; color:var(--gold-text); align-self:center; }
+.toc a:hover, .toc a.on{ color:var(--gold-text); padding-left:8px; }
+@media(max-width:900px){ .lib{ grid-template-columns:1fr; } .toc{ position:static; } }
+
+.find{ display:flex; align-items:center; gap:12px; border-bottom:1px solid var(--navy); padding:8px 0 12px; margin-bottom:calc(var(--u)*4); }
+.find input{ flex:1; font:400 max(22px,calc(var(--u)*2)) var(--display); color:var(--navy); background:transparent; border:0; outline:0; min-width:0; }
+.find input::placeholder{ color:var(--navy-70); opacity:.7; }
+.find:focus-within{ border-bottom-color:var(--gold); }
+.find output{ font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--gold-text); white-space:nowrap; }
+
+.coll{ padding-bottom:calc(var(--u)*5); margin-bottom:calc(var(--u)*5); border-bottom:1px solid var(--line); scroll-margin-top:90px; }
+.coll-head{ display:flex; justify-content:space-between; align-items:baseline; gap:1em; flex-wrap:wrap; }
+.coll h2{ font-family:var(--display); font-weight:500; font-size:max(32px,calc(var(--u)*3.6)); line-height:1; margin:0; }
+.coll-meta{ font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--gold-text); }
+.coll .about{ color:var(--navy-70); margin:.8em 0 calc(var(--u)*1.6); max-width:60ch; }
+.files{ list-style:none; margin:0; padding:0; border-top:1px solid var(--line); }
+.files li{ display:flex; justify-content:space-between; gap:1.5em; align-items:baseline; padding:12px 0; border-bottom:1px solid var(--line);
+  transition:background .3s, padding .5s var(--ease-out); }
+.files li:hover{ background:var(--cream-2); padding-left:10px; padding-right:10px; }
+.files .nm{ font-size:max(15px,calc(var(--u)*1)); }
+.files .nm.gur{ font-size:max(17px,calc(var(--u)*1.12)); font-weight:500; }
+.files .sz{ font-family:var(--mono); font-size:11px; color:var(--navy-70); white-space:nowrap; }
+.files li[hidden], .coll[hidden]{ display:none; }
+.open{ display:inline-flex; gap:.6em; margin-top:calc(var(--u)*2); font-family:var(--mono); font-size:11px; letter-spacing:.16em; text-transform:uppercase;
+  text-decoration:none; color:var(--gold-text); border:1px solid var(--line); border-radius:100px; padding:11px 16px; transition:border-color .3s, background .3s; }
+.open:hover{ border-color:var(--gold); background:var(--cream-2); }
+.soon{ display:grid; grid-template-columns:1fr 1fr; gap:calc(var(--u)*1.4); }
+.soon div{ border:1px dashed var(--line); border-radius:4px; padding:calc(var(--u)*2.4); }
+.soon b{ font-family:var(--display); font-weight:500; font-size:max(24px,calc(var(--u)*2.2)); display:block; }
+.soon span{ font-family:var(--mono); font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:var(--gold-text); }
+.empty{ display:none; color:var(--navy-70); font-size:17px; } .empty.on{ display:block; }
+</style>
+</head>
+<body>
+<!--@mast current="resources"-->
+
+<main id="main">
+<section class="phero paper" data-hero>
+  <div class="phero-in">
+    <div>
+      <p class="eyebrow">Resources</p>
+      <h1 class="display">Granths, pothis <em>and talks.</em></h1>
+      <p class="lede">Everything the Vidyala reads from, free to open and download. The files are held in Google Drive,
+        and some run to hundreds of megabytes, so they are best opened on wifi.</p>
+    </div>
+    <figure class="phero-art">
+      <div class="arch"><img src="img/folio-vaaran.jpg" alt="A handwritten folio of the Vaaran of Bhai Gurdas Ji, its Gurmukhi lines filling the page." style="filter:sepia(.3) contrast(1.05)"></div>
+      <span class="arch-line" aria-hidden="true"></span>
+      <figcaption>Vaaran Bhai Gurdas Ji · Khalsa College manuscript · c. 17th century</figcaption>
+    </figure>
+  </div>
+</section>
+
+<a class="cal" href="/sikhi-calendar/" data-fade>
+  <span class="gur" lang="pa">ਸਿੱਖੀ ਕੈਲੰਡਰ</span>
+  <span><b>Sikhi Calendar</b><p>The Nanakshahi calendar: today's date, the gurpurabs coming up, and the month and the year at a glance.
+    Panjabi dates first, English dates underneath.</p></span>
+  <span class="go">Open the calendar →</span>
+</a>
+
+<div class="lib paper">
+  <nav class="toc" aria-label="Collections">
+    <a href="#santheya">Santheya Granths<span>11</span></a>
+    <a href="#katha">Katha Granths<span>17</span></a>
+    <a href="#nanak">Sri Nanak Prakash<span>2</span></a>
+    <a href="#talks">Weekly Talks<span>14</span></a>
+    <a href="#soon">Coming soon<span>2</span></a>
+  </nav>
+  <div>
+    <label class="find"><span class="sr">Find a granth or talk</span>
+      <input type="search" id="q" placeholder="Find a granth or a talk…" autocomplete="off">
+      <output id="qn" for="q" aria-live="polite"></output></label>
+    <p class="empty" id="empty">Nothing matches that. Try a shorter word, or the Gurmukhi spelling.</p>
+
+    <section class="coll" id="santheya">
+      <div class="coll-head"><h2>Santheya Granths</h2><span class="coll-meta">11 files · about 1.5 GB</span></div>
+      <p class="about">The pothis santhiya is read from: larivaar granths, gutke, and the Kartarpuri Bir photographs.</p>
+      <ul class="files">
+        <li><span class="nm">1604 Kartarpuri Bir Some Photos.pdf</span><span class="sz">118.2 MB</span></li>
+        <li><span class="nm">Kabit Bhai Gurdas Ji.pdf</span><span class="sz">3.5 MB</span></li>
+        <li><span class="nm">Sri Guru Granth Sahib Ji.pdf</span><span class="sz">464.9 MB</span></li>
+        <li><span class="nm">VaranBhaiGurdasJiVolII.pdf</span><span class="sz">4.4 MB</span></li>
+        <li><span class="nm gur" lang="pa">ਸੰਪੂਰਨ ਭਾਈ ਨੰਦਲਾਲ ਜੀ ਗ੍ਰੰਥਾਵਲੀ — ਸੰਥਿਆ ਪੋਥੀ</span><span class="sz">99.3 MB</span></li>
+        <li><span class="nm gur" lang="pa">ਟਕਸਾਲੀ ਗੁਟਕਾ ਸਾਹਿਬ (ਭਿੰਡਰਾਂ)</span><span class="sz">79.7 MB</span></li>
+        <li><span class="nm gur" lang="pa">ਪੰਜ ਗ੍ਰੰਥੀ ਲੜੀਵਾਰ</span><span class="sz">66.3 MB</span></li>
+        <li><span class="nm gur" lang="pa">ਬਾਈ ਵਾਰਾਂ ਲੜੀਵਾਰ</span><span class="sz">287.3 MB</span></li>
+        <li><span class="nm gur" lang="pa">ਭਗਤ ਬਾਣੀ ਲੜੀਵਾਰ</span><span class="sz">80.6 MB</span></li>
+        <li><span class="nm gur" lang="pa">ਲੜੀਵਾਰ ਦਸ ਗ੍ਰੰਥੀ (ਨਿਊ ਛਾਪਾ)</span><span class="sz">199.9 MB</span></li>
+        <li><span class="nm gur" lang="pa">ਲੜੀਵਾਰ ਪੰਜ ਗ੍ਰੰਥੀ (ਦਮਦਮੀ ਟਕਸਾਲ)</span><span class="sz">64.2 MB</span></li>
+      </ul>
+      <a class="open" href="https://drive.google.com/drive/folders/1WEAJD9LdrWHGj9G1wKu5ewFRzSOdLX22" target="_blank" rel="noopener">Open in Drive ↗</a>
+    </section>
+
+    <section class="coll" id="katha">
+      <div class="coll-head"><h2>Katha Granths</h2><span class="coll-meta">17 files · about 0.6 GB</span></div>
+      <p class="about">The jeevani of each Guru Sahib, the sakhian, and the sampardavali: what katha is prepared from.</p>
+      <ul class="files">
+        <li><span class="nm gur" lang="pa">ਅਸਟਮ ਬਲਬੀਰਾ — ਜੀਵਨੀ ਗੁਰੂ ਹਰਿ ਕ੍ਰਿਸਨ ਜੀ</span><span class="sz">63.3 MB</span></li>
+        <li><span class="nm gur" lang="pa">ਆਦਿ ਸਿੱਖ ਤੇ ਆਦਿ ਸਾਖੀਆਂ — ਸਤਿਬੀਰ ਸਿੰਘ</span><span class="sz">11.1 MB</span></li>
+        <li><span class="nm gur" lang="pa">ਇਤਿ ਜਿਨਿ ਕਰੀ — ਜੀਵਨੀ ਗੁਰੂ ਤੇਗ ਬਹਾਦਰ ਸਾਹਿਬ ਜੀ</span><span class="sz">11.2 MB</span></li>
+        <li><span class="nm gur" lang="pa">ਸਿੱਖ ਸੰਪ੍ਰਦਾਵਲੀ</span><span class="sz">19.7 MB</span></li>
+        <li><span class="nm gur" lang="pa">ਸਿੱਖ ਸੰਪਰਦਾਵਲੀ — ਪਿਆਰਾ ਸਿੰਘ ਪਦਮ</span><span class="sz">19.7 MB</span></li>
+        <li><span class="nm gur" lang="pa">ਸ੍ਰੀ ਗੁਰੂ ਗ੍ਰੰਥ ਪ੍ਰਕਾਸ</span><span class="sz">8.7 MB</span></li>
+        <li><span class="nm gur" lang="pa">ਕੁਦਰਤੀ ਨੂਰ — ਜੀਵਨੀ ਗੁਰੂ ਅੰਗਦ ਦੇਵ ਜੀ</span><span class="sz">138.8 MB</span></li>
+        <li><span class="nm gur" lang="pa">ਖਾਲਸਈ ਬੋਲੇ — ਪ੍ਰੋ ਪਿਆਰਾ ਸਿੰਘ ਪਦਮ</span><span class="sz">1,015 KB</span></li>
+        <li><span class="nm gur" lang="pa">ਗੁਰੁ ਭਾਰੀ — ਜੀਵਨੀ ਗੁਰੂ ਹਰਿਗੋਬਿੰਦ ਸਾਹਿਬ ਜੀ</span><span class="sz">63.2 MB</span></li>
+        <li><span class="nm gur" lang="pa">ਗੁਰੂ ਕੀਆਂ ਸਾਖੀਆਂ</span><span class="sz">14.9 MB</span></li>
+        <li><span class="nm gur" lang="pa">ਨਿਰਭਉ ਨਿਰਵੈਰ — ਜੀਵਨੀ ਗੁਰੂ ਹਰਿ ਰਾਇ ਜੀ</span><span class="sz">66.8 MB</span></li>
+        <li><span class="nm gur" lang="pa">ਪਰਤਖ੍ਹ ਹਰਿ — ਜੀਵਨੀ ਗੁਰੂ ਅਰਜਨ ਦੇਵ ਜੀ</span><span class="sz">33.1 MB</span></li>
+        <li><span class="nm gur" lang="pa">ਪਰਬਤੁ ਮੇਰਾਣੁ — ਜੀਵਨੀ ਗੁਰੂ ਅਮਰਦਾਸ ਜੀ</span><span class="sz">33 MB</span></li>
+        <li><span class="nm gur" lang="pa">ਪੁਰਖ ਭਗਵੰਤ — ਜੀਵਨੀ ਗੁਰੂ ਗੋਬਿੰਦ ਸਿੰਘ ਜੀ</span><span class="sz">76.4 MB</span></li>
+        <li><span class="nm gur" lang="pa">ਪੂਰੀ ਹੋਈ ਕਰਾਮਾਤ — ਜੀਵਨੀ ਗੁਰੂ ਰਾਮਦਾਸ ਜੀ</span><span class="sz">18.9 MB</span></li>
+        <li><span class="nm gur" lang="pa">ਬਚਨ ਸਾਈਂ ਲੋਕਾਂ ਦੇ ਤਥਾ ਸੰਤ ਬਚਨਾਵਲੀ</span><span class="sz">14.7 MB</span></li>
+        <li><span class="nm gur" lang="pa">ਬਲਿਓ ਚਿਰਾਗ — ਜੀਵਨੀ ਸ੍ਰੀ ਗੁਰੂ ਨਾਨਕ ਦੇਵ ਜੀ</span><span class="sz">49 MB</span></li>
+      </ul>
+      <a class="open" href="https://drive.google.com/drive/folders/1xlU8T7y2_cfrTq7yMa98UXsAyFRecNvv" target="_blank" rel="noopener">Open in Drive ↗</a>
+    </section>
+
+    <section class="coll" id="nanak">
+      <div class="coll-head"><h2>Sri Nanak Prakash</h2><span class="coll-meta">a folder · and one pothi</span></div>
+      <p class="about">Suraj Parkash Granth, and a folder of Guru Nanak Dev Ji.</p>
+      <ul class="files">
+        <li><span class="nm">Guru Nanak Dev Ji — folder</span><span class="sz">—</span></li>
+        <li><span class="nm">Raas 9, Suraj Parkash Granth.pdf</span><span class="sz">39.2 MB</span></li>
+      </ul>
+      <a class="open" href="https://drive.google.com/drive/folders/1au-TMFgGPxtFm3c6tO_OO1pXwV5bFFqq" target="_blank" rel="noopener">Open in Drive ↗</a>
+    </section>
+
+    <section class="coll" id="talks">
+      <div class="coll-head"><h2>Weekly Talks</h2><span class="coll-meta">14 talks · about 0.6 GB</span></div>
+      <p class="about">The Monday Night Talks, written up. Fourteen so far.</p>
+      <ul class="files">
+        <li><span class="nm">Week 1 — Katha Sri Guru Tegh Bahadur Sahib Ji (Chapters 1–14)</span><span class="sz">116.6 MB</span></li>
+        <li><span class="nm">Week 2 — Beyond the Mind</span><span class="sz">7.8 MB</span></li>
+        <li><span class="nm">Week 3 — The Importance of Sri Dasam Granth Sahib Ji</span><span class="sz">3.8 MB</span></li>
+        <li><span class="nm">Week 4 — The Early Life of Patshahi 9</span><span class="sz">49.2 MB</span></li>
+        <li><span class="nm">Week 5 — The Common Sense of Khalistan, by Bhai Deep Singh Ji</span><span class="sz">24.4 MB</span></li>
+        <li><span class="nm">Week 6 — Role of Akal Takhat in Sikh Governance</span><span class="sz">29.8 MB</span></li>
+        <li><span class="nm">Week 7 — Sincerity to Sikhi</span><span class="sz">20 MB</span></li>
+        <li><span class="nm">Week 8 — Power of Sangat</span><span class="sz">1.4 MB</span></li>
+        <li><span class="nm">Week 9 — The Evolution of Sri Guru Granth Sahib Ji Maharaj, by Bhai Amarjeet Singh</span><span class="sz">8.9 MB</span></li>
+        <li><span class="nm">Week 10 — Katha Sri Guru Tegh Bahadur Sahib Ji (Chapters 15–23)</span><span class="sz">116.6 MB</span></li>
+        <li><span class="nm">Week 11 — Katha Sri Guru Tegh Bahadur Sahib Ji (Chapters 23–29)</span><span class="sz">136.4 MB</span></li>
+        <li><span class="nm">Week 12 — Social Media and Sikhi</span><span class="sz">28.8 MB</span></li>
+        <li><span class="nm">Week 13 — Emergency, Grooming and Targeting of Sikhs (national seminar)</span><span class="sz">10.9 MB</span></li>
+        <li><span class="nm">Week 14 — Katha Sri Guru Tegh Bahadur Sahib Ji (Chapters 30–32)</span><span class="sz">12.6 MB</span></li>
+      </ul>
+      <a class="open" href="https://drive.google.com/drive/folders/1UjYsBl4pe6IMmdTQdffbGhps8qHxz-k4" target="_blank" rel="noopener">Open in Drive ↗</a>
+    </section>
+
+    <section class="coll" id="soon" style="border-bottom:0">
+      <div class="coll-head"><h2>Coming soon</h2></div>
+      <div class="soon" style="margin-top:calc(var(--u)*1.6)">
+        <div><span>Being gathered</span><b>Kirtan Granths</b></div>
+        <div><span>Being gathered</span><b>Tabla Granths</b></div>
+      </div>
+    </section>
+  </div>
+</div>
+</main>
+
+<!--@foot-->
+<!--@scripts-->
+<script>
+/* find: hides every file that does not match, and any collection left empty */
+(function(){
+  var q = document.getElementById("q"), out = document.getElementById("qn"), empty = document.getElementById("empty");
+  var colls = [].slice.call(document.querySelectorAll(".coll")).filter(function(c){ return c.querySelector(".files"); });
+  q.addEventListener("input", function(){
+    var t = q.value.trim().toLowerCase(), total = 0;
+    colls.forEach(function(c){
+      var n = 0;
+      c.querySelectorAll(".files li").forEach(function(li){
+        var hit = !t || li.textContent.toLowerCase().indexOf(t) >= 0 || c.querySelector("h2").textContent.toLowerCase().indexOf(t) >= 0;
+        li.hidden = !hit; if(hit) n++;
+      });
+      c.hidden = n === 0; total += n;
+    });
+    document.getElementById("soon").hidden = !!t;
+    out.textContent = t ? total + (total === 1 ? " file" : " files") : "";
+    empty.classList.toggle("on", !!t && total === 0);
+    if(window.ScrollTrigger) ScrollTrigger.refresh();
+  });
+  /* the contents follow you down the page */
+  var links = document.querySelectorAll(".toc a");
+  if("IntersectionObserver" in window){
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting) links.forEach(function(a){ a.classList.toggle("on", a.hash === "#" + e.target.id); }); });
+    }, { rootMargin:"-40% 0px -55% 0px" });
+    document.querySelectorAll(".coll").forEach(function(c){ io.observe(c); });
+  }
+  links.forEach(function(a){ a.addEventListener("click", function(e){
+    if(!window.KIT || !KIT.lenis) return;
+    e.preventDefault(); KIT.lenis.scrollTo(a.hash, { offset:-90 });
+  }); });
+})();
+KIT.start(function(gsap){
+  gsap.utils.toArray(".coll").forEach(function(c){
+    gsap.from(c.querySelectorAll(".files li"), { opacity:0, y:14, duration:.8, stagger:.03, ease:"expo.out", scrollTrigger:{ trigger:c, start:"top 80%" } });
+  });
+});
+</script>
+</body>
+</html>
