@@ -3,7 +3,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Shaheedi Bunga &middot; Gurmat Vidyala, Leicester</title>
 <meta name="description" content="Gurmat classes in Leicester, free and open to any age — santhiya, kirtan on the tanti saaj, and the Archery Akhara. A registered charity, 1185103.">
-<link rel="icon" href="Assets/Brand/gurmat-vidyala-512.png">
+<link rel="icon" href="Assets/Brand/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="Assets/Brand/apple-touch-icon-180.png">
 
 <!-- The share card for the site itself. og:image and og:url must be absolute:
      a crawler has no page to resolve a relative path against. They name the
@@ -585,6 +586,10 @@ body.vid-open > canvas{ display:none; }
       letter-spacing:.12em; text-transform:uppercase; color:var(--vmuted); margin:0; }
 .vid .lbl b{ color:var(--gold); font-weight:400; }
 .gur{ font-family:"Noto Serif Gurmukhi",serif; font-weight:600; letter-spacing:0; }
+/* .vid p tracks its Latin lines tighter; Gurmukhi is never tracked - it breaks
+   the siri rekha, the line the letters hang from. Ustad Ji caught this on four
+   lines. Specificity: .vid p is (0,1,1) and plain .gur is (0,1,0), so .gur lost. */
+.vid p.gur, .vid .gur{ letter-spacing:0; }
 
 .vid-nav{ position:sticky; top:0; z-index:8; display:flex; align-items:center;
   gap:calc(var(--u)*1.1); padding:calc(var(--u)*1.1) calc(var(--u)*2.3);

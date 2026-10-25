@@ -57,7 +57,9 @@ a{ color:var(--gold); }
   letter-spacing:.16em; text-transform:uppercase; color:var(--muted);
   text-decoration:none; }
 .top nav a:hover, .top nav a[aria-current]{ color:var(--gold); }
-@media(max-width:620px){ .top .mark{ display:none; } .top nav{ margin-left:0; } }
+@media(max-width:620px){ .top .mark{ display:none; } .top nav{ margin-left:0; }
+  /* seven items do not fit one row on a phone: let the menu take two */
+  .top nav{ flex-wrap:wrap; column-gap:14px; row-gap:6px; } }
 
 .wrap{ max-width:1120px; margin:0 auto; padding:calc(var(--u)*4) calc(var(--u)*2.3) calc(var(--u)*6); }
 .lbl{ font-family:var(--mono); font-size:max(10px,calc(var(--u)*0.72));

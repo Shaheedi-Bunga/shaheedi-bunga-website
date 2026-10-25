@@ -21,6 +21,13 @@ CSS_URL = ("https://fonts.googleapis.com/css2"
            "&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600"
            "&family=JetBrains+Mono:wght@400;500"
            "&family=Noto+Serif+Gurmukhi:wght@400;600;700"
+           # the four the Sikhi Calendar page uses. It linked Google directly,
+           # which would have undone the whole point of self-hosting - and made
+           # the privacy page's "this site contacts nobody" untrue again.
+           "&family=Cormorant+Garamond:wght@400;500;600"
+           "&family=Spectral:wght@400;500;600"
+           "&family=Jost:wght@400;500;600"
+           "&family=Noto+Sans+Gurmukhi:wght@400;500;600"
            "&display=swap")
 
 KEEP = {"latin", "latin-ext", "gurmukhi"}
@@ -83,9 +90,16 @@ def main():
         url = re.search(r"url\((https://[^)]+)\)", block).group(1)
         name = f"{slug(fam)}-{subset}.woff2"
 
+        # A variable family serves one file for every weight, so family+subset
+        # is a unique name. A static family serves one file PER WEIGHT, and
+        # family+subset then collides - Spectral, Cormorant Garamond and Jost
+        # are all static. Put the weight in the name for those.
+        if name in written and written[name] != url:
+            wt = re.search(r"font-weight:\s*(\d+)", block)
+            if wt:
+                name = f"{slug(fam)}-{wt.group(1)}-{subset}.woff2"
+
         if name in written:
-            # Variable fonts: several weights share one file. Make sure they
-            # really are the same file before silently reusing it.
             assert written[name] == url, f"{name} wanted from two different URLs"
         else:
             data = fetch(url, binary=True)
@@ -100,7 +114,13 @@ def main():
         kept += 1
 
     body = "\n".join(out)
-    assert "gstatic" not in body and "googleapis" not in body, \
+    # Check the @font-face blocks, NOT the header: the header's own prose says
+    # "instead of fonts.gstatic.com" and "fonts.googleapis.com was the only
+    # third party left", so scanning the whole body made this assertion
+    # impossible to pass and the script could never finish. The thing worth
+    # checking is that no src URL still points at Google.
+    faces = "\n".join(out[1:])
+    assert "gstatic" not in faces and "googleapis" not in faces, \
         "a Google URL survived the rewrite - refusing to write the file"
 
     with open(os.path.join(ROOT, "lib", "fonts.css"), "w") as fh:
