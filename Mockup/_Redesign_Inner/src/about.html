@@ -1,0 +1,127 @@
+<!--@head title="About"-->
+<style>
+/* the Darbar Sahib photograph opens from a framed plate to the full width
+   as you scroll past it */
+.plate{ margin:0 0 calc(var(--u)*2); position:relative; }
+.plate .frame{ overflow:hidden; aspect-ratio:1920/1000; border-radius:3px; }
+.plate img{ width:100%; height:118%; object-fit:cover; object-position:50% 40%; filter:sepia(.35) contrast(1.06); }
+html[data-mood="dark"] .plate img{ filter:sepia(.45) brightness(.82) contrast(1.1); }
+.plate figcaption{ font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--navy-70); margin:12px var(--gx) 0; }
+.cine .plate .frame{ clip-path:inset(0 var(--gx) round 3px); }
+
+.quote{ font-family:var(--display); font-weight:500; font-size:max(30px,calc(var(--u)*4.4)); line-height:1.1; letter-spacing:-.015em; margin:0; max-width:24ch; }
+.quote-by{ font-family:var(--mono); font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--gold-text); margin-top:calc(var(--u)*2); }
+
+.aims{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:calc(var(--u)*1.4); margin-top:calc(var(--u)*2.4); }
+.aim{ background:var(--cream-2); border-radius:3px; padding:calc(var(--u)*2.2); display:flex; gap:calc(var(--u)*1.6); align-items:baseline; }
+.aim .k{ font-family:var(--gur); font-weight:600; font-size:max(28px,calc(var(--u)*2.6)); color:var(--gold); line-height:1; }
+.aim b{ font-family:var(--display); font-weight:500; font-size:max(22px,calc(var(--u)*1.9)); line-height:1.1; }
+@media(max-width:700px){ .aims{ grid-template-columns:1fr; } }
+
+.places{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:calc(var(--u)*1.4); }
+.place{ border-top:1px solid var(--navy); padding-top:calc(var(--u)*1.4); }
+.place h3{ font-family:var(--display); font-weight:500; font-size:max(22px,calc(var(--u)*1.9)); margin:0 0 .3em; line-height:1.1; }
+.place p{ margin:0; color:var(--navy-70); font-size:max(14px,calc(var(--u)*.92)); }
+@media(max-width:800px){ .places{ grid-template-columns:1fr; } }
+
+.reg{ display:flex; justify-content:space-between; align-items:center; gap:calc(var(--u)*2); flex-wrap:wrap; background:var(--panel); color:var(--panel-ink);
+  border-radius:4px; padding:calc(var(--u)*3) calc(var(--u)*3.4); margin-top:calc(var(--u)*4); text-decoration:none; transition:transform .5s var(--ease-out); }
+.reg:hover{ transform:translateY(-3px); }
+.reg b{ font-family:var(--display); font-weight:500; font-size:max(24px,calc(var(--u)*2.4)); }
+.reg span{ font-family:var(--mono); font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--gold-lite); }
+</style>
+</head>
+<body>
+<!--@mast current="about"-->
+
+<main id="main">
+<section class="phero no-art paper" data-hero>
+  <div class="phero-in">
+    <div>
+      <p class="eyebrow">About the charity</p>
+      <h1 class="display">The place of <em>the martyrs.</em></h1>
+      <p class="lede">Shaheedi Bunga is a registered charity in Leicester. It teaches Gurmat (reading Gurbani,
+        kirtan on the tanti saaj, and traditional archery) across the city's gurdware. Every class is free and
+        taught by volunteers.</p>
+    </div>
+  </div>
+</section>
+
+<figure class="plate" id="plate">
+  <div class="frame"><img data-plate src="img/harmandir-sahib-1858.jpg" alt="Sri Harmandir Sahib across the sarovar in 1858–59, the Darshani Deori and the causeway to the left." width="1920" height="1469"></div>
+  <figcaption>Sri Harmandir Sahib across the sarovar · Felice Beato, 1858–59 · J. Paul Getty Museum, public domain</figcaption>
+</figure>
+
+<section class="sec paper">
+  <p class="eyebrow">In the charity's words</p>
+  <p class="quote" data-scrub style="margin-top:calc(var(--u)*2.4)">“We believe that education is essential in nurturing and strengthening of our future generations, mentally and physically.”</p>
+  <p class="quote-by">Shaheedi Bunga</p>
+</section>
+
+<div class="wrapx paper">
+  <section class="band">
+    <h2 data-fade><small>What it does</small>Four purposes, one practice.</h2>
+    <div class="body">
+      <p data-fade>Registered with the Charity Commission for education and training, the prevention or relief of poverty,
+        religious activities, and amateur sport. In practice that is classes, camps and samagams, held in gurdware around Leicester.</p>
+      <div class="aims">
+        <div class="aim" data-fade><span class="k" aria-hidden="true">੧</span><b>Education &amp; training</b></div>
+        <div class="aim" data-fade><span class="k" aria-hidden="true">੨</span><b>Religious activities</b></div>
+        <div class="aim" data-fade><span class="k" aria-hidden="true">੩</span><b>Amateur sport</b></div>
+        <div class="aim" data-fade><span class="k" aria-hidden="true">੪</span><b>Prevention or relief of poverty</b></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <h2 data-fade><small>Who it is for</small>No one is turned away.</h2>
+    <div class="body">
+      <p data-fade>Children and young people, elderly people, people with disabilities, other charities and voluntary
+        bodies, and the general public. No one is turned away, and nothing is charged.</p>
+    </div>
+  </section>
+
+  <section class="band">
+    <h2 data-fade><small>How it is run</small>Volunteers, and the gurdware.</h2>
+    <div class="body">
+      <p data-fade>A Charitable Incorporated Organisation, registered on 30 August 2019 and up to date with its reporting.
+        It owns no buildings and leases none: the gurdware give the space.</p>
+    </div>
+  </section>
+  <dl class="figs" data-fade>
+    <div><dt>Charity number</dt><dd>1185103<small>England &amp; Wales</small></dd></div>
+    <div><dt>Registered</dt><dd>30 Aug 2019<small>As a CIO</small></dd></div>
+    <div><dt>Trustees</dt><dd>Seven<small>None of them paid</small></dd></div>
+    <div><dt>Staff over £60k</dt><dd>None<small>There are no such salaries</small></dd></div>
+  </dl>
+  <p style="font-size:13px;color:var(--navy-70);margin:12px 0 0">Figures from the Charity Commission register, which also names the trustees and carries the annual accounts.</p>
+
+  <section class="band" style="margin-top:calc(var(--u)*6)">
+    <h2 data-fade><small>Where</small>Two gurdware, and online.</h2>
+    <div class="body">
+      <div class="places">
+        <div class="place" data-fade><h3>Guru Tegh Bahadur Gurdwara</h3><p>106 East Park Road · santhiya, tabla, and the Archery Akhara on Sundays</p></div>
+        <div class="place" data-fade><h3>Gurudwara Shri Guru Dashmesh Sahib</h3><p>49 Gipsy Lane · the Kirtan Vidyala, nine classes a week, and santhiya every day</p></div>
+        <div class="place" data-fade><h3>Online</h3><p>Santhiya runs online too. Camps and samagams move around.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <a class="reg" href="https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/5133183" target="_blank" rel="noopener" data-fade>
+    <b>Shaheedi Bunga on the Charity Commission register</b><span>See the entry ↗</span></a>
+  <div style="height:calc(var(--u)*10)"></div>
+</div>
+</main>
+
+<!--@foot-->
+<!--@scripts-->
+<script>
+KIT.start(function(gsap, ST){
+  gsap.to("[data-plate]", { yPercent:-12, ease:"none", scrollTrigger:{ trigger:"#plate", start:"top bottom", end:"bottom top", scrub:true } });
+  /* the plate opens out to the full width as it rises into view */
+  if(KIT.wide) gsap.to("#plate .frame", { clipPath:"inset(0px 0px round 0px)", ease:"none",
+    scrollTrigger:{ trigger:"#plate", start:"top 85%", end:"top 15%", scrub:true } });
+});
+</script>
+</body>
+</html>

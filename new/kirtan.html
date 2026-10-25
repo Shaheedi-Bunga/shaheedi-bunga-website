@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Kirtan Vidyala · Shaheedi Bunga</title>
+<link rel="stylesheet" href="kit.css">
+<!-- before paint: light unless this viewer chose dark (or ?mood= asks), so
+     there is never a flash of the wrong mode -->
+<script>(function(){var m=(/[?&]mood=(light|dark)/.exec(location.search)||[])[1];
+  if(!m){try{m=localStorage.getItem("sb-mood");}catch(e){}}
+  document.documentElement.dataset.mood=m==="dark"?"dark":"light";})();</script>
+
+<style>
+/* ── hero: the dilruba in its arch. The gaj follows the cursor (that is
+   <dilruba-bow>, lifted unchanged from the live panel); scroll only lifts
+   the type away and settles the arch. ───────────────────────────────── */
+.khero{ background:var(--hero-bg); color:var(--hero-ink); overflow-x:clip; }
+.khero-in{ min-height:100svh; display:grid; grid-template-columns:1fr .9fr; gap:calc(var(--u)*4); align-items:end;
+  padding:max(96px,calc(var(--u)*9)) var(--gx) calc(var(--u)*4); }
+.khero .eyebrow{ color:var(--hero-gold); }
+/* ਕੀਰਤਨ is Ustad Ji's own spelling (Directions/Pothi.dc.html) */
+.khero .gur-big{ display:block; font-size:max(48px,calc(var(--u)*7.4)); line-height:1.2; color:var(--hero-gold); margin:calc(var(--u)*1.6) 0 0; }
+.khero h1{ font-size:max(50px,calc(var(--u)*7.6)); }
+.khero .lede{ color:var(--hero-muted); margin-top:calc(var(--u)*2.2); max-width:38ch; }
+.khero .hero-meta{ display:flex; gap:calc(var(--u)*3); margin-top:calc(var(--u)*3.2); padding-top:calc(var(--u)*1.6); flex-wrap:wrap;
+  border-top:1px solid var(--hero-line); font-family:var(--mono); font-size:max(11px,calc(var(--u)*.66)); letter-spacing:.16em;
+  text-transform:uppercase; color:var(--hero-muted); }
+.khero .hero-meta b{ display:block; color:var(--hero-ink); font-weight:400; font-family:var(--display);
+  font-size:max(22px,calc(var(--u)*1.9)); letter-spacing:-.01em; text-transform:none; margin-top:.25em; }
+.kart{ position:relative; justify-self:end; width:min(100%,calc(var(--u)*38)); --archH:30%; }
+.kart .arch{ aspect-ratio:4/5; background:radial-gradient(120% 80% at 50% 30%, var(--cream-2), var(--cream-3)); }
+html[data-mood="dark"] .kart .arch{ background:radial-gradient(120% 80% at 50% 30%, #1E2B47, #111A2D); }
+.kart dilruba-bow{ position:absolute; left:-4%; right:-4%; bottom:-2%; }
+.kart figcaption{ font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--hero-muted); margin-top:12px; }
+@media(max-width:800px){ .khero-in{ grid-template-columns:minmax(0,1fr); min-height:0; } .kart{ justify-self:stretch; width:auto; } .kart .arch-line{ inset:-8px -8px 0; } }
+
+/* ── commitment ── */
+.commit{ display:grid; grid-template-columns:.9fr 1.1fr; gap:calc(var(--u)*6); align-items:start; }
+.commit .body p.big{ color:var(--navy); max-width:none; font-family:var(--display); font-weight:500; font-size:max(28px,calc(var(--u)*3.6)); line-height:1.12; margin:0; letter-spacing:-.01em; }
+.commit .body p{ margin:0 0 1.1em; color:var(--navy-70); font-size:max(17px,calc(var(--u)*1.2)); max-width:52ch; }
+.commit .body p b{ color:var(--navy); font-weight:600; }
+@media(max-width:900px){ .commit{ grid-template-columns:1fr; } }
+
+/* the instruments: the promises track, with the saaj's name as the numeral */
+.saaj .num{ font-size:max(46px,calc(var(--u)*6)) !important; line-height:1.3; }
+.saaj .pcard h3 small{ display:block; font-family:var(--mono); font-size:10px; letter-spacing:.18em; text-transform:uppercase;
+  color:var(--gold-text); margin-top:.9em; font-weight:400; }
+.pcard.ink h3 small{ color:var(--gold-lite); }
+
+/* ── the wall: three columns drifting at three speeds ── */
+.wall{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:calc(var(--u)*1.6); height:min(150vh,1300px); overflow:hidden;
+  -webkit-mask-image:linear-gradient(180deg,transparent,#000 12%,#000 88%,transparent); mask-image:linear-gradient(180deg,transparent,#000 12%,#000 88%,transparent); }
+.wall .col{ display:grid; gap:calc(var(--u)*1.6); align-content:start; will-change:transform; }
+.wall .col:nth-child(2){ margin-top:-18%; }
+.wall figure{ margin:0; border-radius:3px; overflow:hidden; aspect-ratio:4/5; }
+.wall img{ width:100%; height:100%; object-fit:cover; filter:var(--photo); }
+@media(max-width:700px){ .wall{ grid-template-columns:repeat(2,minmax(0,1fr)); height:auto; -webkit-mask-image:none; mask-image:none; }
+  .wall .col:nth-child(3){ display:none; } .wall .col:nth-child(2){ margin-top:0; } }
+
+.next{ font-family:var(--mono); font-size:max(12px,calc(var(--u)*.72)); letter-spacing:.14em; text-transform:uppercase;
+  color:var(--gold-text); margin:calc(var(--u)*2) 0 0; min-height:1.4em; }
+.next b{ color:var(--navy); font-weight:500; }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="mast">
+  <a class="brand" href="classes.html"><img src="img/gurmat-vidyala-84.png" alt="" width="40" height="40">
+    <span><b>Shaheedi Bunga</b><i>Gurmat Vidyala</i></span></a>
+  <nav aria-label="Main"><a href="classes.html" aria-current="page">Classes</a><a href="resources.html">Resources</a><a href="gallery.html">Gallery</a><a href="about.html">About</a><a href="contact.html">Contact</a><a href="donate.html">Donate</a></nav>
+  <a class="wa" href="https://wa.me/447394848407?text=Sat%20Sri%20Akal%20%E2%80%94%20I'd%20like%20to%20ask%20about%20Kirtan%20%2F%20tanti%20saaj%20classes." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.6 2 2.18 6.42 2.18 11.86c0 1.74.46 3.44 1.32 4.94L2.1 22l5.34-1.4a9.8 9.8 0 0 0 4.6 1.17h.01c5.43 0 9.85-4.42 9.85-9.86 0-2.63-1.02-5.11-2.88-6.97A9.79 9.79 0 0 0 12.04 2z"/></svg>WhatsApp</a>
+</header>
+
+
+<main id="main">
+<section class="khero paper" data-hero aria-label="Kirtan Vidyala">
+  <div class="khero-in">
+    <div class="hero-copy">
+      <p class="eyebrow">Gurmat Vidyala · 02 · Kirtan</p>
+      <span class="gur gur-big" lang="pa" data-intro-fade>ਕੀਰਤਨ</span>
+      <h1 class="display" data-intro>Kirtan <em>Vidyala</em></h1>
+      <p class="lede" data-intro-fade>Kirtan, learned on the instruments it was written for: dilruba, taus, rabab and saranda.</p>
+      <div class="hero-meta" data-intro-fade>
+        <span>Classes<b>Nine a week</b></span><span>Where<b>Gipsy Lane</b></span><span>Fee<b>None</b></span>
+      </div>
+    </div>
+    <figure class="kart">
+      <div class="arch">
+        <dilruba-bow interactive background="transparent" period="3.1" amplitude="72"
+          data-still="img/plate-still.webp" data-bow="img/plate-bow.webp"
+          role="img" aria-label="A Singh seated cross-legged, drawing the gaj across the dilruba's strings."></dilruba-bow>
+      </div>
+      <span class="arch-line" aria-hidden="true"></span>
+      <figcaption>Move across the page and the gaj follows</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="sec paper">
+  <div class="commit">
+    <div><p class="eyebrow">The discipline</p>
+      <h2 class="display h-l" data-split style="margin-top:calc(var(--u)*1.6)">A test of <em>commitment.</em></h2></div>
+    <div class="body">
+      <p class="big" data-scrub style="margin-bottom:calc(var(--u)*2.4)">None of it comes quickly. It asks real commitment and determination.</p>
+      <!-- DRAFT COPY from the live panel, confirmed by Harteg. Gurmukhi is stated the
+           true way round: not needed to start, necessary later. The Santhiya page's
+           "No Gurmukhi" does NOT carry over here. -->
+      <p data-fade>Gurmukhi is not needed to start, but it becomes necessary later, for shabads and Asa di Vaar.</p>
+      <p data-fade>Classes run <b>nine times a week</b> at Gipsy Lane: every weekday morning, two evenings, and both days
+        of the weekend, and every one of them is open to any age. You do not join a term or wait for one to start;
+        you come to the next class. There is no fee and no audition.</p>
+      <p data-fade>There are instruments to learn on, so you do not need your own to begin. You can get one later,
+        once you know you will keep going.</p>
+    </div>
+  </div>
+</section>
+
+<section class="promises saaj paper" aria-label="The four instruments">
+ <div class="ppin">
+  <div class="sec-head">
+    <div><p class="eyebrow">The tanti saaj</p><h2 class="display h-l" data-split>Four instruments.</h2></div>
+    <p class="lede">Strung, bowed or plucked, and played the way kirtan was played before the harmonium arrived.</p>
+  </div>
+  <div class="ptrack">
+    <article class="pcard"><span class="num gur" lang="pa">ਦਿਲਰੁਬਾ</span>
+      <div><h3>Dilruba<small>Bowed · fretted</small></h3><p>A skin-covered body, frets along the neck, and a bank of sympathetic strings that ring under the melody.</p></div></article>
+    <article class="pcard"><span class="num gur" lang="pa">ਤਾਊਸ</span>
+      <div><h3>Taus<small>Bowed · fretted</small></h3><p>Larger and deeper than the dilruba, its body carved as a peacock. Taus is the Persian word for one.</p></div></article>
+    <article class="pcard"><span class="num gur" lang="pa">ਰਬਾਬ</span>
+      <div><h3>Rabab<small>Plucked</small></h3><p>A deep wooden bowl under a skin face: the saaj of Bhai Mardana Ji, who played as Guru Nanak Dev Ji sang.</p></div></article>
+    <article class="pcard ink"><span class="num gur" lang="pa">ਸਰੰਦਾ</span>
+      <div><h3>Saranda<small>Bowed · held upright</small></h3><p>Its body is cut in at the waist, so the bow can reach each string on its own.</p></div></article>
+  </div>
+  <div class="pbar"><i></i></div>
+ </div>
+</section>
+
+<section class="sec paper" style="padding-top:calc(var(--u)*6)">
+  <div class="sec-head">
+    <div><p class="eyebrow">The vidyala</p><h2 class="display h-l" data-split>At the microphone.</h2></div>
+    <p class="lede">Classes at Gipsy Lane, and the samagams the students play at once they are ready.</p>
+  </div>
+  <div class="wall" id="wall">
+    <div class="col">
+      <figure><img src="/Assets/Kirtan/tiles/k01.jpg" alt="A student playing the dilruba at a samagam, gaj drawn across the strings." loading="lazy"></figure>
+      <figure><img src="/Assets/Kirtan/tiles/k22.jpg" alt="A student playing tabla, hands mid-stroke." loading="lazy"></figure>
+      <figure><img src="/Assets/Kirtan/tiles/k30.jpg" alt="Two students on stage playing tanti saaj at the microphones." loading="lazy"></figure>
+      <figure><img src="/Assets/Kirtan/tiles/k05.jpg" alt="A student at the harmonium, tabla waiting beside them." loading="lazy"></figure>
+    </div>
+    <div class="col">
+      <figure><img src="/Assets/Kirtan/tiles/k11.jpg" alt="Close on the gaj crossing the dilruba's strings." loading="lazy"></figure>
+      <figure><img src="/Assets/Kirtan/tiles/k02.jpg" alt="A student bowing the dilruba, seated at the microphone." loading="lazy"></figure>
+      <figure><img src="/Assets/Kirtan/tiles/k28.jpg" alt="Hands on the tabla, close in." loading="lazy"></figure>
+      <figure><img src="/Assets/Kirtan/tiles/k31.jpg" alt="A student bowing the dilruba on stage beside another player." loading="lazy"></figure>
+    </div>
+    <div class="col">
+      <figure><img src="/Assets/Kirtan/tiles/k24.jpg" alt="A student with a dilruba across the lap, its case open beside them." loading="lazy"></figure>
+      <figure><img src="/Assets/Kirtan/tiles/k15.jpg" alt="Two students on stage, one at the microphone and one at the tabla." loading="lazy"></figure>
+      <figure><img src="/Assets/Kirtan/tiles/k03.jpg" alt="The sangat gathered outside for a group photograph." loading="lazy"></figure>
+    </div>
+  </div>
+</section>
+
+<section class="sec paper" style="padding-top:calc(var(--u)*4)">
+  <div class="sec-head">
+    <div><p class="eyebrow">Gipsy Lane · nine classes</p><h2 class="display h-l" data-split>The week.</h2></div>
+    <div><p class="lede">Gurudwara Shri Guru Dashmesh Sahib, 49 Gipsy Lane. Come to whichever is next.</p>
+      <p class="next" data-next aria-live="polite"></p></div>
+  </div>
+  <div class="week">
+    <div class="day" data-d="1"><span class="pa" lang="pa">ਸੋਮਵਾਰ</span><span class="en">Monday</span>
+      <ul><li><b>8am</b><span>Until 10 · dilruba</span></li></ul></div>
+    <div class="day" data-d="2"><span class="pa" lang="pa">ਮੰਗਲਵਾਰ</span><span class="en">Tuesday</span>
+      <ul><li><b>8am</b><span>Until 10 · dilruba</span></li><li><b>7pm</b><span>Until 8 · dilruba</span></li></ul></div>
+    <div class="day" data-d="3"><span class="pa" lang="pa">ਬੁੱਧਵਾਰ</span><span class="en">Wednesday</span>
+      <ul><li><b>8am</b><span>Until 10 · dilruba</span></li></ul></div>
+    <div class="day" data-d="4"><span class="pa" lang="pa">ਵੀਰਵਾਰ</span><span class="en">Thursday</span>
+      <ul><li><b>8am</b><span>Until 10 · dilruba</span></li><li><b>7pm</b><span>Until 8 · dilruba</span></li></ul></div>
+    <div class="day" data-d="5"><span class="pa" lang="pa">ਸ਼ੁੱਕਰਵਾਰ</span><span class="en">Friday</span>
+      <ul><li><b>8am</b><span>Until 10 · dilruba</span></li></ul></div>
+    <div class="day" data-d="6"><span class="pa" lang="pa">ਸ਼ਨੀਵਾਰ</span><span class="en">Saturday</span>
+      <ul><li><b>5pm</b><span>Until 7 · dilruba</span></li></ul></div>
+    <div class="day" data-d="0"><span class="pa" lang="pa">ਐਤਵਾਰ</span><span class="en">Sunday</span>
+      <ul><li><b>5pm</b><span>Until 6 · dilruba</span></li></ul></div>
+  </div>
+</section>
+
+<section class="sec invite paper">
+  <div class="frame">
+    <span class="arch-line" aria-hidden="true"></span><span class="arch-line two" aria-hidden="true"></span>
+    <p class="eyebrow" style="justify-content:center" data-fade>No term to wait for</p>
+    <h2 class="display h-l" data-split style="margin-top:calc(var(--u)*1.6)">Come to the <em>next class.</em></h2>
+    <p data-fade>Any age, no fee, no audition, and an instrument to learn on. Bring the commitment; the rest is here.</p>
+    <p class="next" data-next style="text-align:center"></p>
+    <div class="acts" data-fade>
+      <a class="wa" href="https://wa.me/447394848407?text=Sat%20Sri%20Akal%20%E2%80%94%20I'd%20like%20to%20ask%20about%20Kirtan%20%2F%20tanti%20saaj%20classes." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.6 2 2.18 6.42 2.18 11.86c0 1.74.46 3.44 1.32 4.94L2.1 22l5.34-1.4a9.8 9.8 0 0 0 4.6 1.17h.01c5.43 0 9.85-4.42 9.85-9.86 0-2.63-1.02-5.11-2.88-6.97A9.79 9.79 0 0 0 12.04 2z"/></svg>Message us on WhatsApp</a>
+      <a class="mail" href="mailto:gurmat@shaheedibunga.com">gurmat@shaheedibunga.com</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <p class="big">Come and sit<br>with the <em>sangat.</em></p>
+  <div class="cols">
+    <div><h4>Shaheedi Bunga</h4><p style="margin:0;max-width:34ch">A Sikh education charity in Leicester. Every class is free and taught by volunteers.</p></div>
+    <div><h4>Vidyale</h4><a href="santhiya.html">Santhiya</a><a href="kirtan.html">Kirtan</a><a href="archery.html">Archery</a><a href="classes.html">All classes</a></div>
+    <div><h4>Charity</h4><a href="about.html">About</a><a href="donate.html">Donate</a><a href="gallery.html">Gallery</a><a href="resources.html">Resources</a></div>
+    <div><h4>Contact</h4><a href="https://wa.me/447394848407" target="_blank" rel="noopener">+44 7394 848407</a><a href="mailto:gurmat@shaheedibunga.com">gurmat@shaheedibunga.com</a><a href="safeguarding.html">Safeguarding</a><a href="privacy.html">Privacy</a></div>
+  </div>
+  <div class="legal"><span>Registered charity in England &amp; Wales · 1185103</span><span>Test version of the new design</span></div>
+</footer>
+
+<script src="lib/dilruba-bow.js"></script>
+<script src="lib/gsap.min.js"></script>
+<script src="lib/ScrollTrigger.min.js"></script>
+<script src="lib/SplitText.min.js"></script>
+<script src="lib/lenis.min.js"></script>
+<script src="kit.js"></script>
+
+<script>
+/* the next class, worked out from the week above. The same nine as the live
+   panel's DTT; change them together. */
+(function(){
+  var DTT = [[1,8,10],[2,8,10],[3,8,10],[4,8,10],[5,8,10],[2,19,20],[4,19,20],[6,17,19],[0,17,18]];
+  var DAYS = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+  function fmt(h){ return (h % 12 || 12) + (h < 12 ? "am" : "pm"); }
+  var now = new Date(), nowMin = now.getDay() * 1440 + now.getHours() * 60 + now.getMinutes(), best = null;
+  DTT.forEach(function(c){
+    var start = c[0] * 1440 + c[1] * 60, end = c[0] * 1440 + c[2] * 60;
+    var wait = start - nowMin; if(end - nowMin <= 0) wait += 7 * 1440;
+    if(nowMin >= start && nowMin < end) wait = 0;
+    if(!best || wait < best.wait) best = { wait:wait, c:c };
+  });
+  var c = best.c, when = best.wait === 0 ? "On now, until " + fmt(c[2])
+    : (best.wait < 1440 && c[0] === now.getDay() ? "Today" : best.wait < 2880 && c[0] === (now.getDay() + 1) % 7 ? "Tomorrow" : DAYS[c[0]]) + " at " + fmt(c[1]);
+  document.querySelectorAll("[data-next]").forEach(function(el){ el.innerHTML = "Next class · <b>" + when + "</b>"; });
+})();
+
+KIT.start(function(gsap, ST){
+  var E = "expo.out";
+  var words = SplitText.create("[data-intro]", { type:"words", wordsClass:"w", mask:"words" }).words;
+  gsap.timeline({ defaults:{ ease:E } })
+    .from(".khero .eyebrow", { opacity:0, y:12, duration:.9 }, .1)
+    .from(words, { yPercent:115, duration:1.4, stagger:.09 }, .3)
+    .from(".khero [data-intro-fade]", { opacity:0, y:24, duration:1.1, stagger:.12 }, .2)
+    .from(".kart", { opacity:0, y:50, duration:1.6 }, .2);
+
+  /* scroll lifts the type away and lets the arch settle */
+  gsap.to(".khero .hero-copy", { y:-100, opacity:0, ease:"none", scrollTrigger:{ trigger:".khero", start:"35% top", end:"bottom top", scrub:true } });
+  gsap.to(".kart", { yPercent:-8, ease:"none", scrollTrigger:{ trigger:".khero", start:"top top", end:"bottom top", scrub:true } });
+
+  /* the wall: each column drifts at its own speed while you pass */
+  if(KIT.wide) [-12, 10, -20].forEach(function(n, i){
+    gsap.fromTo("#wall .col:nth-child(" + (i + 1) + ")", { yPercent:0 }, { yPercent:n, ease:"none",
+      scrollTrigger:{ trigger:"#wall", start:"top bottom", end:"bottom top", scrub:true } });
+  });
+});
+</script>
+</body>
+</html>

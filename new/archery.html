@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Archery Akhara · Shaheedi Bunga</title>
+<link rel="stylesheet" href="kit.css">
+<!-- before paint: light unless this viewer chose dark (or ?mood= asks), so
+     there is never a flash of the wrong mode -->
+<script>(function(){var m=(/[?&]mood=(light|dark)/.exec(location.search)||[])[1];
+  if(!m){try{m=localStorage.getItem("sb-mood");}catch(e){}}
+  document.documentElement.dataset.mood=m==="dark"?"dark":"light";})();</script>
+
+<style>
+/* ── hero: the scroll draws the bow, then looses it ──────────────────────
+   Resting layout (phone, reduced motion): the bow drawn part-way with the
+   arrow nocked, beside the type. With .cine the hero pins and one progress
+   value draws the string, flexes the limbs and, at full draw, lets go. */
+.ahero{ position:relative; background:var(--hero-bg); color:var(--hero-ink); overflow-x:clip; }
+.ahero-in{ min-height:100svh; display:grid; grid-template-columns:1fr 1fr; gap:calc(var(--u)*3); align-items:center;
+  padding:max(96px,calc(var(--u)*8)) var(--gx) calc(var(--u)*4); position:relative; }
+.ahero .eyebrow{ color:var(--hero-gold); }
+.ahero .gur-line{ display:block; font-size:max(24px,calc(var(--u)*2.6)); color:var(--hero-gold); margin:calc(var(--u)*2) 0 calc(var(--u)*.6); }
+.ahero h1{ font-size:max(52px,calc(var(--u)*8)); line-height:.88; }
+.ahero h1 span{ display:block; } .ahero h1 span:last-child{ color:var(--hero-gold); font-style:italic; }
+.ahero .lede{ color:var(--hero-muted); margin-top:calc(var(--u)*2.2); max-width:36ch; }
+.ahero .when{ display:inline-flex; gap:.8em; align-items:center; margin-top:calc(var(--u)*2.4); padding:.8em 1.2em; border:1px solid var(--hero-line);
+  border-radius:100px; font-family:var(--mono); font-size:max(11px,calc(var(--u)*.7)); letter-spacing:.14em; text-transform:uppercase; }
+.ahero .when b{ color:var(--hero-gold); font-weight:500; }
+/* the frame is wide enough for the arrow at rest, which stands well forward of the bow */
+.bowwrap{ position:relative; height:min(74vh,720px); justify-self:center; aspect-ratio:1/1; max-width:100%; }
+.bowwrap svg{ width:100%; height:100%; overflow:visible; }
+.bow-limb{ fill:none; stroke:var(--hero-gold); stroke-width:11; stroke-linecap:round; }
+.bow-core{ fill:none; stroke:var(--hero-bg); stroke-width:3; stroke-linecap:round; opacity:.55; }
+.bow-grip{ fill:var(--hero-ink); }
+.bow-string{ fill:none; stroke:var(--hero-ink); stroke-width:1.6; opacity:.85; }
+.arrow line{ stroke:var(--hero-ink); stroke-width:3.4; stroke-linecap:round; }
+.arrow .head{ fill:var(--hero-ink); } .arrow .fl{ fill:var(--saffron); }
+.drawbar{ position:absolute; left:var(--gx); right:var(--gx); bottom:calc(var(--u)*3); display:none; gap:calc(var(--u)*2); align-items:center;
+  font-family:var(--mono); font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--hero-muted); }
+.cine .drawbar{ display:flex; }
+.drawbar .trk{ flex:1; height:1px; background:var(--hero-line); position:relative; }
+.drawbar .trk i{ position:absolute; inset:0; background:var(--hero-gold); transform-origin:left; transform:scaleX(0); }
+.drawbar .st{ opacity:.45; transition:opacity .3s, color .3s; } .drawbar .st.on{ opacity:1; color:var(--hero-gold); }
+@media(max-width:800px){ .ahero-in{ grid-template-columns:minmax(0,1fr); min-height:0; } .bowwrap{ height:60vh; } }
+.cine .ahero{ height:300vh; }
+.cine .apin{ position:sticky; top:0; height:100vh; overflow:hidden; }
+.cine .ahero-in{ height:100vh; min-height:0; }
+
+/* ── the range: photographs on the sideways track ── */
+.range .pcard{ padding:0; overflow:hidden; background:var(--cream-3); }
+.range .pcard img{ width:100%; height:100%; object-fit:cover; filter:var(--photo); }
+.range .pcard figcaption{ position:absolute; left:16px; bottom:14px; right:16px; font-family:var(--mono); font-size:10px; letter-spacing:.14em;
+  text-transform:uppercase; color:#FAF6EE; text-shadow:0 1px 8px rgba(0,0,0,.7); }
+.range .pcard{ position:relative; margin:0; aspect-ratio:4/5; min-height:0; }
+.cine .range .pcard{ height:min(56vh,520px); width:auto; aspect-ratio:4/5; }
+
+/* ── what is taught: the target zooms ring by ring ── */
+.taught{ display:grid; grid-template-columns:1fr 1fr; gap:calc(var(--u)*5); align-items:center; }
+.pillars{ display:grid; gap:calc(var(--u)*2.4); }
+.pillar h3{ font-family:var(--display); font-weight:500; font-size:max(30px,calc(var(--u)*3.6)); line-height:1; margin:0 0 .35em; }
+.pillar h3 span{ display:block; font-family:var(--gur); font-weight:600; font-size:max(15px,calc(var(--u)*1.2)); color:var(--gold-text); margin-bottom:.5em; }
+.pillar p{ margin:0; color:var(--navy-70); max-width:40ch; }
+.target{ aspect-ratio:1; width:min(100%,560px); justify-self:center; border-radius:50%; overflow:hidden; position:relative; }
+.target svg{ width:100%; height:100%; display:block; transform-origin:50% 50%; }
+.cine .taught-sec{ height:420vh; padding:0; }
+.cine .tpin{ position:sticky; top:0; height:100vh; display:flex; flex-direction:column; justify-content:center; padding:70px var(--gx) 0; }
+.cine .pillars{ position:relative; min-height:16em; }
+.cine .pillar{ position:absolute; inset:0 0 auto; opacity:0; transform:translateY(20px); transition:opacity .5s, transform .7s var(--ease-out); }
+.cine .pillar.on{ opacity:1; transform:none; }
+.rail{ display:none; gap:8px; margin-top:calc(var(--u)*3); } .cine .rail{ display:flex; }
+.rail i{ width:28px; height:2px; background:var(--line); transition:background .3s; } .rail i.on{ background:var(--gold); }
+@media(max-width:900px){ .taught{ grid-template-columns:1fr; } }
+
+/* ── the facts ── */
+.facts{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); border-top:1px solid var(--line); }
+.fact{ padding:calc(var(--u)*2.4) calc(var(--u)*2) calc(var(--u)*2.8) 0; border-bottom:1px solid var(--line); }
+.fact:not(:nth-child(3n+1)){ padding-left:calc(var(--u)*2); border-left:1px solid var(--line); }
+.fact dt{ font-family:var(--mono); font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--gold-text); margin-bottom:.9em; }
+.fact dd{ margin:0; font-family:var(--display); font-size:max(24px,calc(var(--u)*2.2)); line-height:1.1; }
+.fact dd small{ display:block; font-family:var(--body); font-size:max(14px,calc(var(--u)*.9)); color:var(--navy-70); line-height:1.5; margin-top:.6em; }
+.fact a{ color:var(--gold-text); }
+@media(max-width:800px){ .facts{ grid-template-columns:1fr; } .fact:not(:nth-child(3n+1)){ padding-left:0; border-left:0; } }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="mast">
+  <a class="brand" href="classes.html"><img src="img/gurmat-vidyala-84.png" alt="" width="40" height="40">
+    <span><b>Shaheedi Bunga</b><i>Gurmat Vidyala</i></span></a>
+  <nav aria-label="Main"><a href="classes.html" aria-current="page">Classes</a><a href="resources.html">Resources</a><a href="gallery.html">Gallery</a><a href="about.html">About</a><a href="contact.html">Contact</a><a href="donate.html">Donate</a></nav>
+  <a class="wa" href="https://wa.me/447394848407?text=Sat%20Sri%20Akal%20%E2%80%94%20I'd%20like%20to%20ask%20about%20the%20Archery%20Akhara." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.6 2 2.18 6.42 2.18 11.86c0 1.74.46 3.44 1.32 4.94L2.1 22l5.34-1.4a9.8 9.8 0 0 0 4.6 1.17h.01c5.43 0 9.85-4.42 9.85-9.86 0-2.63-1.02-5.11-2.88-6.97A9.79 9.79 0 0 0 12.04 2z"/></svg>WhatsApp</a>
+</header>
+
+
+<main id="main">
+<section class="ahero paper" data-hero aria-label="Archery Akhara">
+ <div class="apin">
+  <div class="ahero-in">
+    <div class="hero-copy">
+      <p class="eyebrow">Akhara · 03 · Archery</p>
+      <span class="gur gur-line" lang="pa" data-intro-fade>ਤੀਰ ਅੰਦਾਜ਼ੀ</span>
+      <h1 class="display" data-intro><span>Draw.</span><span>Breathe.</span><span>Release.</span></h1>
+      <p class="lede" data-intro-fade>The dhanush the Khalsa carried, taught the way it was taught: stance, breath, and the loose.</p>
+      <!-- the time is also in the facts and the closing call: CHANGE ALL THREE TOGETHER -->
+      <p class="when" data-intro-fade><b>Sundays 2.30–4pm</b> · East Park Road</p>
+    </div>
+    <div class="bowwrap" aria-hidden="true">
+      <svg viewBox="30 0 520 520" id="bow">
+        <path class="bow-limb" id="limb" d=""/>
+        <path class="bow-core" id="core" d=""/>
+        <rect class="bow-grip" x="281" y="236" width="16" height="48" rx="6"/>
+        <polyline class="bow-string" id="string" points=""/>
+        <g class="arrow" id="arrow">
+          <line x1="0" y1="260" x2="250" y2="260"/>
+          <path class="head" d="M250 253 L270 260 L250 267 Z"/>
+          <path class="fl" d="M4 260 L-14 248 L14 248 L28 260 Z"/><path class="fl" d="M4 260 L-14 272 L14 272 L28 260 Z" opacity=".75"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+  <div class="drawbar" aria-hidden="true">
+    <span class="st on">Stance</span><span class="st">Draw</span><span class="trk"><i id="drawFill"></i></span><span class="st">Anchor</span><span class="st">Release</span>
+  </div>
+ </div>
+</section>
+
+<section class="promises range paper" aria-label="The range">
+ <div class="ppin">
+  <div class="sec-head">
+    <div><p class="eyebrow">The range</p><h2 class="display h-l" data-split>Down the shooting line.</h2></div>
+    <p class="lede">Sunday afternoons, the hall at Guru Tegh Bahadur Gurdwara, and a boss at eighteen metres.</p>
+  </div>
+  <div class="ptrack">
+    <figure class="pcard"><img src="/Assets/Archery/tiles/a09.jpg" alt="Archers at full draw by the gurdwara windows." loading="lazy"><figcaption>Full draw</figcaption></figure>
+    <figure class="pcard"><img src="/Assets/Archery/tiles/a07.jpg" alt="An archer drawing on the indoor range." loading="lazy"><figcaption>The indoor range</figcaption></figure>
+    <figure class="pcard"><img src="/Assets/Archery/tiles/a10.jpg" alt="A line of archers taking aim, arrows ready in their stands." loading="lazy"><figcaption>The line</figcaption></figure>
+    <figure class="pcard"><img src="/Assets/Archery/tiles/a05.jpg" alt="Archers in salwar kameez drawing their bows on the mats." loading="lazy"><figcaption>On the mats</figcaption></figure>
+    <figure class="pcard"><img src="/Assets/Archery/tiles/a08.jpg" alt="A young archer in a white chola, bow raised." loading="lazy"><figcaption>Bow raised</figcaption></figure>
+    <figure class="pcard"><img src="/Assets/Archery/tiles/a01.jpg" alt="A target face, the gold shot through by arrows." loading="lazy"><figcaption>The gold</figcaption></figure>
+    <figure class="pcard"><img src="/Assets/Archery/tiles/a14.jpg" alt="Shastar laid out on a cloth: a dhal, a tabar and a sword." loading="lazy"><figcaption>Shastar vidya</figcaption></figure>
+  </div>
+  <div class="pbar"><i></i></div>
+ </div>
+</section>
+
+<section class="sec taught-sec paper" id="taught">
+ <div class="tpin">
+  <div class="taught">
+    <div>
+      <p class="eyebrow" style="margin-bottom:calc(var(--u)*2.4)">What is taught</p>
+      <div class="pillars" id="pillars">
+        <div class="pillar on"><h3><span lang="pa">ਖੜਾ ਹੋਣਾ</span>Stance</h3>
+          <p>Feet, hips, shoulders. Before the bow is even lifted, the body is squared to the target and the weight is settled. Most of a bad shot happens here.</p></div>
+        <div class="pillar"><h3><span lang="pa">ਸਾਹ</span>Breath</h3>
+          <p>The draw happens on the inhale, the loose on the held breath. Archery is a breathing discipline that happens to involve a bow.</p></div>
+        <div class="pillar"><h3><span lang="pa">ਧਿਆਨ</span>Focus</h3>
+          <p>One ring. Not the target: one ring, and then one point inside it. The eye goes where the arrow will.</p></div>
+        <div class="pillar"><h3><span lang="pa">ਛੋੜਨਾ</span>Release</h3>
+          <p>The loose is not a decision, it is a letting go. Force it and the arrow knows. This is the part that takes years.</p></div>
+        <div class="pillar"><h3><span lang="pa">ਮੁਹਾਰਤ</span>Mastery</h3>
+          <p>Dead centre, repeatedly, without thinking about any of the above. Nobody arrives; you only get closer.</p></div>
+      </div>
+      <div class="rail" id="rail"><i class="on"></i><i></i><i></i><i></i><i></i></div>
+    </div>
+    <div class="target" aria-hidden="true">
+      <svg viewBox="0 0 200 200" id="tsvg">
+        <circle cx="100" cy="100" r="100" fill="#EFE9DC"/><circle cx="100" cy="100" r="80" fill="#1E1E22"/>
+        <circle cx="100" cy="100" r="60" fill="#2E5C8A"/><circle cx="100" cy="100" r="40" fill="#B5432F"/>
+        <circle cx="100" cy="100" r="20" fill="#D9A93B"/><circle cx="100" cy="100" r="10" fill="none" stroke="#1E1E22" stroke-width=".5" opacity=".5"/>
+        <circle cx="100" cy="100" r="1.4" fill="#1E1E22"/>
+      </svg>
+    </div>
+  </div>
+ </div>
+</section>
+
+<section class="sec paper">
+  <div class="sec-head">
+    <div><p class="eyebrow">When and where</p><h2 class="display h-l" data-split>Sunday afternoons.</h2></div>
+    <p class="lede">Archery and shastar vidya together, in the hall at Guru Tegh Bahadur Gurdwara.</p>
+  </div>
+  <dl class="facts">
+    <div class="fact" data-fade><dt>When</dt><dd>Sundays, 2.30–4pm<small>Come at half past two. There is no term to wait for.</small></dd></div>
+    <div class="fact" data-fade><dt>Where</dt><dd>Guru Tegh Bahadur Gurdwara<small>106 East Park Road, Leicester LE5 4QB · <a href="https://maps.google.com/?q=106+East+Park+Road+Leicester+LE5+4QB" target="_blank" rel="noopener">Maps ↗</a></small></dd></div>
+    <div class="fact" data-fade><dt>Ages</dt><dd>14 and over on Sundays<small>Younger archers shoot at camps and at the Sikhi Camp tag-archery sessions.</small></dd></div>
+    <div class="fact" data-fade><dt>Equipment</dt><dd>Provided<small>Bows, arrows and safety equipment. Bring nothing.</small></dd></div>
+    <div class="fact" data-fade><dt>Also here</dt><dd>Air rifling<small>Saturday afternoons, in the same hall.</small></dd></div>
+    <div class="fact" data-fade><dt>Fee</dt><dd>None<small>Like every class at the vidyala.</small></dd></div>
+  </dl>
+</section>
+
+<section class="sec invite paper">
+  <div class="frame">
+    <span class="arch-line" aria-hidden="true"></span><span class="arch-line two" aria-hidden="true"></span>
+    <span class="gur" lang="pa" data-fade>ਐਤਵਾਰ ਨੂੰ ਆਓ</span>
+    <h2 class="display h-l" data-split>Come on <em>Sunday.</em></h2>
+    <p data-fade>Half past two at East Park Road. You do not need a bow, and you do not need to have held one.</p>
+    <div class="acts" data-fade>
+      <a class="wa" href="https://wa.me/447394848407?text=Sat%20Sri%20Akal%20%E2%80%94%20I'd%20like%20to%20ask%20about%20the%20Archery%20Akhara." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.6 2 2.18 6.42 2.18 11.86c0 1.74.46 3.44 1.32 4.94L2.1 22l5.34-1.4a9.8 9.8 0 0 0 4.6 1.17h.01c5.43 0 9.85-4.42 9.85-9.86 0-2.63-1.02-5.11-2.88-6.97A9.79 9.79 0 0 0 12.04 2z"/></svg>Message us on WhatsApp</a>
+      <a class="mail" href="mailto:gurmat@shaheedibunga.com">gurmat@shaheedibunga.com</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <p class="big">Come and sit<br>with the <em>sangat.</em></p>
+  <div class="cols">
+    <div><h4>Shaheedi Bunga</h4><p style="margin:0;max-width:34ch">A Sikh education charity in Leicester. Every class is free and taught by volunteers.</p></div>
+    <div><h4>Vidyale</h4><a href="santhiya.html">Santhiya</a><a href="kirtan.html">Kirtan</a><a href="archery.html">Archery</a><a href="classes.html">All classes</a></div>
+    <div><h4>Charity</h4><a href="about.html">About</a><a href="donate.html">Donate</a><a href="gallery.html">Gallery</a><a href="resources.html">Resources</a></div>
+    <div><h4>Contact</h4><a href="https://wa.me/447394848407" target="_blank" rel="noopener">+44 7394 848407</a><a href="mailto:gurmat@shaheedibunga.com">gurmat@shaheedibunga.com</a><a href="safeguarding.html">Safeguarding</a><a href="privacy.html">Privacy</a></div>
+  </div>
+  <div class="legal"><span>Registered charity in England &amp; Wales · 1185103</span><span>Test version of the new design</span></div>
+</footer>
+
+<script src="lib/gsap.min.js"></script>
+<script src="lib/ScrollTrigger.min.js"></script>
+<script src="lib/SplitText.min.js"></script>
+<script src="lib/lenis.min.js"></script>
+<script src="kit.js"></script>
+
+<script>
+/* The bow, drawn from one number d (how far the string is pulled, in SVG
+   units). The limbs flex toward the archer as d grows; the arrow rides the
+   nock. Called once at rest, then every frame while the hero scrolls. */
+var BOW = (function(){
+  var limb = document.getElementById("limb"), core = document.getElementById("core"),
+      str = document.getElementById("string"), arrow = document.getElementById("arrow");
+  function draw(d, fly){
+    var bend = d * 0.16, tipX = 235 - bend, tipY1 = 40 + d * 0.05, tipY2 = 480 - d * 0.05;
+    /* recurved tips: each limb ends in a short curl away from the archer */
+    var p = "M" + (tipX + 14) + " " + (tipY1 - 12) + " Q " + tipX + " " + tipY1 + " " + (tipX + 6) + " " + (tipY1 + 18)
+          + " Q " + (330 - bend * .3) + " 120 289 260 Q " + (330 - bend * .3) + " 400 " + (tipX + 6) + " " + (tipY2 - 18)
+          + " Q " + tipX + " " + tipY2 + " " + (tipX + 14) + " " + (tipY2 + 12);
+    limb.setAttribute("d", p); core.setAttribute("d", p);
+    var nx = tipX + 4 - d;
+    str.setAttribute("points", (tipX + 4) + "," + (tipY1 + 6) + " " + nx + ",260 " + (tipX + 4) + "," + (tipY2 - 6));
+    var ax = fly ? nx + fly : nx;
+    arrow.setAttribute("transform", "translate(" + (ax - 4) + " 0)");
+  }
+  draw(120, 0);
+  return { draw:draw };
+})();
+
+KIT.start(function(gsap, ST){
+  var E = "expo.out";
+  var words = SplitText.create("[data-intro]", { type:"words", wordsClass:"w", mask:"words" }).words;
+  gsap.timeline({ defaults:{ ease:E } })
+    .from(".ahero .eyebrow", { opacity:0, y:12, duration:.9 }, .1)
+    .from(words, { yPercent:115, duration:1.3, stagger:.14 }, .25)
+    .from(".ahero [data-intro-fade]", { opacity:0, y:22, duration:1.1, stagger:.12 }, .2)
+    .from(".bowwrap", { opacity:0, x:40, duration:1.6 }, .3);
+
+  if(!KIT.wide) return;
+
+  /* 1 · the draw. 0–.7 the string comes back, slow at first so it reads
+     as weight. .7–.8 anchor and hold. .8 the loose: the string snaps home
+     and the arrow leaves the frame. */
+  var S = { d:0, fly:0 }, steps = document.querySelectorAll(".drawbar .st");
+  BOW.draw(0, 0); gsap.set("#arrow", { opacity:1 });
+  gsap.timeline({ scrollTrigger:{ trigger:".ahero", start:"top top", end:"bottom bottom", scrub:.7,
+      onUpdate:function(self){
+        var p = self.progress, k = p < .12 ? 0 : p < .7 ? 1 : p < .8 ? 2 : 3;
+        steps.forEach(function(s, i){ s.classList.toggle("on", i === k); });
+      } } })
+    .to(S, { d:150, duration:.7, ease:"power2.in", onUpdate:function(){ BOW.draw(S.d, S.fly); } }, 0)
+    .to("#drawFill", { scaleX:1, duration:.7, ease:"none" }, 0)
+    .to(".ahero .hero-copy", { opacity:.25, duration:.3 }, .45)
+    .to(S, { d:0, duration:.04, ease:"power4.out", onUpdate:function(){ BOW.draw(S.d, S.fly); } }, .8)
+    .to(S, { fly:1400, duration:.14, ease:"power2.in", onUpdate:function(){ BOW.draw(S.d, S.fly); } }, .8)
+    .to(".ahero .hero-copy", { opacity:1, duration:.15 }, .85);
+
+  /* 3 · the target: each pillar is one step closer to the gold */
+  var pills = document.querySelectorAll(".pillar"), rail = document.querySelectorAll("#rail i");
+  gsap.fromTo("#tsvg", { scale:1 }, { scale:4.2, ease:"power1.in",
+    scrollTrigger:{ trigger:"#taught", start:"top top", end:"bottom bottom", scrub:.8,
+      onUpdate:function(self){
+        var k = Math.min(pills.length - 1, Math.floor(self.progress * pills.length));
+        pills.forEach(function(p, i){ p.classList.toggle("on", i === k); });
+        rail.forEach(function(r, i){ r.classList.toggle("on", i <= k); });
+      } } });
+});
+</script>
+</body>
+</html>
