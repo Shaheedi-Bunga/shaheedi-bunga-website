@@ -1,22 +1,15 @@
 <!DOCTYPE html>
-<!-- GENERATED PAGE - but the generator is not in this repository.
-     It is Sikhi_Calendar/tools/build-web-page.js, which lives in the calendar
-     project, not here. So: a rebuild over there will overwrite this file and
-     lose every edit below unless the same change is made in the generator
-     first. The edits this file is currently carrying, made 25 Oct 2026:
-       - charset moved to the top of <head>
-       - Google Fonts links replaced by /lib/fonts.css (the five families are
-         self-hosted now); /site.css added for the masthead and footer
-       - the ground and ink moved to the site's #FAF6EE / #16294A
-       - the shared masthead and footer added; the page had neither
-       - "Sikhi School" -> "Gurmat Vidyala" in the brand line
-     Either port these into the generator, or move the generator in here. -->
+<!-- GENERATED PAGE, THEN FITTED. Do not hand-edit.
+     The calendar itself comes from tools/build-web-page.js in the calendar
+     app, which is not in this repository. Everything that makes it look like
+     part of this website is applied afterwards by _tools/fit-calendar.py.
+     After any rebuild of the calendar, run that script again. -->
 <html lang="en">
 <head>
-<!-- charset first. It must land inside the first 1024 bytes or the browser
-     starts guessing the encoding, and this page is mostly Gurmukhi. It was
-     sitting at byte 892, behind the og tags - inside the limit, but one more
-     meta tag would have pushed it out. -->
+<!-- charset first: it must land inside the first 1024 bytes or the browser
+     starts guessing, and this page is mostly Gurmukhi. The generator emits
+     it after the og tags, at about byte 890 - inside the limit, but one
+     more meta tag would push it out. -->
 <meta charset="utf-8">
 <link rel="canonical" href="https://www.shaheedibunga.com/sikhi-calendar/">
 <link rel="icon" href="../Assets/Brand/favicon-32.png" sizes="32x32">
@@ -35,8 +28,8 @@
 <meta name="description" content="Gurpurabs, sangrand, puranmashi and masya on the Nanakshahi calendar. Panjabi dates first, English dates underneath.">
 <meta name="theme-color" content="#FAF6EE">
 
-<!-- The five families this page uses are now in /lib/fonts.css with the rest.
-     Linking Google here would have undone the self-hosting and made the
+<!-- The five families this page uses are in /lib/fonts.css with the rest of
+     the site. Linking Google here would undo the self-hosting and make the
      privacy page's "this site contacts nobody" untrue for one page. -->
 <link rel="stylesheet" href="/lib/fonts.css">
 <link rel="stylesheet" href="/site.css">
@@ -56,8 +49,8 @@
 
 .sbcal {
   /* ground — cream leads */
-  /* the site's own cream and ink, so the calendar does not read as a
-     slightly-off version of every other page */
+  /* the site's own cream and ink, so the calendar does not read as
+     a slightly-off version of every other page */
   --cream:      #FAF6EE;
   --cream-2:    #EFE8D8;
   --cream-3:    #E7DEC9;
@@ -242,7 +235,7 @@
 .sbcal__cell--sang { box-shadow: inset 3px 0 0 var(--gold); }
 .sbcal__ctop { display: flex; align-items: baseline; gap: 7px; }
 .sbcal__cn { font-family: var(--gur); font-size: 21px; font-weight: 600; line-height: 1; }
-/* --ink-3 against the cream measures 4.49:1 at this size - a hair under.
+/* --ink-3 on the cream measures 4.49:1 at this size - a hair under 4.5.
    --ink-2 clears it. */
 .sbcal__cg { font-family: var(--util); font-size: 11px; color: var(--ink-2); }
 .sbcal__moon { margin-left: auto; font-size: 12px; color: var(--ink-3); }
@@ -324,12 +317,10 @@
 </style>
 </head>
 <body style="margin:0;background:#FAF6EE">
-
 <!-- The same masthead and footer as every other page outside the parikrama.
-     This page had its own header and no footer, so it was a dead end: the
-     logo took you home and nothing reached Classes, Resources or anything
-     else. The PR that published it set out to put one menu on every subpage;
-     this was the one page that missed it. -->
+     The generated page has its own header and no footer, so on its own it is
+     a dead end: the logo goes home and nothing reaches Classes, Resources or
+     anything else. Added here by _tools/fit-calendar.py. -->
 <header class="top">
   <img src="../Assets/Brand/gurmat-vidyala-84.png" alt="" width="42" height="42">
   <span class="mark"><b>Shaheedi Bunga</b><i>Gurmat Vidyala</i></span>
