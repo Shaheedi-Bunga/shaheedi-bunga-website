@@ -27,7 +27,10 @@ const url = p => '/' + path.relative(path.resolve(here, '..'), p).split(path.sep
 const urls = (dir, ext = '.jpg') =>
   fs.readdirSync(dir).filter(f => f.endsWith(ext)).sort().map(f => url(path.join(dir, f)));
 
-h = h.split('__VIDLOGO__').join(url(path.resolve(here, '../Assets/Brand/gurmat-vidyala-512.png')));
+// The 42px header logo. 84 rather than the 512 original: the big one is 384 KB
+// for a mark that is never drawn larger than 42 CSS px. The 512 file stays for
+// anything that needs it.
+h = h.split('__VIDLOGO__').join(url(path.resolve(here, '../Assets/Brand/gurmat-vidyala-84.png')));
 
 const D = path.resolve(here, '../Assets/Santhiya/drift');
 const drift = urls(D);

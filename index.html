@@ -587,7 +587,9 @@ body.vid-open > canvas{ display:none; }
       letter-spacing:.12em; text-transform:uppercase; color:var(--vmuted); margin:0; }
 .vid .lbl b{ color:var(--gold); font-weight:400; }
 .gur{ font-family:"Noto Serif Gurmukhi",serif; font-weight:600; letter-spacing:0; }
-/* .vid p tracks its Latin lines tighter; Gurmukhi is never tracked (it breaks the siri rekha) */
+/* .vid p tracks its Latin lines tighter; Gurmukhi is never tracked - it breaks
+   the siri rekha, the line the letters hang from. Ustad Ji caught this on four
+   lines. Specificity: .vid p is (0,1,1) and plain .gur is (0,1,0), so .gur lost. */
 .vid p.gur, .vid .gur{ letter-spacing:0; }
 
 .vid-nav{ position:sticky; top:0; z-index:8; display:flex; align-items:center;
