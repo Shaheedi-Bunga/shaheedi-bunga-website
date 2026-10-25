@@ -55,3 +55,7 @@ probe.html
 # It lives in 1_Shaheedi_Bunga/Admin/Social_Media/Instagram_Derived/ (moved 2026-10-25).
 Content_Drafts/Instagram/
 Content_Drafts/instagram-findings.md
+*.before-*.html
+
+# local Claude Code skills (third-party, not published)
+.claude/

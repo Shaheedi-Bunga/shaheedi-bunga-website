@@ -168,6 +168,7 @@
 .sbcal__h2 {
   font-family: var(--gur); font-size: clamp(21px, 3vw, 28px);
   font-weight: 600; margin: 0; line-height: 1.15;
+  letter-spacing: 0; /* site.css tracks every h2 at -.02em; Gurmukhi is never tracked */
 }
 .sbcal__h2 em {
   font-family: var(--display); font-style: normal; font-weight: 500;
@@ -213,7 +214,9 @@
 
 /* ------------------------------------------------------------------- month */
 .sbcal__dows {
-  display: grid; grid-template-columns: repeat(7, 1fr);
+  /* minmax(0,1fr), not 1fr: a bare 1fr track never shrinks below its content,
+     so one long purab name pushed the phone grid out to 1,014px */
+  display: grid; grid-template-columns: repeat(7, minmax(0, 1fr));
   border-bottom: 1px solid var(--rule);
 }
 .sbcal__dow2 {
@@ -222,12 +225,12 @@
   padding: 0 6px 9px;
 }
 .sbcal__grid {
-  display: grid; grid-template-columns: repeat(7, 1fr);
+  display: grid; grid-template-columns: repeat(7, minmax(0, 1fr));
   border-left: 1px solid var(--rule-soft);
 }
 .sbcal__cell {
   border-right: 1px solid var(--rule-soft); border-bottom: 1px solid var(--rule-soft);
-  min-height: 104px; padding: 8px 9px 10px; background: var(--paper);
+  min-height: 104px; padding: 8px 9px 10px; background: var(--paper); min-width: 0;
 }
 .sbcal__cell--out { background: var(--cream-2); }
 .sbcal__cell--out .sbcal__cn, .sbcal__cell--out .sbcal__cg { opacity: .5; }
@@ -301,7 +304,9 @@
   .sbcal__uprow { grid-template-columns: 60px minmax(0,1fr); gap: 6px 14px; }
   .sbcal__upg { grid-column: 1; font-size: 11.5px; }
   .sbcal__in { grid-column: 2; }
-  .sbcal__cell { min-height: 76px; padding: 5px 5px 7px; }
+  .sbcal__cell { min-height: 76px; padding: 5px 4px 7px; }
+  .sbcal__ctop { flex-wrap: wrap; gap: 0 4px; }
+  .sbcal__cg { font-size: 9.5px; }
   .sbcal__cn { font-size: 16px; }
   .sbcal__chip { font-size: 10px; }
   .sbcal__dow2 { font-size: 9px; padding: 0 3px 7px; }
@@ -334,7 +339,6 @@
     <a href="../donate/">Donate</a>
   </nav>
 </header>
-
 
 <div class="sbcal" id="sbcal">
   <div class="sbcal__inner">
