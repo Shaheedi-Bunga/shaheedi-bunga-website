@@ -276,16 +276,16 @@ body.nogl canvas,body.nogl .stage,body.nogl .rail,body.nogl .cue,body.nogl .scri
       from #vidd rather than invented again, so the two panels cannot drift
       apart. The hero's 3D object is lit for cream to match. ── */
 #vid{
-  --vbg:#FAF6EE; --vtext:#16294A; --vmuted:rgba(22,41,74,.66);
-  --vline:rgba(22,41,74,.14); --gold:#B4892C;
+  --vbg:#FAF6EE; --vtext:#16294A; --vmuted:rgba(22,41,74,.70);
+  --vline:rgba(22,41,74,.14); --gold:#8E681D;   /* 4.70:1 on this cream */
 }
 #vid p{ color:rgba(22,41,74,.74); }
 #vid .vid-nav{ background:rgba(250,246,238,.94); }
-#vid .vdrop-menu{ background:rgba(250,246,238,.98); border-color:rgba(180,137,44,.34);
+#vid .vdrop-menu{ background:rgba(250,246,238,.98); border-color:rgba(142,104,29,.34);
   box-shadow:0 22px 44px -22px rgba(22,41,74,.3); }
 #vid .vdrop-menu a, #vid .vdrop-menu span{ color:rgba(22,41,74,.85); }
-#vid .vdrop-menu a:hover{ background:rgba(180,137,44,.1); }
-#vid .vid-back:hover{ border-color:rgba(180,137,44,.5); background:rgba(180,137,44,.09); }
+#vid .vdrop-menu a:hover{ background:rgba(142,104,29,.1); }
+#vid .vid-back:hover{ border-color:rgba(142,104,29,.5); background:rgba(142,104,29,.09); }
 /* the ribbon's cards sat on a near-black tile and its captions faded to
    black; on cream both read as holes */
 #vid .rib-card{ background:#EFE7D6; box-shadow:0 40px 70px -48px rgba(22,41,74,.55); }
@@ -294,7 +294,7 @@ body.nogl canvas,body.nogl .stage,body.nogl .rail,body.nogl .cue,body.nogl .scri
   background:linear-gradient(to top, rgba(22,41,74,.86), rgba(22,41,74,0)); }
 /* the second headline line was a near-white set for the dark panel, which on
    cream left "sudh Gurbani." invisible */
-#vid .s2type h1 span:nth-child(2){ color:rgba(22,41,74,.58); }
+#vid .s2type h1 span:nth-child(2){ color:rgba(22,41,74,.66); }   /* 4.71:1 */
 /* THE FALLBACK. Below 900px, and whenever reduced motion is asked for, the
    pin is not used: the runway collapses to its content, the canvas becomes an
    ordinary block with an aspect ratio rather than a cropped absolute layer,
@@ -312,12 +312,19 @@ body.nogl canvas,body.nogl .stage,body.nogl .rail,body.nogl .cue,body.nogl .scri
     height:100% !important; }
   #vid .s2meta{ position:relative; top:auto; left:auto;
     padding:calc(var(--u)*2.2) calc(var(--u)*2.3) 0; }
-  #vid .s2copy{ position:static; inset:auto; display:block;
+  /* flex, not block, so the hero can be ordered above the captions - on a
+     block parent `order` is ignored and the three build lines read before
+     the headline they belong to */
+  #vid .s2copy{ position:static; inset:auto; display:flex; flex-direction:column;
     padding:calc(var(--u)*1.6) calc(var(--u)*2.3) 0; perspective:none; }
   #vid .s2caps{ position:static; min-height:0; max-width:46ch; }
   #vid .s2cap{ position:static; opacity:1; transform:none;
     margin:0 0 calc(var(--u)*1.1); }
   #vid .s2hint{ display:none; }
+  /* the hero is always shown here, and the opening title - which is the same
+     words again - is dropped rather than repeated */
+  #vid .s2type{ opacity:1; order:-1; margin-bottom:calc(var(--u)*1.4); }
+  #vid .s2intro{ display:none; }
 }
 
 /* ── dilruba panel: a light plate, like pages/santhiya.html. It paints its
@@ -680,13 +687,33 @@ body.vid-open > canvas{ display:none; }
 .s2type h1 span:nth-child(2){ transform:translateZ(34px); color:rgba(244,245,247,.9); }
 .s2lede{ margin-top:calc(var(--u)*1.2); max-width:34ch; transform:translateZ(12px); transform-origin:left center; }
 /* the caption layer: its own stacking context, one line shown at a time */
-.s2caps{ position:relative; margin-top:calc(var(--u)*1.3); max-width:34ch;
-  min-height:calc(var(--u)*7.2); }
-.s2cap{ position:absolute; left:0; top:0; right:0; margin:0; opacity:0;
+.s2caps{ position:relative; max-width:34ch; min-height:calc(var(--u)*7.6); }
+.s2cap{ position:absolute; left:0; bottom:0; right:0; margin:0; opacity:0;
   transform:translateY(9px); transition:opacity .18s ease, transform .18s ease;
   pointer-events:none; }
 .s2cap.on{ opacity:1; transform:none; }
-@media (prefers-reduced-motion:reduce){ .s2cap{ transition:none; } }
+
+/* 1 - the opening title, centred on an empty stage. It is the hero's own
+   words, shown large and alone before any of the object exists. */
+.s2intro{ position:absolute; inset:0; z-index:3; display:flex;
+  flex-direction:column; justify-content:center; align-items:center;
+  text-align:center; padding:0 calc(var(--u)*2.3); pointer-events:none;
+  opacity:0; transition:opacity .3s ease; }
+.s2intro.on{ opacity:1; }
+.s2intro .gur{ display:block; color:var(--gold);
+  font-size:max(20px, calc(var(--u)*2.2)); margin-bottom:calc(var(--u)*0.8); }
+.s2intro h2{ margin:0; font-weight:700; letter-spacing:-.055em; line-height:.9;
+  font-size:max(40px, calc(var(--u)*7.0)); color:var(--vtext); }
+.s2intro h2 span{ display:block; }
+.s2intro h2 span:nth-child(2){ color:rgba(22,41,74,.66); }
+
+/* 3 - the hero proper. It is the thing the page settles into, so it is out of
+   the way until the object has been set out. */
+.s2type{ opacity:0; transition:opacity .3s ease; }
+.s2type.on{ opacity:1; }
+
+@media (prefers-reduced-motion:reduce){
+  .s2cap, .s2intro, .s2type{ transition:none; } }
 .s2meta{ position:absolute; top:calc(var(--u)*5.5); left:calc(var(--u)*2.3); z-index:2; }
 .s2hint{ transition:opacity .4s ease; }
 .akhero .s2hint{ transition:opacity .5s ease; }
@@ -1085,25 +1112,43 @@ html.still .drift img{ animation:none; }
   <header class="s2hero" id="s2hero">
    <div class="s2pin" id="s2pin">
     <div class="s2stage"><canvas id="s2c" aria-hidden="true"></canvas></div>
-    <p class="lbl s2meta">01 &mdash; <b>Santhiya Vidyala</b> &middot; Gipsy Lane, Leicester</p>
+    <p class="lbl s2meta" id="s2meta">01 &mdash; <b>Santhiya Vidyala</b> &middot; Gipsy Lane, Leicester</p>
+
+    <!-- THREE COPY LAYERS, one on screen at a time.
+
+         1. the opening title, alone on an empty stage
+         2. the three build captions, beside the object as it is set out
+         3. the hero proper, which is where the page settles
+
+         The opening title is aria-hidden and is dropped entirely in the
+         fallback: it is the same words as the hero below it, shown centred
+         before anything else exists, and a screen reader or a phone should
+         meet them once, not twice. -->
+    <div class="s2intro" id="s2intro" aria-hidden="true">
+      <span class="gur">ਸ਼ੁੱਧ ਗੁਰਬਾਣੀ ਪੜ੍ਹਨੀ ਸਿੱਖੋ</span>
+      <h2><span>Learn to read</span><span>sudh Gurbani.</span></h2>
+    </div>
+
     <div class="s2copy">
-      <div class="s2type" id="s2type">
-        <span class="gur">ਸ਼ੁੱਧ ਗੁਰਬਾਣੀ ਪੜ੍ਹਨੀ ਸਿੱਖੋ</span>
-        <h1><span>Learn to read</span><span>sudh Gurbani.</span></h1>
-      </div>
       <!-- One caption on screen at a time, swapped at a threshold and
-           cross-faded in 180ms. Driving four opacities straight off the
-           progress value instead would stack two half-faded headlines on
+           cross-faded in 180ms. Driving three opacities straight off the
+           progress value instead would stack two half-faded paragraphs on
            each other on a fast flick. -->
       <div class="s2caps" id="s2caps">
-        <p class="lede s2cap on" data-i="0">Santhiya is Gurbani read the way it was
+        <p class="lede s2cap" data-i="0">Santhiya is Gurbani read the way it was
           given &mdash; every lagga matra, every bisraam, nothing hurried.</p>
         <p class="lede s2cap" data-i="1">There is no fee, no audition and no age. You
           do not need to read a word of Gurmukhi before you start.</p>
         <p class="lede s2cap" data-i="2">Every day at Gurudwara Shri Guru Dashmesh
-          Sahib on Gipsy Lane, and online.</p>
-        <p class="lede s2cap" data-i="3">Sit at the back if you want to. Nobody will
-          ask you to read.</p>
+          Sahib on Gipsy Lane, and online. Sit at the back if you want to &mdash;
+          nobody will ask you to read.</p>
+      </div>
+      <div class="s2type" id="s2type">
+        <span class="gur">ਸ਼ੁੱਧ ਗੁਰਬਾਣੀ ਪੜ੍ਹਨੀ ਸਿੱਖੋ</span>
+        <h1><span>Learn to read</span><span>sudh Gurbani.</span></h1>
+        <p class="lede s2lede">Every day at Gurudwara Shri Guru Dashmesh Sahib. You do
+          not need to read a word of Gurmukhi to start, and you will not be the oldest
+          person in the room.</p>
       </div>
     </div>
     <p class="s2hint" id="s2hint">Keep scrolling</p>
@@ -3700,6 +3745,11 @@ RAF = requestAnimationFrame(tick);
      which is re-draped each frame while it is still falling */
   var REHAL = null, CLOTH = null, BOOK = null, clothGeo = null, drape = null;
   var BOOKL = null, BOOKR = null;
+  /* measured once the parts are built, not guessed - see the seating step */
+  var CLOTH_Y = 0, BOOK_Y = 0, OPEN_A = .46, SHUT_A = .02, BOOK_TILT_R = .26;
+  /* the two framings the scroll moves between - declared here because the
+     build calls fitObj() before the line that used to create them ran */
+  var BLD = { s:.92, x:0, y:.15 }, SET = { s:.92, x:1.55, y:.15 };
   var CAM_NEAR_P = null, CAM_NEAR_T = null, CAM_FAR_P = null, CAM_FAR_T = null;
   var cP = null, cT = null;
   (function(){
@@ -3750,17 +3800,37 @@ RAF = requestAnimationFrame(tick);
 
     OBJ = new THREE.Group(); sc.add(OBJ);
 
-    /* the rehal: two crossed frames, front and back */
+    /* THE REHAL. Its numbers are named rather than inlined because the cloth
+       is cut to fit them: a rumala that does not touch the arms it is draped
+       over is the thing that reads as broken, and the only way to guarantee
+       the contact is to derive the drape from the frame instead of nudging
+       it by eye until it looks close. */
+    var R_TILT = .30, R_SLAT_H = 1.94, R_SLAT_X = .52, R_SLAT_W = .15,
+        R_Y = -.72, R_Z = .34;
     REHAL = new THREE.Group(); OBJ.add(REHAL);
     [1,-1].forEach(function(sg){
       var g = new THREE.Group();
-      g.add(slab(.15,1.94,.11,mWood).translateX(-.52*sg));
-      g.add(slab(.15,1.94,.11,mWood).translateX( .52*sg));
+      g.add(slab(R_SLAT_W,R_SLAT_H,.11,mWood).translateX(-R_SLAT_X*sg));
+      g.add(slab(R_SLAT_W,R_SLAT_H,.11,mWood).translateX( R_SLAT_X*sg));
       g.add(slab(1.22,.12,.10,mWood).translateY(-.56));
-      g.rotation.z = .30*sg; g.position.set(0,-.72,.34*sg); REHAL.add(g);
+      g.rotation.z = R_TILT*sg; g.position.set(0,R_Y,R_Z*sg); REHAL.add(g);
     });
     var peg = new THREE.Mesh(new THREE.CylinderGeometry(.045,.045,.84,16), mGilt);
     peg.rotation.x = Math.PI/2; peg.position.y = .02; REHAL.add(peg);
+
+    /* WHERE THE FRAME ACTUALLY COMES UP TO. Each tilted leg plane presents
+       two top faces, and together the four of them make the line the rumala
+       has to lie along: a short flat plateau over the middle, then a slope
+       down to the outer shoulders, then nothing. Worked out from the corners
+       rather than measured by eye, because a cloth that floats a centimetre
+       above the wood is exactly what reads as broken. */
+    var _c = Math.cos(R_TILT), _s = Math.sin(R_TILT), _hh = R_SLAT_H/2, _hw = R_SLAT_W/2;
+    function _rotX(x, y){ return x * _c - y * _s; }
+    function _rotY(x, y){ return R_Y + x * _s + y * _c; }
+    var ARM_IN  = Math.abs(_rotX(R_SLAT_X + _hw,  _hh));   // the plateau's outer edge
+    var ARM_TOP = _rotY(R_SLAT_X + _hw,  _hh);             // and its height
+    var ARM_OUT = Math.abs(_rotX(-R_SLAT_X - _hw, _hh));   // the outer shoulder
+    var ARM_SHO = _rotY(-R_SLAT_X - _hw, _hh);             // and its height
 
     /* The rumala. A cloth solver is out of the question here, and it would be
        wasted: in the shot the cloth is already at rest. So the drape is a
@@ -3769,30 +3839,61 @@ RAF = requestAnimationFrame(tick);
        back up the way a stiff silk does when it has been thrown rather than
        laid. Normals are computed from the result, which is what makes the
        folds catch the key light. */
+    var CLOTH_SAG = .038, CLOTH_REST_Y = ARM_TOP + .014;
+    var ARM_DROP = ARM_TOP - ARM_SHO;        // how far the frame falls to the shoulder
     (function(){
-      var NU = 112, NV = 30, W = 3.70, D = 1.72;
+      var NU = 120, NV = 36, W = 3.00, D = 1.72, HW = W/2, HD = D/2;
+      var FRAME_Z = R_Z + .07;                 // where the frame stops holding it up
       clothGeo = new THREE.BufferGeometry();
       var pos = new Float32Array((NU+1)*(NV+1)*3), idx = [];
-      /* s is how far the cloth has settled, 0 held flat in the air, 1 lying on
-         the rehal. Re-run per frame while it is falling, which is what makes
-         it look like cloth arriving rather than a shape sliding down. */
+      /* The drape is written, not solved. A cloth solver would be a lot of
+         frames spent on something that is at rest for most of the shot; what
+         matters is that the written surface touches the frame in the right
+         places, which this one does by construction:
+
+           |x| <= ARM_IN    it lies on the plateau, dipping CLOTH_SAG between
+           ARM_IN..ARM_OUT  it follows the legs down to the shoulder
+           |x| >  ARM_OUT   it leaves the wood and hangs
+
+         s is how far it has settled: 0 held flat in the air, 1 lying on the
+         rehal. Re-run per frame while it falls, left alone once it is down. */
       drape = function(s){
         var k = 0;
         for(var j = 0; j <= NV; j++){
           var v = j/NV*2 - 1;
           for(var i = 0; i <= NU; i++){
-            var u = i/NU*2 - 1, a = Math.abs(u);
-            var fall = a < .24 ? 0 : Math.pow((a - .24)/.76, 1.65);
-            var y = (-fall * 1.02 + Math.cos(u * 1.3) * .07) * s;
-            if(a > .85) y += (a - .85)/.15 * .34 * s;              // the flick
-            y += Math.sin(u * 12.5 + .7) * .042 * fall * s;        // folds in the fall
-            y += Math.sin(v * 2.1 + u * 4.2) * .026 * (.22 + fall) * s;
-            y -= Math.pow(Math.max(0, v), 2) * .17 * s;            // the front edge hangs
+            var u = i/NU*2 - 1, x = u * HW, ax = Math.abs(x);
+            var z = v * HD, az = Math.abs(z), y, t;
+            /* ACROSS the frame: plateau, then the legs' slope, then free */
+            if(ax <= ARM_IN){
+              y = -Math.cos(ax / ARM_IN * Math.PI/2) * CLOTH_SAG;
+            }else if(ax <= ARM_OUT){
+              t = (ax - ARM_IN) / (ARM_OUT - ARM_IN);
+              y = -ARM_DROP * (t * t * .78 + t * .22);
+              y += Math.sin(t * 5.2) * .015;                    // slack between the legs
+            }else{
+              t = (ax - ARM_OUT) / (HW - ARM_OUT);              // 0 shoulder, 1 hem
+              y  = -ARM_DROP - Math.pow(t, 1.2) * .98;          // it hangs
+              y += Math.pow(t, 4.0) * .10;                      // the hem kicks a little
+              y += Math.sin(t * 7.1) * .05 * t;                 // folds down the fall
+            }
+            /* ALONG the frame: held up while the wood is under it, then over
+               the front and back edges and down. Without this the rumala was
+               a flat saddle with two stubby wings and the legs stood bare -
+               a cloth laid on a rehal hangs over the front, and the front is
+               the side the camera is on. */
+            if(az > FRAME_Z){
+              var tz = (az - FRAME_Z) / (HD - FRAME_Z);
+              y -= Math.pow(tz, 1.35) * (z > 0 ? .34 : .24);    // the front falls further
+              y += Math.sin(tz * 6.3) * .04 * tz;               // folds in the hang
+            }
+            y += Math.sin(v * 2.1 + u * 4.2) * .022 * (.3 + Math.abs(u));
+            y *= s;
             /* held in the air it is not flat either - a thrown cloth ripples */
             y += Math.sin(u * 3.1 + v * 2.2) * .085 * (1 - s);
-            pos[k++] = u * W/2;
+            pos[k++] = x;
             pos[k++] = y;
-            pos[k++] = v * D/2 + Math.sin(u * 4.3) * .05 * Math.abs(v) * s;
+            pos[k++] = z + Math.sin(u * 4.3) * .05 * Math.abs(v) * s;
           }
         }
         clothGeo.attributes.position.needsUpdate = true;
@@ -3806,27 +3907,58 @@ RAF = requestAnimationFrame(tick);
       clothGeo.setIndex(idx);
       drape(1);
       CLOTH = new THREE.Mesh(clothGeo, mSilk);
-      CLOTH.position.set(0, .26, 0); OBJ.add(CLOTH);
+      CLOTH.position.set(0, CLOTH_REST_Y, 0); OBJ.add(CLOTH);
+      CLOTH_Y = CLOTH_REST_Y;
     })();
 
-    /* the pothi, open on the cloth - steeper than a book on a table, which is
-       how it sits on a rehal, and how the reference frames it */
-    var book = new THREE.Group(); book.position.set(0,.52,.06); book.rotation.x = .40;
+    /* THE POTHI. Each half is hinged at the spine and swings UP from it, so
+       the book is a shut slab at BOOK_SHUT and an open V at BOOK_OPEN. The
+       halves are children of a hinge group rather than slabs offset in x,
+       because a slab offset in x and then rotated swings its far edge
+       through the spine; hinged at the spine it opens the way a book does. */
+    var BOOK_OPEN = .46, BOOK_SHUT = .02, BOOK_TILT = .26, SPINE_H = .22;
+    var book = new THREE.Group(); book.rotation.x = BOOK_TILT;
     BOOK = book;
     [1,-1].forEach(function(sg){
-      var g = new THREE.Group();
-      g.add(slab(1.22,.14,1.54,mPage).translateX(.66*sg));
-      g.add(slab(.035,.145,1.55,mGilt).translateX(1.27*sg));    // the gilt fore-edge
-      g.add(slab(1.34,.055,1.66,mCover).translateX(.66*sg).translateY(-.10));
+      var g = new THREE.Group();                       // the hinge, ON the spine
+      var leafG = new THREE.Group(); leafG.position.x = .70*sg;
+      leafG.add(slab(1.30,.14,1.54,mPage));
+      leafG.add(slab(.035,.145,1.55,mGilt).translateX(.665*sg));   // the gilt fore-edge
+      leafG.add(slab(1.40,.055,1.66,mCover).translateY(-.10));
+      g.add(leafG);
       book.add(g);
       if(sg > 0) BOOKR = g; else BOOKL = g;
     });
     book.add(slab(.15,.22,1.60,mCover));
-    /* the single turning ang - pivot ON the spine, which is the whole trick */
+    /* the single turning ang - pivot ON the spine too */
     var hinge = new THREE.Group(); hinge.position.set(0,.09,0); book.add(hinge);
     var lf = slab(1.20,.011,1.50,mPage); lf.position.x = .64; hinge.add(lf);
     leaf = hinge;
     OBJ.add(book);
+
+    /* The halves rise FROM the spine. Rotating the +x hinge by a negative
+       angle about Z takes it toward -y, which built the book upside down: a
+       tent with its spine on top and its pages splayed downward through the
+       rumala. Positive on the right, negative on the left, opens the V. */
+    BOOKR.rotation.z = BOOK_OPEN; BOOKL.rotation.z = -BOOK_OPEN;
+    book.position.set(0, 0, .04);
+
+    /* SEAT THE POTHI ON THE CLOTH. Not by the book's bounding box: the book
+       is tilted back, so its lowest point is the front corner of a cover
+       hanging past the front hem of the rumala, and seating on that leaves
+       the spine floating well clear of the cloth - which is the gap that was
+       there. What has to touch is the SPINE, and only where the eye can see
+       it: the camera is above and in front, so the back of the contact is
+       hidden by the book itself and the front is not. Both heights are taken
+       at the same point along the spine and matched there. */
+    var _zc = .55;                                                  // where they meet
+    var _spineBottom = -(SPINE_H/2) * Math.cos(BOOK_TILT) - _zc * Math.sin(BOOK_TILT);
+    var _fz = R_Z + .07;
+    var _clothAtZc   = -CLOTH_SAG - (_zc > _fz
+      ? Math.pow((_zc - _fz) / (1.72/2 - _fz), 1.35) * .34 : 0);
+    var BOOK_REST_Y  = CLOTH_REST_Y + _clothAtZc + .022 - _spineBottom;
+    book.position.y = BOOK_REST_Y;
+    BOOK_Y = BOOK_REST_Y; OPEN_A = BOOK_OPEN; SHUT_A = BOOK_SHUT; BOOK_TILT_R = BOOK_TILT;
 
     /* a contact shadow, so the rehal stands on the cream rather than floating */
     (function(){
@@ -3854,17 +3986,38 @@ RAF = requestAnimationFrame(tick);
      instead of sitting behind it. The camera's near and far marks are
      written from wherever the object ended up, so the pull-back still lands
      on the same framing at every width. */
+  /* TWO FRAMINGS, and the scroll moves between them.
+
+     BUILD is where the object is set out: large and near the middle, with
+     the copy beside it. SETTLED is where the page lives afterwards: smaller
+     and over to the side, with the hero's own title and lede in the space it
+     gives back. The last beat lerps one into the other, which is the "it
+     moves aside and the page carries on" the brief asks for.
+
+     fov is VERTICAL, so a narrow frame loses horizontal room first - the
+     same trap that put the archery bow off the side of a phone - and both
+     framings are fitted to the frustum rather than written as fixed numbers. */
   function fitObj(){
     if(!OBJ || !cam) return;
     var halfW = HALF_V * 11.4 * cam.aspect, HALF_OBJ = 1.85;
-    var s = Math.min(.92, halfW * .88 / HALF_OBJ);
-    OBJ.scale.setScalar(s);
-    var x = Math.max(0, Math.min(1.55, halfW - HALF_OBJ * s - .12));
-    OBJ.position.set(x, cam.aspect < 1 ? .92 : .15, 0);
-    CAM_FAR_P.set(x - .45, 2.30 + OBJ.position.y * .5, 11.4);
-    CAM_FAR_T.set(x - 1.40 * (x/1.55), .35 + OBJ.position.y * .5, 0);
-    CAM_NEAR_P.set(x + .91 * s, .62 + OBJ.position.y, 3.15);
-    CAM_NEAR_T.set(x + .07, .34 + OBJ.position.y, 0);
+    var tall = cam.aspect < 1;
+    SET.s = Math.min(.92, halfW * .88 / HALF_OBJ);
+    SET.x = Math.max(0, Math.min(1.55, halfW - HALF_OBJ * SET.s - .12));
+    SET.y = tall ? .92 : .15;
+    /* the build sits bigger and closer to the middle; on a portrait frame it
+       cannot grow, so it only moves */
+    BLD.s = Math.min(1.34, halfW * .98 / HALF_OBJ);
+    BLD.x = tall ? SET.x : SET.x * .42;
+    BLD.y = tall ? .62 : .02;
+    CAM_FAR_P.set(SET.x - .45, 2.30 + SET.y * .5, 11.4);
+    CAM_FAR_T.set(SET.x - 1.40 * (SET.x/1.55), .35 + SET.y * .5, 0);
+    placeObj(1);
+  }
+  function placeObj(k){                    // 0 = the build, 1 = settled
+    if(!OBJ) return;
+    OBJ.scale.setScalar(BLD.s + (SET.s - BLD.s) * k);
+    OBJ.position.set(BLD.x + (SET.x - BLD.x) * k,
+                     BLD.y + (SET.y - BLD.y) * k, 0);
   }
 
   var lastW = 0, lastH = 0;
@@ -3876,16 +4029,19 @@ RAF = requestAnimationFrame(tick);
       cam.aspect = w/h; cam.updateProjectionMatrix(); fitObj();
     }
     /* ── the build ──────────────────────────────────────────────────────
-       One progress value, 0 as the pin takes the screen and 1 as it lets go,
-       drives all of it. The beats overlap by a few per cent on purpose:
-       parts arriving in a strict queue looks mechanical, parts that overlap
-       look choreographed. The camera pushes in across the whole range, which
-       is what keeps something moving between the landings.
+       One progress value, 0 as the pin takes the screen and 1 as it lets go.
 
-         REHAL  .06 → .34    comes down and lands
-         CLOTH  .30 → .62    falls over it and settles into its drape
-         POTHI  .56 → .84    comes down, opens as it arrives
-         ANG    .80 → .98    one ang lifts and turns over                    */
+         .00 - .09  an empty stage. Only the title.
+         .09 - .34  the title goes; the REHAL comes down and lands
+         .30 - .60  the RUMALA falls and settles onto the arms
+         .56 - .84  the POTHI comes down shut and opens as it lands
+         .80 - .98  one ang turns over
+         .84 - 1.0  the whole thing moves aside; the hero takes the space
+
+       Each part is hidden outright until its own beat starts. The brief is
+       explicit that the stage is empty at first, and an object sitting
+       off-screen is still an object the renderer is drawing and the eye can
+       catch at the edge of the frame. */
     ex += (mx - ex) * 0.06; ey += (my - ey) * 0.06;
     var p = heroP;
     function seg(a, b){ return Math.max(0, Math.min(1, (p - a) / (b - a))); }
@@ -3893,47 +4049,47 @@ RAF = requestAnimationFrame(tick);
     function outBack(t){ var c = 1.28; t = 1 - t; return 1 - (t*t*t - c*t*t*(1-t)); }
 
     if(REHAL){
-      var r = outBack(seg(.06, .34));
+      var rs = seg(.09, .34), r = outBack(rs);
+      REHAL.visible = rs > 0;
       REHAL.position.y = (1 - r) * 3.4;
       REHAL.rotation.x = (1 - r) * -.42;
       REHAL.rotation.z = (1 - r) * .16;
     }
     if(CLOTH && drape){
-      var c = seg(.30, .62), ce = outCubic(c);
-      CLOTH.position.y = .26 + (1 - ce) * 2.9;
+      var cs = seg(.30, .60), ce = outCubic(cs);
+      CLOTH.visible = cs > 0;
+      CLOTH.position.y = CLOTH_Y + (1 - ce) * 2.6;
       CLOTH.rotation.z = (1 - ce) * -.10;
       /* only re-drape while it is actually falling; once settled the
          geometry is left alone rather than recomputed every frame */
-      if(c !== clothWas){ drape(ce); clothWas = c; }
+      if(cs !== clothWas){ drape(ce); clothWas = cs; }
     }
     if(BOOK){
-      var b = seg(.56, .84), be = outCubic(b);
-      BOOK.position.y = .52 + (1 - be) * 2.6;
-      BOOK.rotation.x = .40 * be + (1 - be) * .95;
-      /* it opens as it comes down: shut in the air, open by the time it
-         lands, which is the one gesture that says pothi rather than box */
-      var ang = .40 * be + (1 - be) * .035;
-      if(BOOKR) BOOKR.rotation.z = -ang;
-      if(BOOKL) BOOKL.rotation.z =  ang;
+      var bs = seg(.56, .84), be = outCubic(bs);
+      BOOK.visible = bs > 0;
+      BOOK.position.y = BOOK_Y + (1 - be) * 2.4;
+      BOOK.rotation.x = BOOK_TILT_R - (1 - be) * .50;
+      /* It arrives SHUT and opens as it lands. The gate is on the raw scroll
+         fraction, not the eased one: eased, the book was three quarters open
+         while still high in the air, because outCubic is already past .6
+         when the fall has barely started. On the raw value it stays a closed
+         pothi until the last stretch, and the V is something that happens AT
+         the cloth rather than above it. */
+      var open = SHUT_A + (OPEN_A - SHUT_A) * outCubic(Math.max(0, (bs - .62) / .38));
+      if(BOOKR) BOOKR.rotation.z =  open;
+      if(BOOKL) BOOKL.rotation.z = -open;
     }
     /* The ang lifts UP and over the spine. The sign here is the whole thing:
        the leaf hangs off the hinge at +x, and a NEGATIVE rotation about Z
        takes +x toward -y - so it used to sweep downward, through the right
-       page block and out through the rehal, instead of turning over. Positive
-       arcs it up, across the spine, and down onto the left side, which is
-       what turning an ang looks like. 2.5 rad is 143 degrees, so it comes to
-       rest leaning on the left block rather than lying flat - mid-turn, which
-       reads better than finished. */
+       page block and out through the rehal, instead of turning over. */
     if(leaf) leaf.rotation.z = outCubic(seg(.80, .98)) * 2.5;
 
-    /* The push-in, continuous across the whole runway. It ends exactly on
-       the framing the composition was tuned for and starts wider than it -
-       lerpVectors extrapolates past 1, so one mark serves for both. */
-    var e = outCubic(Math.max(0, Math.min(1, p * 1.06))), t = 1.38 - .38 * e;
-    cP.lerpVectors(CAM_NEAR_P, CAM_FAR_P, t);
-    cT.lerpVectors(CAM_NEAR_T, CAM_FAR_T, t);
-    cam.position.set(cP.x + ex * 0.5, cP.y - ey * 0.3, cP.z);
-    cam.lookAt(cT);
+    /* and the move aside */
+    placeObj(outCubic(seg(.84, 1)));
+    cam.position.set(CAM_FAR_P.x + ex * 0.5, CAM_FAR_P.y - ey * 0.3, CAM_FAR_P.z);
+    cam.lookAt(CAM_FAR_T);
+
     if(typ) typ.style.transform =
       "translate3d(" + (-ex*7).toFixed(1) + "px," + (-ey*5).toFixed(1) + "px,0)" +
       " rotateY(" + (-ex*2.2).toFixed(2) + "deg) rotateX(" + (ey*1.3).toFixed(2) + "deg)";
@@ -4026,24 +4182,49 @@ RAF = requestAnimationFrame(tick);
     if(nav && window.ResizeObserver) new ResizeObserver(navVar).observe(nav);
   })();
   var CAPS_EL = [].slice.call(document.querySelectorAll("#s2caps .s2cap"));
-  var capWas = 0;
-  var CAP_AT = [0, .30, .56, .80];        // one threshold per beat
+  var s2intro = document.getElementById("s2intro");
+  var capWas = -1, layerWas = "";
+  /* one caption per part, each coming in a little before its part does */
+  var CAP_AT = [.09, .30, .56];
   var noMotion = matchMedia("(prefers-reduced-motion:reduce)");
   function pinned(){ return innerWidth > 900 && !noMotion.matches; }
 
   function heroScroll(){
     if(!s2hero || !s2pin) return;
-    if(!pinned()){ heroP = 1; return; }   // the fallback frame: fully assembled
+    if(!pinned()){                        // the fallback frame: fully assembled
+      heroP = 1;
+      if(typ) typ.classList.add("on");
+      CAPS_EL.forEach(function(e){ e.classList.add("on"); });
+      return;
+    }
     var run = Math.max(1, s2hero.offsetHeight - s2pin.offsetHeight);
     heroP = Math.max(0, Math.min(1, (vid.scrollTop - s2hero.offsetTop) / run));
-    var i = 0;
-    for(var k = CAP_AT.length - 1; k >= 0; k--){ if(heroP >= CAP_AT[k]){ i = k; break; } }
-    if(i !== capWas){
-      if(CAPS_EL[capWas]) CAPS_EL[capWas].classList.remove("on");
-      capWas = i;
-      if(CAPS_EL[i]) CAPS_EL[i].classList.add("on");
+
+    /* THREE LAYERS, one at a time: the opening title, then the captions that
+       run alongside the build, then the hero the page settles into. Swapped
+       at a threshold and cross-faded, never driven as parallel opacities -
+       four opacities read off the progress value put two half-faded blocks
+       of type on top of each other on a fast flick, which is unreadable in a
+       way that does not look broken. */
+    var layer = heroP < .07 ? "intro" : (heroP < .84 ? "caps" : "hero");
+    if(layer !== layerWas){
+      layerWas = layer;
+      if(s2intro) s2intro.classList.toggle("on", layer === "intro");
+      if(typ) typ.classList.toggle("on", layer === "hero");
+      if(layer !== "caps" && capWas >= 0 && CAPS_EL[capWas]){
+        CAPS_EL[capWas].classList.remove("on"); capWas = -1;
+      }
     }
-    if(s2hint) s2hint.style.opacity = heroP > .06 ? "0" : "1";
+    if(layer === "caps"){
+      var i = 0;
+      for(var k = CAP_AT.length - 1; k >= 0; k--){ if(heroP >= CAP_AT[k]){ i = k; break; } }
+      if(i !== capWas){
+        if(capWas >= 0 && CAPS_EL[capWas]) CAPS_EL[capWas].classList.remove("on");
+        capWas = i;
+        if(CAPS_EL[i]) CAPS_EL[i].classList.add("on");
+      }
+    }
+    if(s2hint) s2hint.style.opacity = heroP > .05 ? "0" : "1";
   }
 
   (function loop(){
