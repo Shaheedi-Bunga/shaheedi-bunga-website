@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="en-GB">
+<html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Safeguarding · Shaheedi Bunga</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Safeguarding · Shaheedi Bunga</title>
 <meta name="description" content="How to raise a safeguarding concern about a child or adult at Shaheedi Bunga in Leicester, and the outside numbers you can call instead if you would rather not come to us.">
 <link rel="canonical" href="https://www.shaheedibunga.com/safeguarding/">
 <meta property="og:type" content="website">
@@ -15,177 +15,140 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/Assets/Brand/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="/Assets/Brand/apple-touch-icon-180.png">
 <link rel="stylesheet" href="/lib/fonts.css">
-<link rel="stylesheet" href="../site.css">
-<link rel="icon" href="../Assets/Brand/favicon-32.png" sizes="32x32">
-<link rel="apple-touch-icon" href="../Assets/Brand/apple-touch-icon-180.png">
+<link rel="stylesheet" href="/kit/kit.css">
+<!-- before paint: light unless this viewer chose dark (or ?mood= asks), so
+     there is never a flash of the wrong mode -->
+<script>(function(){var m=(/[?&]mood=(light|dark)/.exec(location.search)||[])[1];
+  if(!m){try{m=localStorage.getItem("sb-mood");}catch(e){}}
+  document.documentElement.dataset.mood=m==="dark"?"dark":"light";})();</script>
+
 <style>
-/* ── READ BEFORE EDITING ──
-   This page deliberately does NOT claim things the charity has not confirmed.
-   It gives people a working route to raise a concern, which a children's
-   charity needs on its website, without asserting apparatus that may not be
-   in place. Nothing here says a policy document exists, that a Designated
-   Safeguarding Lead has been appointed, or that volunteers are DBS checked.
+/* 999 first, in a colour nothing else on the site uses */
+/* a.urgent, so the policy's gold link colour cannot reach the 999 */
+.policy a.urgent{ color:#FBF3EE; }
+.urgent{ display:grid; grid-template-columns:auto 1fr; gap:calc(var(--u)*2.4); align-items:center; background:#7A1F1A; color:#FBF3EE;
+  border-radius:6px; padding:calc(var(--u)*3) calc(var(--u)*3.4); text-decoration:none; }
+.urgent b{ font-family:var(--display); font-weight:600; font-size:max(54px,calc(var(--u)*7)); line-height:.9; }
+.urgent p{ margin:0; color:#FBF3EE !important; font-size:max(17px,calc(var(--u)*1.15)); }
+.urgent p strong{ display:block; font-family:var(--mono); font-weight:400; font-size:11px; letter-spacing:.2em; text-transform:uppercase; margin-bottom:.5em; opacity:.85; }
+html[data-mood="dark"] .urgent{ background:#8E2A22; }
 
-   CHECKED AGAINST THE PUBLIC REGISTER on 8 October 2026. The Governance tab
-   of the Charity Commission entry for 1185103 lists, under Policies:
-       Safeguarding policy and procedures
-       Safeguarding vulnerable beneficiaries
-       Complaints handling
-   So the trustees have told their regulator that both policies exist. An
-   earlier draft of this page said one was still being drafted - that
-   contradicted the charity's own declaration to its regulator, and has been
-   corrected. Do not reintroduce it.
-
-   THE TRUSTEES STILL NEED TO ADD:
-     1. The named Designated Safeguarding Lead and how to reach them directly.
-        Right now concerns go to the general email, which is slower and less
-        confidential than it should be.
-     2. Whether volunteers who work with children hold an enhanced DBS check.
-        The register does not record this either way, so the page says nothing.
-     3. The policy documents themselves, so they can be linked here instead of
-        sent by email on request.
-
-   The outside numbers were checked on 8 October 2026:
-     NSPCC helpline                     0808 800 5000
-     Leicester Duty and Advice Service  0116 454 1004  (24 hours)
-     Police                             999 / 101
-   These always work regardless of what the charity has in place, which is
-   exactly why they are on the page. If you edit this file, re-check them. */
-.policy{ max-width:62ch; margin-top:calc(var(--u)*3); border-top:1px solid var(--line); }
-.policy section{ padding:calc(var(--u)*2) 0; border-bottom:1px solid var(--line); }
-.policy h2{ font-size:max(19px,calc(var(--u)*1.7)); margin-bottom:calc(var(--u)*0.6); }
-.policy p{ margin:0 0 calc(var(--u)*0.8); color:var(--muted); }
-.policy p:last-child{ margin-bottom:0; }
-.policy b{ color:var(--ink); font-weight:600; }
-.urgent{ border-left:3px solid var(--gold); padding-left:calc(var(--u)*1.2);
-  margin:calc(var(--u)*1) 0; }
-.nums{ margin:0; }
-.nums div{ display:grid; grid-template-columns:minmax(0,22ch) minmax(0,1fr);
-  gap:calc(var(--u)*0.6) calc(var(--u)*1.4); padding:calc(var(--u)*0.9) 0;
-  border-bottom:1px solid var(--line); align-items:baseline; }
-.nums div:last-child{ border-bottom:0; }
-@media(max-width:620px){ .nums div{ grid-template-columns:1fr; gap:calc(var(--u)*0.2); } }
-.nums dt{ font-family:var(--mono); font-size:max(10px,calc(var(--u)*0.7));
-  letter-spacing:.14em; text-transform:uppercase; color:var(--gold); margin:0; }
-.nums dd{ margin:0; font-size:max(16px,calc(var(--u)*1.3)); color:var(--ink); }
-.nums dd .sub{ display:block; color:var(--muted); font-size:max(13px,calc(var(--u)*1.02));
-  margin-top:calc(var(--u)*0.3); }
+.nums{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:calc(var(--u)*1.2); margin:0; }
+.num{ display:block; background:var(--cream-2); border-radius:4px; padding:calc(var(--u)*2.2); text-decoration:none; transition:transform .5s var(--ease-out), background .3s; }
+.num:hover{ transform:translateY(-3px); background:var(--cream-3); }
+.num .dt{ display:block; font-family:var(--mono); font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--gold-text); }
+.num .dd{ display:block; margin:.4em 0 0; font-family:var(--display); font-weight:500; font-size:max(28px,calc(var(--u)*2.8)); line-height:1; color:var(--navy); }
+.num .dd small{ display:block; font-family:var(--body); font-size:14px; line-height:1.45; color:var(--navy-70); margin-top:.7em; }
+@media(max-width:700px){ .nums{ grid-template-columns:1fr; } }
 </style>
 </head>
 <body>
-
-<header class="top">
-  <img src="../Assets/Brand/gurmat-vidyala-84.png" alt="" width="42" height="42">
-  <span class="mark"><b>Shaheedi Bunga</b><i>Gurmat Vidyala</i></span>
-  <nav>
-    <a href="../">Home</a>
-    <a href="../classes/">Classes</a>
-    <a href="../resources/">Resources</a>
-    <a href="../gallery/">Gallery</a>
-    <a href="../about/">About</a>
-    <a href="../contact/">Contact</a>
-    <a href="../donate/">Donate</a>
-  </nav>
+<a class="skip" href="#main">Skip to content</a>
+<header class="mast">
+  <a class="brand" href="/" aria-label="Shaheedi Bunga, home"><img src="/kit/img/gurmat-vidyala-84.png" alt="" width="40" height="40">
+    <span><b>Shaheedi Bunga</b><i>Gurmat Vidyala</i></span></a>
+  <nav aria-label="Main" id="site-nav"><a href="/classes/">Classes</a><a href="/camps/">Camps</a><a href="/resources/">Resources</a><a href="/gallery/">Gallery</a><a href="/about/">About</a><a href="/contact/">Contact</a><a href="/donate/">Donate</a></nav>
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav"><span>Menu</span><i aria-hidden="true"></i></button>
+  <a class="wa" href="https://wa.me/447394848407?text=Sat%20Sri%20Akal%20%E2%80%94%20I'd%20like%20to%20ask%20about%20classes." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.6 2 2.18 6.42 2.18 11.86c0 1.74.46 3.44 1.32 4.94L2.1 22l5.34-1.4a9.8 9.8 0 0 0 4.6 1.17h.01c5.43 0 9.85-4.42 9.85-9.86 0-2.63-1.02-5.11-2.88-6.97A9.79 9.79 0 0 0 12.04 2z"/></svg>WhatsApp</a>
 </header>
 
-<main class="wrap">
-  <p class="lbl">Shaheedi Bunga &middot; <span class="gur">ਸੁਰੱਖਿਆ</span></p>
-  <h1>Raising a<br>concern.</h1>
-  <p class="lede">Children and adults learn here. If something about a child&rsquo;s
-    safety or welfare worries you &mdash; at a class, a camp or a samagam &mdash;
-    please say so. You do not need to be certain, and you do not need to have
-    proof.</p>
 
-  <div class="policy">
-    <section>
+<main id="main">
+<section class="phero no-art paper" data-hero>
+  <div class="phero-in" style="min-height:min(66svh,700px)">
+    <div>
+      <p class="eyebrow">Shaheedi Bunga · Safeguarding</p>
+      <span class="gur gur-line" lang="pa">ਸੁਰੱਖਿਆ</span>
+      <h1 class="display">Raising a <em>concern.</em></h1>
+      <p class="lede">Children and adults learn here. If something about a child's safety or welfare worries you, at a class,
+        a camp or a samagam, please say so. You do not need to be certain, and you do not need to have proof.</p>
+    </div>
+  </div>
+</section>
+
+<div class="policy paper">
+  <nav class="toc" aria-label="On this page">
+    <a href="#danger">Immediate danger</a><a href="#telling">Telling us</a><a href="#outside">Going outside the charity</a>
+    <a href="#photos">Photographs of children</a><a href="#policy">Our policy</a><a href="#who">Who we are</a>
+  </nav>
+  <div>
+    <section id="danger">
       <h2>If someone is in immediate danger</h2>
-      <div class="urgent">
-        <p><b>Call 999.</b> Do not wait to tell us first, and do not wait to be
-          sure. The police and the council can act straight away; we cannot.</p>
+      <a class="urgent" href="tel:999"><b>999</b>
+        <p><strong>Call now</strong>Do not wait to tell us first, and do not wait to be sure. The police and the council can act straight away; we cannot.</p></a>
+    </section>
+
+    <section id="telling">
+      <h2>Telling us</h2>
+      <p>Speak to whoever is teaching the class, or write to <a href="mailto:gurmat@shaheedibunga.com">gurmat@shaheedibunga.com</a>.
+        Say what you saw or heard, when, and who was there. You can ask us to keep your name out of it, and we will unless the
+        law or a child's safety makes that impossible.</p>
+      <p>We will come back to you. If you would rather not raise it with us at all, for any reason, including if your concern is
+        about one of our own volunteers, use one of the numbers below instead. They are not a last resort; they are a proper
+        route and they are always open to you.</p>
+    </section>
+
+    <section id="outside">
+      <h2>Going outside the charity</h2>
+      <div class="nums">
+        <a class="num" href="tel:999"><span class="dt">Emergency</span><span class="dd">999<small>A child is in immediate danger, or a crime is happening now.</small></span></a>
+        <a class="num" href="tel:101"><span class="dt">Police, non-urgent</span><span class="dd">101<small>Something has happened but nobody is in danger right now.</small></span></a>
+        <a class="num" href="tel:01164541004"><span class="dt">Leicester City Council</span><span class="dd">0116 454 1004<small>Duty and Advice Service, 24 hours. A social worker will talk the concern through with you and tell you what happens next.</small></span></a>
+        <a class="num" href="tel:08088005000"><span class="dt">NSPCC helpline</span><span class="dd">0808 800 5000<small>Free, and you can stay anonymous. For adults worried about a child.</small></span></a>
+        <a class="num" href="tel:08001111"><span class="dt">Childline</span><span class="dd">0800 1111<small>For children and young people, free and confidential.</small></span></a>
       </div>
     </section>
 
-    <section>
-      <h2>Telling us</h2>
-      <p>Speak to whoever is teaching the class, or write to
-        <a href="mailto:gurmat@shaheedibunga.com">gurmat@shaheedibunga.com</a>.
-        Say what you saw or heard, when, and who was there. You can ask us to
-        keep your name out of it, and we will unless the law or a child&rsquo;s
-        safety makes that impossible.</p>
-      <p>We will come back to you. If you would rather not raise it with us at
-        all &mdash; for any reason, including if your concern is about one of our
-        own volunteers &mdash; use one of the numbers below instead. They are not
-        a last resort; they are a proper route and they are always open to you.</p>
-    </section>
-
-    <section>
-      <h2>Going outside the charity</h2>
-      <dl class="nums">
-        <div>
-          <dt>Emergency</dt>
-          <dd>999
-            <span class="sub">A child is in immediate danger, or a crime is happening now.</span></dd>
-        </div>
-        <div>
-          <dt>Police, non-urgent</dt>
-          <dd>101
-            <span class="sub">Something has happened but nobody is in danger right now.</span></dd>
-        </div>
-        <div>
-          <dt>Leicester City Council</dt>
-          <dd>0116 454 1004
-            <span class="sub">Duty and Advice Service, 24 hours. A social worker will
-              talk the concern through with you and tell you what happens next.</span></dd>
-        </div>
-        <div>
-          <dt>NSPCC helpline</dt>
-          <dd>0808 800 5000
-            <span class="sub">Free, and you can stay anonymous. For adults worried
-              about a child.</span></dd>
-        </div>
-        <div>
-          <dt>Childline</dt>
-          <dd>0800 1111
-            <span class="sub">For children and young people, free and confidential.</span></dd>
-        </div>
-      </dl>
-    </section>
-
-    <section>
+    <section id="photos">
       <h2>Photographs of children</h2>
-      <p>This website and our social media show photographs of classes and camps,
-        and children appear in some of them. If your child is in one and you would
-        rather they were not, <b>tell us and we will take it down</b>. You do not
-        have to give a reason, and it changes nothing about their place in the class.</p>
+      <p>This website and our social media show photographs of classes and camps, and children appear in some of them. If your
+        child is in one and you would rather they were not, <b>tell us and we will take it down</b>. You do not have to give a
+        reason, and it changes nothing about their place in the class.</p>
     </section>
 
-    <section>
+    <section id="policy">
       <h2>Our policy</h2>
-      <p>The trustees have adopted a <b>safeguarding policy</b> and a separate
-        policy on <b>safeguarding vulnerable beneficiaries</b>. Both are recorded
-        on the charity&rsquo;s entry in the
+      <p>The trustees have adopted a <b>safeguarding policy</b> and a separate policy on <b>safeguarding vulnerable
+        beneficiaries</b>. Both are recorded on the charity's entry in the
         <a href="https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/5133183/governance" target="_blank" rel="noopener">register of charities</a>,
         where anyone can check them.</p>
-      <p>Neither is published on this website yet. If you would like to read
-        either one, email <a href="mailto:gurmat@shaheedibunga.com">gurmat@shaheedibunga.com</a>
-        and ask.</p>
-      <p>We have not yet put the name of the person responsible for safeguarding
-        on this page. Until it is here, use the email above, or any of the numbers
-        further up &mdash; those work whatever we have or have not written down.</p>
+      <p>Neither is published on this website yet. If you would like to read either one, email
+        <a href="mailto:gurmat@shaheedibunga.com">gurmat@shaheedibunga.com</a> and ask.</p>
+      <p>We have not yet put the name of the person responsible for safeguarding on this page. Until it is here, use the email
+        above, or any of the numbers further up: those work whatever we have or have not written down.</p>
     </section>
 
-    <section>
+    <section id="who">
       <h2>Who we are</h2>
-      <p>Shaheedi Bunga, a Charitable Incorporated Organisation registered in
-        England and Wales, no. <b>1185103</b>.<br>
+      <p>Shaheedi Bunga, a Charitable Incorporated Organisation registered in England and Wales, no. <b>1185103</b>.<br>
         22 Beckett Road, Leicester LE5 0HE, United Kingdom.</p>
       <p>Serious incidents can also be reported to the Charity Commission at
         <a href="https://www.gov.uk/guidance/how-to-report-a-serious-incident-in-your-charity" target="_blank" rel="noopener">gov.uk</a>.</p>
     </section>
   </div>
+</div>
 </main>
 
-<p class="foot">Shaheedi Bunga &middot; Registered charity in England &amp; Wales &middot; 1185103<br><a href="../privacy/">Privacy</a> &middot; <a href="../safeguarding/">Safeguarding</a></p>
+<footer class="foot">
+  <p class="big">Come and sit<br>with the <em>sangat.</em></p>
+  <div class="cols">
+    <div><h4>Shaheedi Bunga</h4><p style="margin:0;max-width:34ch">A Sikh education charity in Leicester. Every class is free and taught by volunteers.</p></div>
+    <div><h4>Vidyale</h4><a href="/santhiya/">Santhiya</a><a href="/saaj/dilruba/">Kirtan</a><a href="/akhara/archery/">Archery</a><a href="/classes/">All classes</a><a href="/camps/">Camps</a></div>
+    <div><h4>Charity</h4><a href="/about/">About</a><a href="/donate/">Donate</a><a href="/gallery/">Gallery</a><a href="/resources/">Resources</a><a href="/library/">Library</a></div>
+    <div><h4>Contact</h4><a href="https://wa.me/447394848407" target="_blank" rel="noopener">+44 7394 848407</a><a href="mailto:gurmat@shaheedibunga.com">gurmat@shaheedibunga.com</a><a href="/safeguarding/">Safeguarding</a><a href="/privacy/">Privacy</a></div>
+  </div>
+  <div class="legal"><span>Registered charity in England &amp; Wales · 1185103</span><a href="/" style="display:inline">Home · the Parikrama</a></div>
+</footer>
+
+<script src="/kit/lib/gsap.min.js"></script>
+<script src="/kit/lib/ScrollTrigger.min.js"></script>
+<script src="/kit/lib/SplitText.min.js"></script>
+<script src="/kit/lib/lenis.min.js"></script>
+<script src="/kit/kit.js"></script>
+
+<script>KIT.start();</script>
 </body>
 </html>

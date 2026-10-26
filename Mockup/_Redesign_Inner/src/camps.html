@@ -1,0 +1,95 @@
+<!--@head title="Camps"-->
+<style>
+/* four camps, each a row: number, name in Gurmukhi and English, the words,
+   and three facts. Copy is the live page's, word for word. */
+.camps{ border-top:1px solid var(--navy); }
+.camp{ display:grid; grid-template-columns:80px minmax(0,1.1fr) minmax(0,1.3fr); gap:calc(var(--u)*3); padding:calc(var(--u)*4) 0;
+  border-bottom:1px solid var(--line); align-items:start; }
+.camp .n{ font-family:var(--mono); font-size:12px; letter-spacing:.14em; color:var(--gold-text); padding-top:.9em; margin:0; }
+.camp h2{ font-family:var(--display); font-weight:500; font-size:max(34px,calc(var(--u)*4.6)); line-height:.95; margin:0; letter-spacing:-.015em; }
+.camp h2 .gur{ display:block; font-size:max(17px,calc(var(--u)*1.4)); color:var(--gold-text); margin-bottom:.6em; line-height:1.4; }
+.camp .body p{ margin:0; color:var(--navy-70); font-size:max(17px,calc(var(--u)*1.2)); max-width:48ch; }
+.camp dl{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:calc(var(--u)*1.6); margin:calc(var(--u)*2.4) 0 0; padding-top:calc(var(--u)*1.6); border-top:1px solid var(--line); }
+.camp dt{ font-family:var(--mono); font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--gold-text); margin-bottom:.5em; }
+.camp dd{ margin:0; font-size:max(15px,calc(var(--u)*1)); line-height:1.4; }
+@media(max-width:900px){ .camp{ grid-template-columns:1fr; gap:14px; } .camp .n{ padding:0; } }
+@media(max-width:600px){ .camp dl{ grid-template-columns:1fr; gap:12px; } }
+.tail{ margin:calc(var(--u)*4) 0 calc(var(--u)*10); color:var(--navy-70); font-size:max(17px,calc(var(--u)*1.2)); max-width:56ch; }
+.tail a{ color:var(--gold-text); }
+</style>
+</head>
+<body>
+<!--@mast current="camps" wa="the camps"-->
+
+<main id="main">
+<section class="phero paper" data-hero>
+  <div class="phero-in">
+    <div>
+      <p class="eyebrow">Camps</p>
+      <h1 class="display">A fortnight, <em>not an hour.</em></h1>
+      <p class="lede">The weekly classes keep going all year. The camps are the other thing the vidyala does: whole days and
+        whole weeks given to one subject, with teachers who come in for it. They are free, like everything else, and langar
+        runs throughout.</p>
+    </div>
+    <figure class="phero-art">
+      <div class="arch"><img src="img/a-a14.jpg" alt="Shastar laid out on a cloth: a dhal, a tabar and a sword."></div>
+      <span class="arch-line" aria-hidden="true"></span>
+      <figcaption>Shastar vidya · Hola Mohalla UK</figcaption>
+    </figure>
+  </div>
+</section>
+
+<div class="wrapx paper">
+  <div class="camps">
+    <section class="camp" data-fade>
+      <p class="n">01</p>
+      <h2><span class="gur" lang="pa">ਗੁਰਬਾਣੀ ਵਿੱਦਿਆ ਕੈਂਪ</span>Gurbani Vidhya Camp</h2>
+      <div class="body">
+        <p>A two-week intensive in the summer, and the most serious teaching the charity does. One granth is taken and worked
+          through properly over the fortnight.</p>
+        <dl><div><dt>Where</dt><dd>Guru Tegh Bahadur Gurdwara</dd></div><div><dt>When</dt><dd>Two weeks each August</dd></div>
+          <div><dt>For</dt><dd>Older students and adults</dd></div></dl>
+      </div>
+    </section>
+    <section class="camp" data-fade>
+      <p class="n">02</p>
+      <h2><span class="gur" lang="pa">ਗੁਰਬਾਣੀ ਸੰਥਿਆ ਕੈਂਪ</span>Gurbani Santhiya Camp</h2>
+      <div class="body">
+        <p>Several days of santhiya in a row, morning or afternoon, with nothing else in the way. It is the quickest a reader
+          moves: a week of this is worth a term of Tuesdays.</p>
+        <dl><div><dt>Where</dt><dd>Gurudwara Shri Guru Dashmesh Sahib</dd></div><div><dt>When</dt><dd>Several times a year, in the holidays</dd></div>
+          <div><dt>For</dt><dd>Any age, any level</dd></div></dl>
+      </div>
+    </section>
+    <section class="camp" data-fade>
+      <p class="n">03</p>
+      <h2><span class="gur" lang="pa">ਸਿੱਖੀ ਕੈਂਪ</span>Sikhi Camp</h2>
+      <div class="body">
+        <p>The children's camp, and the biggest thing the vidyala runs by numbers. Whole days of itihaas, kirtan, games and
+          langar, pitched at children from about five upwards.</p>
+        <dl><div><dt>Where</dt><dd>Moves between the gurdware</dd></div><div><dt>When</dt><dd>School holidays</dd></div>
+          <div><dt>For</dt><dd>Children from 5</dd></div></dl>
+      </div>
+    </section>
+    <section class="camp" data-fade>
+      <p class="n">04</p>
+      <h2><span class="gur" lang="pa">ਹੋਲਾ ਮਹੱਲਾ</span>Hola Mohalla UK</h2>
+      <div class="body">
+        <p>The national gathering the charity hosts: gatka, archery, horse riding, axe and chakar throwing, rifle shooting. A
+          day of shastar vidya rather than a class.</p>
+        <dl><div><dt>Where</dt><dd>Leicester: the venue changes</dd></div><div><dt>When</dt><dd>Around Hola Mohalla, in March</dd></div>
+          <div><dt>For</dt><dd>Everyone</dd></div></dl>
+      </div>
+    </section>
+  </div>
+  <!-- the live page linked instagram.com/shaheedibunga; the charity's account is @shaheedi_bunga_uk -->
+  <p class="tail" data-fade>Camps are announced on <a href="https://www.instagram.com/shaheedi_bunga_uk/" target="_blank" rel="noopener">Instagram</a>
+    first. To be told directly when the next one opens, <a href="contact.html">message us</a>.</p>
+</div>
+</main>
+
+<!--@foot-->
+<!--@scripts-->
+<script>KIT.start();</script>
+</body>
+</html>

@@ -5,7 +5,8 @@
    Everything is sized from --u (1vw, capped), as on the live site.
    Contrast: every text colour below was picked to clear 4.5:1 on its ground. */
 
-@import url("/lib/fonts.css");
+/* fonts: /lib/fonts.css is linked from each page head, not @imported here,
+   so the browser finds it in one step instead of three */
 
 :root{
   --u:min(1vw,19.2px);
@@ -107,7 +108,25 @@ html[data-mood="dark"] .mast.solid{ background:rgba(12,19,34,.88); color:#F4EFE4
   transform:scaleX(0); transform-origin:right; transition:transform .45s var(--ease-out); }
 .mast nav a:hover{ opacity:1; } .mast nav a:hover::after, .mast nav a[aria-current]::after{ transform:scaleX(1); transform-origin:left; }
 .mast nav a[aria-current]{ opacity:1; }
-@media(max-width:900px){ .mast nav{ display:none; } .mast .wa{ margin-left:auto; } }
+/* phone and tablet: the links fold behind a Menu button and open as a panel
+   under the masthead (the masthead goes solid while it is open) */
+.menu-btn{ display:none; }
+@media(max-width:900px){
+  .mast nav{ display:none; }
+  .menu-btn{ display:inline-flex; align-items:center; gap:10px; margin-left:auto; height:42px; padding:0 14px; border-radius:100px;
+    background:transparent; color:inherit; cursor:pointer; border:1px solid currentColor; border-color:color-mix(in srgb,currentColor 32%,transparent);
+    font:11px/1 var(--mono); letter-spacing:.16em; text-transform:uppercase; }
+  .menu-btn i{ width:14px; height:8px; border-top:1.5px solid currentColor; border-bottom:1.5px solid currentColor; transition:transform .4s var(--ease-out); }
+  .menu-btn[aria-expanded="true"] i{ transform:scaleY(.2); }
+  html.menu-open .mast{ background:var(--cream); color:var(--navy); border-bottom-color:var(--line); }
+  html.menu-open .mast nav{ display:flex; flex-direction:column; position:fixed; left:0; right:0; top:var(--mastH,62px);
+    max-height:calc(100svh - var(--mastH,62px)); overflow:auto; background:var(--cream); padding:8px var(--gx) 28px;
+    border-bottom:1px solid var(--line); gap:0; box-shadow:0 30px 60px -30px rgba(12,19,34,.4); }
+  html.menu-open .mast nav a{ font-family:var(--display); font-size:30px; letter-spacing:-.01em; text-transform:none; opacity:1;
+    padding:14px 0; border-bottom:1px solid var(--line); }
+  html.menu-open .mast nav a::after{ display:none; }
+  html.menu-open .mast nav a[aria-current]{ color:var(--gold-text); }
+}
 /* a phone has no room for the name, the subtitle and a labelled button: the
    button keeps its icon, and the bar is solid from the start so the hero
    never runs underneath it unreadably */
@@ -279,7 +298,7 @@ a.venue:hover .go{ transform:translate(4px,-4px); }
 .theme:focus-visible, .wa:focus-visible, .mast a:focus-visible{ outline:2px solid var(--gold); outline-offset:3px; }
 .theme svg{ width:19px; height:19px; fill:none; stroke:currentColor; stroke-width:1.6; stroke-linecap:round; }
 .theme svg path[d^="M20"]{ fill:currentColor; stroke:none; }
-@media(max-width:900px){ .mast .theme{ margin-left:auto; } .mast .theme + .wa{ margin-left:0; } }
+@media(max-width:900px){ .mast .theme{ margin-left:0; } .mast .theme + .wa{ margin-left:0; } }
 ::view-transition-old(root), ::view-transition-new(root){ animation-duration:.45s; animation-timing-function:cubic-bezier(.2,0,0,1); }
 
 /* reveal targets are visible by default; JS only animates FROM somewhere */

@@ -2,202 +2,154 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Library &middot; Shaheedi Bunga</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Work made by the vidhiarti at Shaheedi Bunga — notes, charts, translations and study aids, free to read.">
-<!-- NOT FINISHED, NOT LINKED, NOT IN THE SITEMAP. The viewer is built and
-     works; the three items in it are SAMPLES pointing at files that already
-     exist in the repo, so the panel can be seen working before there is
-     anything real to put in it. Replace them, then drop the noindex, add the
-     nav entry and the sitemap line. See
-     Content_Drafts/camps-and-library-notes.md. -->
+<title>Library · Shaheedi Bunga</title>
 <meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Work made by the vidhiarti at Shaheedi Bunga — notes, charts, translations and study aids, free to read.">
+<link rel="canonical" href="https://www.shaheedibunga.com/library/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Shaheedi Bunga">
+<meta property="og:title" content="Library &middot; Shaheedi Bunga">
+<meta property="og:description" content="Work made by the vidhiarti at Shaheedi Bunga — notes, charts, translations and study aids, free to read.">
+<meta property="og:url" content="https://www.shaheedibunga.com/library/">
+<meta property="og:image" content="https://www.shaheedibunga.com/share/home.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/Assets/Brand/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="/Assets/Brand/apple-touch-icon-180.png">
 <link rel="stylesheet" href="/lib/fonts.css">
-<link rel="stylesheet" href="../site.css">
-<link rel="icon" href="../Assets/Brand/gurmat-vidyala-84.png">
+<link rel="stylesheet" href="/kit/kit.css">
+<!-- before paint: light unless this viewer chose dark (or ?mood= asks), so
+     there is never a flash of the wrong mode -->
+<script>(function(){var m=(/[?&]mood=(light|dark)/.exec(location.search)||[])[1];
+  if(!m){try{m=localStorage.getItem("sb-mood");}catch(e){}}
+  document.documentElement.dataset.mood=m==="dark"?"dark":"light";})();</script>
+
 <style>
-.intro{ max-width:62ch; }
+/* the shelf: covers in a grid. The data model and the viewer script are the
+   live page's, unchanged; only the look is the kit's. */
+.shelf{ display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:calc(var(--u)*2); padding:calc(var(--u)*2) 0 calc(var(--u)*6); }
+.item{ display:flex; flex-direction:column; gap:12px; text-decoration:none; color:inherit; }
+.item .cover{ position:relative; aspect-ratio:3/4; border-radius:3px; overflow:hidden; background:var(--cream-2);
+  border:1px solid var(--line); transition:transform .6s var(--ease-out), box-shadow .6s; }
+.item:hover .cover{ transform:translateY(-4px); box-shadow:0 30px 50px -30px rgba(12,19,34,.45); }
+.item .cover img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:var(--photo); }
+.item .sheet{ position:absolute; inset:14% 16%; background:var(--cream); border:1px solid var(--line);
+  background-image:repeating-linear-gradient(180deg, transparent 0 14px, var(--line) 14px 15px); }
+.item .kind{ position:absolute; left:10px; top:10px; z-index:2; font:10px/1 var(--mono); letter-spacing:.16em; text-transform:uppercase;
+  background:var(--panel); color:var(--panel-ink); padding:6px 8px; border-radius:2px; }
+.item h2{ font-family:var(--display); font-weight:500; font-size:max(22px,calc(var(--u)*1.8)); line-height:1.1; margin:0; }
+.item .by{ font-family:var(--mono); font-size:11px; letter-spacing:.1em; color:var(--navy-70); }
+.item:focus-visible{ outline:2px solid var(--gold); outline-offset:6px; border-radius:3px; }
+.empty{ color:var(--navy-70); font-size:17px; } .empty a{ color:var(--gold-text); }
 
-/* ---------- the shelf ---------- */
-.shelf{ display:grid; gap:calc(var(--u)*1.6); margin-top:calc(var(--u)*3);
-  grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); }
-.item{ display:flex; flex-direction:column; text-decoration:none; color:inherit;
-  border:1px solid var(--line); background:#FFFCF6; border-radius:3px;
-  overflow:hidden; transition:transform .25s cubic-bezier(.2,.7,.2,1),
-    box-shadow .25s ease, border-color .25s ease; }
-.item:hover, .item:focus-visible{ transform:translateY(-3px);
-  border-color:var(--gold-dim); box-shadow:0 18px 34px -24px rgba(22,41,74,.5); }
-.item:focus-visible{ outline:2px solid var(--gold); outline-offset:2px; }
-.item .cover{ aspect-ratio:4/3; background:#EFE7D6; position:relative;
-  display:grid; place-items:center; overflow:hidden; }
-.item .cover img{ width:100%; height:100%; object-fit:cover; display:block; }
-/* no thumbnail: a sheet of paper rather than a grey box */
-.item .cover .sheet{ width:46%; aspect-ratio:3/4; background:#FFFCF6;
-  border:1px solid rgba(22,41,74,.18); border-radius:2px; position:relative;
-  box-shadow:0 10px 20px -16px rgba(22,41,74,.6); }
-.item .cover .sheet::before{ content:""; position:absolute; left:14%; right:14%;
-  top:22%; height:1px; background:rgba(22,41,74,.22);
-  box-shadow:0 7px 0 rgba(22,41,74,.16), 0 14px 0 rgba(22,41,74,.16),
-             0 21px 0 rgba(22,41,74,.12), 0 28px 0 rgba(22,41,74,.09); }
-.item .kind{ position:absolute; left:8px; top:8px; font-family:var(--mono);
-  font-size:max(9px,calc(var(--u)*0.6)); letter-spacing:.16em;
-  text-transform:uppercase; color:#FAF6EE; background:rgba(22,41,74,.82);
-  padding:3px 7px; border-radius:2px; }
-.item .meta{ padding:calc(var(--u)*1.1) calc(var(--u)*1.1) calc(var(--u)*1.25); }
-.item h2{ font-family:var(--sans); font-weight:600; letter-spacing:-.02em;
-  font-size:max(16px,calc(var(--u)*1.28)); line-height:1.25; margin:0; }
-.item .by{ display:block; margin-top:calc(var(--u)*0.5); font-family:var(--mono);
-  font-size:max(10px,calc(var(--u)*0.68)); letter-spacing:.1em;
-  color:var(--faint); }
-
-.empty{ margin-top:calc(var(--u)*3); padding:calc(var(--u)*3) calc(var(--u)*2);
-  border:1px dashed var(--line); border-radius:3px; text-align:center;
-  color:var(--muted); }
-
-/* ---------- the viewer ---------- */
-/* A native <dialog>, so Escape, the focus trap and the inert background are
-   the browser's job rather than mine - three things hand-rolled overlays
-   almost always get wrong. */
-.viewer{ width:min(1100px, 96vw); height:min(92vh, 1000px); max-width:none;
-  max-height:none; padding:0; border:1px solid var(--line); border-radius:4px;
-  background:var(--bg); color:var(--ink); overflow:hidden; }
-.viewer::backdrop{ background:rgba(22,41,74,.55); backdrop-filter:blur(3px); }
-.viewer .vwrap{ display:flex; flex-direction:column; height:100%; }
-.vhead{ display:flex; align-items:center; gap:calc(var(--u)*1.1);
-  padding:calc(var(--u)*1.1) calc(var(--u)*1.3);
-  border-bottom:1px solid var(--line); }
-.vhead .t{ min-width:0; }
-.vhead h3{ margin:0; font-family:var(--sans); font-weight:600;
-  font-size:max(15px,calc(var(--u)*1.2)); letter-spacing:-.02em;
-  white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-.vhead .by{ display:block; font-family:var(--mono);
-  font-size:max(9.5px,calc(var(--u)*0.64)); letter-spacing:.12em;
-  color:var(--faint); margin-top:2px; }
-.vhead .sp{ margin-left:auto; }
-.vbtn{ font-family:var(--mono); font-size:max(10px,calc(var(--u)*0.68));
-  letter-spacing:.14em; text-transform:uppercase; color:var(--ink);
-  background:none; border:1px solid var(--line); border-radius:2px;
-  padding:calc(var(--u)*0.6) calc(var(--u)*0.9); cursor:pointer;
-  text-decoration:none; white-space:nowrap; }
-.vbtn:hover{ border-color:var(--gold-dim); background:rgba(142,104,29,.08); }
-.vbtn:focus-visible{ outline:2px solid var(--gold); outline-offset:2px; }
-/* overflow:hidden matters here: without it a tall image pushes the footer
-   off the bottom of the dialog instead of being fitted into the space */
-.vbody{ flex:1; min-height:0; background:#EFE7D6; display:grid;
-  place-items:center; position:relative; overflow:hidden; }
-.vbody iframe{ width:100%; height:100%; border:0; display:block; background:#EFE7D6; }
-.vbody img{ width:100%; height:100%; object-fit:contain; display:block; }
-/* the handoff card, for where an inline PDF is not worth attempting */
-.vhand{ text-align:center; padding:calc(var(--u)*2.4); max-width:40ch; }
-.vhand p{ color:var(--muted); margin:0 0 calc(var(--u)*1.4); }
-.vfoot{ display:flex; align-items:center; gap:calc(var(--u)*1);
-  padding:calc(var(--u)*0.9) calc(var(--u)*1.3);
-  border-top:1px solid var(--line); }
-.vfoot .count{ margin-left:auto; font-family:var(--mono);
-  font-size:max(10px,calc(var(--u)*0.68)); letter-spacing:.14em;
-  color:var(--faint); font-variant-numeric:tabular-nums; }
-.vbtn[disabled]{ opacity:.35; cursor:default; }
-.vbtn[disabled]:hover{ border-color:var(--line); background:none; }
-@media(max-width:620px){
-  .viewer{ width:100vw; height:100dvh; border-radius:0; border:0; }
-  .vhead h3{ white-space:normal; }
-}
+/* the viewer: one <dialog>, reused for every item */
+.viewer{ width:min(1100px,94vw); height:min(88vh,1000px); padding:0; border:0; border-radius:6px; background:var(--cream); color:var(--navy);
+  box-shadow:0 40px 100px -30px rgba(0,0,0,.6); }
+.viewer::backdrop{ background:rgba(8,12,22,.82); }
+.vwrap{ display:grid; grid-template-rows:auto 1fr auto; height:100%; }
+.vhead, .vfoot{ display:flex; align-items:center; gap:12px; padding:14px 18px; border-bottom:1px solid var(--line); }
+.vfoot{ border-bottom:0; border-top:1px solid var(--line); }
+.vhead .t{ flex:1; min-width:0; } .vhead h3{ font-family:var(--display); font-weight:500; font-size:22px; margin:0; }
+.vhead .by{ font-family:var(--mono); font-size:11px; color:var(--navy-70); }
+.vbtn{ font:11px/1 var(--mono); letter-spacing:.14em; text-transform:uppercase; color:inherit; background:transparent; text-decoration:none;
+  border:1px solid var(--line); border-radius:100px; padding:10px 14px; cursor:pointer; }
+.vbtn:hover{ border-color:var(--gold); } .vbtn:disabled{ opacity:.35; cursor:default; }
+.vbtn:focus-visible{ outline:2px solid var(--gold); outline-offset:3px; }
+.vbody{ min-height:0; display:grid; place-items:center; overflow:auto; background:var(--cream-2); }
+.vbody img{ max-width:100%; max-height:100%; }
+.vbody iframe{ width:100%; height:100%; border:0; background:#fff; }
+.vhand{ text-align:center; padding:24px; } .vhand p{ margin:0 0 16px; color:var(--navy-70); }
+.count{ margin-left:auto; font-family:var(--mono); font-size:11px; color:var(--navy-70); }
 </style>
 </head>
 <body>
-
-<header class="top">
-  <img src="../Assets/Brand/gurmat-vidyala-84.png" alt="" width="42" height="42">
-  <span class="mark"><b>Shaheedi Bunga</b><i>Gurmat Vidyala</i></span>
-  <nav>
-    <a href="../">Home</a>
-    <a href="../classes/">Classes</a>
-    <a href="../library/" aria-current="page">Library</a>
-    <a href="../resources/">Resources</a>
-    <a href="../gallery/">Gallery</a>
-    <a href="../about/">About</a>
-    <a href="../contact/">Contact</a>
-    <a href="../donate/">Donate</a>
-  </nav>
+<a class="skip" href="#main">Skip to content</a>
+<header class="mast">
+  <a class="brand" href="/" aria-label="Shaheedi Bunga, home"><img src="/kit/img/gurmat-vidyala-84.png" alt="" width="40" height="40">
+    <span><b>Shaheedi Bunga</b><i>Gurmat Vidyala</i></span></a>
+  <nav aria-label="Main" id="site-nav"><a href="/classes/">Classes</a><a href="/camps/">Camps</a><a href="/resources/">Resources</a><a href="/gallery/">Gallery</a><a href="/about/">About</a><a href="/contact/">Contact</a><a href="/donate/">Donate</a></nav>
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav"><span>Menu</span><i aria-hidden="true"></i></button>
+  <a class="wa" href="https://wa.me/447394848407?text=Sat%20Sri%20Akal%20%E2%80%94%20I'd%20like%20to%20ask%20about%20the%20Library." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.6 2 2.18 6.42 2.18 11.86c0 1.74.46 3.44 1.32 4.94L2.1 22l5.34-1.4a9.8 9.8 0 0 0 4.6 1.17h.01c5.43 0 9.85-4.42 9.85-9.86 0-2.63-1.02-5.11-2.88-6.97A9.79 9.79 0 0 0 12.04 2z"/></svg>WhatsApp</a>
 </header>
 
-<main class="wrap">
-  <p class="lbl">Library</p>
-  <h1>Made here.</h1>
-  <p class="lede intro">The Resources page holds the granths and the pothis the
-    vidyala reads from. This holds what the vidhiarti have made out of them
-    &mdash; notes, charts, translations and study aids, written here and left
-    for whoever comes next.</p>
 
+<main id="main">
+<section class="phero no-art paper" data-hero>
+  <div class="phero-in" style="min-height:min(60svh,620px)">
+    <div>
+      <p class="eyebrow">Library</p>
+      <h1 class="display">Made <em>here.</em></h1>
+      <p class="lede">The <a href="/resources/" style="color:inherit">Resources</a> page holds the granths and the pothis the
+        vidyala reads from. This holds what the vidhiarti have made out of them: notes, charts, translations and study aids,
+        written here and left for whoever comes next.</p>
+    </div>
+  </div>
+</section>
+
+<div class="wrapx paper">
   <!-- THE SHELF. One <a> per item, and that is the whole data model.
-       Everything the viewer needs is on the link:
-
-         href        the file itself. Also the no-JS destination, so a
-                     browser that never runs the script still opens it.
+         href        the file itself; also the no-JS destination
          data-kind   pdf | image   - what the viewer should do with it
          data-by     who made it
          data-thumb  optional cover image; without one it draws a sheet
-
-       The viewer reads the list on load, so adding an item is one <a> and
-       nothing else. Keep the files in library/items/. -->
+       Adding an item is one <a> and nothing else. Keep the files in library/items/. -->
   <div class="shelf" id="shelf">
-
-    <a class="item" href="../Assets/Instagram/timetable-poster-gtb.jpg"
-       data-kind="image" data-by="SAMPLE — replace me">
+    <a class="item" href="/Assets/Instagram/timetable-poster-gtb.jpg" data-kind="image" data-by="SAMPLE — replace me">
       <span class="cover"><span class="kind">Image</span><span class="sheet"></span></span>
-      <span class="meta">
-        <h2>Weekly timetable poster</h2>
-        <span class="by">Sample item</span>
-      </span>
+      <span class="meta"><h2>Weekly timetable poster</h2><span class="by">Sample item</span></span>
     </a>
-
-    <a class="item" href="../Assets/Instagram/santhiya-camp-feb2026.jpg"
-       data-kind="image" data-by="SAMPLE — replace me"
-       data-thumb="../Assets/Instagram/santhiya-camp-feb2026.jpg">
+    <a class="item" href="/Assets/Instagram/santhiya-camp-feb2026.jpg" data-kind="image" data-by="SAMPLE — replace me"
+       data-thumb="/Assets/Instagram/santhiya-camp-feb2026.jpg">
       <span class="cover"><span class="kind">Image</span></span>
-      <span class="meta">
-        <h2>Santhiya camp poster</h2>
-        <span class="by">Sample item</span>
-      </span>
+      <span class="meta"><h2>Santhiya camp poster</h2><span class="by">Sample item</span></span>
     </a>
-
-    <a class="item" href="../santhiya/preview.jpg"
-       data-kind="image" data-by="SAMPLE — replace me"
-       data-thumb="../santhiya/preview.jpg">
+    <a class="item" href="/santhiya/preview.jpg" data-kind="image" data-by="SAMPLE — replace me" data-thumb="/santhiya/preview.jpg">
       <span class="cover"><span class="kind">Image</span></span>
-      <span class="meta">
-        <h2>Pothi on a rehal</h2>
-        <span class="by">Sample item</span>
-      </span>
+      <span class="meta"><h2>Pothi on a rehal</h2><span class="by">Sample item</span></span>
     </a>
-
   </div>
-
-  <p class="empty" id="empty" hidden>Nothing here yet. The first pieces are
-    being collected &mdash; <a href="../contact/">tell us</a> if you have
-    something that belongs in it.</p>
+  <p class="empty" id="empty" hidden>Nothing here yet. The first pieces are being collected: <a href="/contact/">tell us</a>
+    if you have something that belongs in it.</p>
+</div>
 </main>
 
-<!-- The panel. One dialog, reused for every item. -->
 <dialog class="viewer" id="viewer" aria-label="Document viewer">
   <div class="vwrap">
     <div class="vhead">
       <span class="t"><h3 id="vTitle">&nbsp;</h3><span class="by" id="vBy"></span></span>
-      <a class="vbtn sp" id="vOpen" href="#" target="_blank" rel="noopener">Open &nearr;</a>
+      <a class="vbtn" id="vOpen" href="#" target="_blank" rel="noopener">Open ↗</a>
       <button class="vbtn" id="vClose" type="button">Close</button>
     </div>
     <div class="vbody" id="vBody"></div>
     <div class="vfoot">
-      <button class="vbtn" id="vPrev" type="button">&larr; Prev</button>
-      <button class="vbtn" id="vNext" type="button">Next &rarr;</button>
+      <button class="vbtn" id="vPrev" type="button">← Prev</button>
+      <button class="vbtn" id="vNext" type="button">Next →</button>
       <span class="count" id="vCount"></span>
     </div>
   </div>
 </dialog>
 
-<p class="foot">Shaheedi Bunga &middot; Leicester, UK<br><a href="../privacy/">Privacy</a> &middot; <a href="../safeguarding/">Safeguarding</a></p>
+<footer class="foot">
+  <p class="big">Come and sit<br>with the <em>sangat.</em></p>
+  <div class="cols">
+    <div><h4>Shaheedi Bunga</h4><p style="margin:0;max-width:34ch">A Sikh education charity in Leicester. Every class is free and taught by volunteers.</p></div>
+    <div><h4>Vidyale</h4><a href="/santhiya/">Santhiya</a><a href="/saaj/dilruba/">Kirtan</a><a href="/akhara/archery/">Archery</a><a href="/classes/">All classes</a><a href="/camps/">Camps</a></div>
+    <div><h4>Charity</h4><a href="/about/">About</a><a href="/donate/">Donate</a><a href="/gallery/">Gallery</a><a href="/resources/">Resources</a><a href="/library/">Library</a></div>
+    <div><h4>Contact</h4><a href="https://wa.me/447394848407" target="_blank" rel="noopener">+44 7394 848407</a><a href="mailto:gurmat@shaheedibunga.com">gurmat@shaheedibunga.com</a><a href="/safeguarding/">Safeguarding</a><a href="/privacy/">Privacy</a></div>
+  </div>
+  <div class="legal"><span>Registered charity in England &amp; Wales · 1185103</span><a href="/" style="display:inline">Home · the Parikrama</a></div>
+</footer>
+
+<script src="/kit/lib/gsap.min.js"></script>
+<script src="/kit/lib/ScrollTrigger.min.js"></script>
+<script src="/kit/lib/SplitText.min.js"></script>
+<script src="/kit/lib/lenis.min.js"></script>
+<script src="/kit/kit.js"></script>
 
 <script>
+/* The live page's viewer, unchanged apart from pausing smooth scroll while open. */
 (function(){
   var shelf = document.getElementById("shelf");
   var dlg   = document.getElementById("viewer");
@@ -213,8 +165,6 @@
       vCount = document.getElementById("vCount");
   var at = -1, opener = null;
 
-  /* Give every item a stable id from its filename, so a single piece can be
-     linked to and so the back button has something to work with. */
   items.forEach(function(a, i){
     if(!a.id){
       var base = decodeURIComponent(a.getAttribute("href")).split("/").pop()
@@ -222,8 +172,6 @@
                    .toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
       a.id = base || ("item-" + (i + 1));
     }
-    /* draw the thumbnail here rather than in the markup, so adding an item
-       means writing one attribute instead of remembering a nested tag */
     var thumb = a.getAttribute("data-thumb");
     if(thumb){
       var cover = a.querySelector(".cover");
@@ -232,10 +180,6 @@
     }
   });
 
-  /* An inline PDF is only worth attempting where it will actually render.
-     iOS Safari shows the first page of a framed PDF and no way to reach the
-     rest, and a narrow screen turns a two-column A4 into a postage stamp -
-     both are worse than a clear button that opens the file properly. */
   function framePdf(){
     var ios = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
               (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
@@ -250,29 +194,18 @@
     var kind = (a.getAttribute("data-kind") || "pdf").toLowerCase();
     var title = (a.querySelector("h2") || {}).textContent || "Untitled";
     var by = a.getAttribute("data-by") || "";
-
-    vTitle.textContent = title;
-    vBy.textContent = by;
-    vOpen.href = href;
+    vTitle.textContent = title; vBy.textContent = by; vOpen.href = href;
     vCount.textContent = (i + 1) + " / " + items.length;
-    vPrev.disabled = (i === 0);
-    vNext.disabled = (i === items.length - 1);
-
+    vPrev.disabled = (i === 0); vNext.disabled = (i === items.length - 1);
     vBody.textContent = "";
     if(kind === "image"){
-      var img = new Image(); img.src = href; img.alt = title;
-      vBody.appendChild(img);
+      var img = new Image(); img.src = href; img.alt = title; vBody.appendChild(img);
     }else if(framePdf()){
-      var f = document.createElement("iframe");
-      f.src = href + "#view=FitH";
-      f.title = title;
-      vBody.appendChild(f);
+      var f = document.createElement("iframe"); f.src = href + "#view=FitH"; f.title = title; vBody.appendChild(f);
     }else{
       var d = document.createElement("div"); d.className = "vhand";
-      var p = document.createElement("p");
-      p.textContent = "This one opens better in its own tab than in a panel this size.";
-      var b = document.createElement("a");
-      b.className = "vbtn"; b.href = href; b.target = "_blank"; b.rel = "noopener";
+      var p = document.createElement("p"); p.textContent = "This one opens better in its own tab than in a panel this size.";
+      var b = document.createElement("a"); b.className = "vbtn"; b.href = href; b.target = "_blank"; b.rel = "noopener";
       b.textContent = "Open the file ↗";
       d.appendChild(p); d.appendChild(b); vBody.appendChild(d);
     }
@@ -280,46 +213,37 @@
   }
 
   function open(i, from){
-    opener = from || null;
-    show(i);
-    if(!dlg.open) dlg.showModal();
+    opener = from || null; show(i);
+    if(!dlg.open){ dlg.showModal(); if(window.KIT && KIT.lenis) KIT.lenis.stop(); }
   }
 
   items.forEach(function(a, i){
     a.addEventListener("click", function(e){
-      /* let the browser do its normal thing for a new-tab click */
       if(e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
-      e.preventDefault();
-      open(i, a);
+      e.preventDefault(); open(i, a);
     });
   });
-
   document.getElementById("vClose").addEventListener("click", function(){ dlg.close(); });
   vPrev.addEventListener("click", function(){ show(at - 1); });
   vNext.addEventListener("click", function(){ show(at + 1); });
-
-  /* Escape is the dialog's own; the arrows are not */
   dlg.addEventListener("keydown", function(e){
     if(e.key === "ArrowLeft"){ e.preventDefault(); show(at - 1); }
     if(e.key === "ArrowRight"){ e.preventDefault(); show(at + 1); }
   });
-
-  /* clicking the backdrop - which is the dialog itself, outside .vwrap */
   dlg.addEventListener("click", function(e){ if(e.target === dlg) dlg.close(); });
-
   dlg.addEventListener("close", function(){
-    vBody.textContent = "";                       // stop a framed PDF in its tracks
+    vBody.textContent = "";
+    if(window.KIT && KIT.lenis) KIT.lenis.start();
     if(history.replaceState) history.replaceState(null, "", location.pathname);
     if(opener) opener.focus();
   });
-
-  /* someone arriving on a link to one piece */
   if(location.hash){
     var want = document.getElementById(location.hash.slice(1));
     var i = items.indexOf(want);
     if(i >= 0) open(i, want);
   }
 })();
+KIT.start();
 </script>
 </body>
 </html>

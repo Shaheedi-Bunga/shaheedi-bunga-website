@@ -971,9 +971,9 @@ html.still .drift img{ animation:none; }
     <div class="vdrop">
       <button type="button" class="vdrop-btn" aria-expanded="false">Vidyale <i aria-hidden="true">&#9662;</i></button>
       <div class="vdrop-menu" hidden>
-        <a href="/santhiya" data-route="santhiya">Santhiya Vidyala</a>
-        <a href="/saaj/dilruba" data-route="dilruba">Kirtan Vidyala</a>
-        <a href="/akhara/archery" data-route="archery">Archery Akhara</a>
+        <a href="/santhiya/" data-route="santhiya">Santhiya Vidyala</a>
+        <a href="/saaj/dilruba/" data-route="dilruba">Kirtan Vidyala</a>
+        <a href="/akhara/archery/" data-route="archery">Archery Akhara</a>
         <span class="soon">Tabla &amp; Jori Vidyala &middot; soon</span>
         <span class="soon">Katha Vidyala &middot; soon</span>
         <span class="soon">Itihaas Vidyala &middot; soon</span>
@@ -993,13 +993,13 @@ html.still .drift img{ animation:none; }
 
 <div class="menu" id="menu" hidden>
   <nav aria-label="All pages">
-    <a href="/santhiya" data-route="santhiya"><b>Santhiya Vidyala</b><i>Learn to read sudh Gurbani</i></a>
+    <a href="/santhiya/" data-route="santhiya"><b>Santhiya Vidyala</b><i>Learn to read sudh Gurbani</i></a>
     <!-- Real pages, not panels: they are read rather than experienced, and
          keeping them out of this file keeps them off its 11MB. -->
     <a href="gallery/"><b>Gallery</b><i>Photographs from the classes and samagams</i></a>
     <a href="contact/"><b>Contact</b><i>WhatsApp, email, and where to find us</i></a>
-    <a href="/saaj/dilruba" data-route="dilruba"><b>Kirtan Vidyala</b><i>Kirtan on the tanti saaj &mdash; dilruba, taus, rabab, saranda</i></a>
-    <a href="/akhara/archery" data-route="archery"><b>Archery Akhara</b><i>Traditional archery &mdash; Sundays at East Park Road</i></a>
+    <a href="/saaj/dilruba/" data-route="dilruba"><b>Kirtan Vidyala</b><i>Kirtan on the tanti saaj &mdash; dilruba, taus, rabab, saranda</i></a>
+    <a href="/akhara/archery/" data-route="archery"><b>Archery Akhara</b><i>Traditional archery &mdash; Sundays at East Park Road</i></a>
     <a class="soon" aria-disabled="true"><b>Tabla &amp; Jori Vidyala</b><i>Page coming soon</i></a>
     <a class="soon" aria-disabled="true"><b>Katha Vidyala</b><i>Page coming soon</i></a>
     <a class="soon" aria-disabled="true"><b>Itihaas Vidyala</b><i>Page coming soon</i></a>
@@ -1087,7 +1087,7 @@ html.still .drift img{ animation:none; }
     <div class="vdrop">
       <button type="button" class="vdrop-btn" aria-expanded="false">Vidyale <i aria-hidden="true">&#9662;</i></button>
       <div class="vdrop-menu" hidden>
-        <a href="/santhiya" data-route="santhiya">Santhiya Vidyala</a>
+        <a href="/santhiya/" data-route="santhiya">Santhiya Vidyala</a>
         <a data-route="archery">Archery Akhara</a>
         <a data-route="dilruba">Kirtan Vidyala</a>
         <span class="soon">Tabla &amp; Jori &middot; soon</span>
@@ -1240,7 +1240,7 @@ html.still .drift img{ animation:none; }
     <div class="vdrop">
       <button type="button" class="vdrop-btn" aria-expanded="false">Vidyale <i aria-hidden="true">&#9662;</i></button>
       <div class="vdrop-menu" hidden>
-        <a href="/santhiya" data-route="santhiya">Santhiya Vidyala</a>
+        <a href="/santhiya/" data-route="santhiya">Santhiya Vidyala</a>
         <a data-route="archery">Archery Akhara</a>
         <a data-route="dilruba">Kirtan Vidyala</a>
         <span class="soon">Gatka &middot; soon</span>
@@ -1382,7 +1382,7 @@ html.still .drift img{ animation:none; }
     <div class="vdrop">
       <button type="button" class="vdrop-btn" aria-expanded="false">Vidyale <i aria-hidden="true">&#9662;</i></button>
       <div class="vdrop-menu" hidden>
-        <a href="/santhiya" data-route="santhiya">Santhiya Vidyala</a>
+        <a href="/santhiya/" data-route="santhiya">Santhiya Vidyala</a>
         <a data-route="archery">Archery Akhara</a>
         <a data-route="dilruba">Kirtan Vidyala</a>
         <span class="soon">Tabla &amp; Jori &middot; soon</span>
@@ -4263,6 +4263,12 @@ RAF = requestAnimationFrame(tick);
   }
 
   function go(key, push){
+    /* The vidyale are their own pages now (October 2026), in the same design as
+       the rest of the site: every route into a panel - the menus, the vidyala
+       list, ?vid links, back and forward - lands on the real page instead.
+       The panels below are left in place, unused, until it is agreed to
+       remove them. */
+    if(key && PANELS[key]){ location.href = PANELS[key].url + "/"; return; }
     if(busy || key === current) return;
     busy = true;
     flood.classList.toggle("warm", key === "dilruba");
