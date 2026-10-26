@@ -40,7 +40,11 @@
 /* Dark mode: the whole page, not only the hero. The names stay those of the
    light palette (--cream is "the ground", --navy is "the ink") so every rule
    written for light reads correctly here without a second copy. Text values
-   measured on #0C1322: ink 15.6:1, muted 10.9:1, gold 10.4:1, faded 4.6:1. */
+   measured on #0C1322: ink 15.6:1, muted 10.9:1, gold 10.4:1, faded 5.21:1.
+   Faded was .48 and measured 4.6 against the hero's ground, but it is also
+   used on --cream-2 (4.24) and on --panel (3.94), where it failed. .54
+   clears 4.5 on all three: 5.21 / 5.01 / 4.58. A kit with more than one
+   surface has more than one ratio, and one number cannot cover them. */
 html[data-mood="dark"]{
   color-scheme:dark;
   --cream:#0C1322; --cream-2:#141D31; --cream-3:#1B263D;
@@ -48,7 +52,7 @@ html[data-mood="dark"]{
   --gold-text:#E2C27A; --gold:#C9A04A; --focus:#E2C27A;
   --line:rgba(241,235,221,.13);
   --panel:#1C2A47; --panel-ink:#F4EFE4;
-  --faded:rgba(241,235,221,.48);
+  --faded:rgba(241,235,221,.54);
   --photo:sepia(.22) saturate(.78) brightness(.9) contrast(1.06);
   --hero-bg:var(--ink-dark); --hero-ink:#F4EFE4; --hero-muted:rgba(244,239,228,.72);
   --hero-gold:var(--gold-lite); --hero-line:rgba(226,194,122,.22);
