@@ -38,7 +38,7 @@
 .bank dt{ font-family:var(--mono); font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:rgba(244,239,228,.7); }
 .bank dd{ margin:0; font-family:var(--mono); font-size:max(17px,calc(var(--u)*1.3)); letter-spacing:.06em; }
 .copy{ font:10px/1 var(--mono); letter-spacing:.16em; text-transform:uppercase; color:var(--gold-lite); background:transparent;
-  border:1px solid rgba(226,194,122,.4); border-radius:100px; padding:8px 12px; cursor:pointer; min-width:74px; transition:background .3s, color .3s; }
+  border:1px solid rgba(226,194,122,.4); border-radius:100px; padding:8px 14px; cursor:pointer; min-width:80px; min-height:44px; transition:background .3s, color .3s; }
 .copy:hover{ background:rgba(226,194,122,.12); } .copy.done{ background:var(--gold-lite); color:var(--ink-dark); }
 @media(max-width:600px){ .bank .ln{ grid-template-columns:1fr auto; } .bank dt{ grid-column:1/-1; } }
 
@@ -92,6 +92,7 @@
           <div class="ln"><dt>Account number</dt><dd>71693440</dd><button class="copy" type="button" data-copy="71693440">Copy</button></div>
           <div class="ln"><dt>Reference</dt><dd>Your name</dd><span></span></div>
         </dl>
+        <p class="sr" id="copied" aria-live="polite"></p>
       </div>
     </div>
   </section>
@@ -141,10 +142,17 @@
 <script>
 /* copy buttons: work with or without motion, and say so to a screen reader */
 document.querySelectorAll("[data-copy]").forEach(function(b){
+  /* says what happened, aloud too; if the clipboard is refused, selects the
+     value instead so it can be copied by hand */
   b.addEventListener("click", function(){
+    var dd = b.previousElementSibling, say = document.getElementById("copied");
     var done = function(){ b.textContent = "Copied"; b.classList.add("done");
+      say.textContent = dd.previousElementSibling.textContent + " copied";
       setTimeout(function(){ b.textContent = "Copy"; b.classList.remove("done"); }, 1800); };
-    if(navigator.clipboard) navigator.clipboard.writeText(b.dataset.copy).then(done, function(){});
+    var manual = function(){ var r = document.createRange(); r.selectNodeContents(dd);
+      var sel = getSelection(); sel.removeAllRanges(); sel.addRange(r);
+      say.textContent = dd.previousElementSibling.textContent + " selected: press Ctrl or Command and C to copy"; };
+    if(navigator.clipboard) navigator.clipboard.writeText(b.dataset.copy).then(done, manual); else manual();
   });
   b.setAttribute("aria-label", "Copy " + b.previousElementSibling.previousElementSibling.textContent);
 });

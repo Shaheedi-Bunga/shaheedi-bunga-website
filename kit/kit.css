@@ -15,7 +15,7 @@
   --cream:#FAF6EE; --cream-2:#F2EBDC; --cream-3:#E9DFCB;
   --navy:#16294A; --navy-70:rgba(22,41,74,.74);
   --ink-dark:#0C1322; --ink-dark-2:#121B2E;
-  --gold-text:#8E681D;   /* 4.70:1 on cream */
+  --gold-text:#7F5C16;   /* 5.66:1 on cream, 5.14 on cream-2, 4.61 on cream-3: #8E681D was 4.27 on cream-2 */
   --gold:#B4892C;        /* decorative only on cream */
   --gold-lite:#E2C27A;   /* text gold on near-black, 10.4:1 */
   --saffron:#C8611E;
@@ -29,7 +29,8 @@
   --ease-out:cubic-bezier(.05,.7,.1,1);
 
   --panel:#16294A; --panel-ink:#F4EFE4;   /* a navy surface: the ink card, today, the ask band */
-  --faded:rgba(22,41,74,.45);             /* a session that is not on, a class with no page yet */
+  --faded:rgba(22,41,74,.70);             /* a session that is not on, a class with no page yet: 5.32:1 (.45 was 2.63) */
+  --focus:#7F5C16;                        /* focus rings: 5.66:1 (the decorative gold was 2.97, under 3:1) */
   --photo:sepia(.18) saturate(.82) contrast(1.04);
 
   /* the hero */
@@ -44,7 +45,7 @@ html[data-mood="dark"]{
   color-scheme:dark;
   --cream:#0C1322; --cream-2:#141D31; --cream-3:#1B263D;
   --navy:#F1EBDD; --navy-70:rgba(241,235,221,.74);
-  --gold-text:#E2C27A; --gold:#C9A04A;
+  --gold-text:#E2C27A; --gold:#C9A04A; --focus:#E2C27A;
   --line:rgba(241,235,221,.13);
   --panel:#1C2A47; --panel-ink:#F4EFE4;
   --faded:rgba(241,235,221,.48);
@@ -113,7 +114,7 @@ html[data-mood="dark"] .mast.solid{ background:rgba(12,19,34,.88); color:#F4EFE4
 .menu-btn{ display:none; }
 @media(max-width:900px){
   .mast nav{ display:none; }
-  .menu-btn{ display:inline-flex; align-items:center; gap:10px; margin-left:auto; height:42px; padding:0 14px; border-radius:100px;
+  .menu-btn{ display:inline-flex; align-items:center; gap:10px; margin-left:auto; height:44px; padding:0 14px; border-radius:100px;
     background:transparent; color:inherit; cursor:pointer; border:1px solid currentColor; border-color:color-mix(in srgb,currentColor 32%,transparent);
     font:11px/1 var(--mono); letter-spacing:.16em; text-transform:uppercase; }
   .menu-btn i{ width:14px; height:8px; border-top:1.5px solid currentColor; border-bottom:1.5px solid currentColor; transition:transform .4s var(--ease-out); }
@@ -135,7 +136,7 @@ html[data-mood="dark"] .mast.solid{ background:rgba(12,19,34,.88); color:#F4EFE4
   html[data-mood="dark"] .mast{ background:rgba(12,19,34,.88); color:#F4EFE4; }
   .mast .brand i{ display:none; }
   /* a.wa outranks the later ".mast .wa" padding, which is in em and so collapses at font-size 0 */
-  .mast a.wa{ font-size:0; gap:0; padding:11px; } .mast a.wa svg{ width:20px; height:20px; }
+  .mast a.wa{ font-size:0; gap:0; padding:12px; } .mast a.wa svg{ width:20px; height:20px; }
 }
 
 .wa{ display:inline-flex; align-items:center; gap:.6em; font-family:var(--mono); font-size:max(11px,calc(var(--u)*.68));
@@ -195,6 +196,9 @@ html[data-mood="dark"] .pcard.ink, html[data-mood="dark"] .day.today{ box-shadow
 .day.today::before{ content:"Today"; position:absolute; top:calc(var(--u)*-1.1); left:calc(var(--u)*1.4);
   font:10px/1 var(--mono); letter-spacing:.18em; text-transform:uppercase; background:var(--gold); color:var(--ink-dark); padding:5px 8px; border-radius:2px; }
 /* phone: one day per row, the day's names on the left, its sessions on the right */
+/* phone: the badge sits under the English day name in the left column, clear
+   of both the Gurmukhi name and the sessions */
+@media(max-width:900px){ .day.today::before{ position:static; grid-column:1; grid-row:3; justify-self:start; margin-top:8px; } }
 @media(max-width:900px){ .week{ grid-template-columns:1fr; } .day{ border-left:0; border-top:1px solid var(--line); min-height:0;
   display:grid; grid-template-columns:120px 1fr; column-gap:16px; align-items:start; }
   .day .pa{ grid-column:1; grid-row:1; } .day .en{ grid-column:1; grid-row:2; }
@@ -291,11 +295,15 @@ a.venue:hover .go{ transform:translate(4px,-4px); }
 @media(max-width:800px){ .foot .cols{ grid-template-columns:1fr 1fr; } }
 
 /* ── the light/dark switch, in the masthead beside WhatsApp ── */
-.theme{ width:42px; height:42px; flex:none; display:grid; place-items:center; border-radius:50%; cursor:pointer;
+.theme{ width:44px; height:44px; flex:none; display:grid; place-items:center; border-radius:50%; cursor:pointer;
   background:transparent; color:inherit; border:1px solid currentColor; border-color:color-mix(in srgb,currentColor 32%,transparent);
   transition:border-color .3s, transform .5s var(--ease-out); }
 .theme:hover{ border-color:currentColor; transform:rotate(-18deg); }
-.theme:focus-visible, .wa:focus-visible, .mast a:focus-visible{ outline:2px solid var(--gold); outline-offset:3px; }
+/* surfaces that stay dark in light mode keep the light gold ring (10:1 there) */
+.ask, .bank, .urgent, .pcard.ink, .day.today, .lb, .foot, .cal, .reg{ --focus:#E2C27A; }
+/* every focus ring in the kit and the pages uses --focus */
+.theme:focus-visible, .wa:focus-visible, .mast a:focus-visible, .menu-btn:focus-visible, .foot a:focus-visible,
+a:focus-visible, button:focus-visible{ outline:2px solid var(--focus); outline-offset:3px; }
 .theme svg{ width:19px; height:19px; fill:none; stroke:currentColor; stroke-width:1.6; stroke-linecap:round; }
 .theme svg path[d^="M20"]{ fill:currentColor; stroke:none; }
 @media(max-width:900px){ .mast .theme{ margin-left:0; } .mast .theme + .wa{ margin-left:0; } }
