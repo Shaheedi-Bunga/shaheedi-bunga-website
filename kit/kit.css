@@ -196,7 +196,9 @@ html[data-mood="dark"] .pcard.ink, html[data-mood="dark"] .day.today{ box-shadow
 .day.today::before{ content:"Today"; position:absolute; top:calc(var(--u)*-1.1); left:calc(var(--u)*1.4);
   font:10px/1 var(--mono); letter-spacing:.18em; text-transform:uppercase; background:var(--gold); color:var(--ink-dark); padding:5px 8px; border-radius:2px; }
 /* phone: one day per row, the day's names on the left, its sessions on the right */
-@media(max-width:900px){ .day.today::before{ top:12px; left:auto; right:12px; } }   /* off the Gurmukhi day name */
+/* phone: the badge sits under the English day name in the left column, clear
+   of both the Gurmukhi name and the sessions */
+@media(max-width:900px){ .day.today::before{ position:static; grid-column:1; grid-row:3; justify-self:start; margin-top:8px; } }
 @media(max-width:900px){ .week{ grid-template-columns:1fr; } .day{ border-left:0; border-top:1px solid var(--line); min-height:0;
   display:grid; grid-template-columns:120px 1fr; column-gap:16px; align-items:start; }
   .day .pa{ grid-column:1; grid-row:1; } .day .en{ grid-column:1; grid-row:2; }
