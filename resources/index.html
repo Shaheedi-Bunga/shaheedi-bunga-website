@@ -46,6 +46,7 @@
 
 .find{ display:flex; align-items:center; gap:12px; border-bottom:1px solid var(--navy); padding:8px 0 12px; margin-bottom:calc(var(--u)*4); }
 .find input{ flex:1; font:400 max(22px,calc(var(--u)*2)) var(--display); color:var(--navy); background:transparent; border:0; outline:0; min-width:0; }
+.find:focus-within{ outline:2px solid var(--focus); outline-offset:6px; border-radius:2px; }   /* the input itself draws none */
 .find input::placeholder{ color:var(--navy-70); opacity:.7; }
 .find:focus-within{ border-bottom-color:var(--gold); }
 .find output{ font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--gold-text); white-space:nowrap; }
@@ -90,8 +91,8 @@
     <div>
       <p class="eyebrow">Resources</p>
       <h1 class="display">Granths, pothis <em>and talks.</em></h1>
-      <p class="lede">Everything the Vidyala reads from, free to open and download. The files are held in Google Drive,
-        and some run to hundreds of megabytes, so they are best opened on wifi.</p>
+      <p class="lede">Everything the Vidyala reads from, free to read and download. Each collection opens in Google Drive,
+        where every file below can be read or saved. Some run to hundreds of megabytes, so they are best opened on wifi.</p>
     </div>
     <figure class="phero-art">
       <div class="arch"><img src="/kit/img/folio-vaaran.jpg" alt="A handwritten folio of the Vaaran of Bhai Gurdas Ji, its Gurmukhi lines filling the page." style="filter:sepia(.3) contrast(1.05)"></div>
