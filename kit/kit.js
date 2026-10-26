@@ -47,6 +47,25 @@ window.KIT = (function(){
     m.insertBefore(b, m.querySelector(".wa"));
   }
 
+  /* the phone menu: a button that opens the links as a panel */
+  function menu(){
+    var btn = document.querySelector(".menu-btn"), nav = document.getElementById("site-nav"), html = document.documentElement;
+    var m = document.querySelector(".mast");
+    if(!btn || !nav || !m) return;
+    function set(open, refocus){
+      html.classList.toggle("menu-open", open);
+      btn.setAttribute("aria-expanded", open);
+      btn.querySelector("span").textContent = open ? "Close" : "Menu";
+      html.style.setProperty("--mastH", m.offsetHeight + "px");
+      if(api.lenis){ open ? api.lenis.stop() : api.lenis.start(); }
+      if(open){ var a = nav.querySelector("a"); if(a) a.focus(); } else if(refocus) btn.focus();
+    }
+    btn.addEventListener("click", function(){ set(btn.getAttribute("aria-expanded") !== "true", true); });
+    nav.addEventListener("click", function(e){ if(e.target.closest("a")) set(false); });
+    addEventListener("keydown", function(e){ if(e.key === "Escape" && html.classList.contains("menu-open")) set(false, true); });
+    matchMedia("(min-width: 901px)").addEventListener("change", function(e){ if(e.matches) set(false); });
+  }
+
   function mast(){
     var m = document.querySelector(".mast"), hero = document.querySelector("[data-hero]");
     if(!m) return;
@@ -148,7 +167,7 @@ window.KIT = (function(){
   };
 
   api.start = function(pageScenes){
-    moodSwitch(); today(); tocs();
+    moodSwitch(); menu(); today(); tocs();
     /* .cine: desktop with motion allowed. Pinned scenes exist only under it;
        a phone or a reduced-motion visitor gets the still layout. */
     api.wide = matchMedia("(min-width: 901px)").matches && !reduce;

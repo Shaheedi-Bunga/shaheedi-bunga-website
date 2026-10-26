@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Support the Vidyala · Shaheedi Bunga</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Support the Vidyala · Shaheedi Bunga</title>
 <meta name="description" content="How to support Shaheedi Bunga — a registered charity in Leicester teaching Gurmat free of charge, run entirely by volunteers.">
 <link rel="canonical" href="https://www.shaheedibunga.com/donate/">
 <meta property="og:type" content="website">
@@ -15,73 +15,140 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/Assets/Brand/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="/Assets/Brand/apple-touch-icon-180.png">
 <link rel="stylesheet" href="/lib/fonts.css">
-<link rel="stylesheet" href="../site.css">
-<link rel="icon" href="../Assets/Brand/favicon-32.png" sizes="32x32">
-<link rel="apple-touch-icon" href="../Assets/Brand/apple-touch-icon-180.png">
+<link rel="stylesheet" href="/kit/kit.css">
+<!-- before paint: light unless this viewer chose dark (or ?mood= asks), so
+     there is never a flash of the wrong mode -->
+<script>(function(){var m=(/[?&]mood=(light|dark)/.exec(location.search)||[])[1];
+  if(!m){try{m=localStorage.getItem("sb-mood");}catch(e){}}
+  document.documentElement.dataset.mood=m==="dark"?"dark":"light";})();</script>
+
 <style>
-/* Bank transfer only - no form, and no charity-finance figures: Ustad Ji
-   asked for both to be left out. See Content_Drafts/donate-page-notes.md
-   before adding anything about Gift Aid. */
-.band{ border-top:1px solid var(--line); padding:calc(var(--u)*2.8) 0; }
-.band h2{ margin-bottom:calc(var(--u)*1.1); }
-.band p{ max-width:62ch; color:var(--muted); margin:0 0 calc(var(--u)*1); }
-.band p:last-child{ margin-bottom:0; }
-.bank{ display:grid; gap:1px; background:var(--line); border:1px solid var(--line);
-  margin-top:calc(var(--u)*1.6); grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); }
-.bank div{ background:var(--bg); padding:calc(var(--u)*1.3) calc(var(--u)*1.2); }
-.bank dt{ font-family:var(--mono); font-size:max(9.5px,calc(var(--u)*0.66));
-  letter-spacing:.16em; text-transform:uppercase; color:var(--gold); }
-.bank dd{ margin:calc(var(--u)*0.5) 0 0; font-family:var(--mono);
-  font-size:max(16px,calc(var(--u)*1.4)); font-weight:500; letter-spacing:.04em;
-  -webkit-user-select:all; user-select:all; }
+/* the bank details as a plate: navy, gold hairlines, every line copyable */
+.bank{ background:var(--panel); color:var(--panel-ink); border-radius:6px; padding:calc(var(--u)*3.4); position:relative; overflow:hidden;
+  box-shadow:0 40px 80px -50px rgba(12,19,34,.6); }
+.bank::before{ content:""; position:absolute; inset:10px; border:1px solid rgba(226,194,122,.35); border-radius:3px; pointer-events:none; }
+.bank .ttl{ display:flex; justify-content:space-between; align-items:baseline; gap:1em; margin-bottom:calc(var(--u)*2.4); flex-wrap:wrap; }
+.bank .ttl b{ font-family:var(--display); font-weight:500; font-size:max(26px,calc(var(--u)*2.6)); }
+.bank .ttl span{ font-family:var(--mono); font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--gold-lite); }
+.bank dl{ margin:0; display:grid; gap:0; }
+.bank .ln{ display:grid; grid-template-columns:150px 1fr auto; gap:16px; align-items:center; padding:14px 0; border-top:1px solid rgba(244,239,228,.14); }
+.bank dt{ font-family:var(--mono); font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:rgba(244,239,228,.7); }
+.bank dd{ margin:0; font-family:var(--mono); font-size:max(17px,calc(var(--u)*1.3)); letter-spacing:.06em; }
+.copy{ font:10px/1 var(--mono); letter-spacing:.16em; text-transform:uppercase; color:var(--gold-lite); background:transparent;
+  border:1px solid rgba(226,194,122,.4); border-radius:100px; padding:8px 12px; cursor:pointer; min-width:74px; transition:background .3s, color .3s; }
+.copy:hover{ background:rgba(226,194,122,.12); } .copy.done{ background:var(--gold-lite); color:var(--ink-dark); }
+@media(max-width:600px){ .bank .ln{ grid-template-columns:1fr auto; } .bank dt{ grid-column:1/-1; } }
+
+.inkind{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:calc(var(--u)*1.4); margin-top:calc(var(--u)*2.4); }
+.inkind figure{ margin:0; }
+.inkind .arch{ aspect-ratio:3/4; --archH:30%; }
+.inkind img{ width:100%; height:100%; object-fit:cover; filter:var(--photo); }
+.inkind figcaption{ font-family:var(--display); font-size:max(20px,calc(var(--u)*1.7)); margin-top:10px; }
+.inkind figcaption small{ display:block; font-family:var(--mono); font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--gold-text); margin-top:4px; }
+@media(max-width:700px){ .inkind{ grid-template-columns:1fr 1fr; } .inkind figure:last-child{ display:none; } }
 </style>
 </head>
 <body>
-
-<header class="top">
-  <img src="../Assets/Brand/gurmat-vidyala-84.png" alt="" width="42" height="42">
-  <span class="mark"><b>Shaheedi Bunga</b><i>Gurmat Vidyala</i></span>
-  <nav>
-    <a href="../">Home</a>
-    <a href="../classes/">Classes</a>
-    <a href="../resources/">Resources</a>
-    <a href="../gallery/">Gallery</a>
-    <a href="../about/">About</a>
-    <a href="../contact/">Contact</a>
-    <a href="../donate/" aria-current="page">Donate</a>
-  </nav>
+<a class="skip" href="#main">Skip to content</a>
+<header class="mast">
+  <a class="brand" href="/" aria-label="Shaheedi Bunga, home"><img src="/kit/img/gurmat-vidyala-84.png" alt="" width="40" height="40">
+    <span><b>Shaheedi Bunga</b><i>Gurmat Vidyala</i></span></a>
+  <nav aria-label="Main" id="site-nav"><a href="/classes/">Classes</a><a href="/camps/">Camps</a><a href="/resources/">Resources</a><a href="/gallery/">Gallery</a><a href="/about/">About</a><a href="/contact/">Contact</a><a href="/donate/" aria-current="page">Donate</a></nav>
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav"><span>Menu</span><i aria-hidden="true"></i></button>
+  <a class="wa" href="https://wa.me/447394848407?text=Sat%20Sri%20Akal%20%E2%80%94%20I'd%20like%20to%20ask%20about%20classes." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.6 2 2.18 6.42 2.18 11.86c0 1.74.46 3.44 1.32 4.94L2.1 22l5.34-1.4a9.8 9.8 0 0 0 4.6 1.17h.01c5.43 0 9.85-4.42 9.85-9.86 0-2.63-1.02-5.11-2.88-6.97A9.79 9.79 0 0 0 12.04 2z"/></svg>WhatsApp</a>
 </header>
 
-<main class="wrap">
-  <p class="lbl">Support the Vidyala</p>
-  <h1>Nothing is<br>charged.</h1>
-  <p class="lede">Every class is free. Instruments are lent out, granths are
-    shared, and nobody is paid &mdash; not a teacher, not a trustee. What the
-    charity spends goes on the things the classes need.</p>
 
+<main id="main">
+<section class="phero paper" data-hero>
+  <div class="phero-in">
+    <div>
+      <p class="eyebrow">Support the Vidyala</p>
+      <h1 class="display">Nothing is <em>charged.</em></h1>
+      <p class="lede">Every class is free. Instruments are lent out, granths are shared, and nobody is paid:
+        not a teacher, not a trustee. What the charity spends goes on the things the classes need.</p>
+    </div>
+    <figure class="phero-art">
+      <div class="arch"><img src="/kit/img/k-k24.jpg" alt="A student with a dilruba across the lap, its case open beside them."></div>
+      <span class="arch-line" aria-hidden="true"></span>
+      <figcaption>An instrument lent, at the Kirtan Vidyala</figcaption>
+    </figure>
+  </div>
+</section>
+
+<div class="wrapx paper">
   <section class="band">
-    <h2>How to give</h2>
-    <p>By bank transfer, straight to the charity&rsquo;s own account. There is
-      no form to fill in and nothing to sign up to.</p>
-    <dl class="bank">
-      <div><dt>Account name</dt><dd>Shaheedi Bunga</dd></div>
-      <div><dt>Sort code</dt><dd>60-15-48</dd></div>
-      <div><dt>Account number</dt><dd>71693440</dd></div>
-      <div><dt>Reference</dt><dd>Your name</dd></div>
-    </dl>
+    <h2 data-fade><small>How to give</small>Straight to the charity's own account.</h2>
+    <div class="body">
+      <p data-fade>By bank transfer. There is no form to fill in and nothing to sign up to.</p>
+      <div class="bank" data-fade>
+        <div class="ttl"><b>Shaheedi Bunga</b><span>Registered charity · 1185103</span></div>
+        <dl>
+          <div class="ln"><dt>Account name</dt><dd>Shaheedi Bunga</dd><button class="copy" type="button" data-copy="Shaheedi Bunga">Copy</button></div>
+          <div class="ln"><dt>Sort code</dt><dd>60-15-48</dd><button class="copy" type="button" data-copy="601548">Copy</button></div>
+          <div class="ln"><dt>Account number</dt><dd>71693440</dd><button class="copy" type="button" data-copy="71693440">Copy</button></div>
+          <div class="ln"><dt>Reference</dt><dd>Your name</dd><span></span></div>
+        </dl>
+      </div>
+    </div>
   </section>
 
   <section class="band">
-    <h2>Seva in kind</h2>
-    <p>Instruments are lent to students who do not have their own, so a dilruba,
-      taus or tabla in working order goes straight into a child&rsquo;s hands.
-      The same is true of granths and pothis. Ask before buying anything &mdash;
-      what is short changes term to term.</p>
+    <h2 data-fade><small>Seva in kind</small>An instrument, straight into a child's hands.</h2>
+    <div class="body">
+      <p data-fade>Instruments are lent to students who do not have their own, so a dilruba, taus or tabla in working
+        order goes straight into a child's hands. The same is true of granths and pothis. <b>Ask before buying anything</b>:
+        what is short changes term to term.</p>
+      <div class="inkind">
+        <figure data-fade><div class="arch"><img src="/kit/img/k-k11.jpg" alt="Close on the gaj crossing the dilruba's strings." loading="lazy"></div><figcaption>Dilruba<small>Bowed saaj</small></figcaption></figure>
+        <figure data-fade><div class="arch"><img src="/kit/img/k-k22.jpg" alt="A student playing tabla, hands mid-stroke." loading="lazy"></div><figcaption>Tabla<small>Taal</small></figcaption></figure>
+        <figure data-fade><div class="arch"><img src="/kit/img/s-d08.jpg" alt="Gutkas laid out on cloth-covered tables." loading="lazy"></div><figcaption>Granths &amp; pothis<small>Santhiya</small></figcaption></figure>
+      </div>
+    </div>
   </section>
 
+  <section class="band">
+    <h2 data-fade><small>Before you give</small>Ask what is short.</h2>
+    <div class="body">
+      <p data-fade>One message will tell you what the classes need this term, whether that is money, an instrument or a pothi.</p>
+      <p data-fade><a class="wa" href="https://wa.me/447394848407?text=Sat%20Sri%20Akal%20%E2%80%94%20I'd%20like%20to%20ask%20what%20the%20classes%20need." target="_blank" rel="noopener" style="color:#fff"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.6 2 2.18 6.42 2.18 11.86c0 1.74.46 3.44 1.32 4.94L2.1 22l5.34-1.4a9.8 9.8 0 0 0 4.6 1.17h.01c5.43 0 9.85-4.42 9.85-9.86 0-2.63-1.02-5.11-2.88-6.97A9.79 9.79 0 0 0 12.04 2z"/></svg>Ask on WhatsApp</a></p>
+    </div>
+  </section>
+  <div style="height:calc(var(--u)*8)"></div>
+</div>
 </main>
 
-<p class="foot">Shaheedi Bunga &middot; Registered charity in England &amp; Wales &middot; 1185103<br><a href="../privacy/">Privacy</a> &middot; <a href="../safeguarding/">Safeguarding</a></p>
+<footer class="foot">
+  <p class="big">Come and sit<br>with the <em>sangat.</em></p>
+  <div class="cols">
+    <div><h4>Shaheedi Bunga</h4><p style="margin:0;max-width:34ch">A Sikh education charity in Leicester. Every class is free and taught by volunteers.</p></div>
+    <div><h4>Vidyale</h4><a href="/santhiya/">Santhiya</a><a href="/saaj/dilruba/">Kirtan</a><a href="/akhara/archery/">Archery</a><a href="/classes/">All classes</a><a href="/camps/">Camps</a></div>
+    <div><h4>Charity</h4><a href="/about/">About</a><a href="/donate/">Donate</a><a href="/gallery/">Gallery</a><a href="/resources/">Resources</a><a href="/library/">Library</a></div>
+    <div><h4>Contact</h4><a href="https://wa.me/447394848407" target="_blank" rel="noopener">+44 7394 848407</a><a href="mailto:gurmat@shaheedibunga.com">gurmat@shaheedibunga.com</a><a href="/safeguarding/">Safeguarding</a><a href="/privacy/">Privacy</a></div>
+  </div>
+  <div class="legal"><span>Registered charity in England &amp; Wales · 1185103</span><a href="/" style="display:inline">Home · the Parikrama</a></div>
+</footer>
+
+<script src="/kit/lib/gsap.min.js"></script>
+<script src="/kit/lib/ScrollTrigger.min.js"></script>
+<script src="/kit/lib/SplitText.min.js"></script>
+<script src="/kit/lib/lenis.min.js"></script>
+<script src="/kit/kit.js"></script>
+
+<script>
+/* copy buttons: work with or without motion, and say so to a screen reader */
+document.querySelectorAll("[data-copy]").forEach(function(b){
+  b.addEventListener("click", function(){
+    var done = function(){ b.textContent = "Copied"; b.classList.add("done");
+      setTimeout(function(){ b.textContent = "Copy"; b.classList.remove("done"); }, 1800); };
+    if(navigator.clipboard) navigator.clipboard.writeText(b.dataset.copy).then(done, function(){});
+  });
+  b.setAttribute("aria-label", "Copy " + b.previousElementSibling.previousElementSibling.textContent);
+});
+KIT.start();
+</script>
 </body>
 </html>

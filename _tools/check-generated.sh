@@ -8,7 +8,8 @@
 #
 #   index.html              <- Mockup/build-parikrama.js, from Mockup/parikrama.html
 #   sikhi-calendar/index.html <- the calendar app's generator, then _tools/fit-calendar.py
-#   new/ and Mockup/_Redesign_Inner/*.html  <- Mockup/_Redesign_Inner/build.js, from its src/
+#   the inner pages (classes/ … library/), kit/, new/ and Mockup/_Redesign_Inner/*.html
+#                           <- Mockup/_Redesign_Inner/build.js, from its src/
 #
 # This runs every generator and fails if any produces something different from
 # what is committed. Run it before pushing, or let the GitHub Action run it for you.
@@ -16,7 +17,10 @@
 #   bash _tools/check-generated.sh
 set -u
 cd "$(dirname "$0")/.."
-PATHS=("index.html" "sikhi-calendar/index.html" "new" "Mockup/_Redesign_Inner")
+PATHS=("index.html" "sikhi-calendar/index.html" "Mockup/_Redesign_Inner" "kit" "new"
+       "classes/index.html" "santhiya/index.html" "saaj/dilruba/index.html" "akhara/archery/index.html"
+       "camps/index.html" "about/index.html" "donate/index.html" "contact/index.html" "gallery/index.html"
+       "resources/index.html" "library/index.html" "safeguarding/index.html" "privacy/index.html")
 fail=0
 
 # Refuse to run over someone else's work in progress. More than one session
@@ -44,7 +48,7 @@ if ! python3 _tools/fit-calendar.py; then
 fi
 
 echo
-echo "== rebuilding the redesign test pages (/new/) =="
+echo "== rebuilding the inner pages =="
 if ! node Mockup/_Redesign_Inner/build.js >/dev/null; then
   echo "  Mockup/_Redesign_Inner/build.js failed"; fail=1
 fi
@@ -71,7 +75,7 @@ why this check exists.
 
   index.html                 edit Mockup/parikrama.html, or
                              Mockup/build-parikrama.js for anything templated
-  new/                       edit Mockup/_Redesign_Inner/src/, then run
+  inner pages, kit/, new/    edit Mockup/_Redesign_Inner/src/, then run
                              node Mockup/_Redesign_Inner/build.js
   sikhi-calendar/index.html  rebuild the calendar, then run
                              python3 _tools/fit-calendar.py
