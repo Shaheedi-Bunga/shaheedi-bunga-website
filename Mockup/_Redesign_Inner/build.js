@@ -28,7 +28,11 @@ const ROUTES = { classes:'classes', santhiya:'santhiya', kirtan:'saaj/dilruba', 
   camps:'camps', about:'about', donate:'donate', contact:'contact', gallery:'gallery',
   resources:'resources', library:'library', safeguarding:'safeguarding', privacy:'privacy' };
 
-const NAV = [['classes', 'Classes'], ['camps', 'Camps'], ['resources', 'Resources'], ['gallery', 'Gallery'],
+/* Library sits next to Resources on purpose: Resources is what the vidyala
+   reads from, the Library is what the vidhiarti made out of it. They are the
+   same errand, so they are neighbours. */
+const NAV = [['classes', 'Classes'], ['camps', 'Camps'], ['resources', 'Resources'],
+             ['library', 'Library'], ['gallery', 'Gallery'],
              ['about', 'About'], ['contact', 'Contact'], ['donate', 'Donate']];
 
 function mast(a){
