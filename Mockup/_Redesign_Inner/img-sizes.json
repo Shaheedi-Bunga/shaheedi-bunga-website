@@ -1,0 +1,1395 @@
+{
+"/Assets/Archery/tiles/a01.jpg": {
+"h": 575,
+"v": [
+460
+],
+"w": 460
+},
+"/Assets/Archery/tiles/a05.jpg": {
+"h": 575,
+"v": [
+460
+],
+"w": 460
+},
+"/Assets/Archery/tiles/a06.jpg": {
+"h": 575,
+"v": [
+460
+],
+"w": 460
+},
+"/Assets/Archery/tiles/a08.jpg": {
+"h": 575,
+"v": [
+460
+],
+"w": 460
+},
+"/Assets/Archery/tiles/a09.jpg": {
+"h": 575,
+"v": [
+460
+],
+"w": 460
+},
+"/Assets/Archery/tiles/a10.jpg": {
+"h": 575,
+"v": [
+460
+],
+"w": 460
+},
+"/Assets/Archery/tiles/a14.jpg": {
+"h": 575,
+"v": [
+460
+],
+"w": 460
+},
+"/Assets/Kirtan/tiles/k01.jpg": {
+"h": 700,
+"v": [
+480
+],
+"w": 560
+},
+"/Assets/Kirtan/tiles/k02.jpg": {
+"h": 700,
+"v": [
+480
+],
+"w": 560
+},
+"/Assets/Kirtan/tiles/k03.jpg": {
+"h": 550,
+"v": [
+440
+],
+"w": 440
+},
+"/Assets/Kirtan/tiles/k05.jpg": {
+"h": 700,
+"v": [
+480
+],
+"w": 560
+},
+"/Assets/Kirtan/tiles/k11.jpg": {
+"h": 700,
+"v": [
+480
+],
+"w": 560
+},
+"/Assets/Kirtan/tiles/k15.jpg": {
+"h": 700,
+"v": [
+480
+],
+"w": 560
+},
+"/Assets/Kirtan/tiles/k22.jpg": {
+"h": 700,
+"v": [
+480
+],
+"w": 560
+},
+"/Assets/Kirtan/tiles/k24.jpg": {
+"h": 700,
+"v": [
+480
+],
+"w": 560
+},
+"/Assets/Kirtan/tiles/k28.jpg": {
+"h": 700,
+"v": [
+480
+],
+"w": 560
+},
+"/Assets/Kirtan/tiles/k30.jpg": {
+"h": 700,
+"v": [
+480
+],
+"w": 560
+},
+"/Assets/Kirtan/tiles/k31.jpg": {
+"h": 700,
+"v": [
+480
+],
+"w": 560
+},
+"/Assets/Santhiya/drift/d02.jpg": {
+"h": 520,
+"v": [
+480
+],
+"w": 520
+},
+"/Assets/Santhiya/drift/d04.jpg": {
+"h": 520,
+"v": [
+480
+],
+"w": 520
+},
+"/Assets/Santhiya/drift/d05.jpg": {
+"h": 520,
+"v": [
+480
+],
+"w": 520
+},
+"/Assets/Santhiya/drift/d06.jpg": {
+"h": 520,
+"v": [
+480
+],
+"w": 520
+},
+"/Assets/Santhiya/drift/d07.jpg": {
+"h": 520,
+"v": [
+480
+],
+"w": 520
+},
+"/Assets/Santhiya/drift/d08.jpg": {
+"h": 520,
+"v": [
+480
+],
+"w": 520
+},
+"/Assets/Santhiya/drift/d14.jpg": {
+"h": 520,
+"v": [
+480
+],
+"w": 520
+},
+"/Assets/Santhiya/drift/d15.jpg": {
+"h": 520,
+"v": [
+480
+],
+"w": 520
+},
+"/Assets/Santhiya/drift/d16.jpg": {
+"h": 520,
+"v": [
+480
+],
+"w": 520
+},
+"/Assets/Santhiya/drift/d17.jpg": {
+"h": 520,
+"v": [
+480
+],
+"w": 520
+},
+"/Assets/Santhiya/drift/d18.jpg": {
+"h": 520,
+"v": [
+480
+],
+"w": 520
+},
+"/Assets/Santhiya/drift/d19.jpg": {
+"h": 520,
+"v": [
+480
+],
+"w": 520
+},
+"/Assets/Santhiya/drift/d21.jpg": {
+"h": 520,
+"v": [
+480
+],
+"w": 520
+},
+"/Assets/Santhiya/drift/d22.jpg": {
+"h": 520,
+"v": [
+480
+],
+"w": 520
+},
+"/Assets/Santhiya/drift/d23.jpg": {
+"h": 520,
+"v": [
+480
+],
+"w": 520
+},
+"/Assets/Santhiya/drift/d24.jpg": {
+"h": 520,
+"v": [
+480
+],
+"w": 520
+},
+"/Assets/Santhiya/drift/d25.jpg": {
+"h": 520,
+"v": [
+480
+],
+"w": 520
+},
+"/Assets/Santhiya/drift/d26.jpg": {
+"h": 520,
+"v": [
+480
+],
+"w": 520
+},
+"/Assets/Santhiya/drift/d27.jpg": {
+"h": 520,
+"v": [
+480
+],
+"w": 520
+},
+"/Assets/Santhiya/drift/d29.jpg": {
+"h": 520,
+"v": [
+480
+],
+"w": 520
+},
+"/Assets/Santhiya/drift/d30.jpg": {
+"h": 520,
+"v": [
+480
+],
+"w": 520
+},
+"/Assets/Santhiya/drift/d31.jpg": {
+"h": 520,
+"v": [
+480
+],
+"w": 520
+},
+"/Assets/Santhiya/drift/d32.jpg": {
+"h": 520,
+"v": [
+480
+],
+"w": 520
+},
+"/Assets/Santhiya/drift/d33.jpg": {
+"h": 520,
+"v": [
+480
+],
+"w": 520
+},
+"/Assets/Santhiya/drift/e01.jpg": {
+"h": 520,
+"v": [
+480
+],
+"w": 520
+},
+"/Assets/Santhiya/drift/e02.jpg": {
+"h": 520,
+"v": [
+480
+],
+"w": 520
+},
+"/Assets/Santhiya/drift/e03.jpg": {
+"h": 520,
+"v": [
+480
+],
+"w": 520
+},
+"/Assets/Santhiya/drift/e04.jpg": {
+"h": 520,
+"v": [
+480
+],
+"w": 520
+},
+"/Assets/Santhiya/drift/e05.jpg": {
+"h": 520,
+"v": [
+480
+],
+"w": 520
+},
+"/Assets/Santhiya/drift/e06.jpg": {
+"h": 520,
+"v": [
+480
+],
+"w": 520
+},
+"/Assets/Santhiya/drift/e07.jpg": {
+"h": 520,
+"v": [
+480
+],
+"w": 520
+},
+"/Assets/Santhiya/drift/e08.jpg": {
+"h": 520,
+"v": [
+480
+],
+"w": 520
+},
+"/Assets/Santhiya/drift/e09.jpg": {
+"h": 520,
+"v": [
+480
+],
+"w": 520
+},
+"/Assets/Santhiya/drift/e10.jpg": {
+"h": 520,
+"v": [
+480
+],
+"w": 520
+},
+"/Assets/Santhiya/drift/e11.jpg": {
+"h": 520,
+"v": [
+480
+],
+"w": 520
+},
+"/Assets/Santhiya/drift/e12.jpg": {
+"h": 520,
+"v": [
+480
+],
+"w": 520
+},
+"/Assets/Santhiya/drift/e13.jpg": {
+"h": 520,
+"v": [
+480
+],
+"w": 520
+},
+"/Assets/Santhiya/drift/e14.jpg": {
+"h": 520,
+"v": [
+480
+],
+"w": 520
+},
+"/Assets/Santhiya/drift/e15.jpg": {
+"h": 520,
+"v": [
+480
+],
+"w": 520
+},
+"/Assets/Santhiya/drift/e16.jpg": {
+"h": 520,
+"v": [
+480
+],
+"w": 520
+},
+"/Assets/Santhiya/drift/e17.jpg": {
+"h": 520,
+"v": [
+480
+],
+"w": 520
+},
+"/Assets/Santhiya/drift/e18.jpg": {
+"h": 520,
+"v": [
+480
+],
+"w": 520
+},
+"/Assets/Santhiya/drift/e19.jpg": {
+"h": 520,
+"v": [
+480
+],
+"w": 520
+},
+"/Assets/Santhiya/drift/e20.jpg": {
+"h": 520,
+"v": [
+480
+],
+"w": 520
+},
+"/Assets/Santhiya/drift/e21.jpg": {
+"h": 520,
+"v": [
+480
+],
+"w": 520
+},
+"/Assets/Santhiya/drift/e22.jpg": {
+"h": 520,
+"v": [
+480
+],
+"w": 520
+},
+"/Assets/Santhiya/drift/e23.jpg": {
+"h": 520,
+"v": [
+480
+],
+"w": 520
+},
+"/Assets/Santhiya/drift/e24.jpg": {
+"h": 520,
+"v": [
+480
+],
+"w": 520
+},
+"/Assets/Santhiya/drift/e25.jpg": {
+"h": 520,
+"v": [
+480
+],
+"w": 520
+},
+"/Assets/Santhiya/drift/e26.jpg": {
+"h": 520,
+"v": [
+480
+],
+"w": 520
+},
+"/Assets/Santhiya/drift/e27.jpg": {
+"h": 520,
+"v": [
+480
+],
+"w": 520
+},
+"/Assets/Santhiya/drift/e28.jpg": {
+"h": 520,
+"v": [
+480
+],
+"w": 520
+},
+"img/akal-bunga-1858.jpg": {
+"h": 1685,
+"v": [
+480,
+960
+],
+"w": 1400
+},
+"img/ev/e00.jpg": {
+"h": 1350,
+"v": [
+480,
+960
+],
+"w": 1012
+},
+"img/ev/e01.jpg": {
+"h": 1350,
+"v": [
+480,
+960
+],
+"w": 1012
+},
+"img/ev/e02.jpg": {
+"h": 1350,
+"v": [
+480,
+960
+],
+"w": 1080
+},
+"img/ev/e03.jpg": {
+"h": 1350,
+"v": [
+480,
+960
+],
+"w": 1012
+},
+"img/ev/e04.jpg": {
+"h": 1350,
+"v": [
+480,
+960
+],
+"w": 1012
+},
+"img/ev/e05.jpg": {
+"h": 1350,
+"v": [
+480,
+960
+],
+"w": 1098
+},
+"img/ev/e06.jpg": {
+"h": 1350,
+"v": [
+480,
+960
+],
+"w": 1080
+},
+"img/ev/e07.jpg": {
+"h": 1350,
+"v": [
+480,
+960
+],
+"w": 1080
+},
+"img/ev/e08.jpg": {
+"h": 1350,
+"v": [
+480,
+960
+],
+"w": 1080
+},
+"img/ev/e09.jpg": {
+"h": 1163,
+"v": [
+480
+],
+"w": 932
+},
+"img/ev/e10.jpg": {
+"h": 1350,
+"v": [
+480,
+960
+],
+"w": 1080
+},
+"img/ev/e11.jpg": {
+"h": 1350,
+"v": [
+480,
+960
+],
+"w": 1080
+},
+"img/ev/e12.jpg": {
+"h": 1350,
+"v": [
+480,
+960
+],
+"w": 1080
+},
+"img/ev/e13.jpg": {
+"h": 1350,
+"v": [
+480,
+960
+],
+"w": 1086
+},
+"img/ev/e14.jpg": {
+"h": 1080,
+"v": [
+480,
+960
+],
+"w": 1080
+},
+"img/ev/e15.jpg": {
+"h": 1350,
+"v": [
+480,
+960
+],
+"w": 1080
+},
+"img/ev/e16.jpg": {
+"h": 1350,
+"v": [
+480,
+960
+],
+"w": 1080
+},
+"img/ev/e17.jpg": {
+"h": 1350,
+"v": [
+480,
+960
+],
+"w": 1092
+},
+"img/ev/e18.jpg": {
+"h": 1350,
+"v": [
+480,
+960
+],
+"w": 1080
+},
+"img/ev/e19.jpg": {
+"h": 1350,
+"v": [
+480,
+960
+],
+"w": 1080
+},
+"img/ev/e20.jpg": {
+"h": 1080,
+"v": [
+480,
+960
+],
+"w": 1080
+},
+"img/ev/e21.jpg": {
+"h": 1080,
+"v": [
+480,
+960
+],
+"w": 1080
+},
+"img/ev/e22.jpg": {
+"h": 1350,
+"v": [
+480,
+960
+],
+"w": 1080
+},
+"img/ev/e23.jpg": {
+"h": 1350,
+"v": [
+480,
+960
+],
+"w": 1080
+},
+"img/ev/e24.jpg": {
+"h": 1350,
+"v": [
+480,
+960
+],
+"w": 1080
+},
+"img/ev/e25.jpg": {
+"h": 730,
+"v": [
+480,
+960
+],
+"w": 1024
+},
+"img/ev/e26.jpg": {
+"h": 1080,
+"v": [
+480,
+960
+],
+"w": 1080
+},
+"img/ev/e27.jpg": {
+"h": 406,
+"v": [
+480
+],
+"w": 720
+},
+"img/ev/e28.jpg": {
+"h": 866,
+"v": [
+480,
+960
+],
+"w": 1080
+},
+"img/ev/e29.jpg": {
+"h": 406,
+"v": [
+480
+],
+"w": 720
+},
+"img/ev/e30.jpg": {
+"h": 1080,
+"v": [
+480,
+960
+],
+"w": 1080
+},
+"img/ev/e31.jpg": {
+"h": 1080,
+"v": [
+480,
+960
+],
+"w": 1080
+},
+"img/ev/e32.jpg": {
+"h": 1080,
+"v": [
+480,
+960
+],
+"w": 1080
+},
+"img/ev/e33.jpg": {
+"h": 1080,
+"v": [
+480,
+960
+],
+"w": 1080
+},
+"img/ev/e34.jpg": {
+"h": 1024,
+"v": [
+480,
+960
+],
+"w": 1024
+},
+"img/ev/e35.jpg": {
+"h": 1350,
+"v": [
+480,
+960
+],
+"w": 1080
+},
+"img/ev/e37.jpg": {
+"h": 1080,
+"v": [
+480,
+960
+],
+"w": 1080
+},
+"img/ev/e38.jpg": {
+"h": 1024,
+"v": [
+480,
+960
+],
+"w": 1024
+},
+"img/ev/e39.jpg": {
+"h": 864,
+"v": [
+480,
+960
+],
+"w": 1080
+},
+"img/ev/e40.jpg": {
+"h": 864,
+"v": [
+480,
+960
+],
+"w": 1080
+},
+"img/ev/e41.jpg": {
+"h": 1199,
+"v": [
+480
+],
+"w": 960
+},
+"img/ev/e42.jpg": {
+"h": 1081,
+"v": [
+480
+],
+"w": 866
+},
+"img/ev/e43.jpg": {
+"h": 768,
+"v": [
+480,
+960
+],
+"w": 1024
+},
+"img/ev/p00.jpg": {
+"h": 1350,
+"v": [
+480,
+960
+],
+"w": 1080
+},
+"img/ev/p01.jpg": {
+"h": 1350,
+"v": [
+480,
+960
+],
+"w": 1080
+},
+"img/ev/p02.jpg": {
+"h": 1350,
+"v": [
+480,
+960
+],
+"w": 1080
+},
+"img/ev/p03.jpg": {
+"h": 1350,
+"v": [
+480,
+960
+],
+"w": 1080
+},
+"img/ev/p04.jpg": {
+"h": 1350,
+"v": [
+480,
+960
+],
+"w": 1080
+},
+"img/ev/p05.jpg": {
+"h": 1350,
+"v": [
+480,
+960
+],
+"w": 1080
+},
+"img/ev/p06.jpg": {
+"h": 1350,
+"v": [
+480,
+960
+],
+"w": 1082
+},
+"img/ev/p08.jpg": {
+"h": 1080,
+"v": [
+480,
+960
+],
+"w": 1080
+},
+"img/ev/p09.jpg": {
+"h": 899,
+"v": [
+480
+],
+"w": 900
+},
+"img/ev/p10.jpg": {
+"h": 1350,
+"v": [
+480,
+960
+],
+"w": 1080
+},
+"img/ev/p11.jpg": {
+"h": 1350,
+"v": [
+480,
+960
+],
+"w": 1080
+},
+"img/ev/p12.jpg": {
+"h": 1350,
+"v": [
+480,
+960
+],
+"w": 1080
+},
+"img/ev/p13.jpg": {
+"h": 1350,
+"v": [
+480,
+960
+],
+"w": 1080
+},
+"img/ev/p14.jpg": {
+"h": 1080,
+"v": [
+480,
+960
+],
+"w": 1080
+},
+"img/ev/p16.jpg": {
+"h": 1350,
+"v": [
+480,
+960
+],
+"w": 1350
+},
+"img/ev/p17.jpg": {
+"h": 1350,
+"v": [
+480,
+960
+],
+"w": 1080
+},
+"img/ev/p18.jpg": {
+"h": 1350,
+"v": [
+480,
+960
+],
+"w": 1080
+},
+"img/ev/p20.jpg": {
+"h": 975,
+"v": [
+480,
+960
+],
+"w": 976
+},
+"img/ev/p21.jpg": {
+"h": 1350,
+"v": [
+480,
+960
+],
+"w": 1080
+},
+"img/ev/p22.jpg": {
+"h": 1293,
+"v": [
+480,
+960
+],
+"w": 1034
+},
+"img/ev/p23.jpg": {
+"h": 864,
+"v": [
+480,
+960
+],
+"w": 1080
+},
+"img/ev/p24.jpg": {
+"h": 584,
+"v": [
+480
+],
+"w": 851
+},
+"img/ev/p25.jpg": {
+"h": 1200,
+"v": [
+480
+],
+"w": 960
+},
+"img/ev/p26.jpg": {
+"h": 1084,
+"v": [
+480
+],
+"w": 868
+},
+"img/ev/p27.jpg": {
+"h": 1200,
+"v": [
+480
+],
+"w": 960
+},
+"img/ev/p28.jpg": {
+"h": 1200,
+"v": [
+480
+],
+"w": 960
+},
+"img/ev/p29.jpg": {
+"h": 900,
+"v": [
+480
+],
+"w": 720
+},
+"img/folio-vaaran.jpg": {
+"h": 1151,
+"v": [
+480,
+960
+],
+"w": 1000
+},
+"img/fresco-bhai-gurdas-ji.jpg": {
+"h": 2000,
+"v": [
+480,
+960
+],
+"w": 1600
+},
+"img/gurmat-vidyala-84.png": {
+"h": 84,
+"v": [
+84
+],
+"w": 84
+},
+"img/harmandir-sahib-1858.jpg": {
+"h": 1224,
+"v": [
+480,
+960
+],
+"w": 1600
+},
+"img/ig-fight-night-2024.jpg": {
+"h": 1440,
+"v": [
+480,
+960
+],
+"w": 1154
+},
+"img/ig-gvc-2022-class.jpg": {
+"h": 1440,
+"v": [
+480,
+960
+],
+"w": 1440
+},
+"img/ig-gvc-2022-group.jpg": {
+"h": 1439,
+"v": [
+480,
+960
+],
+"w": 1440
+},
+"img/ig-gvc-2022-reading.jpg": {
+"h": 1081,
+"v": [
+480,
+960
+],
+"w": 1440
+},
+"img/ig-gvc-2022-teaching.jpg": {
+"h": 1440,
+"v": [
+480,
+960
+],
+"w": 1440
+},
+"img/ig-larivaar-2019.jpg": {
+"h": 1440,
+"v": [
+480,
+960
+],
+"w": 1440
+},
+"img/ig-singhs-camp-fire.jpg": {
+"h": 964,
+"v": [
+480,
+960
+],
+"w": 1405
+},
+"img/ig-singhs-camp-group.jpg": {
+"h": 1081,
+"v": [
+480,
+960
+],
+"w": 1440
+},
+"img/ig-singhs-camp-hilltop.jpg": {
+"h": 813,
+"v": [
+480,
+960
+],
+"w": 1440
+},
+"img/ig-singhs-camp-langar.jpg": {
+"h": 1439,
+"v": [
+480,
+960
+],
+"w": 1440
+},
+"img/ig-singhs-camp-lodge.jpg": {
+"h": 747,
+"v": [
+480,
+960
+],
+"w": 1093
+},
+"img/ig-singhs-camp-night.jpg": {
+"h": 957,
+"v": [
+480,
+960
+],
+"w": 1400
+},
+"img/ig-singhs-camp-path.jpg": {
+"h": 813,
+"v": [
+480,
+960
+],
+"w": 1440
+},
+"img/ig-singhs-camp-woods.jpg": {
+"h": 963,
+"v": [
+480,
+960
+],
+"w": 1404
+},
+"img/k-k02.jpg": {
+"h": 700,
+"v": [
+480
+],
+"w": 560
+},
+"img/k-k24.jpg": {
+"h": 700,
+"v": [
+480
+],
+"w": 560
+},
+"img/p-archery-aim.jpg": {
+"h": 1600,
+"v": [
+480,
+960
+],
+"w": 1200
+},
+"img/p-archery-full-draw.jpg": {
+"h": 1600,
+"v": [
+480,
+960
+],
+"w": 1200
+},
+"img/p-archery-podium.jpg": {
+"h": 1200,
+"v": [
+480,
+960
+],
+"w": 1600
+},
+"img/p-darbar-arch.jpg": {
+"h": 1370,
+"v": [
+480,
+960
+],
+"w": 1200
+},
+"img/p-harmonium-elder.jpg": {
+"h": 1600,
+"v": [
+480,
+960
+],
+"w": 1200
+},
+"img/p-hola-horse.jpg": {
+"h": 1600,
+"v": [
+480,
+960
+],
+"w": 1200
+},
+"img/p-katha-stage.jpg": {
+"h": 1600,
+"v": [
+480,
+960
+],
+"w": 1200
+},
+"img/p-kirtan-dilruba-student.jpg": {
+"h": 1600,
+"v": [
+480,
+960
+],
+"w": 1200
+},
+"img/p-kirtan-dilruba.jpg": {
+"h": 1600,
+"v": [
+480,
+960
+],
+"w": 1200
+},
+"img/p-kirtan-ensemble.jpg": {
+"h": 1600,
+"v": [
+480,
+960
+],
+"w": 1200
+},
+"img/p-kirtan-saaj-student.jpg": {
+"h": 1600,
+"v": [
+480,
+960
+],
+"w": 1200
+},
+"img/p-sangat.jpg": {
+"h": 1200,
+"v": [
+480,
+960
+],
+"w": 1600
+},
+"img/p-santhiya-class.jpg": {
+"h": 1200,
+"v": [
+480,
+960
+],
+"w": 1600
+},
+"img/p-santhiya-reader-close.jpg": {
+"h": 1600,
+"v": [
+480,
+960
+],
+"w": 1200
+},
+"img/p-santhiya-reader-mic.jpg": {
+"h": 1600,
+"v": [
+480,
+960
+],
+"w": 1200
+},
+"img/p-santhiya-reader-tablet.jpg": {
+"h": 1600,
+"v": [
+480,
+960
+],
+"w": 1200
+},
+"img/p-santhiya-tables.jpg": {
+"h": 1600,
+"v": [
+480,
+960
+],
+"w": 1200
+},
+"img/p-shastar-dhal.jpg": {
+"h": 1600,
+"v": [
+480,
+960
+],
+"w": 1200
+},
+"img/p-shastar-display.jpg": {
+"h": 1600,
+"v": [
+480,
+960
+],
+"w": 1200
+},
+"img/p-sikhi-camp.jpg": {
+"h": 1600,
+"v": [
+480,
+960
+],
+"w": 1200
+},
+"img/p-tabla-duo.jpg": {
+"h": 1600,
+"v": [
+480,
+960
+],
+"w": 1200
+},
+"img/p-tabla-player.jpg": {
+"h": 1600,
+"v": [
+480,
+960
+],
+"w": 1200
+},
+"img/s-d05.jpg": {
+"h": 520,
+"v": [
+480
+],
+"w": 520
+},
+"img/s-d16.jpg": {
+"h": 520,
+"v": [
+480
+],
+"w": 520
+}
+}

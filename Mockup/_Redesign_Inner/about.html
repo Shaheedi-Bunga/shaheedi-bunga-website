@@ -3,6 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- the site loads everything from itself and sends nothing anywhere (see /privacy/); this says so to the browser.
+     Inline script and style stay allowed: every page carries its own. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; media-src 'self'; font-src 'self'; connect-src 'self'; object-src 'none'; frame-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="robots" content="noindex">
 <title>About · Shaheedi Bunga</title>
 <link rel="icon" href="/Assets/Brand/favicon-32.png" sizes="32x32">
@@ -53,7 +57,7 @@ html[data-mood="dark"] .plate img{ filter:sepia(.45) brightness(.82) contrast(1.
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="mast">
-  <a class="brand" href="index.html" aria-label="Shaheedi Bunga, home"><img src="img/gurmat-vidyala-84.png" alt="" width="40" height="40">
+  <a class="brand" href="index.html" aria-label="Shaheedi Bunga, home"><img src="img/gurmat-vidyala-84.png" alt="" width="40" height="40" srcset="img/_w/gurmat-vidyala-84-84.webp">
     <span><b>Shaheedi Bunga</b><i>Gurmat Vidyala</i></span></a>
   <nav aria-label="Main" id="site-nav"><div class="vid"><button class="vid-btn" type="button" aria-expanded="false" aria-controls="vid-panel">Vidyale<i aria-hidden="true"></i></button><div class="vid-panel" id="vid-panel"><div class="vid-grid"><a class="vid-item" href="santhiya.html"><span class="vid-gur" lang="pa">ਸੰਥਿਆ ਵਿਦਿਆਲਾ</span><b>Santhiya</b><small>Reading sudh Gurbani</small></a><a class="vid-item" href="kirtan.html"><span class="vid-gur" lang="pa">ਕੀਰਤਨ ਵਿਦਿਆਲਾ</span><b>Kirtan</b><small>Tanti saaj and raag</small></a><a class="vid-item" href="archery.html"><span class="vid-gur" lang="pa">ਤੀਰ ਅੰਦਾਜ਼ੀ</span><b>Archery Akhara</b><small>Sundays, ages 14 and over</small></a><a class="vid-item" href="classes.html#tabla"><span class="vid-gur" lang="pa">ਤਬਲਾ ਤੇ ਜੋੜੀ</span><b>Tabla &amp; Jori</b><small>Running: ask</small></a><a class="vid-item" href="classes.html#katha"><span class="vid-gur" lang="pa">ਕਥਾ ਵਿਦਿਆਲਾ</span><b>Katha</b><small>Page coming</small></a><a class="vid-item" href="classes.html#itihaas"><span class="vid-gur" lang="pa">ਇਤਿਹਾਸ ਵਿਦਿਆਲਾ</span><b>Itihaas</b><small>Wednesday evenings</small></a></div><div class="vid-foot"><a href="classes.html">All classes →</a><a href="camps.html">Camps →</a></div></div></div><a href="events.html">Events</a><a href="calendar.html">Calendar</a><a href="gallery.html">Gallery</a><a href="resources.html">Resources</a><a href="about.html" aria-current="page">About</a><a href="contact.html">Contact</a><a href="donate.html">Donate</a></nav>
   <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav"><span>Menu</span><i aria-hidden="true"></i></button>
@@ -75,7 +79,7 @@ html[data-mood="dark"] .plate img{ filter:sepia(.45) brightness(.82) contrast(1.
 </section>
 
 <figure class="plate" id="plate">
-  <div class="frame"><img data-plate src="img/harmandir-sahib-1858.jpg" alt="Sri Harmandir Sahib across the sarovar in 1858–59, the Darshani Deori and the causeway to the left." width="1920" height="1469"></div>
+  <div class="frame"><img data-plate src="img/harmandir-sahib-1858.jpg" alt="Sri Harmandir Sahib across the sarovar in 1858–59, the Darshani Deori and the causeway to the left." width="1920" height="1469" srcset="img/_w/harmandir-sahib-1858-480.webp 480w, img/_w/harmandir-sahib-1858-960.webp 960w, img/harmandir-sahib-1858.jpg 1600w" sizes="100vw"></div>
   <figcaption>Sri Harmandir Sahib across the sarovar · Felice Beato, 1858–59 · J. Paul Getty Museum, public domain</figcaption>
 </figure>
 
@@ -107,7 +111,7 @@ html[data-mood="dark"] .plate img{ filter:sepia(.45) brightness(.82) contrast(1.
         bodies, and the general public. No one is turned away, and nothing is charged.</p>
     </div>
   </section>
-  <figure class="sangat" data-fade><img src="img/p-sangat.jpg" alt="The sangat gathered for a group photograph in the hall, seated and standing in rows." loading="lazy"><figcaption>The sangat · December 2024</figcaption></figure>
+  <figure class="sangat" data-fade><img src="img/p-sangat.jpg" alt="The sangat gathered for a group photograph in the hall, seated and standing in rows." loading="lazy" width="1600" height="1200" srcset="img/_w/p-sangat-480.webp 480w, img/_w/p-sangat-960.webp 960w, img/p-sangat.jpg 1600w" sizes="(max-width:760px) 100vw, 92vw"><figcaption>The sangat · December 2024</figcaption></figure>
 
   <section class="band">
     <h2 data-fade><small>How it is run</small>Volunteers, and the gurdware.</h2>

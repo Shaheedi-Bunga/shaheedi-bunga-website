@@ -3,6 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- the site loads everything from itself and sends nothing anywhere (see /privacy/); this says so to the browser.
+     Inline script and style stay allowed: every page carries its own. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; media-src 'self'; font-src 'self'; connect-src 'self'; object-src 'none'; frame-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="robots" content="noindex">
 <title>Safeguarding · Shaheedi Bunga</title>
 <link rel="icon" href="/Assets/Brand/favicon-32.png" sizes="32x32">
@@ -39,7 +43,7 @@ html[data-mood="dark"] .urgent{ background:#8E2A22; }
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="mast">
-  <a class="brand" href="index.html" aria-label="Shaheedi Bunga, home"><img src="img/gurmat-vidyala-84.png" alt="" width="40" height="40">
+  <a class="brand" href="index.html" aria-label="Shaheedi Bunga, home"><img src="img/gurmat-vidyala-84.png" alt="" width="40" height="40" srcset="img/_w/gurmat-vidyala-84-84.webp">
     <span><b>Shaheedi Bunga</b><i>Gurmat Vidyala</i></span></a>
   <nav aria-label="Main" id="site-nav"><div class="vid"><button class="vid-btn" type="button" aria-expanded="false" aria-controls="vid-panel">Vidyale<i aria-hidden="true"></i></button><div class="vid-panel" id="vid-panel"><div class="vid-grid"><a class="vid-item" href="santhiya.html"><span class="vid-gur" lang="pa">ਸੰਥਿਆ ਵਿਦਿਆਲਾ</span><b>Santhiya</b><small>Reading sudh Gurbani</small></a><a class="vid-item" href="kirtan.html"><span class="vid-gur" lang="pa">ਕੀਰਤਨ ਵਿਦਿਆਲਾ</span><b>Kirtan</b><small>Tanti saaj and raag</small></a><a class="vid-item" href="archery.html"><span class="vid-gur" lang="pa">ਤੀਰ ਅੰਦਾਜ਼ੀ</span><b>Archery Akhara</b><small>Sundays, ages 14 and over</small></a><a class="vid-item" href="classes.html#tabla"><span class="vid-gur" lang="pa">ਤਬਲਾ ਤੇ ਜੋੜੀ</span><b>Tabla &amp; Jori</b><small>Running: ask</small></a><a class="vid-item" href="classes.html#katha"><span class="vid-gur" lang="pa">ਕਥਾ ਵਿਦਿਆਲਾ</span><b>Katha</b><small>Page coming</small></a><a class="vid-item" href="classes.html#itihaas"><span class="vid-gur" lang="pa">ਇਤਿਹਾਸ ਵਿਦਿਆਲਾ</span><b>Itihaas</b><small>Wednesday evenings</small></a></div><div class="vid-foot"><a href="classes.html">All classes →</a><a href="camps.html">Camps →</a></div></div></div><a href="events.html">Events</a><a href="calendar.html">Calendar</a><a href="gallery.html">Gallery</a><a href="resources.html">Resources</a><a href="about.html">About</a><a href="contact.html">Contact</a><a href="donate.html">Donate</a></nav>
   <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav"><span>Menu</span><i aria-hidden="true"></i></button>

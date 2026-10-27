@@ -3,6 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- the site loads everything from itself and sends nothing anywhere (see /privacy/); this says so to the browser.
+     Inline script and style stay allowed: every page carries its own. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; media-src 'self'; font-src 'self'; connect-src 'self'; object-src 'none'; frame-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="robots" content="noindex">
 <title>Santhiya Vidyala · Shaheedi Bunga</title>
 <link rel="icon" href="/Assets/Brand/favicon-32.png" sizes="32x32">
@@ -109,7 +113,7 @@ html[data-mood="dark"] .manifesto{ border-bottom:1px solid var(--line); }
 
 <a class="skip" href="#main">Skip to content</a>
 <header class="mast">
-  <a class="brand" href="index.html" aria-label="Shaheedi Bunga, home"><img src="img/gurmat-vidyala-84.png" alt="" width="40" height="40">
+  <a class="brand" href="index.html" aria-label="Shaheedi Bunga, home"><img src="img/gurmat-vidyala-84.png" alt="" width="40" height="40" srcset="img/_w/gurmat-vidyala-84-84.webp">
     <span><b>Shaheedi Bunga</b><i>Gurmat Vidyala</i></span></a>
   <nav aria-label="Main" id="site-nav"><div class="vid is-current"><button class="vid-btn" type="button" aria-expanded="false" aria-controls="vid-panel">Vidyale<i aria-hidden="true"></i></button><div class="vid-panel" id="vid-panel"><div class="vid-grid"><a class="vid-item" href="santhiya.html"><span class="vid-gur" lang="pa">ਸੰਥਿਆ ਵਿਦਿਆਲਾ</span><b>Santhiya</b><small>Reading sudh Gurbani</small></a><a class="vid-item" href="kirtan.html"><span class="vid-gur" lang="pa">ਕੀਰਤਨ ਵਿਦਿਆਲਾ</span><b>Kirtan</b><small>Tanti saaj and raag</small></a><a class="vid-item" href="archery.html"><span class="vid-gur" lang="pa">ਤੀਰ ਅੰਦਾਜ਼ੀ</span><b>Archery Akhara</b><small>Sundays, ages 14 and over</small></a><a class="vid-item" href="classes.html#tabla"><span class="vid-gur" lang="pa">ਤਬਲਾ ਤੇ ਜੋੜੀ</span><b>Tabla &amp; Jori</b><small>Running: ask</small></a><a class="vid-item" href="classes.html#katha"><span class="vid-gur" lang="pa">ਕਥਾ ਵਿਦਿਆਲਾ</span><b>Katha</b><small>Page coming</small></a><a class="vid-item" href="classes.html#itihaas"><span class="vid-gur" lang="pa">ਇਤਿਹਾਸ ਵਿਦਿਆਲਾ</span><b>Itihaas</b><small>Wednesday evenings</small></a></div><div class="vid-foot"><a href="classes.html" aria-current="page">All classes →</a><a href="camps.html">Camps →</a></div></div></div><a href="events.html">Events</a><a href="calendar.html">Calendar</a><a href="gallery.html">Gallery</a><a href="resources.html">Resources</a><a href="about.html">About</a><a href="contact.html">Contact</a><a href="donate.html">Donate</a></nav>
   <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav"><span>Menu</span><i aria-hidden="true"></i></button>
@@ -122,7 +126,7 @@ html[data-mood="dark"] .manifesto{ border-bottom:1px solid var(--line); }
 <section class="hero paper" data-hero aria-label="Santhiya Vidyala">
  <div class="hero-pin">
   <div class="stage" aria-hidden="true">
-    <img src="img/fresco-bhai-gurdas-ji.jpg" alt="">
+    <img src="img/fresco-bhai-gurdas-ji.jpg" alt="" width="1600" height="2000" srcset="img/_w/fresco-bhai-gurdas-ji-480.webp 480w, img/_w/fresco-bhai-gurdas-ji-960.webp 960w, img/fresco-bhai-gurdas-ji.jpg 1600w" sizes="(max-width:760px) 100vw, 50vw">
     <div class="veil"></div>
     <div class="over"><p>Every lagga matra. Every bisraam. <em>Nothing hurried.</em></p>
       <small>Bhai Gurdas Ji writing Sri Guru Granth Sahib Ji · fresco, Gurdwara Baba Atal Rai, Amritsar · mid-19th century</small></div>
@@ -139,7 +143,7 @@ html[data-mood="dark"] .manifesto{ border-bottom:1px solid var(--line); }
       </div>
     </div>
     <figure class="hero-art">
-      <div class="arch"><img src="img/fresco-bhai-gurdas-ji.jpg" alt="A fresco of Bhai Gurdas Ji seated, writing out Sri Guru Granth Sahib Ji, while an attendant waves a chaur." width="1600" height="2000"></div>
+      <div class="arch"><img src="img/fresco-bhai-gurdas-ji.jpg" alt="A fresco of Bhai Gurdas Ji seated, writing out Sri Guru Granth Sahib Ji, while an attendant waves a chaur." width="1600" height="2000" srcset="img/_w/fresco-bhai-gurdas-ji-480.webp 480w, img/_w/fresco-bhai-gurdas-ji-960.webp 960w, img/fresco-bhai-gurdas-ji.jpg 1600w" sizes="(max-width:760px) 100vw, 50vw"></div>
       <span class="arch-line" aria-hidden="true"></span>
       <figcaption>Bhai Gurdas Ji writing Sri Guru Granth Sahib Ji<br>Fresco, Gurdwara Baba Atal Rai · mid-19th c.</figcaption>
     </figure>
@@ -186,11 +190,11 @@ html[data-mood="dark"] .manifesto{ border-bottom:1px solid var(--line); }
     <p class="lede">Camps, weekly classes and saptah paath. The same room, filling and emptying, for as long as anyone can remember.</p>
   </div>
   <div class="room">
-    <figure class="f1"><img data-parallax="10" src="img/p-santhiya-reader-mic.jpg" alt="A reader at the microphone, a pothi open on the stand in front." loading="lazy"><figcaption>Line by line</figcaption></figure>
-    <figure class="f2"><img data-parallax="14" style="object-position:50% 0%" src="img/p-santhiya-reader-close.jpg" alt="Close on a young Singh reading, eyes down on the page." loading="lazy"><figcaption>Eyes on the page</figcaption></figure>
+    <figure class="f1"><img data-parallax="10" src="img/p-santhiya-reader-mic.jpg" alt="A reader at the microphone, a pothi open on the stand in front." loading="lazy" width="1200" height="1600" srcset="img/_w/p-santhiya-reader-mic-480.webp 480w, img/_w/p-santhiya-reader-mic-960.webp 960w, img/p-santhiya-reader-mic.jpg 1200w" sizes="(max-width:760px) 100vw, 50vw"><figcaption>Line by line</figcaption></figure>
+    <figure class="f2"><img data-parallax="14" style="object-position:50% 0%" src="img/p-santhiya-reader-close.jpg" alt="Close on a young Singh reading, eyes down on the page." loading="lazy" width="1200" height="1600" srcset="img/_w/p-santhiya-reader-close-480.webp 480w, img/_w/p-santhiya-reader-close-960.webp 960w, img/p-santhiya-reader-close.jpg 1200w" sizes="(max-width:760px) 100vw, 50vw"><figcaption>Eyes on the page</figcaption></figure>
     <figure class="f3"><video muted playsinline loop preload="none" aria-hidden="true" poster="img/v-santhiya-tables.jpg" data-src="img/v-santhiya-tables.mp4"></video><figcaption>At the tables</figcaption></figure>
-    <figure class="f4"><img data-parallax="12" style="object-position:50% 25%" src="img/p-santhiya-reader-tablet.jpg" alt="A Singh reading into the microphone, a tablet propped beside the pothi." loading="lazy"><figcaption>Vichar</figcaption></figure>
-    <figure class="f5"><img data-parallax="10" src="img/p-santhiya-class.jpg" alt="The class at low tables across the red carpet of the hall." loading="lazy"><figcaption>The class</figcaption></figure>
+    <figure class="f4"><img data-parallax="12" style="object-position:50% 25%" src="img/p-santhiya-reader-tablet.jpg" alt="A Singh reading into the microphone, a tablet propped beside the pothi." loading="lazy" width="1200" height="1600" srcset="img/_w/p-santhiya-reader-tablet-480.webp 480w, img/_w/p-santhiya-reader-tablet-960.webp 960w, img/p-santhiya-reader-tablet.jpg 1200w" sizes="(max-width:760px) 100vw, 50vw"><figcaption>Vichar</figcaption></figure>
+    <figure class="f5"><img data-parallax="10" src="img/p-santhiya-class.jpg" alt="The class at low tables across the red carpet of the hall." loading="lazy" width="1600" height="1200" srcset="img/_w/p-santhiya-class-480.webp 480w, img/_w/p-santhiya-class-960.webp 960w, img/p-santhiya-class.jpg 1600w" sizes="(max-width:760px) 100vw, 50vw"><figcaption>The class</figcaption></figure>
     <p class="quote" data-fade>“We believe that education is essential in nurturing and strengthening our future generations, mentally and physically.”<small>Shaheedi Bunga</small></p>
   </div>
 </section>
