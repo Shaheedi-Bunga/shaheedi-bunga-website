@@ -17,6 +17,8 @@
 .tail{ margin:calc(var(--u)*4) 0 calc(var(--u)*10); color:var(--navy-70); font-size:max(17px,calc(var(--u)*1.2)); max-width:56ch; }
 .tail a{ color:var(--gold-text); }
 .cpics{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; margin-top:calc(var(--u)*2.4); }
+.cpics.four{ grid-template-columns:repeat(4,minmax(0,1fr)); margin-top:calc(var(--u)*4); }
+@media(max-width:700px){ .cpics.four{ grid-template-columns:1fr 1fr; } }
 .cpics img{ width:100%; aspect-ratio:1; object-fit:cover; border-radius:3px; display:block; filter:var(--photo); }
 .cpics-cap{ font-family:var(--mono); font-size:10px !important; letter-spacing:.14em; text-transform:uppercase; color:var(--navy-70); margin:10px 0 0 !important; }
 .strip{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:calc(var(--u)*1.6); margin-top:calc(var(--u)*4); }
@@ -100,6 +102,12 @@
     <figure data-fade><video muted playsinline loop preload="none" aria-hidden="true" poster="img/v-horse-riding.jpg" data-src="img/v-horse-riding.mp4"></video><figcaption>Horse riding · shastar vidya</figcaption></figure>
   </div>
   <figure class="loop" data-fade><video muted playsinline loop preload="none" aria-hidden="true" poster="img/v-gatka-nagar-kirtan.jpg" data-src="img/v-gatka-nagar-kirtan.mp4"></video><figcaption>Gatka at the Vaisakhi nagar kirtan, April 2025</figcaption></figure>
+  <div class="cpics four" data-fade>
+    <img src="img/ig-singhs-camp-hilltop.jpg" alt="The Singhs Camp group on a hilltop at dusk, the valley behind them." loading="lazy">
+    <img src="img/ig-singhs-camp-woods.jpg" alt="Singhs walking through long grass in the woods, carrying gear between them." loading="lazy">
+    <img src="img/ig-singhs-camp-fire.jpg" alt="An evening around the fire at the Singhs Camp, the sangat seated close in." loading="lazy">
+    <img src="img/ig-singhs-camp-langar.jpg" alt="Langar cooking in a large pot inside the camp tent." loading="lazy">
+  </div><p class="cpics-cap">Singhs Camp · summer 2022</p>
   <!-- the live page linked instagram.com/shaheedibunga; the charity's account is @shaheedi_bunga_uk -->
   <p class="tail" data-fade>Camps are announced on <a href="https://www.instagram.com/shaheedi_bunga_uk/" target="_blank" rel="noopener">Instagram</a>
     first. To be told directly when the next one opens, <a href="contact.html">message us</a>.</p>
