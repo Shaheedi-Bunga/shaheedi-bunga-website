@@ -116,7 +116,8 @@ html[data-mood="dark"] .mast.solid{ background:rgba(12,19,34,.88); color:#F4EFE4
 /* phone and tablet: the links fold behind a Menu button and open as a panel
    under the masthead (the masthead goes solid while it is open) */
 .menu-btn{ display:none; }
-@media(max-width:900px){
+/* 1240px: ten links (Events and Calendar joined 2026-10-27) need about 1180px beside the name */
+@media(max-width:1240px){
   .mast nav{ display:none; }
   .menu-btn{ display:inline-flex; align-items:center; gap:10px; margin-left:auto; height:44px; padding:0 14px; border-radius:100px;
     background:transparent; color:inherit; cursor:pointer; border:1px solid currentColor; border-color:color-mix(in srgb,currentColor 32%,transparent);
@@ -310,7 +311,7 @@ a.venue:hover .go{ transform:translate(4px,-4px); }
 a:focus-visible, button:focus-visible{ outline:2px solid var(--focus); outline-offset:3px; }
 .theme svg{ width:19px; height:19px; fill:none; stroke:currentColor; stroke-width:1.6; stroke-linecap:round; }
 .theme svg path[d^="M20"]{ fill:currentColor; stroke:none; }
-@media(max-width:900px){ .mast .theme{ margin-left:0; } .mast .theme + .wa{ margin-left:0; } }
+@media(max-width:1240px){ .mast .theme{ margin-left:0; } .mast .theme + .wa{ margin-left:0; } }
 ::view-transition-old(root), ::view-transition-new(root){ animation-duration:.45s; animation-timing-function:cubic-bezier(.2,0,0,1); }
 
 /* reveal targets are visible by default; JS only animates FROM somewhere */
@@ -320,3 +321,26 @@ a:focus-visible, button:focus-visible{ outline:2px solid var(--focus); outline-o
 .loop{ margin:calc(var(--u)*4) 0 0; }
 .loop video{ width:100%; aspect-ratio:16/9; object-fit:cover; display:block; border-radius:3px; background:var(--cream-3); filter:var(--photo); }
 .loop figcaption{ font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--navy-70); margin-top:12px; }
+
+/* ── TRIAL palettes (Decide mode, 2026-10-27): ?palette=b|c|d. Not chosen yet. ──
+   B deep: crisper cream, deeper navy, photos nearly ungraded.
+   C warm: parchment cream, softer navy, warm photo grade.
+   D ink: near-white paper, darkest navy, gold kept for lines and numerals. */
+html[data-palette="b"]{ --cream:#FBF8F2; --cream-2:#F1EADB; --cream-3:#E6DAC2; --navy:#0E1F3D; --navy-70:rgba(14,31,61,.76);
+  --gold-text:#74520F; --gold:#A87D22; --focus:#74520F; --line:rgba(14,31,61,.13); --panel:#0E1F3D; --faded:rgba(14,31,61,.70);
+  --photo:sepia(.05) saturate(.97) contrast(1.05); }
+html[data-palette="b"][data-mood="dark"]{ --cream:#091428; --cream-2:#101C33; --cream-3:#18253F; --ink-dark:#091428;
+  --navy:#F1EBDD; --navy-70:rgba(241,235,221,.76); --gold-text:#E8C77E; --gold:#CFA54C; --focus:#E8C77E; --line:rgba(241,235,221,.12);
+  --panel:#15233F; --faded:rgba(241,235,221,.55); --photo:sepia(.06) saturate(.92) brightness(.92) contrast(1.06); }
+html[data-palette="c"]{ --cream:#F8F1E2; --cream-2:#EFE4CC; --cream-3:#E4D5B6; --navy:#1B2C4E; --navy-70:rgba(27,44,78,.76);
+  --gold-text:#7A5212; --gold:#B8862A; --focus:#7A5212; --line:rgba(27,44,78,.15); --panel:#1B2C4E; --faded:rgba(27,44,78,.70);
+  --photo:sepia(.14) saturate(.9) contrast(1.03); }
+html[data-palette="c"][data-mood="dark"]{ --cream:#121A2C; --cream-2:#192338; --cream-3:#212D45; --ink-dark:#121A2C;
+  --navy:#F1EBDD; --navy-70:rgba(241,235,221,.75); --gold-text:#E6C47E; --gold:#C79C45; --focus:#E6C47E; --line:rgba(241,235,221,.13);
+  --panel:#22304F; --faded:rgba(241,235,221,.55); --photo:sepia(.16) saturate(.86) brightness(.9) contrast(1.05); }
+html[data-palette="d"]{ --cream:#FFFDF8; --cream-2:#F4F0E6; --cream-3:#E8E1D2; --navy:#0A1630; --navy-70:rgba(10,22,48,.76);
+  --gold-text:#785810; --gold:#B08A2E; --focus:#785810; --line:rgba(10,22,48,.12); --panel:#0A1630; --faded:rgba(10,22,48,.70);
+  --photo:saturate(.98) contrast(1.04); }
+html[data-palette="d"][data-mood="dark"]{ --cream:#060D1C; --cream-2:#0D1628; --cream-3:#152036; --ink-dark:#060D1C;
+  --navy:#F1EBDD; --navy-70:rgba(241,235,221,.76); --gold-text:#E9CB85; --gold:#D2AA55; --focus:#E9CB85; --line:rgba(241,235,221,.12);
+  --panel:#111D36; --faded:rgba(241,235,221,.55); --photo:saturate(.94) brightness(.92) contrast(1.05); }

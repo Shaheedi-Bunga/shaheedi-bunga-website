@@ -32,7 +32,29 @@
      the site. Linking Google here would undo the self-hosting and make the
      privacy page's "this site contacts nobody" untrue for one page. -->
 <link rel="stylesheet" href="/lib/fonts.css">
-<link rel="stylesheet" href="/site.css">
+<link rel="stylesheet" href="/kit/kit.css">
+<!--kit:mood-->
+<!-- before paint: light unless this viewer chose dark (or ?mood= asks), so
+     there is never a flash of the wrong mode -->
+<script>(function(){var m=(/[?&]mood=(light|dark)/.exec(location.search)||[])[1];
+  if(!m){try{m=localStorage.getItem("sb-mood");}catch(e){}}
+  document.documentElement.dataset.mood=m==="dark"?"dark":"light";
+  /* TRIAL ONLY: ?palette=b|c|d previews a colour option; never stored */
+  var pl=(/[?&]palette=([bcd])/.exec(location.search)||[])[1]; if(pl) document.documentElement.dataset.palette=pl;})();</script>
+<style>/* the site's dark mood, mapped onto the calendar's own tokens (fit-calendar.py) */
+/* the masthead is fixed, as on every inner page: the calendar starts below it */
+body > .sbcal{ padding-top:calc(var(--mastH,74px) + 12px); }
+html[data-mood="dark"] body{ background:#0C1322 !important; }
+html[data-mood="dark"] .sbcal{
+  --cream:#0C1322; --cream-2:#141D31; --cream-3:#1B263D; --paper:#121B2E;
+  --rule:#2A3550; --rule-soft:#202B44;
+  --ink:#F1EBDD; --ink-2:#CFC6B4; --ink-3:#B3AA98;
+  --gold:#C9A04A; --gold-deep:#E2C27A; --gold-soft:#2A2A2E;
+  --clay:#D79A72; --plum:#D58AA8; --crimson:#E07D74; --saffron:#E3A160; --forest:#86C08F; --stone:#B8AFA2; --green:#A7C77A;
+  background:var(--cream); color:var(--ink); }
+</style>
+<!--/kit:mood-->
+
 
 <style>
 /* ============================================================================
@@ -321,24 +343,17 @@
 }
 </style>
 </head>
-<body style="margin:0;background:#FAF6EE">
-<!-- The same masthead and footer as every other page outside the parikrama.
-     The generated page has its own header and no footer, so on its own it is
-     a dead end: the logo goes home and nothing reaches Classes, Resources or
-     anything else. Added here by _tools/fit-calendar.py. -->
-<header class="top">
-  <img src="../Assets/Brand/gurmat-vidyala-84.png" alt="" width="42" height="42">
-  <span class="mark"><b>Shaheedi Bunga</b><i>Gurmat Vidyala</i></span>
-  <nav>
-    <a href="../">Home</a>
-    <a href="../classes/">Classes</a>
-    <a href="../resources/">Resources</a>
-    <a href="../gallery/">Gallery</a>
-    <a href="../about/">About</a>
-    <a href="../contact/">Contact</a>
-    <a href="../donate/">Donate</a>
-  </nav>
+<body style="margin:0;background:#FAF6EE"><!--kit:mast-->
+<a class="skip" href="#main">Skip to content</a>
+<header class="mast">
+  <a class="brand" href="/" aria-label="Shaheedi Bunga, home"><img src="/kit/img/gurmat-vidyala-84.png" alt="" width="40" height="40">
+    <span><b>Shaheedi Bunga</b><i>Gurmat Vidyala</i></span></a>
+  <nav aria-label="Main" id="site-nav"><a href="/classes/">Classes</a><a href="/camps/">Camps</a><a href="/events/">Events</a><a href="/sikhi-calendar/" aria-current="page">Calendar</a><a href="/resources/">Resources</a><a href="/library/">Library</a><a href="/gallery/">Gallery</a><a href="/about/">About</a><a href="/contact/">Contact</a><a href="/donate/">Donate</a></nav>
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav"><span>Menu</span><i aria-hidden="true"></i></button>
+  <a class="wa" href="https://wa.me/447394848407?text=Sat%20Sri%20Akal%20%E2%80%94%20I'd%20like%20to%20ask%20about%20the%20calendar." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.6 2 2.18 6.42 2.18 11.86c0 1.74.46 3.44 1.32 4.94L2.1 22l5.34-1.4a9.8 9.8 0 0 0 4.6 1.17h.01c5.43 0 9.85-4.42 9.85-9.86 0-2.63-1.02-5.11-2.88-6.97A9.79 9.79 0 0 0 12.04 2z"/></svg>WhatsApp</a>
 </header>
+
+<!--/kit:mast-->
 
 <div class="sbcal" id="sbcal">
   <div class="sbcal__inner">
@@ -2985,6 +3000,24 @@ const Overrides = (function () {
   renderToday(); renderUp(); renderMonth(); renderYear(); renderNote();
 })();
 </script>
-<p class="foot">Shaheedi Bunga &middot; Registered charity in England &amp; Wales &middot; 1185103<br><a href="../privacy/">Privacy</a> &middot; <a href="../safeguarding/">Safeguarding</a></p>
+<!--kit:foot-->
+<footer class="foot">
+  <p class="big">Come and sit<br>with the <em>sangat.</em></p>
+  <div class="cols">
+    <div><h4>Shaheedi Bunga</h4><p style="margin:0;max-width:34ch">A Sikh education charity in Leicester. Every class is free and taught by volunteers.</p></div>
+    <div><h4>Vidyale</h4><a href="/santhiya/">Santhiya</a><a href="/saaj/dilruba/">Kirtan</a><a href="/akhara/archery/">Archery</a><a href="/classes/">All classes</a><a href="/camps/">Camps</a><a href="/events/">Events</a><a href="/sikhi-calendar/">Calendar</a></div>
+    <div><h4>Charity</h4><a href="/about/">About</a><a href="/donate/">Donate</a><a href="/gallery/">Gallery</a><a href="/resources/">Resources</a><a href="/library/">Library</a></div>
+    <div><h4>Contact</h4><a href="https://wa.me/447394848407" target="_blank" rel="noopener">+44 7394 848407</a><a href="mailto:gurmat@shaheedibunga.com">gurmat@shaheedibunga.com</a><a href="/safeguarding/">Safeguarding</a><a href="/privacy/">Privacy</a></div>
+  </div>
+  <div class="legal"><span>Registered charity in England &amp; Wales · 1185103</span><a href="/" style="display:inline">Home · the Parikrama</a></div>
+</footer>
+<script src="/kit/lib/gsap.min.js"></script>
+<script src="/kit/lib/ScrollTrigger.min.js"></script>
+<script src="/kit/lib/SplitText.min.js"></script>
+<script src="/kit/lib/lenis.min.js"></script>
+<script src="/kit/kit.js"></script>
+
+<script>KIT.start();</script>
+<!--/kit:foot-->
 </body>
 </html>

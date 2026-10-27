@@ -26,12 +26,16 @@ const esc = s => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;');
 /* page name → its address on the site */
 const ROUTES = { classes:'classes', santhiya:'santhiya', kirtan:'saaj/dilruba', archery:'akhara/archery',
   camps:'camps', about:'about', donate:'donate', contact:'contact', gallery:'gallery',
-  resources:'resources', library:'library', safeguarding:'safeguarding', privacy:'privacy' };
+  resources:'resources', library:'library', safeguarding:'safeguarding', privacy:'privacy', events:'events' };
+
+/* pages that live on the site but are not built here: the calendar is the
+   calendar app's page, fitted by _tools/fit-calendar.py */
+const ELSEWHERE = { calendar:'sikhi-calendar' };
 
 /* Library sits next to Resources on purpose: Resources is what the vidyala
    reads from, the Library is what the vidhiarti made out of it. They are the
    same errand, so they are neighbours. */
-const NAV = [['classes', 'Classes'], ['camps', 'Camps'], ['resources', 'Resources'],
+const NAV = [['classes', 'Classes'], ['camps', 'Camps'], ['events', 'Events'], ['calendar', 'Calendar'], ['resources', 'Resources'],
              ['library', 'Library'], ['gallery', 'Gallery'],
              ['about', 'About'], ['contact', 'Contact'], ['donate', 'Donate']];
 
@@ -76,6 +80,29 @@ function shelf(){
     </a>`).join('\n');
 }
 
+/* THE EVENTS. events.json -> the archive on /events/, newest first, grouped
+   by year. Posters are the announcements as they were posted. */
+const EV = JSON.parse(fs.readFileSync(path.join(here, 'events.json'), 'utf8')).items;
+const html = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+function events(){
+  const year = e => (e.start || e.posted).slice(0, 4);
+  const sorted = EV.slice().sort((a, b) => (b.start || b.posted).localeCompare(a.start || a.posted));
+  const years = [...new Set(sorted.map(year))];
+  return years.map(y => `  <section class="yr" data-year="${y}">
+    <h2 class="yr-h">${y}</h2>
+    <div class="evs">
+${sorted.filter(e => year(e) === y).map(e => {
+      if (!fs.existsSync(path.join(here, e.img))) throw new Error(`events.json: ${e.img} does not exist`);
+      const facts = [e.when, e.time, e.venue].filter(Boolean).map(html).join(' · ');
+      return `      <article class="ev" data-type="${html(e.type)}" data-fade>
+        <button class="ev-pic" type="button" data-full="${e.img}" aria-label="Open the poster for ${html(e.title)}"><img src="${e.img}" alt="The poster for ${html(e.title)}." loading="lazy"></button>
+        <div class="ev-txt"><p class="ev-type">${html(e.type)}</p><h3>${html(e.title)}</h3>
+          ${facts ? `<p class="ev-facts">${facts}</p>` : ''}<p class="ev-sum">${html(e.summary)}</p></div>
+      </article>`; }).join('\n')}
+    </div>
+  </section>`).join('\n');
+}
+
 function page(f, live){
   const name = f.replace(/\.html$/, '');
   const metaFile = path.join(PART, 'meta', name + '.html');
@@ -87,18 +114,24 @@ function page(f, live){
        .replace(/<!--@mast([^>]*)-->/, (_, a) => mast(attrs(a)))
        .replace(/<!--@foot-->/, () => part('foot.html'))
        .replace(/<!--@scripts-->/, () => part('scripts.html'))
-       .replace(/<!--@shelf-->/, () => shelf());
+       .replace(/<!--@shelf-->/, () => shelf())
+       .replace(/<!--@events-->/, () => events());
   const left = h.match(/<!--@\w+/);
   if (left) throw new Error(`${f}: ${left[0]} was not filled in`);
   if (!live) return h;
 
-  /* live: page links to their addresses, shared assets to /kit/ */
+  return toLive(h, f);
+}
+
+/* live: page links to their addresses, shared assets to /kit/ */
+function toLive(h, f){
   h = h.replace(/href="(\w+)\.html(#[^"]*)?"/g, (m, n, hash) => {
         if (n === 'index') return `href="/${hash || ''}"`;
-        if (!ROUTES[n]) throw new Error(`${f}: links to ${n}.html, which has no address`);
-        return `href="/${ROUTES[n]}/${hash || ''}"`;
+        const route = ROUTES[n] || ELSEWHERE[n];
+        if (!route) throw new Error(`${f}: links to ${n}.html, which has no address`);
+        return `href="/${route}/${hash || ''}"`;
       })
-       .replace(/(src|href|data-still|data-bow|data-thumb|poster|data-src)="(img|lib)\//g, '$1="/kit/$2/')
+       .replace(/(src|href|data-still|data-bow|data-thumb|poster|data-src|data-full)="(img|lib)\//g, '$1="/kit/$2/')
        .replace(/href="kit\.css"/g, 'href="/kit/kit.css"')
        .replace(/src="kit\.js"/g, 'src="/kit/kit.js"');
   const stray = h.match(/\b(src|href|data-still|data-bow|data-thumb)="(?!\/|https?:|mailto:|tel:|#|data:)[^"]+"/);
@@ -128,6 +161,18 @@ for (const [name, route] of Object.entries(ROUTES)) {
   live++;
 }
 console.log(`published ${live} pages at their addresses, assets in /kit/`);
+
+/* the shell, for a page this build does not make: _tools/fit-calendar.py
+   puts these into the calendar so it carries the same masthead, footer and
+   light/dark switch as every other page */
+const SHELL = path.join(KIT, 'shell');
+fs.mkdirSync(SHELL, { recursive: true });
+const head = part('head.html');
+const mood = head.slice(head.indexOf('<!-- before paint'), head.indexOf('</script>', head.indexOf('<!-- before paint')) + 9);
+if (!mood.startsWith('<!-- before paint')) throw new Error('head.html: the mood script was not found');
+fs.writeFileSync(path.join(SHELL, 'mood.html'), mood + '\n');
+fs.writeFileSync(path.join(SHELL, 'mast.html'), toLive(mast({ current:'calendar', wa:'the calendar' }), 'shell/mast') + '\n');
+fs.writeFileSync(path.join(SHELL, 'foot.html'), toLive(part('foot.html') + part('scripts.html'), 'shell/foot') + '\n');
 
 /* the reader pages: one per item, at /library/read/<id>/ */
 const READ = path.join(ROOT, 'library', 'read');

@@ -27,7 +27,9 @@
      there is never a flash of the wrong mode -->
 <script>(function(){var m=(/[?&]mood=(light|dark)/.exec(location.search)||[])[1];
   if(!m){try{m=localStorage.getItem("sb-mood");}catch(e){}}
-  document.documentElement.dataset.mood=m==="dark"?"dark":"light";})();</script>
+  document.documentElement.dataset.mood=m==="dark"?"dark":"light";
+  /* TRIAL ONLY: ?palette=b|c|d previews a colour option; never stored */
+  var pl=(/[?&]palette=([bcd])/.exec(location.search)||[])[1]; if(pl) document.documentElement.dataset.palette=pl;})();</script>
 
 <style>
 /* ── 1 · hero ───────────────────────────────────────────────────────────
@@ -103,6 +105,10 @@ html[data-mood="dark"] .manifesto{ border-bottom:1px solid var(--line); }
 .room figure{ margin:0; overflow:hidden; border-radius:3px; position:relative; }
 .room figure img{ width:100%; height:115%; object-fit:cover; filter:var(--photo); }
 .room figure video{ width:100%; height:100%; object-fit:cover; display:block; filter:var(--photo); }
+/* a fade under the caption: small white type on a white wall vanished */
+.room figure::after{ content:""; position:absolute; left:0; right:0; bottom:0; height:42%; pointer-events:none;
+  background:linear-gradient(to top, rgba(8,12,22,.62), rgba(8,12,22,0)); }
+.room figcaption{ z-index:1; text-shadow:0 1px 8px rgba(0,0,0,.45); }
 .room figcaption{ position:absolute; left:12px; bottom:10px; font-family:var(--mono); font-size:10px; letter-spacing:.14em;
   text-transform:uppercase; color:#FAF6EE; text-shadow:0 1px 8px rgba(0,0,0,.6); }
 .room .f1{ grid-column:1/6; aspect-ratio:4/5; } .room .f2{ grid-column:6/10; aspect-ratio:1; margin-top:calc(var(--u)*10); }
@@ -120,7 +126,7 @@ html[data-mood="dark"] .manifesto{ border-bottom:1px solid var(--line); }
 <header class="mast">
   <a class="brand" href="/" aria-label="Shaheedi Bunga, home"><img src="/kit/img/gurmat-vidyala-84.png" alt="" width="40" height="40">
     <span><b>Shaheedi Bunga</b><i>Gurmat Vidyala</i></span></a>
-  <nav aria-label="Main" id="site-nav"><a href="/classes/" aria-current="page">Classes</a><a href="/camps/">Camps</a><a href="/resources/">Resources</a><a href="/library/">Library</a><a href="/gallery/">Gallery</a><a href="/about/">About</a><a href="/contact/">Contact</a><a href="/donate/">Donate</a></nav>
+  <nav aria-label="Main" id="site-nav"><a href="/classes/" aria-current="page">Classes</a><a href="/camps/">Camps</a><a href="/events/">Events</a><a href="/sikhi-calendar/">Calendar</a><a href="/resources/">Resources</a><a href="/library/">Library</a><a href="/gallery/">Gallery</a><a href="/about/">About</a><a href="/contact/">Contact</a><a href="/donate/">Donate</a></nav>
   <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav"><span>Menu</span><i aria-hidden="true"></i></button>
   <a class="wa" href="https://wa.me/447394848407?text=Sat%20Sri%20Akal%20%E2%80%94%20I'd%20like%20to%20ask%20about%20Santhiya%20classes%20(in%20person%20or%20online)." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.6 2 2.18 6.42 2.18 11.86c0 1.74.46 3.44 1.32 4.94L2.1 22l5.34-1.4a9.8 9.8 0 0 0 4.6 1.17h.01c5.43 0 9.85-4.42 9.85-9.86 0-2.63-1.02-5.11-2.88-6.97A9.79 9.79 0 0 0 12.04 2z"/></svg>WhatsApp</a>
 </header>
@@ -269,7 +275,7 @@ html[data-mood="dark"] .manifesto{ border-bottom:1px solid var(--line); }
   <p class="big">Come and sit<br>with the <em>sangat.</em></p>
   <div class="cols">
     <div><h4>Shaheedi Bunga</h4><p style="margin:0;max-width:34ch">A Sikh education charity in Leicester. Every class is free and taught by volunteers.</p></div>
-    <div><h4>Vidyale</h4><a href="/santhiya/">Santhiya</a><a href="/saaj/dilruba/">Kirtan</a><a href="/akhara/archery/">Archery</a><a href="/classes/">All classes</a><a href="/camps/">Camps</a></div>
+    <div><h4>Vidyale</h4><a href="/santhiya/">Santhiya</a><a href="/saaj/dilruba/">Kirtan</a><a href="/akhara/archery/">Archery</a><a href="/classes/">All classes</a><a href="/camps/">Camps</a><a href="/events/">Events</a><a href="/sikhi-calendar/">Calendar</a></div>
     <div><h4>Charity</h4><a href="/about/">About</a><a href="/donate/">Donate</a><a href="/gallery/">Gallery</a><a href="/resources/">Resources</a><a href="/library/">Library</a></div>
     <div><h4>Contact</h4><a href="https://wa.me/447394848407" target="_blank" rel="noopener">+44 7394 848407</a><a href="mailto:gurmat@shaheedibunga.com">gurmat@shaheedibunga.com</a><a href="/safeguarding/">Safeguarding</a><a href="/privacy/">Privacy</a></div>
   </div>
