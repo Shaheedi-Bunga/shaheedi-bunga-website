@@ -166,11 +166,30 @@ window.KIT = (function(){
     });
   };
 
+  /* Silent loops: <video data-src> carries only a poster until a wide screen
+     with motion allowed and no data-saver asks for it; it plays only in view. */
+  function loops(){
+    var vids = document.querySelectorAll("video[data-src]");
+    var save = navigator.connection && navigator.connection.saveData;
+    if(!vids.length || !api.wide || save || !("IntersectionObserver" in window)) return;
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        var v = e.target;
+        if(e.isIntersecting){
+          if(!v.src){ v.src = v.dataset.src; }
+          var p = v.play(); if(p && p.catch) p.catch(function(){});
+        } else v.pause();
+      });
+    }, { rootMargin:"200px 0px", threshold:0.15 });
+    vids.forEach(function(v){ io.observe(v); });
+  }
+
   api.start = function(pageScenes){
     moodSwitch(); menu(); today(); tocs();
     /* .cine: desktop with motion allowed. Pinned scenes exist only under it;
        a phone or a reduced-motion visitor gets the still layout. */
     api.wide = matchMedia("(min-width: 901px)").matches && !reduce;
+    loops();
     if(reduce || !window.gsap){ mast(); return; }
     if(api.wide) document.documentElement.classList.add("cine");
     gsap.registerPlugin(ScrollTrigger, SplitText);

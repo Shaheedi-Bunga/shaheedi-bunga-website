@@ -98,7 +98,7 @@ function page(f, live){
         if (!ROUTES[n]) throw new Error(`${f}: links to ${n}.html, which has no address`);
         return `href="/${ROUTES[n]}/${hash || ''}"`;
       })
-       .replace(/(src|href|data-still|data-bow|data-thumb)="(img|lib)\//g, '$1="/kit/$2/')
+       .replace(/(src|href|data-still|data-bow|data-thumb|poster|data-src)="(img|lib)\//g, '$1="/kit/$2/')
        .replace(/href="kit\.css"/g, 'href="/kit/kit.css"')
        .replace(/src="kit\.js"/g, 'src="/kit/kit.js"');
   const stray = h.match(/\b(src|href|data-still|data-bow|data-thumb)="(?!\/|https?:|mailto:|tel:|#|data:)[^"]+"/);

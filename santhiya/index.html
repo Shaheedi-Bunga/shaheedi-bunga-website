@@ -102,6 +102,7 @@ html[data-mood="dark"] .manifesto{ border-bottom:1px solid var(--line); }
 .room{ display:grid; grid-template-columns:repeat(12,1fr); gap:calc(var(--u)*1.6); }
 .room figure{ margin:0; overflow:hidden; border-radius:3px; position:relative; }
 .room figure img{ width:100%; height:115%; object-fit:cover; filter:var(--photo); }
+.room figure video{ width:100%; height:100%; object-fit:cover; display:block; filter:var(--photo); }
 .room figcaption{ position:absolute; left:12px; bottom:10px; font-family:var(--mono); font-size:10px; letter-spacing:.14em;
   text-transform:uppercase; color:#FAF6EE; text-shadow:0 1px 8px rgba(0,0,0,.6); }
 .room .f1{ grid-column:1/6; aspect-ratio:4/5; } .room .f2{ grid-column:6/10; aspect-ratio:1; margin-top:calc(var(--u)*10); }
@@ -194,11 +195,11 @@ html[data-mood="dark"] .manifesto{ border-bottom:1px solid var(--line); }
     <p class="lede">Camps, weekly classes and saptah paath. The same room, filling and emptying, for as long as anyone can remember.</p>
   </div>
   <div class="room">
-    <figure class="f1"><img data-parallax="10" src="/kit/img/s-d05.jpg" alt="An ustad and a student reading together at a low table." loading="lazy"><figcaption>Line by line</figcaption></figure>
-    <figure class="f2"><img data-parallax="14" src="/kit/img/s-e07.jpg" alt="A hand writing notes beside an open gutka." loading="lazy"><figcaption>Notes in the margin</figcaption></figure>
-    <figure class="f3"><img data-parallax="10" src="/kit/img/s-d08.jpg" alt="Gutkas laid out on cloth-covered tables." loading="lazy"><figcaption>The gutkas</figcaption></figure>
-    <figure class="f4"><img data-parallax="12" src="/kit/img/s-d32.jpg" alt="A speaker addressing the class with a microphone." loading="lazy"><figcaption>Vichar</figcaption></figure>
-    <figure class="f5"><img data-parallax="10" src="/kit/img/s-d16.jpg" alt="The class seated on the floor of the hall." loading="lazy"><figcaption>Gipsy Lane</figcaption></figure>
+    <figure class="f1"><img data-parallax="10" src="/kit/img/p-santhiya-reader-mic.jpg" alt="A reader at the microphone, a pothi open on the stand in front." loading="lazy"><figcaption>Line by line</figcaption></figure>
+    <figure class="f2"><img data-parallax="14" src="/kit/img/p-santhiya-reader-close.jpg" alt="Close on a young Singh reading, eyes down on the page." loading="lazy"><figcaption>Eyes on the page</figcaption></figure>
+    <figure class="f3"><video muted playsinline loop preload="none" aria-hidden="true" poster="/kit/img/v-santhiya-tables.jpg" data-src="/kit/img/v-santhiya-tables.mp4"></video><figcaption>At the tables</figcaption></figure>
+    <figure class="f4"><img data-parallax="12" src="/kit/img/p-santhiya-reader-tablet.jpg" alt="A Singh reading into the microphone, a tablet propped beside the pothi." loading="lazy"><figcaption>Vichar</figcaption></figure>
+    <figure class="f5"><img data-parallax="10" src="/kit/img/p-santhiya-class.jpg" alt="The class at low tables across the red carpet of the hall." loading="lazy"><figcaption>The class</figcaption></figure>
     <p class="quote" data-fade>“We believe that education is essential in nurturing and strengthening our future generations, mentally and physically.”<small>Shaheedi Bunga</small></p>
   </div>
 </section>
