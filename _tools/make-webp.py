@@ -3,9 +3,10 @@
 
 For each JPEG or PNG an inner page or events.json points at (img/... in the
 kit, or /Assets/... at the root) this writes WebP copies 480, 960 and 1600px
-wide beside it, in a _w/ folder:
+wide beside it, in a webp/ folder (never a name starting with _ : GitHub Pages
+runs Jekyll, which does not publish those):
 
-    img/p-sangat.jpg  ->  img/_w/p-sangat-480.webp, -960.webp, -1600.webp
+    img/p-sangat.jpg  ->  img/webp/p-sangat-480.webp, -960.webp, -1600.webp
 
 and records each image's size in Mockup/_Redesign_Inner/img-sizes.json. The
 inner-page build reads that file to give every <img> its width, height and a
@@ -44,7 +45,7 @@ def disk(p):
 
 def variant(p, w):
     d, f = os.path.split(p)
-    return f"{d}/_w/{os.path.splitext(f)[0]}-{w}.webp"
+    return f"{d}/webp/{os.path.splitext(f)[0]}-{w}.webp"
 
 def main():
     sizes, made, missing = {}, 0, []
