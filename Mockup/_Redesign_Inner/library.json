@@ -1,0 +1,38 @@
+{
+  "_comment": "The Library's items, in shelf order. ONE list: build.js renders the shelf on /library/ from it AND generates a reader page per item at /library/read/<id>/. Adding an item is an entry here plus its files in library/items/ - nothing else. The build checks every file and thumb exists.",
+  "items": [
+    {
+      "id": "nitnem-santhiya-pothi",
+      "gur": "ਨਿਤਨੇਮ ਸੰਥਿਆ ਪੋਥੀ",
+      "title": "Nitnem Santhiya Pothi",
+      "by": "Shaheedi Bunga",
+      "pages": 160,
+      "kind": "pdf",
+      "file": "/library/items/nitnem-santhiya-pothi.pdf",
+      "thumb": "/library/items/nitnem-santhiya-pothi.jpg",
+      "note": "Nitnem, set out for santhiya, from Adi Sri Guru Granth Sahib Ji and Sri Dasam Guru Granth Sahib Ji."
+    },
+    {
+      "id": "gurmukhi-baal-updesh",
+      "gur": "ਗੁਰਮੁਖੀ ਬਾਲ ਉਪਦੇਸ਼",
+      "title": "Gurmukhi Baal Updesh",
+      "by": "Shaheedi Bunga",
+      "pages": 207,
+      "kind": "pdf",
+      "file": "/library/items/gurmukhi-baal-updesh.pdf",
+      "thumb": "/library/items/gurmukhi-baal-updesh.jpg",
+      "note": "Gurmukhi from the beginning, for children: the letters, the matras, and writing them."
+    },
+    {
+      "id": "kirtan-sagar",
+      "gur": "ਕੀਰਤਨ ਸਾਗਰ",
+      "title": "Kirtan Sagar",
+      "by": "Shaheedi Bunga",
+      "pages": 30,
+      "kind": "pdf",
+      "file": "/library/items/kirtan-sagar.pdf",
+      "thumb": "/library/items/kirtan-sagar.jpg",
+      "note": "Shabads for the tanti saaj classes."
+    }
+  ]
+}
