@@ -72,7 +72,7 @@ html[data-mood="dark"] .kart .arch{ background:radial-gradient(120% 80% at 50% 3
 .wall .col{ display:grid; gap:calc(var(--u)*1.6); align-content:start; will-change:transform; }
 .wall .col:nth-child(2){ margin-top:-18%; }
 .wall figure{ margin:0; border-radius:3px; overflow:hidden; aspect-ratio:4/5; }
-.wall img{ width:100%; height:100%; object-fit:cover; filter:var(--photo); }
+.wall img, .wall video{ width:100%; height:100%; object-fit:cover; display:block; filter:var(--photo); }
 @media(max-width:700px){ .wall{ grid-template-columns:repeat(2,minmax(0,1fr)); height:auto; -webkit-mask-image:none; mask-image:none; }
   .wall .col:nth-child(3){ display:none; } .wall .col:nth-child(2){ margin-top:0; } }
 
@@ -177,6 +177,7 @@ html[data-mood="dark"] .kart .arch{ background:radial-gradient(120% 80% at 50% 3
       <figure><img src="/kit/img/p-kirtan-dilruba-student.jpg" alt="A student seated on the floor holding a dilruba upright, the gaj in the other hand." loading="lazy"></figure>
       <figure><img src="/Assets/Kirtan/tiles/k15.jpg" alt="Two students on stage, one at the microphone and one at the tabla." loading="lazy"></figure>
       <figure><img src="/Assets/Kirtan/tiles/k03.jpg" alt="The sangat gathered outside for a group photograph." loading="lazy"></figure>
+      <figure><video muted playsinline loop preload="none" aria-hidden="true" poster="/kit/img/v-kirtan-darbar.jpg" data-src="/kit/img/v-kirtan-darbar.mp4"></video></figure>
     </div>
   </div>
   <figure class="loop" data-fade><video muted playsinline loop preload="none" aria-hidden="true" poster="/kit/img/v-kirtan-class.jpg" data-src="/kit/img/v-kirtan-class.mp4"></video><figcaption>A Gipsy Lane class, dilrubas together</figcaption></figure>
