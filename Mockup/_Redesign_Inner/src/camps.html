@@ -16,8 +16,13 @@
 @media(max-width:600px){ .camp dl{ grid-template-columns:1fr; gap:12px; } }
 .tail{ margin:calc(var(--u)*4) 0 calc(var(--u)*10); color:var(--navy-70); font-size:max(17px,calc(var(--u)*1.2)); max-width:56ch; }
 .tail a{ color:var(--gold-text); }
+.cpics{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; margin-top:calc(var(--u)*2.4); }
+.cpics.four{ grid-template-columns:repeat(4,minmax(0,1fr)); margin-top:calc(var(--u)*4); }
+@media(max-width:700px){ .cpics.four{ grid-template-columns:1fr 1fr; } }
+.cpics img{ width:100%; aspect-ratio:1; object-fit:cover; border-radius:3px; display:block; filter:var(--photo); }
+.cpics-cap{ font-family:var(--mono); font-size:10px !important; letter-spacing:.14em; text-transform:uppercase; color:var(--navy-70); margin:10px 0 0 !important; }
 .strip{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:calc(var(--u)*1.6); margin-top:calc(var(--u)*4); }
-.strip figure{ margin:0; } .strip img{ width:100%; aspect-ratio:4/5; object-fit:cover; border-radius:3px; display:block; filter:var(--photo); }
+.strip figure{ margin:0; } .strip video{ width:100%; aspect-ratio:4/5; object-fit:cover; border-radius:3px; display:block; filter:var(--photo); background:var(--cream-3); } .strip img{ width:100%; aspect-ratio:4/5; object-fit:cover; border-radius:3px; display:block; filter:var(--photo); }
 .strip figcaption{ font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--navy-70); margin-top:10px; }
 @media(max-width:700px){ .strip{ grid-template-columns:1fr; } }
 </style>
@@ -53,6 +58,11 @@
           through properly over the fortnight.</p>
         <dl><div><dt>Where</dt><dd>Guru Tegh Bahadur Gurdwara</dd></div><div><dt>When</dt><dd>Two weeks each August</dd></div>
           <div><dt>For</dt><dd>Older students and adults</dd></div></dl>
+        <div class="cpics">
+          <img src="img/ig-gvc-2022-group.jpg" alt="The Gurbani Vidhya Camp, August 2022: Singhs in a line on the grass in the evening sun." loading="lazy">
+          <img src="img/ig-gvc-2022-teaching.jpg" alt="An elder Singh teaching outside, seated on a mat across from a student." loading="lazy">
+          <img src="img/ig-gvc-2022-class.jpg" alt="Students reading together on the floor of the hall." loading="lazy">
+        </div><p class="cpics-cap">Gurbani Vidhya Camp · summer 2022</p>
       </div>
     </section>
     <section class="camp" data-fade>
@@ -89,9 +99,15 @@
   <div class="strip">
     <figure data-fade><img src="img/p-sikhi-camp.jpg" alt="The hall full for the Sikhi Camp, children seated in rows on the floor." loading="lazy"><figcaption>Sikhi Camp · January 2024</figcaption></figure>
     <figure data-fade><img src="img/p-kirtan-saaj-student.jpg" alt="A student seated cross-legged with a tanti saaj across the lap." loading="lazy"><figcaption>Easter Camp · April 2025</figcaption></figure>
-    <figure data-fade><img src="img/p-hola-horse.jpg" alt="A Singh leading a white horse across a field." loading="lazy"><figcaption>Horse riding · shastar vidya</figcaption></figure>
+    <figure data-fade><video muted playsinline loop preload="none" aria-hidden="true" poster="img/v-horse-riding.jpg" data-src="img/v-horse-riding.mp4"></video><figcaption>Horse riding · shastar vidya</figcaption></figure>
   </div>
   <figure class="loop" data-fade><video muted playsinline loop preload="none" aria-hidden="true" poster="img/v-gatka-nagar-kirtan.jpg" data-src="img/v-gatka-nagar-kirtan.mp4"></video><figcaption>Gatka at the Vaisakhi nagar kirtan, April 2025</figcaption></figure>
+  <div class="cpics four" data-fade>
+    <img src="img/ig-singhs-camp-hilltop.jpg" alt="The Singhs Camp group on a hilltop at dusk, the valley behind them." loading="lazy">
+    <img src="img/ig-singhs-camp-woods.jpg" alt="Singhs walking through long grass in the woods, carrying gear between them." loading="lazy">
+    <img src="img/ig-singhs-camp-fire.jpg" alt="An evening around the fire at the Singhs Camp, the sangat seated close in." loading="lazy">
+    <img src="img/ig-singhs-camp-langar.jpg" alt="Langar cooking in a large pot inside the camp tent." loading="lazy">
+  </div><p class="cpics-cap">Singhs Camp · summer 2022</p>
   <!-- the live page linked instagram.com/shaheedibunga; the charity's account is @shaheedi_bunga_uk -->
   <p class="tail" data-fade>Camps are announced on <a href="https://www.instagram.com/shaheedi_bunga_uk/" target="_blank" rel="noopener">Instagram</a>
     first. To be told directly when the next one opens, <a href="contact.html">message us</a>.</p>

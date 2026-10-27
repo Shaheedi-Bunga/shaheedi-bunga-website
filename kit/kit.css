@@ -116,7 +116,8 @@ html[data-mood="dark"] .mast.solid{ background:rgba(12,19,34,.88); color:#F4EFE4
 /* phone and tablet: the links fold behind a Menu button and open as a panel
    under the masthead (the masthead goes solid while it is open) */
 .menu-btn{ display:none; }
-@media(max-width:900px){
+/* 1240px: ten links (Events and Calendar joined 2026-10-27) need about 1180px beside the name */
+@media(max-width:1240px){
   .mast nav{ display:none; }
   .menu-btn{ display:inline-flex; align-items:center; gap:10px; margin-left:auto; height:44px; padding:0 14px; border-radius:100px;
     background:transparent; color:inherit; cursor:pointer; border:1px solid currentColor; border-color:color-mix(in srgb,currentColor 32%,transparent);
@@ -310,7 +311,7 @@ a.venue:hover .go{ transform:translate(4px,-4px); }
 a:focus-visible, button:focus-visible{ outline:2px solid var(--focus); outline-offset:3px; }
 .theme svg{ width:19px; height:19px; fill:none; stroke:currentColor; stroke-width:1.6; stroke-linecap:round; }
 .theme svg path[d^="M20"]{ fill:currentColor; stroke:none; }
-@media(max-width:900px){ .mast .theme{ margin-left:0; } .mast .theme + .wa{ margin-left:0; } }
+@media(max-width:1240px){ .mast .theme{ margin-left:0; } .mast .theme + .wa{ margin-left:0; } }
 ::view-transition-old(root), ::view-transition-new(root){ animation-duration:.45s; animation-timing-function:cubic-bezier(.2,0,0,1); }
 
 /* reveal targets are visible by default; JS only animates FROM somewhere */
@@ -320,3 +321,52 @@ a:focus-visible, button:focus-visible{ outline:2px solid var(--focus); outline-o
 .loop{ margin:calc(var(--u)*4) 0 0; }
 .loop video{ width:100%; aspect-ratio:16/9; object-fit:cover; display:block; border-radius:3px; background:var(--cream-3); filter:var(--photo); }
 .loop figcaption{ font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--navy-70); margin-top:12px; }
+
+/* ── THE PALETTE, "shine" (chosen 2026-10-27 over three quieter refinements). The
+   user's brief: "near white but gradient design that shines, font also sparkling".
+   It overrides the tokens at the top of this file. Near-white paper and deep ink, plus light: a wash of gold
+   and navy behind each hero, gold display words in a metallic gradient with a slow
+   sheen, and a lit edge on the navy cards. English display type only: Gurmukhi is
+   never given the gradient or the motion. Reduced motion keeps the gold, not the sheen. */
+html:root{ --cream:#FFFDF9; --cream-2:#F6F2EA; --cream-3:#ECE5D6; --navy:#0B1731; --navy-70:rgba(11,23,49,.76);
+  --gold-text:#785810; --gold:#B8902F; --focus:#785810; --line:rgba(11,23,49,.11); --panel:#0B1731; --faded:rgba(11,23,49,.70);
+  --photo:saturate(1) contrast(1.04);
+  --sheen:linear-gradient(100deg,#6E4E0C 0%,#86610F 34%,#C9A04A 44%,#EBD08E 48%,#C9A04A 52%,#86610F 62%,#6E4E0C 100%); }
+html[data-mood="dark"]{ --cream:#070E1E; --cream-2:#0E172B; --cream-3:#162139; --ink-dark:#070E1E;
+  --navy:#F3EEE2; --navy-70:rgba(243,238,226,.76); --gold-text:#EBCD88; --gold:#D4AC57; --focus:#EBCD88; --line:rgba(243,238,226,.11);
+  --panel:#101C37; --faded:rgba(243,238,226,.55); --photo:saturate(.96) brightness(.93) contrast(1.05);
+  --sheen:linear-gradient(100deg,#B98B32 0%,#E2BE6E 30%,#FFF1C4 45%,#E2BE6E 60%,#B98B32 100%); }
+/* light: a wash behind the hero, and a faint warm glow down the page */
+html body{ background:
+  radial-gradient(1200px 600px at 85% -10%, rgba(214,174,82,.16), transparent 60%),
+  radial-gradient(900px 520px at -10% 10%, rgba(30,60,130,.07), transparent 60%), var(--cream); }
+html .phero, html [data-hero]{ background:
+  radial-gradient(900px 420px at 78% 18%, rgba(226,190,110,.22), transparent 62%),
+  radial-gradient(700px 380px at 8% 85%, rgba(40,70,140,.08), transparent 60%), transparent; }
+html[data-mood="dark"] .phero, html[data-mood="dark"] [data-hero]{ background:
+  radial-gradient(900px 420px at 78% 18%, rgba(226,190,110,.16), transparent 62%),
+  radial-gradient(700px 380px at 8% 85%, rgba(70,110,200,.14), transparent 60%), var(--hero-bg); }
+html[data-mood="dark"] body{ background:
+  radial-gradient(1200px 600px at 85% -10%, rgba(214,174,82,.10), transparent 60%), var(--cream); }
+/* sparkle: the gold words of a display heading, never Gurmukhi */
+/* the hero reveal wraps each word in its own .w box, so the metal goes on the
+   word as well as on an unsplit em */
+html .display em:not(:lang(pa)), html .h-l em:not(:lang(pa)),
+html .display em:not(:lang(pa)) .w, html .h-l em:not(:lang(pa)) .w{
+  background:var(--sheen); background-size:220% 100%; background-position:100% 0;
+  -webkit-background-clip:text; background-clip:text; color:transparent; -webkit-text-fill-color:transparent; }
+@media (prefers-reduced-motion:no-preference){
+  html .display em:not(:lang(pa)), html .h-l em:not(:lang(pa)),
+  html .display em:not(:lang(pa)) .w, html .h-l em:not(:lang(pa)) .w{ animation:sb-sheen 7s ease-in-out 1s infinite; }
+}
+@keyframes sb-sheen{ 0%,55%{ background-position:100% 0; } 85%,100%{ background-position:-20% 0; } }
+/* the navy cards: a lit edge and a soft sheen from the top corner */
+html .pcard.ink, html .oncard.ink, html .ask, html .day.today{
+  background:linear-gradient(150deg, #1B2C52 0%, var(--panel) 46%, #070F22 100%);
+  box-shadow:inset 0 0 0 1px rgba(226,194,122,.28), 0 24px 50px -28px rgba(11,23,49,.55); }
+html .oncard:not(.ink), html .pcard:not(.ink):not(:has(img)){
+  background:linear-gradient(160deg, #FFFFFF 0%, var(--cream-2) 100%); box-shadow:inset 0 0 0 1px rgba(184,144,47,.18); }
+html[data-mood="dark"] .oncard:not(.ink){ background:linear-gradient(160deg, #13203A 0%, var(--cream-2) 100%); box-shadow:inset 0 0 0 1px rgba(226,194,122,.16); }
+/* the year numerals and big figures take the metal too */
+html .yr-h, html .pcard .num:not(:lang(pa)){
+  background:var(--sheen); -webkit-background-clip:text; background-clip:text; color:transparent; -webkit-text-fill-color:transparent; }

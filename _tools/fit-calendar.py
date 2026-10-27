@@ -79,7 +79,7 @@ STYLES = ('<!-- The five families this page uses are in /lib/fonts.css with the 
           '     the site. Linking Google here would undo the self-hosting and make the\n'
           "     privacy page's \"this site contacts nobody\" untrue for one page. -->\n"
           '<link rel="stylesheet" href="/lib/fonts.css">\n'
-          '<link rel="stylesheet" href="/site.css">')
+          '<link rel="stylesheet" href="/kit/kit.css">')
 
 CHARSET = ('<!-- charset first: it must land inside the first 1024 bytes or the browser\n'
            '     starts guessing, and this page is mostly Gurmukhi. The generator emits\n'
@@ -87,6 +87,34 @@ CHARSET = ('<!-- charset first: it must land inside the first 1024 bytes or the 
            '     more meta tag would push it out. -->\n'
            '<meta charset="utf-8">\n')
 
+
+SHELL = os.path.join(ROOT, "kit", "shell")
+
+def shell(name):
+    """A piece of the inner pages' shell, as Mockup/_Redesign_Inner/build.js
+    last wrote it. Run build.js before this script if the masthead changed."""
+    f = os.path.join(SHELL, name + ".html")
+    if not os.path.exists(f):
+        sys.exit(f"not found: {os.path.relpath(f, ROOT)} - run node Mockup/_Redesign_Inner/build.js first")
+    return open(f, encoding="utf-8").read()
+
+def block(name, body):
+    return f"<!--kit:{name}-->\n{body}<!--/kit:{name}-->\n"
+
+# the calendar keeps its own tokens on .sbcal; the dark mood gets a dark set of them
+DARK = """<style>/* the site's dark mood, mapped onto the calendar's own tokens (fit-calendar.py) */
+/* the masthead is fixed, as on every inner page: the calendar starts below it */
+body > .sbcal{ padding-top:calc(var(--mastH,74px) + 12px); }
+html[data-mood="dark"] body{ background:#0C1322 !important; }
+html[data-mood="dark"] .sbcal{
+  --cream:#0C1322; --cream-2:#141D31; --cream-3:#1B263D; --paper:#121B2E;
+  --rule:#2A3550; --rule-soft:#202B44;
+  --ink:#F1EBDD; --ink-2:#CFC6B4; --ink-3:#B3AA98;
+  --gold:#C9A04A; --gold-deep:#E2C27A; --gold-soft:#2A2A2E;
+  --clay:#D79A72; --plum:#D58AA8; --crimson:#E07D74; --saffron:#E3A160; --forest:#86C08F; --stone:#B8AFA2; --green:#A7C77A;
+  background:var(--cream); color:var(--ink); }
+</style>
+"""
 
 def steps(h):
     """Each step: (name, already?, apply) -> the fitted text, or None if the
@@ -118,12 +146,33 @@ def steps(h):
                       '<body style="margin:0;background:#FAF6EE">')
         return h
 
-    def masthead(h):
+    def put(h, name, body, old, where):
+        """Replace the kit block if it is there, else the old piece, else insert."""
+        new = block(name, body)
+        m = re.search(rf"<!--kit:{name}-->.*?<!--/kit:{name}-->\n", h, re.S)
+        if m: return h[:m.start()] + new + h[m.end():]
+        if old and old in h: return h.replace(old, new, 1)
+        return where(h, new)
+
+    def after_body(h, new):
         m = re.search(r'<body[^>]*>', h)
-        return h[:m.end()] + MASTHEAD + h[m.end():] if m else None
+        return h[:m.end()] + "\n" + new + h[m.end():] if m else None
+
+    def before_end(h, new):
+        return h.replace("</body>", new + "</body>", 1) if "</body>" in h else None
+
+    def after_styles(h, new):
+        anchor = '<link rel="stylesheet" href="/kit/kit.css">'
+        return h.replace(anchor, anchor + "\n" + new, 1) if anchor in h else None
+
+    def mood(h):
+        return put(h, "mood", shell("mood") + DARK, None, after_styles)
+
+    def masthead(h):
+        return put(h, "mast", shell("mast"), MASTHEAD, after_body)
 
     def footer(h):
-        return h.replace("</body>", FOOTER + "</body>", 1) if "</body>" in h else None
+        return put(h, "foot", shell("foot") + "<script>KIT.start();</script>\n", FOOTER, before_end)
 
     def brand(h):
         # the site label is in the masthead now; the page's own copy of it
@@ -144,8 +193,10 @@ def steps(h):
         ("charset first", h.find("charset") < 400,             charset),
         ("self-hosted fonts", "fonts.googleapis.com" not in h, fonts),
         ("site ground",   "#F5F0E6" not in h,                  ground),
-        ("masthead",      'class="top"' in h,                  masthead),
-        ("footer",        'class="foot"' in h,                 footer),
+        ("kit stylesheet", "/site.css" not in h,               lambda h: h.replace('<link rel="stylesheet" href="/site.css">', '<link rel="stylesheet" href="/kit/kit.css">', 1) if "/site.css" in h else None),
+        ("mood switch",   block("mood", shell("mood") + DARK) in h, mood),
+        ("masthead",      block("mast", shell("mast")) in h,   masthead),
+        ("footer",        block("foot", shell("foot") + "<script>KIT.start();</script>\n") in h, footer),
         ("brand line",    'class="sbcal__label sbcal__home"' not in h, brand),
         ("date contrast",
          ".sbcal__cg { font-family: var(--util); font-size: 11px; color: var(--ink-3); }" not in h,

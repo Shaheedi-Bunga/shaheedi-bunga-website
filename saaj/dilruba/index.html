@@ -72,7 +72,7 @@ html[data-mood="dark"] .kart .arch{ background:radial-gradient(120% 80% at 50% 3
 .wall .col{ display:grid; gap:calc(var(--u)*1.6); align-content:start; will-change:transform; }
 .wall .col:nth-child(2){ margin-top:-18%; }
 .wall figure{ margin:0; border-radius:3px; overflow:hidden; aspect-ratio:4/5; }
-.wall img{ width:100%; height:100%; object-fit:cover; filter:var(--photo); }
+.wall img, .wall video{ width:100%; height:100%; object-fit:cover; display:block; filter:var(--photo); }
 @media(max-width:700px){ .wall{ grid-template-columns:repeat(2,minmax(0,1fr)); height:auto; -webkit-mask-image:none; mask-image:none; }
   .wall .col:nth-child(3){ display:none; } .wall .col:nth-child(2){ margin-top:0; } }
 
@@ -86,7 +86,7 @@ html[data-mood="dark"] .kart .arch{ background:radial-gradient(120% 80% at 50% 3
 <header class="mast">
   <a class="brand" href="/" aria-label="Shaheedi Bunga, home"><img src="/kit/img/gurmat-vidyala-84.png" alt="" width="40" height="40">
     <span><b>Shaheedi Bunga</b><i>Gurmat Vidyala</i></span></a>
-  <nav aria-label="Main" id="site-nav"><a href="/classes/" aria-current="page">Classes</a><a href="/camps/">Camps</a><a href="/resources/">Resources</a><a href="/library/">Library</a><a href="/gallery/">Gallery</a><a href="/about/">About</a><a href="/contact/">Contact</a><a href="/donate/">Donate</a></nav>
+  <nav aria-label="Main" id="site-nav"><a href="/classes/" aria-current="page">Classes</a><a href="/camps/">Camps</a><a href="/events/">Events</a><a href="/sikhi-calendar/">Calendar</a><a href="/resources/">Resources</a><a href="/library/">Library</a><a href="/gallery/">Gallery</a><a href="/about/">About</a><a href="/contact/">Contact</a><a href="/donate/">Donate</a></nav>
   <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav"><span>Menu</span><i aria-hidden="true"></i></button>
   <a class="wa" href="https://wa.me/447394848407?text=Sat%20Sri%20Akal%20%E2%80%94%20I'd%20like%20to%20ask%20about%20Kirtan%20%2F%20tanti%20saaj%20classes." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.6 2 2.18 6.42 2.18 11.86c0 1.74.46 3.44 1.32 4.94L2.1 22l5.34-1.4a9.8 9.8 0 0 0 4.6 1.17h.01c5.43 0 9.85-4.42 9.85-9.86 0-2.63-1.02-5.11-2.88-6.97A9.79 9.79 0 0 0 12.04 2z"/></svg>WhatsApp</a>
 </header>
@@ -177,6 +177,7 @@ html[data-mood="dark"] .kart .arch{ background:radial-gradient(120% 80% at 50% 3
       <figure><img src="/kit/img/p-kirtan-dilruba-student.jpg" alt="A student seated on the floor holding a dilruba upright, the gaj in the other hand." loading="lazy"></figure>
       <figure><img src="/Assets/Kirtan/tiles/k15.jpg" alt="Two students on stage, one at the microphone and one at the tabla." loading="lazy"></figure>
       <figure><img src="/Assets/Kirtan/tiles/k03.jpg" alt="The sangat gathered outside for a group photograph." loading="lazy"></figure>
+      <figure><video muted playsinline loop preload="none" aria-hidden="true" poster="/kit/img/v-kirtan-darbar.jpg" data-src="/kit/img/v-kirtan-darbar.mp4"></video></figure>
     </div>
   </div>
   <figure class="loop" data-fade><video muted playsinline loop preload="none" aria-hidden="true" poster="/kit/img/v-kirtan-class.jpg" data-src="/kit/img/v-kirtan-class.mp4"></video><figcaption>A Gipsy Lane class, dilrubas together</figcaption></figure>
@@ -225,7 +226,7 @@ html[data-mood="dark"] .kart .arch{ background:radial-gradient(120% 80% at 50% 3
   <p class="big">Come and sit<br>with the <em>sangat.</em></p>
   <div class="cols">
     <div><h4>Shaheedi Bunga</h4><p style="margin:0;max-width:34ch">A Sikh education charity in Leicester. Every class is free and taught by volunteers.</p></div>
-    <div><h4>Vidyale</h4><a href="/santhiya/">Santhiya</a><a href="/saaj/dilruba/">Kirtan</a><a href="/akhara/archery/">Archery</a><a href="/classes/">All classes</a><a href="/camps/">Camps</a></div>
+    <div><h4>Vidyale</h4><a href="/santhiya/">Santhiya</a><a href="/saaj/dilruba/">Kirtan</a><a href="/akhara/archery/">Archery</a><a href="/classes/">All classes</a><a href="/camps/">Camps</a><a href="/events/">Events</a><a href="/sikhi-calendar/">Calendar</a></div>
     <div><h4>Charity</h4><a href="/about/">About</a><a href="/donate/">Donate</a><a href="/gallery/">Gallery</a><a href="/resources/">Resources</a><a href="/library/">Library</a></div>
     <div><h4>Contact</h4><a href="https://wa.me/447394848407" target="_blank" rel="noopener">+44 7394 848407</a><a href="mailto:gurmat@shaheedibunga.com">gurmat@shaheedibunga.com</a><a href="/safeguarding/">Safeguarding</a><a href="/privacy/">Privacy</a></div>
   </div>

@@ -1,0 +1,125 @@
+<!--@head title="Events"-->
+<style>
+/* what's on first (the week, the calendar, how camps are announced), then
+   every announcement since 2019, newest first, grouped by year. The posters
+   are shown as they were posted; a poster opens full size in a dialog. */
+.on3{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:calc(var(--u)*1.6); }
+.oncard{ background:var(--cream-2); border-radius:4px; padding:calc(var(--u)*2.6); display:flex; flex-direction:column; gap:.6em; text-decoration:none; color:inherit;
+  transition:transform .5s var(--ease-out); }
+a.oncard:hover{ transform:translateY(-3px); }
+.oncard.ink{ background:var(--panel); color:var(--panel-ink); }
+.oncard small{ font-family:var(--mono); font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--gold-text); }
+.oncard.ink small{ color:var(--gold-lite); }
+.oncard b{ font-family:var(--display); font-weight:500; font-size:max(26px,calc(var(--u)*2.4)); line-height:1.05; }
+.oncard p{ margin:0; color:var(--navy-70); } .oncard.ink p{ color:rgba(244,239,228,.8); }
+.oncard .go{ margin-top:auto; font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; }
+@media(max-width:860px){ .on3{ grid-template-columns:1fr; } }
+
+.filters{ display:flex; flex-wrap:wrap; gap:8px; margin:calc(var(--u)*5) 0 calc(var(--u)*1); }
+.filters button{ font-family:var(--mono); font-size:11px; letter-spacing:.12em; text-transform:uppercase; background:transparent; color:var(--navy);
+  border:1px solid var(--line); border-radius:100px; padding:10px 16px; min-height:44px; cursor:pointer; }
+.filters button[aria-pressed="true"]{ background:var(--navy); color:var(--cream); border-color:var(--navy); }
+.filters button:focus-visible, .ev-pic:focus-visible, .pv button:focus-visible{ outline:2px solid var(--focus); outline-offset:3px; }
+
+.yr{ border-top:1px solid var(--navy); padding:calc(var(--u)*3) 0 calc(var(--u)*2); display:grid; grid-template-columns:minmax(0,.35fr) minmax(0,1.65fr); gap:calc(var(--u)*3); }
+.yr[hidden]{ display:none; }
+.yr-h{ font-family:var(--display); font-weight:500; font-size:max(44px,calc(var(--u)*6)); line-height:.9; margin:0; color:var(--gold-text); position:sticky; top:90px; align-self:start; }
+.evs{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:calc(var(--u)*2.4) calc(var(--u)*2); }
+.ev{ display:grid; grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr); gap:calc(var(--u)*1.6); align-items:start; }
+.ev[hidden]{ display:none; }
+.ev-pic{ padding:0; border:0; background:var(--cream-3); border-radius:3px; overflow:hidden; cursor:zoom-in; display:block; }
+.ev-pic img{ width:100%; display:block; transition:transform .8s var(--ease-out); }
+.ev-pic:hover img{ transform:scale(1.03); }
+.ev-type{ font-family:var(--mono); font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--gold-text); margin:0 0 .6em; }
+.ev h3{ font-family:var(--display); font-weight:500; font-size:max(22px,calc(var(--u)*1.8)); line-height:1.05; margin:0 0 .5em; }
+.ev-facts{ font-size:14px; line-height:1.45; margin:0 0 .6em; }
+.ev-sum{ font-size:14px; line-height:1.5; color:var(--navy-70); margin:0; }
+@media(max-width:1100px){ .evs{ grid-template-columns:1fr; } }
+@media(max-width:760px){ .yr{ grid-template-columns:1fr; gap:14px; } .yr-h{ position:static; } }
+@media(max-width:480px){ .ev{ grid-template-columns:1fr; } }
+
+.pv{ border:0; padding:0; background:transparent; max-width:min(92vw,900px); max-height:92vh; }
+.pv::backdrop{ background:rgba(8,12,22,.92); }
+.pv img{ display:block; max-width:100%; max-height:84vh; border-radius:3px; }
+.pv form{ display:flex; justify-content:flex-end; margin-top:10px; }
+.pv button{ background:transparent; color:#F4EFE4; border:1px solid rgba(244,239,228,.35); border-radius:100px; padding:10px 18px; min-height:44px; cursor:pointer;
+  font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; }
+</style>
+</head>
+<body>
+<!--@mast current="events" wa="events"-->
+<main id="main">
+<section class="phero no-art paper" data-hero>
+  <div class="phero-in" style="min-height:min(56svh,580px)">
+    <div>
+      <p class="eyebrow">Events</p>
+      <h1 class="display">What's on, <em>and what has been.</em></h1>
+      <p class="lede">The weekly classes run all year. Around them come the camps, the samagams and Hola Mohalla UK. Below is
+        every one announced since 2019, with the poster it went out on.</p>
+    </div>
+  </div>
+</section>
+
+<div class="wrapx paper">
+  <section aria-labelledby="on-h">
+    <h2 id="on-h" class="eyebrow">What's on</h2>
+    <div class="on3">
+      <a class="oncard ink" href="classes.html" data-fade><small>Every week</small><b>The classes</b>
+        <p>Santhiya, kirtan, tabla, archery and katha, free, at Gipsy Lane and Guru Tegh Bahadur Gurdwara.</p><span class="go">The timetable →</span></a>
+      <a class="oncard" href="calendar.html" data-fade><small>Gurpurabs</small><b>The Sikhi Calendar</b>
+        <p>Every gurpurab, sangrand and masya, worked out from the Nanakshahi jantri.</p><span class="go">Open the calendar →</span></a>
+      <a class="oncard" href="https://www.instagram.com/shaheedi_bunga_uk/" target="_blank" rel="noopener" data-fade><small>Camps</small><b>Announced first on Instagram</b>
+        <p>Camps and samagams go out on Instagram before anywhere else. To be told directly, message us.</p><span class="go">@shaheedi_bunga_uk →</span></a>
+    </div>
+  </section>
+
+  <div class="filters" role="group" aria-label="Show events of one kind">
+    <button type="button" aria-pressed="true" data-f="all">All</button>
+    <button type="button" aria-pressed="false" data-f="Camp">Camps</button>
+    <button type="button" aria-pressed="false" data-f="Samagam">Samagams</button>
+    <button type="button" aria-pressed="false" data-f="Hola Mohalla">Hola Mohalla</button>
+    <button type="button" aria-pressed="false" data-f="Competition">Competitions</button>
+    <button type="button" aria-pressed="false" data-f="Talks">Talks</button>
+    <button type="button" aria-pressed="false" data-f="Kirtan">Kirtan</button>
+    <button type="button" aria-pressed="false" data-f="Classes">Classes</button>
+  </div>
+
+  <div class="archive" id="archive">
+<!--@events-->
+  </div>
+</div>
+
+<dialog class="pv" id="pv" aria-label="Poster">
+  <img alt="">
+  <form method="dialog"><button type="submit">Close</button></form>
+</dialog>
+</main>
+
+<!--@foot-->
+<!--@scripts-->
+<script>
+(function(){
+  var pv = document.getElementById("pv"), im = pv.querySelector("img");
+  document.querySelectorAll(".ev-pic").forEach(function(b){
+    b.addEventListener("click", function(){
+      im.src = b.getAttribute("data-full"); im.alt = b.querySelector("img").alt;
+      if(pv.showModal) pv.showModal(); else window.open(im.src, "_blank");
+    });
+  });
+  pv.addEventListener("click", function(e){ if(e.target === pv) pv.close(); });
+
+  var btns = document.querySelectorAll(".filters button");
+  btns.forEach(function(b){
+    b.addEventListener("click", function(){
+      var f = b.getAttribute("data-f");
+      btns.forEach(function(x){ x.setAttribute("aria-pressed", String(x === b)); });
+      document.querySelectorAll(".ev").forEach(function(ev){ ev.hidden = f !== "all" && ev.getAttribute("data-type") !== f; });
+      document.querySelectorAll(".yr").forEach(function(y){ y.hidden = !y.querySelector(".ev:not([hidden])"); });
+      if(window.ScrollTrigger) ScrollTrigger.refresh();
+    });
+  });
+})();
+KIT.start();
+</script>
+</body>
+</html>

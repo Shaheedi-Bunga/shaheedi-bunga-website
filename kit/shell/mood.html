@@ -1,0 +1,5 @@
+<!-- before paint: light unless this viewer chose dark (or ?mood= asks), so
+     there is never a flash of the wrong mode -->
+<script>(function(){var m=(/[?&]mood=(light|dark)/.exec(location.search)||[])[1];
+  if(!m){try{m=localStorage.getItem("sb-mood");}catch(e){}}
+  document.documentElement.dataset.mood=m==="dark"?"dark":"light";})();</script>

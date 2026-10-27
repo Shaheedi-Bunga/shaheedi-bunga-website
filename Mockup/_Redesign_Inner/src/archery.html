@@ -38,6 +38,10 @@
 /* ── the range: photographs on the sideways track ── */
 .range .pcard{ padding:0; overflow:hidden; background:var(--cream-3); }
 .range .pcard img{ width:100%; height:100%; object-fit:cover; filter:var(--photo); }
+/* a fade under the caption: small white type on a white wall vanished */
+.range .pcard::after{ content:""; position:absolute; left:0; right:0; bottom:0; height:42%; pointer-events:none;
+  background:linear-gradient(to top, rgba(8,12,22,.62), rgba(8,12,22,0)); }
+.range .pcard figcaption{ z-index:1; text-shadow:0 1px 8px rgba(0,0,0,.45); }
 .range .pcard figcaption{ position:absolute; left:16px; bottom:14px; right:16px; font-family:var(--mono); font-size:10px; letter-spacing:.14em;
   text-transform:uppercase; color:#FAF6EE; text-shadow:0 1px 8px rgba(0,0,0,.7); }
 .range .pcard{ position:relative; margin:0; aspect-ratio:4/5; min-height:0; }
