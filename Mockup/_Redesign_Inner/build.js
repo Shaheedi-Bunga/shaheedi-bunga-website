@@ -42,6 +42,40 @@ function mast(a){
   return part('mast.html').replace('{{nav}}', nav).replace('{{wa}}', `https://wa.me/447394848407?text=${text}`);
 }
 
+/* THE LIBRARY. One list - library.json - renders the shelf on /library/ and
+   generates a reader page per item at /library/read/<id>/. The reader is a
+   real page rather than a modal, so the shelf can open it in a new tab and
+   the pothi still works with no JavaScript. */
+const LIB = JSON.parse(fs.readFileSync(path.join(here, 'library.json'), 'utf8')).items;
+const human = n => n < 1048576 ? (n/1024).toFixed(0) + ' KB' : (n/1048576).toFixed(1) + ' MB';
+function libFile(rel){                       // "/library/items/x.pdf" -> on disk
+  const f = path.join(ROOT, rel.replace(/^\//, ''));
+  if (!fs.existsSync(f)) throw new Error(`library.json: ${rel} does not exist`);
+  return f;
+}
+(function checkLib(){
+  const seen = new Set();
+  for (const it of LIB) {
+    for (const k of ['id','gur','title','by','pages','kind','file','thumb'])
+      if (!it[k]) throw new Error(`library.json: item ${it.id || '?'} has no ${k}`);
+    if (seen.has(it.id)) throw new Error(`library.json: two items share the id ${it.id}`);
+    seen.add(it.id);
+    libFile(it.file); libFile(it.thumb);
+  }
+})();
+
+function shelf(){
+  return LIB.map(it =>
+`    <a class="item" href="/library/read/${it.id}/" target="_blank" rel="noopener"
+       data-kind="${it.kind}" data-by="${esc(it.by)}" data-thumb="${it.thumb}">
+      <span class="cover"><span class="kind">${it.kind.toUpperCase()}</span></span>
+      <span class="meta">
+        <h2><span class="gur" lang="pa">${it.gur}</span> ${esc(it.title)}</h2>
+        <span class="by">${esc(it.by)} &middot; ${it.pages} pages</span>
+      </span>
+    </a>`).join('\n');
+}
+
 function page(f, live){
   const name = f.replace(/\.html$/, '');
   const metaFile = path.join(PART, 'meta', name + '.html');
@@ -52,7 +86,8 @@ function page(f, live){
           .replace('{{meta}}', live && fs.existsSync(metaFile) ? fs.readFileSync(metaFile, 'utf8') : ''))
        .replace(/<!--@mast([^>]*)-->/, (_, a) => mast(attrs(a)))
        .replace(/<!--@foot-->/, () => part('foot.html'))
-       .replace(/<!--@scripts-->/, () => part('scripts.html'));
+       .replace(/<!--@scripts-->/, () => part('scripts.html'))
+       .replace(/<!--@shelf-->/, () => shelf());
   const left = h.match(/<!--@\w+/);
   if (left) throw new Error(`${f}: ${left[0]} was not filled in`);
   if (!live) return h;
@@ -93,6 +128,43 @@ for (const [name, route] of Object.entries(ROUTES)) {
   live++;
 }
 console.log(`published ${live} pages at their addresses, assets in /kit/`);
+
+/* the reader pages: one per item, at /library/read/<id>/ */
+const READ = path.join(ROOT, 'library', 'read');
+fs.rmSync(READ, { recursive: true, force: true });
+LIB.forEach((it, i) => {
+  const prev = LIB[i - 1], next = LIB[i + 1];
+  const btn = (to, label) => to
+    ? `<a class="rd-btn" href="/library/read/${to.id}/">${label}</a>`
+    : `<span class="rd-btn" aria-disabled="true">${label}</span>`;
+  const meta = `<link rel="canonical" href="https://www.shaheedibunga.com/library/read/${it.id}/">\n`
+    + `<meta name="robots" content="noindex">\n`          /* the Library is the page to find */
+    + `<meta name="description" content="${esc(it.note || it.title)}">\n`;
+  let h = part('reader.html')
+    .replace('{{head}}', part('head.html')
+       .replace('{{title}}', esc(it.title))
+       .replace('{{robots}}', '')
+       .replace('{{meta}}', meta)
+       .replace('href="kit.css"', 'href="/kit/kit.css"'))
+    .replace('{{scripts}}', part('scripts.html')
+       .replace(/src="lib\//g, 'src="/kit/lib/')
+       .replace('src="kit.js"', 'src="/kit/kit.js"'))
+    .replace('{{prev}}', btn(prev, '&larr; Prev'))
+    .replace('{{next}}', btn(next, 'Next &rarr;'))
+    .replace(/\{\{size\}\}/g, human(fs.statSync(libFile(it.file)).size))
+    .replace(/\{\{gur\}\}/g, it.gur)
+    .replace(/\{\{title\}\}/g, esc(it.title))
+    .replace(/\{\{by\}\}/g, esc(it.by))
+    .replace(/\{\{pages\}\}/g, String(it.pages))
+    .replace(/\{\{file\}\}/g, it.file)
+    .replace(/\{\{thumb\}\}/g, it.thumb);
+  const left = h.match(/\{\{\w+\}\}/);
+  if (left) throw new Error(`reader ${it.id}: ${left[0]} was not filled in`);
+  const dir = path.join(READ, it.id);
+  fs.mkdirSync(dir, { recursive: true });
+  fs.writeFileSync(path.join(dir, 'index.html'), h);
+});
+console.log(`reader pages: ${LIB.length} at /library/read/`);
 
 /* /new/ was the test address while the design was tried out; links to it
    were shared, so it now forwards to the real pages rather than vanishing */

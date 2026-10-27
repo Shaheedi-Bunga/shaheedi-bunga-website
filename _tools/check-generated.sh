@@ -19,7 +19,7 @@ set -u
 cd "$(dirname "$0")/.."
 PATHS=("index.html" "sikhi-calendar/index.html" "Mockup/_Redesign_Inner" "kit" "new"
        "classes/index.html" "santhiya/index.html" "saaj/dilruba/index.html" "akhara/archery/index.html"
-       "camps/index.html" "about/index.html" "donate/index.html" "contact/index.html" "gallery/index.html"
+       "library/read" "camps/index.html" "about/index.html" "donate/index.html" "contact/index.html" "gallery/index.html"
        "resources/index.html" "library/index.html" "safeguarding/index.html" "privacy/index.html")
 fail=0
 
