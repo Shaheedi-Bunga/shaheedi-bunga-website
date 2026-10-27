@@ -29,7 +29,7 @@
   if(!m){try{m=localStorage.getItem("sb-mood");}catch(e){}}
   document.documentElement.dataset.mood=m==="dark"?"dark":"light";
   /* TRIAL ONLY: ?palette=b|c|d previews a colour option; never stored */
-  var pl=(/[?&]palette=([bcd])/.exec(location.search)||[])[1]; if(pl) document.documentElement.dataset.palette=pl;})();</script>
+  var pl=(/[?&]palette=([bcde])/.exec(location.search)||[])[1]; if(pl) document.documentElement.dataset.palette=pl;})();</script>
 
 <style>
 /* ── hero: the dilruba in its arch. The gaj follows the cursor (that is

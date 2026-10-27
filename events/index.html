@@ -26,7 +26,7 @@
   if(!m){try{m=localStorage.getItem("sb-mood");}catch(e){}}
   document.documentElement.dataset.mood=m==="dark"?"dark":"light";
   /* TRIAL ONLY: ?palette=b|c|d previews a colour option; never stored */
-  var pl=(/[?&]palette=([bcd])/.exec(location.search)||[])[1]; if(pl) document.documentElement.dataset.palette=pl;})();</script>
+  var pl=(/[?&]palette=([bcde])/.exec(location.search)||[])[1]; if(pl) document.documentElement.dataset.palette=pl;})();</script>
 
 <style>
 /* what's on first (the week, the calendar, how camps are announced), then
@@ -238,7 +238,7 @@ a.oncard:hover{ transform:translateY(-3px); }
       <article class="ev" data-type="Competition" data-fade>
         <button class="ev-pic" type="button" data-full="/kit/img/ev/e20.jpg" aria-label="Open the poster for Inter-Akhara Gatka Fight Night"><img src="/kit/img/ev/e20.jpg" alt="The poster for Inter-Akhara Gatka Fight Night." loading="lazy"></button>
         <div class="ev-txt"><p class="ev-type">Competition</p><h3>Inter-Akhara Gatka Fight Night</h3>
-          <p class="ev-facts">Saturday 4th May · Guru Tegh Bahadur Gurdwara, Leicester</p><p class="ev-sum">First inter-akhara Gatka Fight Night by Shaheed Bhai Mani Singh Ji Gatka Akhara and Shaheedi Bunga, with an exhibition match between two ustads and three student fights, held in memory of an ustad's 20th barsi.</p></div>
+          <p class="ev-facts">Saturday 4th May · Guru Tegh Bahadur Gurdwara, Leicester</p><p class="ev-sum">The first inter-akhara Gatka Fight Night, by Shaheed Bhai Mani Singh Ji Gatka Akhara and Shaheedi Bunga, in memory of Ustad Bhai Charnjit Singh Ji's 20th barsi: an exhibition match between two ustads and three student fights.</p></div>
       </article>
       <article class="ev" data-type="Competition" data-fade>
         <button class="ev-pic" type="button" data-full="/kit/img/ev/e21.jpg" aria-label="Open the poster for Gatka Fight Night"><img src="/kit/img/ev/e21.jpg" alt="The poster for Gatka Fight Night." loading="lazy"></button>
@@ -278,7 +278,7 @@ a.oncard:hover{ transform:translateY(-3px); }
       <article class="ev" data-type="Samagam" data-fade>
         <button class="ev-pic" type="button" data-full="/kit/img/ev/e26.jpg" aria-label="Open the poster for 25 Singh Lareevaar Sri Akhand Paath Samagam"><img src="/kit/img/ev/e26.jpg" alt="The poster for 25 Singh Lareevaar Sri Akhand Paath Samagam." loading="lazy"></button>
         <div class="ev-txt"><p class="ev-type">Samagam</p><h3>25 Singh Lareevaar Sri Akhand Paath Samagam</h3>
-          <p class="ev-facts">Friday 2nd - Sunday 4th December 2022 · Arambh 10 am · Gurdwara Gur Panth Parkash</p><p class="ev-sum">Akhand Paath Samagam commemorating the Shaheedi Purab of Sri Guru Tegh Bahadur Ji and a barsi; Amrit Sanchar on Saturday, Sehaj Paath Bhog and Raag Darbar at 6pm, and Bhog with Mahan Smagam on Sunday.</p></div>
+          <p class="ev-facts">Friday 2nd - Sunday 4th December 2022 · Arambh 10 am · Gurdwara Gur Panth Parkash</p><p class="ev-sum">Commemorating the Shaheedi Purab of Sri Guru Tegh Bahadur Ji and the second barsi of Sant Giani Mohan Singh Ji Khalsa Bhindranwale. Amrit Sanchar on Saturday, Sehaj Paath Bhog and Raag Darbar at 6pm, Bhog and Mahan Smagam on Sunday.</p></div>
       </article>
       <article class="ev" data-type="Classes" data-fade>
         <button class="ev-pic" type="button" data-full="/kit/img/ev/e27.jpg" aria-label="Open the poster for Shaheedi Bunga Akhara Gatka Classes"><img src="/kit/img/ev/e27.jpg" alt="The poster for Shaheedi Bunga Akhara Gatka Classes." loading="lazy"></button>
@@ -303,7 +303,7 @@ a.oncard:hover{ transform:translateY(-3px); }
       <article class="ev" data-type="Samagam" data-fade>
         <button class="ev-pic" type="button" data-full="/kit/img/ev/e31.jpg" aria-label="Open the poster for Akhand Paat Sahib"><img src="/kit/img/ev/e31.jpg" alt="The poster for Akhand Paat Sahib." loading="lazy"></button>
         <div class="ev-txt"><p class="ev-type">Samagam</p><h3>Akhand Paat Sahib</h3>
-          <p class="ev-facts">Friday 28th to Sunday 30th January 2022 · Guru Nanak Gurdwara</p><p class="ev-sum">An Akhand Paat Sahib marking a first Shaheedi Barsi, with the sangat from across the UK invited to attend. Held at Holy Bones, Leicester.</p></div>
+          <p class="ev-facts">Friday 28th to Sunday 30th January 2022 · Guru Nanak Gurdwara, Holy Bones, Leicester</p><p class="ev-sum">Commemorating for the first time the Shaheedi Barsi of Shaheed Jathedar Harmeet Singh Ji PhD, in loving memory of Shaheed Bhai Amarjeet Singh Ji Shahzada. The sangat from across the UK invited.</p></div>
       </article>
       <article class="ev" data-type="Camp" data-fade>
         <button class="ev-pic" type="button" data-full="/kit/img/ev/e32.jpg" aria-label="Open the poster for Sikhi Camp"><img src="/kit/img/ev/e32.jpg" alt="The poster for Sikhi Camp." loading="lazy"></button>
@@ -318,13 +318,13 @@ a.oncard:hover{ transform:translateY(-3px); }
       <article class="ev" data-type="Samagam" data-fade>
         <button class="ev-pic" type="button" data-full="/kit/img/ev/e33.jpg" aria-label="Open the poster for 25 Singh Lareevaar Sri Akhand Paath Samagam"><img src="/kit/img/ev/e33.jpg" alt="The poster for 25 Singh Lareevaar Sri Akhand Paath Samagam." loading="lazy"></button>
         <div class="ev-txt"><p class="ev-type">Samagam</p><h3>25 Singh Lareevaar Sri Akhand Paath Samagam</h3>
-          <p class="ev-facts">Friday 3rd - Sunday 5th December 2021 · Arambh - 10 am · Gurdwara Gur Panth Parkash</p><p class="ev-sum">Akhand Paath Samagam for the Shaheedi Purab of Sri Guru Tegh Bahadur Ji and Gurgadhi Purab of Sri Guru Gobind Singh Ji; Amrit Sanchar Saturday, Sehaj Paath Bhog and Raag Darbar at 6pm, Bhog Sunday 9am with Katha and Kirtan.</p></div>
+          <p class="ev-facts">Friday 3rd - Sunday 5th December 2021 · Arambh - 10 am · Gurdwara Gur Panth Parkash</p><p class="ev-sum">For the Shaheedi Purab of Sri Guru Tegh Bahadur Ji and the Gurgadhi Purab of Sri Guru Gobind Singh Ji, and the first barsi of Sant Giani Mohan Singh Ji Khalsa Bhindranwale. Amrit Sanchar Saturday; Bhog Sunday 9am, then Katha and Kirtan.</p></div>
       </article>
       <article class="ev" data-type="Samagam" data-fade>
         <button class="ev-pic" type="button" data-full="/kit/img/ev/e34.jpg" aria-label="Open the poster for Mahan Shaheedi Smagam"><img src="/kit/img/ev/e34.jpg" alt="The poster for Mahan Shaheedi Smagam." loading="lazy"></button>
         <div class="ev-txt"><p class="ev-type">Samagam</p><h3>Mahan Shaheedi Smagam</h3>
           <p class="ev-facts">Arambh - 22nd October 2021
-Bhog - 24th October 2021 · Guru Nanak Gurdwara</p><p class="ev-sum">Sri Akhand Paath Sahib in memory of two Shaheeds, from Arambh on 22nd to Bhog on 24th October 2021, followed by Kirtan, Kavisher and Dhadi.</p></div>
+Bhog - 24th October 2021 · Guru Nanak Gurdwara</p><p class="ev-sum">Sri Akhand Paath Sahib in memory of Shaheed Bhai Sukhdev Singh Sukha Ji and Shaheed Bhai Harjinder Singh Jinda Ji, Arambh 22nd and Bhog 24th October 2021, followed by Kirtan, Kavisher and Dhadi.</p></div>
       </article>
       <article class="ev" data-type="Kirtan" data-fade>
         <button class="ev-pic" type="button" data-full="/kit/img/ev/e35.jpg" aria-label="Open the poster for Monthly Raag Keertan"><img src="/kit/img/ev/e35.jpg" alt="The poster for Monthly Raag Keertan." loading="lazy"></button>
@@ -344,7 +344,7 @@ Bhog - 24th October 2021 · Guru Nanak Gurdwara</p><p class="ev-sum">Sri Akhand 
       <article class="ev" data-type="Samagam" data-fade>
         <button class="ev-pic" type="button" data-full="/kit/img/ev/e38.jpg" aria-label="Open the poster for Shaheedi Jorh Mela"><img src="/kit/img/ev/e38.jpg" alt="The poster for Shaheedi Jorh Mela." loading="lazy"></button>
         <div class="ev-txt"><p class="ev-type">Samagam</p><h3>Shaheedi Jorh Mela</h3>
-          <p class="ev-facts">30 July - 1 August 2021 · Guru Nanak Gurdwara</p><p class="ev-sum">A Shaheedi Jorh Mela in memory of a Shaheed Jathedar, inviting the sangat to unite, learn and be part of the Sikh struggle against injustice. Held at Holy Bones, Leicester.</p></div>
+          <p class="ev-facts">30 July - 1 August 2021 · Guru Nanak Gurdwara</p><p class="ev-sum">A Shaheedi Jorh Mela in memory of Shaheed Jathedar Avtar Singh Brahma Ji, at Guru Nanak Gurdwara, Holy Bones, inviting the sangat to unite and learn under the guidance of Sri Guru Granth Sahib Ji.</p></div>
       </article>
       <article class="ev" data-type="Classes" data-fade>
         <button class="ev-pic" type="button" data-full="/kit/img/ev/e39.jpg" aria-label="Open the poster for Shaheedi Bunga Gurmat Vidayala"><img src="/kit/img/ev/e39.jpg" alt="The poster for Shaheedi Bunga Gurmat Vidayala." loading="lazy"></button>
