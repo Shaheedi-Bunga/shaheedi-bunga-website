@@ -315,3 +315,8 @@ a:focus-visible, button:focus-visible{ outline:2px solid var(--focus); outline-o
 
 /* reveal targets are visible by default; JS only animates FROM somewhere */
 @media (prefers-reduced-motion: reduce){ *{ scroll-behavior:auto !important; } }
+
+/* silent loops: the poster is the picture on phones and for reduced motion */
+.loop{ margin:calc(var(--u)*4) 0 0; }
+.loop video{ width:100%; aspect-ratio:16/9; object-fit:cover; display:block; border-radius:3px; background:var(--cream-3); filter:var(--photo); }
+.loop figcaption{ font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--navy-70); margin-top:12px; }
