@@ -7,6 +7,7 @@
 <title>Santhiya Vidyala · Shaheedi Bunga</title>
 <link rel="icon" href="/Assets/Brand/favicon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="/Assets/Brand/apple-touch-icon-180.png">
+<link rel="manifest" href="/site.webmanifest">
 <link rel="stylesheet" href="/lib/fonts.css">
 <link rel="stylesheet" href="kit.css">
 <!-- before paint: light unless this viewer chose dark (or ?mood= asks), so
@@ -36,7 +37,7 @@
 .hero-art{ position:relative; justify-self:end; width:min(100%, calc(var(--u)*40)); --archH:34%; }
 .hero-art .arch{ aspect-ratio:4/5; }
 .hero-art img{ width:100%; height:100%; object-fit:cover; object-position:30% 40%; }
-.hero-art figcaption{ font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase;
+.hero-art figcaption{ font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase;
   color:var(--hero-muted); margin-top:12px; line-height:1.6; }
 html[data-mood="dark"] .hero-art img{ filter:saturate(.85) brightness(.88) contrast(1.05); }
 /* minmax(0,…): a bare 1fr let the column grow to its content and the page
@@ -66,10 +67,10 @@ html[data-mood="dark"] .cine .stage img{ filter:saturate(.85) brightness(.85) co
 .stage .over p{ font-family:var(--display); font-weight:500; font-size:max(40px,calc(var(--u)*5.6)); line-height:.95;
   letter-spacing:-.02em; margin:0 0 0 auto; max-width:11ch; }
 .stage .over p em{ color:var(--gold-lite); }
-.stage .over small{ display:block; margin-top:calc(var(--u)*2); font-family:var(--mono); font-size:10px;
+.stage .over small{ display:block; margin-top:calc(var(--u)*2); font-family:var(--mono); font-size:11px;
   letter-spacing:.16em; text-transform:uppercase; opacity:.75; }
 .scrollcue{ position:absolute; right:var(--gx); bottom:calc(var(--u)*3); z-index:3; font-family:var(--mono);
-  font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--hero-muted); display:none; align-items:center; gap:10px; }
+  font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--hero-muted); display:none; align-items:center; gap:10px; }
 .cine .scrollcue{ display:flex; }
 .scrollcue i{ width:1px; height:42px; background:currentColor; transform-origin:top; animation:cue 2.2s var(--ease-out) infinite; }
 @keyframes cue{ 0%{ transform:scaleY(0); } 60%{ transform:scaleY(1); } 100%{ transform:scaleY(1); opacity:0; } }
@@ -93,13 +94,13 @@ html[data-mood="dark"] .manifesto{ border-bottom:1px solid var(--line); }
 .room figure::after{ content:""; position:absolute; left:0; right:0; bottom:0; height:42%; pointer-events:none;
   background:linear-gradient(to top, rgba(8,12,22,.62), rgba(8,12,22,0)); }
 .room figcaption{ z-index:1; text-shadow:0 1px 8px rgba(0,0,0,.45); }
-.room figcaption{ position:absolute; left:12px; bottom:10px; font-family:var(--mono); font-size:10px; letter-spacing:.14em;
+.room figcaption{ position:absolute; left:12px; bottom:10px; font-family:var(--mono); font-size:11px; letter-spacing:.14em;
   text-transform:uppercase; color:#FAF6EE; text-shadow:0 1px 8px rgba(0,0,0,.6); }
 .room .f1{ grid-column:1/6; aspect-ratio:4/5; } .room .f2{ grid-column:6/10; aspect-ratio:1; margin-top:calc(var(--u)*10); }
 .room .f3{ grid-column:10/13; aspect-ratio:3/4; margin-top:calc(var(--u)*3); }
 .room .f4{ grid-column:2/5; aspect-ratio:1; } .room .f5{ grid-column:5/9; aspect-ratio:4/3; margin-top:calc(var(--u)*-6); }
 .room .quote{ grid-column:9/13; align-self:center; font-family:var(--display); font-size:max(24px,calc(var(--u)*2.6)); line-height:1.15; margin:0; }
-.room .quote small{ display:block; margin-top:1em; font-family:var(--mono); font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--gold-text); }
+.room .quote small{ display:block; margin-top:1em; font-family:var(--mono); font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--gold-text); }
 @media(max-width:800px){ .room > *{ grid-column:1/-1 !important; margin-top:0 !important; } }
 
 </style>
@@ -258,12 +259,12 @@ html[data-mood="dark"] .manifesto{ border-bottom:1px solid var(--line); }
 <footer class="foot">
   <p class="big">Come and sit<br>with the <em>sangat.</em></p>
   <div class="cols">
-    <div><h4>Shaheedi Bunga</h4><p style="margin:0;max-width:34ch">A Sikh education charity in Leicester. Every class is free and taught by volunteers.</p></div>
-    <div><h4>Vidyale</h4><a href="santhiya.html">Santhiya</a><a href="kirtan.html">Kirtan</a><a href="archery.html">Archery</a><a href="classes.html">All classes</a><a href="camps.html">Camps</a><a href="events.html">Events</a><a href="calendar.html">Calendar</a></div>
-    <div><h4>Charity</h4><a href="about.html">About</a><a href="donate.html">Donate</a><a href="gallery.html">Gallery</a><a href="resources.html">Resources</a><a href="library.html">Library</a></div>
-    <div><h4>Contact</h4><a href="https://wa.me/447394848407" target="_blank" rel="noopener">+44 7394 848407</a><a href="mailto:gurmat@shaheedibunga.com">gurmat@shaheedibunga.com</a><a href="safeguarding.html">Safeguarding</a><a href="privacy.html">Privacy</a></div>
+    <div><h2>Shaheedi Bunga</h2><p style="margin:0;max-width:34ch">A Sikh education charity in Leicester. Every class is free and taught by volunteers.</p></div>
+    <div><h2>Vidyale</h2><a href="santhiya.html">Santhiya</a><a href="kirtan.html">Kirtan</a><a href="archery.html">Archery</a><a href="classes.html">All classes</a><a href="camps.html">Camps</a><a href="events.html">Events</a><a href="calendar.html">Calendar</a></div>
+    <div><h2>Charity</h2><a href="about.html">About</a><a href="donate.html">Donate</a><a href="gallery.html">Gallery</a><a href="resources.html">Resources</a><a href="library.html">Library</a></div>
+    <div><h2>Contact</h2><a href="https://wa.me/447394848407" target="_blank" rel="noopener">+44 7394 848407</a><a href="mailto:gurmat@shaheedibunga.com">gurmat@shaheedibunga.com</a><a href="safeguarding.html">Safeguarding</a><a href="privacy.html">Privacy</a></div>
   </div>
-  <div class="legal"><span>Registered charity in England &amp; Wales · 1185103</span><a href="index.html" style="display:inline">Home · the Parikrama</a></div>
+  <div class="legal"><span>Registered charity in England &amp; Wales · 1185103</span><a href="index.html" style="display:inline-block;padding:4px 0">Home · the Parikrama</a></div>
 </footer>
 
 
