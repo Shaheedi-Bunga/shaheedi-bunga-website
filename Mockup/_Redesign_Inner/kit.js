@@ -63,7 +63,19 @@ window.KIT = (function(){
     btn.addEventListener("click", function(){ set(btn.getAttribute("aria-expanded") !== "true", true); });
     nav.addEventListener("click", function(e){ if(e.target.closest("a")) set(false); });
     addEventListener("keydown", function(e){ if(e.key === "Escape" && html.classList.contains("menu-open")) set(false, true); });
-    matchMedia("(min-width: 901px)").addEventListener("change", function(e){ if(e.matches) set(false); });
+    matchMedia("(min-width: 1241px)").addEventListener("change", function(e){ if(e.matches) set(false); });
+  }
+
+  /* the Vidyale drop-down: a button that opens a panel. Click or Enter opens,
+     Escape or a click elsewhere closes; on a phone it sits open in the menu. */
+  function vidyale(){
+    var w = document.querySelector(".vid"); if(!w) return;
+    var b = w.querySelector(".vid-btn");
+    function set(o){ b.setAttribute("aria-expanded", o); w.classList.toggle("open", o); }
+    b.addEventListener("click", function(e){ e.stopPropagation(); set(b.getAttribute("aria-expanded") !== "true"); });
+    document.addEventListener("click", function(e){ if(!w.contains(e.target)) set(false); });
+    w.addEventListener("keydown", function(e){ if(e.key === "Escape" && w.classList.contains("open")){ e.stopPropagation(); set(false); b.focus(); } });
+    w.addEventListener("focusout", function(e){ if(!w.contains(e.relatedTarget)) set(false); });
   }
 
   function mast(){
@@ -185,7 +197,7 @@ window.KIT = (function(){
   }
 
   api.start = function(pageScenes){
-    moodSwitch(); menu(); today(); tocs();
+    moodSwitch(); menu(); vidyale(); today(); tocs();
     /* .cine: desktop with motion allowed. Pinned scenes exist only under it;
        a phone or a reduced-motion visitor gets the still layout. */
     api.wide = matchMedia("(min-width: 901px)").matches && !reduce;

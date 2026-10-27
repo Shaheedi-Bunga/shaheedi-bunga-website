@@ -57,6 +57,17 @@ a.oncard:hover{ transform:translateY(-3px); }
 .ev-pic{ padding:0; border:0; background:var(--cream-3); border-radius:3px; overflow:hidden; cursor:zoom-in; display:block; }
 .ev-pic img{ width:100%; display:block; transition:transform .8s var(--ease-out); }
 .ev-pic:hover img{ transform:scale(1.03); }
+/* an event with no poster: a navy card that links to its video */
+.ev-yt{ display:grid; place-items:center; aspect-ratio:4/5; text-decoration:none; color:var(--panel-ink);
+  background:radial-gradient(120% 80% at 80% 0%, rgba(226,194,122,.28), transparent 60%), linear-gradient(160deg,#1B2C52 0%,var(--panel) 55%,#070F22 100%);
+  box-shadow:inset 0 0 0 1px rgba(226,194,122,.3); cursor:pointer; transition:box-shadow .5s var(--ease-out); }
+.ev-yt:hover{ box-shadow:inset 0 0 0 1px rgba(226,194,122,.7), 0 18px 40px -22px rgba(11,23,49,.6); }
+.ev-yt-in{ display:grid; justify-items:center; gap:10px; text-align:center; padding:16px; }
+.ev-yt i{ width:54px; height:54px; border-radius:50%; border:1px solid rgba(226,194,122,.7); position:relative; }
+.ev-yt i::after{ content:""; position:absolute; left:22px; top:17px; border-left:14px solid #E2C27A; border-top:10px solid transparent; border-bottom:10px solid transparent; }
+.ev-yt b{ font-family:var(--mono); font-weight:400; font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:#E2C27A; }
+.ev-yt small{ font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:rgba(244,239,228,.7); }
+.sr{ position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
 .ev-type{ font-family:var(--mono); font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--gold-text); margin:0 0 .6em; }
 .ev h3{ font-family:var(--display); font-weight:500; font-size:max(22px,calc(var(--u)*1.8)); line-height:1.05; margin:0 0 .5em; }
 .ev-facts{ font-size:14px; line-height:1.45; margin:0 0 .6em; }
@@ -78,7 +89,7 @@ a.oncard:hover{ transform:translateY(-3px); }
 <header class="mast">
   <a class="brand" href="/" aria-label="Shaheedi Bunga, home"><img src="/kit/img/gurmat-vidyala-84.png" alt="" width="40" height="40">
     <span><b>Shaheedi Bunga</b><i>Gurmat Vidyala</i></span></a>
-  <nav aria-label="Main" id="site-nav"><a href="/classes/">Classes</a><a href="/camps/">Camps</a><a href="/events/" aria-current="page">Events</a><a href="/sikhi-calendar/">Calendar</a><a href="/resources/">Resources</a><a href="/library/">Library</a><a href="/gallery/">Gallery</a><a href="/about/">About</a><a href="/contact/">Contact</a><a href="/donate/">Donate</a></nav>
+  <nav aria-label="Main" id="site-nav"><div class="vid"><button class="vid-btn" type="button" aria-expanded="false" aria-controls="vid-panel">Vidyale<i aria-hidden="true"></i></button><div class="vid-panel" id="vid-panel"><div class="vid-grid"><a class="vid-item" href="/santhiya/"><span class="vid-gur" lang="pa">ਸੰਥਿਆ ਵਿਦਿਆਲਾ</span><b>Santhiya</b><small>Reading sudh Gurbani</small></a><a class="vid-item" href="/saaj/dilruba/"><span class="vid-gur" lang="pa">ਕੀਰਤਨ ਵਿਦਿਆਲਾ</span><b>Kirtan</b><small>Tanti saaj and raag</small></a><a class="vid-item" href="/akhara/archery/"><span class="vid-gur" lang="pa">ਤੀਰ ਅੰਦਾਜ਼ੀ</span><b>Archery Akhara</b><small>Sundays, ages 14 and over</small></a><a class="vid-item" href="/classes/#tabla"><span class="vid-gur" lang="pa">ਤਬਲਾ ਤੇ ਜੋੜੀ</span><b>Tabla &amp; Jori</b><small>Running: ask</small></a><a class="vid-item" href="/classes/#katha"><span class="vid-gur" lang="pa">ਕਥਾ ਵਿਦਿਆਲਾ</span><b>Katha</b><small>Page coming</small></a><a class="vid-item" href="/classes/#itihaas"><span class="vid-gur" lang="pa">ਇਤਿਹਾਸ ਵਿਦਿਆਲਾ</span><b>Itihaas</b><small>Wednesday evenings</small></a></div><div class="vid-foot"><a href="/classes/">All classes →</a><a href="/camps/">Camps →</a></div></div></div><a href="/events/" aria-current="page">Events</a><a href="/sikhi-calendar/">Calendar</a><a href="/gallery/">Gallery</a><a href="/resources/">Resources</a><a href="/about/">About</a><a href="/contact/">Contact</a><a href="/donate/">Donate</a></nav>
   <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav"><span>Menu</span><i aria-hidden="true"></i></button>
   <a class="wa" href="https://wa.me/447394848407?text=Sat%20Sri%20Akal%20%E2%80%94%20I'd%20like%20to%20ask%20about%20events." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.6 2 2.18 6.42 2.18 11.86c0 1.74.46 3.44 1.32 4.94L2.1 22l5.34-1.4a9.8 9.8 0 0 0 4.6 1.17h.01c5.43 0 9.85-4.42 9.85-9.86 0-2.63-1.02-5.11-2.88-6.97A9.79 9.79 0 0 0 12.04 2z"/></svg>WhatsApp</a>
 </header>
@@ -90,7 +101,7 @@ a.oncard:hover{ transform:translateY(-3px); }
       <p class="eyebrow">Events</p>
       <h1 class="display">What's on, <em>and what has been.</em></h1>
       <p class="lede">The weekly classes run all year. Around them come the camps, the samagams and Hola Mohalla UK. Below is
-        every one announced since 2019, with the poster it went out on.</p>
+        every one announced or filmed since 2017, with the poster it went out on or the video it was streamed in.</p>
     </div>
   </div>
 </section>
@@ -123,10 +134,40 @@ a.oncard:hover{ transform:translateY(-3px); }
   <section class="yr" data-year="2026">
     <h2 class="yr-h">2026</h2>
     <div class="evs">
+      <article class="ev" data-type="Kirtan" data-fade>
+        <a class="ev-pic ev-yt" href="https://www.youtube.com/watch?v=0VVxTHR4kVw" target="_blank" rel="noopener"><span class="ev-yt-in"><i aria-hidden="true"></i><b>Watch on YouTube</b><small>Kirtan · 2026</small></span><span class="sr">Aarti Aarta Kirtan by the Vidiyarthis, on YouTube</span></a>
+        <div class="ev-txt"><p class="ev-type">Kirtan</p><h3>Aarti Aarta Kirtan by the Vidiyarthis</h3>
+          <p class="ev-facts">Streamed 15 August 2026</p><p class="ev-sum">Aarti Aarta kirtan by Shaheedi Bunga's vidiyarthis.</p></div>
+      </article>
+      <article class="ev" data-type="Camp" data-fade>
+        <a class="ev-pic ev-yt" href="https://www.youtube.com/watch?v=2cHgUJIb7D8" target="_blank" rel="noopener"><span class="ev-yt-in"><i aria-hidden="true"></i><b>Watch on YouTube</b><small>Camp · 2026</small></span><span class="sr">6-Week Santhiya Camp, on YouTube</span></a>
+        <div class="ev-txt"><p class="ev-type">Camp</p><h3>6-Week Santhiya Camp</h3>
+          <p class="ev-facts">Summer 2026</p><p class="ev-sum">A six-week santhiya camp, ending with dilruba performances in Raag Asa and Raag Bharoo.</p></div>
+      </article>
+      <article class="ev" data-type="Camp" data-fade>
+        <a class="ev-pic ev-yt" href="https://www.youtube.com/watch?v=lP6VQqVDcl0" target="_blank" rel="noopener"><span class="ev-yt-in"><i aria-hidden="true"></i><b>Watch on YouTube</b><small>Camp · 2026</small></span><span class="sr">Sehaj Paath &amp; Kamai Camp, on YouTube</span></a>
+        <div class="ev-txt"><p class="ev-type">Camp</p><h3>Sehaj Paath &amp; Kamai Camp</h3>
+          <p class="ev-facts">Streamed from 23 July 2026</p><p class="ev-sum">Four days of Sehaj Paath and kamai, with morning and evening divans and a Samaapti Divaan.</p></div>
+      </article>
+      <article class="ev" data-type="Competition" data-fade>
+        <a class="ev-pic ev-yt" href="https://www.youtube.com/watch?v=HxP6and2msE" target="_blank" rel="noopener"><span class="ev-yt-in"><i aria-hidden="true"></i><b>Watch on YouTube</b><small>Competition · 2026</small></span><span class="sr">Family Fun Day &amp; Dodgeball Competition, on YouTube</span></a>
+        <div class="ev-txt"><p class="ev-type">Competition</p><h3>Family Fun Day &amp; Dodgeball Competition</h3>
+          <p class="ev-facts">Streamed 31 May 2026</p><p class="ev-sum">A family fun day with a dodgeball competition.</p></div>
+      </article>
       <article class="ev" data-type="Camp" data-fade>
         <button class="ev-pic" type="button" data-full="/kit/img/ev/e00.jpg" aria-label="Open the poster for Gurbani Santhiya Camp 2026"><img src="/kit/img/ev/e00.jpg" alt="The poster for Gurbani Santhiya Camp 2026." loading="lazy"></button>
         <div class="ev-txt"><p class="ev-type">Camp</p><h3>Gurbani Santhiya Camp 2026</h3>
           <p class="ev-facts">25th – 29th May 2026 · 3pm – 7pm · Gurdwara Dashmesh Darbar, Leicester</p><p class="ev-sum">Five days of Gurbani Santhiya focused on pronunciation, clarity, understanding and connection with Gurbani, presented by Shaheedi Bunga. Limited spaces.</p></div>
+      </article>
+      <article class="ev" data-type="Kirtan" data-fade>
+        <a class="ev-pic ev-yt" href="https://www.youtube.com/watch?v=GP33JDS2WIk" target="_blank" rel="noopener"><span class="ev-yt-in"><i aria-hidden="true"></i><b>Watch on YouTube</b><small>Kirtan · 2026</small></span><span class="sr">Special Kirtan Workshop with Bhai Kultar Singh Ji, on YouTube</span></a>
+        <div class="ev-txt"><p class="ev-type">Kirtan</p><h3>Special Kirtan Workshop with Bhai Kultar Singh Ji</h3>
+          <p class="ev-facts">Streamed 28 April 2026</p><p class="ev-sum">A kirtan workshop led by Bhai Kultar Singh Ji.</p></div>
+      </article>
+      <article class="ev" data-type="Samagam" data-fade>
+        <a class="ev-pic ev-yt" href="https://www.youtube.com/watch?v=8iHYiTi8118" target="_blank" rel="noopener"><span class="ev-yt-in"><i aria-hidden="true"></i><b>Watch on YouTube</b><small>Samagam · 2026</small></span><span class="sr">Vaisakhi Divaan, on YouTube</span></a>
+        <div class="ev-txt"><p class="ev-type">Samagam</p><h3>Vaisakhi Divaan</h3>
+          <p class="ev-facts">Streamed 14 April 2026</p><p class="ev-sum">A Vaisakhi divaan, streamed live.</p></div>
       </article>
       <article class="ev" data-type="Camp" data-fade>
         <button class="ev-pic" type="button" data-full="/kit/img/ev/e02.jpg" aria-label="Open the poster for 7-Day Saptah Paath &amp; Kamai Camp"><img src="/kit/img/ev/e02.jpg" alt="The poster for 7-Day Saptah Paath &amp; Kamai Camp." loading="lazy"></button>
@@ -153,15 +194,65 @@ a.oncard:hover{ transform:translateY(-3px); }
   <section class="yr" data-year="2025">
     <h2 class="yr-h">2025</h2>
     <div class="evs">
+      <article class="ev" data-type="Samagam" data-fade>
+        <a class="ev-pic ev-yt" href="https://www.youtube.com/watch?v=ra1DuF_Ubbc" target="_blank" rel="noopener"><span class="ev-yt-in"><i aria-hidden="true"></i><b>Watch on YouTube</b><small>Samagam · 2025</small></span><span class="sr">Sri Dasam Darbar, on YouTube</span></a>
+        <div class="ev-txt"><p class="ev-type">Samagam</p><h3>Sri Dasam Darbar</h3>
+          <p class="ev-facts">Streamed 27 December 2025</p><p class="ev-sum">A Sri Dasam Darbar, streamed live.</p></div>
+      </article>
+      <article class="ev" data-type="Samagam" data-fade>
+        <a class="ev-pic ev-yt" href="https://www.youtube.com/watch?v=6ZZlk09sVk4" target="_blank" rel="noopener"><span class="ev-yt-in"><i aria-hidden="true"></i><b>Watch on YouTube</b><small>Samagam · 2025</small></span><span class="sr">25 Singh Lareevaar Sri Akhand Paath Samagam, on YouTube</span></a>
+        <div class="ev-txt"><p class="ev-type">Samagam</p><h3>25 Singh Lareevaar Sri Akhand Paath Samagam</h3>
+          <p class="ev-facts">Streamed from 28 November 2025 · Leicester</p><p class="ev-sum">Arambh, evening and morning divans and Bhog, streamed live across three days.</p></div>
+      </article>
+      <article class="ev" data-type="Samagam" data-fade>
+        <a class="ev-pic ev-yt" href="https://www.youtube.com/watch?v=Qh16J3XiaGs" target="_blank" rel="noopener"><span class="ev-yt-in"><i aria-hidden="true"></i><b>Watch on YouTube</b><small>Samagam · 2025</small></span><span class="sr">350th Shaheedi Purab Sri Guru Tegh Bahadur Ji, on YouTube</span></a>
+        <div class="ev-txt"><p class="ev-type">Samagam</p><h3>350th Shaheedi Purab Sri Guru Tegh Bahadur Ji</h3>
+          <p class="ev-facts">Streamed 25 November 2025</p><p class="ev-sum">A samagam for the 350th Shaheedi Purab of Sri Guru Tegh Bahadur Ji.</p></div>
+      </article>
       <article class="ev" data-type="Camp" data-fade>
         <button class="ev-pic" type="button" data-full="/kit/img/ev/e05.jpg" aria-label="Open the poster for Sikhi Camp 2025"><img src="/kit/img/ev/e05.jpg" alt="The poster for Sikhi Camp 2025." loading="lazy"></button>
         <div class="ev-txt"><p class="ev-type">Camp</p><h3>Sikhi Camp 2025</h3>
           <p class="ev-facts">October 25 – 26 · 9AM – 4PM · Guru Tegh Bahadur Gurdwara, Leicester (LE5 4QB)</p><p class="ev-sum">A weekend Sikhi Camp for ages 5–18 with Gatka, arts and crafts, talks, dastaar tying, sports and more.</p></div>
       </article>
+      <article class="ev" data-type="Talks" data-fade>
+        <a class="ev-pic ev-yt" href="https://www.youtube.com/watch?v=XWUKG6SR0Sg" target="_blank" rel="noopener"><span class="ev-yt-in"><i aria-hidden="true"></i><b>Watch on YouTube</b><small>Talks · 2025</small></span><span class="sr">Words Before Shaheedi: Shaheed Bhai Jaswant Singh Khalra Ji's Final Speech, on YouTube</span></a>
+        <div class="ev-txt"><p class="ev-type">Talks</p><h3>Words Before Shaheedi: Shaheed Bhai Jaswant Singh Khalra Ji's Final Speech</h3>
+          <p class="ev-facts">Streamed 20 October 2025</p><p class="ev-sum">A talk on the final speech of Shaheed Bhai Jaswant Singh Khalra Ji.</p></div>
+      </article>
+      <article class="ev" data-type="Talks" data-fade>
+        <a class="ev-pic ev-yt" href="https://www.youtube.com/watch?v=FXlP6Bi1DW4" target="_blank" rel="noopener"><span class="ev-yt-in"><i aria-hidden="true"></i><b>Watch on YouTube</b><small>Talks · 2025</small></span><span class="sr">Iconic Sikh Artworks, on YouTube</span></a>
+        <div class="ev-txt"><p class="ev-type">Talks</p><h3>Iconic Sikh Artworks</h3>
+          <p class="ev-facts">Streamed 4 August 2025</p><p class="ev-sum">A talk by Bhai Rajpal Singh Ji of Intrinsikh Arts.</p></div>
+      </article>
+      <article class="ev" data-type="Talks" data-fade>
+        <a class="ev-pic ev-yt" href="https://www.youtube.com/watch?v=Kl3vI60lC-0" target="_blank" rel="noopener"><span class="ev-yt-in"><i aria-hidden="true"></i><b>Watch on YouTube</b><small>Talks · 2025</small></span><span class="sr">Can Stillness Shake Empires?, on YouTube</span></a>
+        <div class="ev-txt"><p class="ev-type">Talks</p><h3>Can Stillness Shake Empires?</h3>
+          <p class="ev-facts">Streamed 28 July 2025</p><p class="ev-sum">A talk by Bhai Paramveer Singh Ji.</p></div>
+      </article>
+      <article class="ev" data-type="Samagam" data-fade>
+        <a class="ev-pic ev-yt" href="https://www.youtube.com/watch?v=wRFHeBDKp4g" target="_blank" rel="noopener"><span class="ev-yt-in"><i aria-hidden="true"></i><b>Watch on YouTube</b><small>Samagam · 2025</small></span><span class="sr">Divaan: Shaheed Baba Maharaj Singh Ji, on YouTube</span></a>
+        <div class="ev-txt"><p class="ev-type">Samagam</p><h3>Divaan: Shaheed Baba Maharaj Singh Ji</h3>
+          <p class="ev-facts">Streamed 8 July 2025</p><p class="ev-sum">A divaan remembering Shaheed Baba Maharaj Singh Ji.</p></div>
+      </article>
+      <article class="ev" data-type="Talks" data-fade>
+        <a class="ev-pic ev-yt" href="https://www.youtube.com/watch?v=G3NoIsgSLcA" target="_blank" rel="noopener"><span class="ev-yt-in"><i aria-hidden="true"></i><b>Watch on YouTube</b><small>Talks · 2025</small></span><span class="sr">Sacrilege of Scholarship: The Burning of the Sikh Reference Library, on YouTube</span></a>
+        <div class="ev-txt"><p class="ev-type">Talks</p><h3>Sacrilege of Scholarship: The Burning of the Sikh Reference Library</h3>
+          <p class="ev-facts">Streamed 10 June 2025</p><p class="ev-sum">A talk on the burning of the Sikh Reference Library.</p></div>
+      </article>
+      <article class="ev" data-type="Samagam" data-fade>
+        <a class="ev-pic ev-yt" href="https://www.youtube.com/watch?v=-q5ssoOBhxI" target="_blank" rel="noopener"><span class="ev-yt-in"><i aria-hidden="true"></i><b>Watch on YouTube</b><small>Samagam · 2025</small></span><span class="sr">Shaheedi Purab Sri Guru Arjan Dev Ji, on YouTube</span></a>
+        <div class="ev-txt"><p class="ev-type">Samagam</p><h3>Shaheedi Purab Sri Guru Arjan Dev Ji</h3>
+          <p class="ev-facts">Streamed 30 May 2025</p><p class="ev-sum">A samagam for the Shaheedi Purab of Sri Guru Arjan Dev Ji.</p></div>
+      </article>
       <article class="ev" data-type="Camp" data-fade>
         <button class="ev-pic" type="button" data-full="/kit/img/ev/p01.jpg" aria-label="Open the poster for The Unseen Battle"><img src="/kit/img/ev/p01.jpg" alt="The poster for The Unseen Battle." loading="lazy"></button>
         <div class="ev-txt"><p class="ev-type">Camp</p><h3>The Unseen Battle</h3>
           <p class="ev-facts">26th May · 9am-4pm · Guru Tegh Bahadur Gurudwara, 106 East Park Road, Leicester, LE5 4QB</p><p class="ev-sum">Youth camp for ages 10+ on grooming, manipulation and identity targeting. Anti-conversion talk by Basics of Sikhi and an exclusive parents workshop by Sikh Youth UK (poster: 2pm).</p></div>
+      </article>
+      <article class="ev" data-type="Samagam" data-fade>
+        <a class="ev-pic ev-yt" href="https://www.youtube.com/watch?v=-BeDm7N401U" target="_blank" rel="noopener"><span class="ev-yt-in"><i aria-hidden="true"></i><b>Watch on YouTube</b><small>Samagam · 2025</small></span><span class="sr">Gurta Gaddi Purab Sri Guru Hargobind Sahib Ji, on YouTube</span></a>
+        <div class="ev-txt"><p class="ev-type">Samagam</p><h3>Gurta Gaddi Purab Sri Guru Hargobind Sahib Ji</h3>
+          <p class="ev-facts">Streamed 20 May 2025</p><p class="ev-sum">A samagam for the Gurta Gaddi Purab of Sri Guru Hargobind Sahib Ji.</p></div>
       </article>
       <article class="ev" data-type="Talks" data-fade>
         <button class="ev-pic" type="button" data-full="/kit/img/ev/e06.jpg" aria-label="Open the poster for Monday Night Talks: Patsahi 9 – The Silent Light of Strength"><img src="/kit/img/ev/e06.jpg" alt="The poster for Monday Night Talks: Patsahi 9 – The Silent Light of Strength." loading="lazy"></button>
@@ -213,6 +304,11 @@ a.oncard:hover{ transform:translateY(-3px); }
         <div class="ev-txt"><p class="ev-type">Classes</p><h3>Weekly Sikhi Classes Across Leicester’s Gurudwaras</h3>
           <p class="ev-sum">A weekly round-up of Gurbani, Kirtan, Santhiya, Gatka, tabla, Jori and Itihaas classes, plus Monday Night Talks, at several Leicester gurdwaras. Gur Panth Parkash classes are listed as coming soon.</p></div>
       </article>
+      <article class="ev" data-type="Other" data-fade>
+        <a class="ev-pic ev-yt" href="https://www.youtube.com/watch?v=56U1ypd4T3w" target="_blank" rel="noopener"><span class="ev-yt-in"><i aria-hidden="true"></i><b>Watch on YouTube</b><small>Other · 2025</small></span><span class="sr">Vaisakhi at Highcross Leicester, on YouTube</span></a>
+        <div class="ev-txt"><p class="ev-type">Other</p><h3>Vaisakhi at Highcross Leicester</h3>
+          <p class="ev-facts">Streamed 12 April 2025 · Highcross, Leicester</p><p class="ev-sum">Vaisakhi celebrations with gatka at the Highcross shopping centre.</p></div>
+      </article>
       <article class="ev" data-type="Talks" data-fade>
         <button class="ev-pic" type="button" data-full="/kit/img/ev/p05.jpg" aria-label="Open the poster for Monday Night Talks: Evolution of Sri Guru Granth Sahib Ji"><img src="/kit/img/ev/p05.jpg" alt="The poster for Monday Night Talks: Evolution of Sri Guru Granth Sahib Ji." loading="lazy"></button>
         <div class="ev-txt"><p class="ev-type">Talks</p><h3>Monday Night Talks: Evolution of Sri Guru Granth Sahib Ji</h3>
@@ -258,20 +354,55 @@ a.oncard:hover{ transform:translateY(-3px); }
   <section class="yr" data-year="2024">
     <h2 class="yr-h">2024</h2>
     <div class="evs">
+      <article class="ev" data-type="Talks" data-fade>
+        <a class="ev-pic ev-yt" href="https://www.youtube.com/watch?v=6_-5wuc9hOE" target="_blank" rel="noopener"><span class="ev-yt-in"><i aria-hidden="true"></i><b>Watch on YouTube</b><small>Talks · 2024</small></span><span class="sr">An Evening with Ustad Surjeet Singh Ji Cheema Sahib Wale, on YouTube</span></a>
+        <div class="ev-txt"><p class="ev-type">Talks</p><h3>An Evening with Ustad Surjeet Singh Ji Cheema Sahib Wale</h3>
+          <p class="ev-facts">Posted 28 December 2024</p><p class="ev-sum">An evening with Ustad Surjeet Singh Ji Cheema Sahib Wale, the maestro of kirtan and tabla.</p></div>
+      </article>
+      <article class="ev" data-type="Samagam" data-fade>
+        <a class="ev-pic ev-yt" href="https://www.youtube.com/watch?v=2NwFPajsuRU" target="_blank" rel="noopener"><span class="ev-yt-in"><i aria-hidden="true"></i><b>Watch on YouTube</b><small>Samagam · 2024</small></span><span class="sr">25 Singh Lareevaar Sri Akhand Paath Samagam, on YouTube</span></a>
+        <div class="ev-txt"><p class="ev-type">Samagam</p><h3>25 Singh Lareevaar Sri Akhand Paath Samagam</h3>
+          <p class="ev-facts">6-8 Dec 2024</p><p class="ev-sum">Arambh, evening and morning divans and Bhog, streamed live across three days.</p></div>
+      </article>
       <article class="ev" data-type="Camp" data-fade>
         <button class="ev-pic" type="button" data-full="/kit/img/ev/e18.jpg" aria-label="Open the poster for Sikhi Camp 2024"><img src="/kit/img/ev/e18.jpg" alt="The poster for Sikhi Camp 2024." loading="lazy"></button>
         <div class="ev-txt"><p class="ev-type">Camp</p><h3>Sikhi Camp 2024</h3>
           <p class="ev-facts">25th &amp; 26th October · 9 AM - 4 PM · Guru Nanak Gurdwara, Leicester</p><p class="ev-sum">A two-day Sikhi Camp for ages 5+ with a bouncy castle, activities, sports, and arts and crafts. Registration by link.</p></div>
       </article>
       <article class="ev" data-type="Samagam" data-fade>
+        <a class="ev-pic ev-yt" href="https://www.youtube.com/watch?v=KhTPojYRpPg" target="_blank" rel="noopener"><span class="ev-yt-in"><i aria-hidden="true"></i><b>Watch on YouTube</b><small>Samagam · 2024</small></span><span class="sr">Joti Jot Purab Sri Guru Nanak Dev Ji: Katha Kirtan Samagam, on YouTube</span></a>
+        <div class="ev-txt"><p class="ev-type">Samagam</p><h3>Joti Jot Purab Sri Guru Nanak Dev Ji: Katha Kirtan Samagam</h3>
+          <p class="ev-facts">Streamed 27 September 2024</p><p class="ev-sum">A katha and kirtan samagam for the Joti Jot Purab of Sri Guru Nanak Dev Ji.</p></div>
+      </article>
+      <article class="ev" data-type="Samagam" data-fade>
         <button class="ev-pic" type="button" data-full="/kit/img/ev/e19.jpg" aria-label="Open the poster for Gurta Gaddi Sri Guru Ram Das Ji and Joti Jot Sri Guru Amar Das Ji"><img src="/kit/img/ev/e19.jpg" alt="The poster for Gurta Gaddi Sri Guru Ram Das Ji and Joti Jot Sri Guru Amar Das Ji." loading="lazy"></button>
         <div class="ev-txt"><p class="ev-type">Samagam</p><h3>Gurta Gaddi Sri Guru Ram Das Ji and Joti Jot Sri Guru Amar Das Ji</h3>
           <p class="ev-facts">Monday, September 16, 2024 · 4:00 PM - 8:30 PM · Gurdwara Shri Guru Dashmesh Darbar</p><p class="ev-sum">Two occasions with Sukhmani Sahib paath, Katha and Kirtan: Gurta Gaddi of Sri Guru Ram Das Ji (16 Sept) and Joti Jot of Sri Guru Amar Das Ji (18 Sept, Wednesday).</p></div>
+      </article>
+      <article class="ev" data-type="Samagam" data-fade>
+        <a class="ev-pic ev-yt" href="https://www.youtube.com/watch?v=178CWXimjUE" target="_blank" rel="noopener"><span class="ev-yt-in"><i aria-hidden="true"></i><b>Watch on YouTube</b><small>Samagam · 2024</small></span><span class="sr">Gurpurab Samagam: Pehla Prakash Purab Sri Guru Granth Sahib Ji, on YouTube</span></a>
+        <div class="ev-txt"><p class="ev-type">Samagam</p><h3>Gurpurab Samagam: Pehla Prakash Purab Sri Guru Granth Sahib Ji</h3>
+          <p class="ev-facts">Streamed 4 September 2024</p><p class="ev-sum">A gurpurab samagam for the first Prakash Purab of Sri Guru Granth Sahib Ji.</p></div>
       </article>
       <article class="ev" data-type="Competition" data-fade>
         <button class="ev-pic" type="button" data-full="/kit/img/ev/e20.jpg" aria-label="Open the poster for Inter-Akhara Gatka Fight Night"><img src="/kit/img/ev/e20.jpg" alt="The poster for Inter-Akhara Gatka Fight Night." loading="lazy"></button>
         <div class="ev-txt"><p class="ev-type">Competition</p><h3>Inter-Akhara Gatka Fight Night</h3>
           <p class="ev-facts">Saturday 4th May · Guru Tegh Bahadur Gurdwara, Leicester</p><p class="ev-sum">The first inter-akhara Gatka Fight Night, by Shaheed Bhai Mani Singh Ji Gatka Akhara and Shaheedi Bunga, in memory of Ustad Bhai Charnjit Singh Ji's 20th barsi: an exhibition match between two ustads and three student fights.</p></div>
+      </article>
+      <article class="ev" data-type="Other" data-fade>
+        <a class="ev-pic ev-yt" href="https://www.youtube.com/watch?v=OzPol1JtnE0" target="_blank" rel="noopener"><span class="ev-yt-in"><i aria-hidden="true"></i><b>Watch on YouTube</b><small>Other · 2024</small></span><span class="sr">Vaisakhi at John Lewis Leicester, on YouTube</span></a>
+        <div class="ev-txt"><p class="ev-type">Other</p><h3>Vaisakhi at John Lewis Leicester</h3>
+          <p class="ev-facts">Streamed 20 April 2024 · John Lewis, Leicester</p><p class="ev-sum">Gatka, kirtan and Sikhi talks for Vaisakhi at John Lewis, Leicester.</p></div>
+      </article>
+      <article class="ev" data-type="Other" data-fade>
+        <a class="ev-pic ev-yt" href="https://www.youtube.com/watch?v=eoT_xvj9IOs" target="_blank" rel="noopener"><span class="ev-yt-in"><i aria-hidden="true"></i><b>Watch on YouTube</b><small>Other · 2024</small></span><span class="sr">Gatka at the Leicester Nagar Kirtan, on YouTube</span></a>
+        <div class="ev-txt"><p class="ev-type">Other</p><h3>Gatka at the Leicester Nagar Kirtan</h3>
+          <p class="ev-facts">April 2024 · Leicester</p><p class="ev-sum">Gatka at the Leicester Nagar Kirtan, April 2024.</p></div>
+      </article>
+      <article class="ev" data-type="Hola Mohalla" data-fade>
+        <a class="ev-pic ev-yt" href="https://www.youtube.com/watch?v=I0BSd-stnyE" target="_blank" rel="noopener"><span class="ev-yt-in"><i aria-hidden="true"></i><b>Watch on YouTube</b><small>Hola Mohalla · 2024</small></span><span class="sr">Patshahi Dasvi Hola Mohalla, on YouTube</span></a>
+        <div class="ev-txt"><p class="ev-type">Hola Mohalla</p><h3>Patshahi Dasvi Hola Mohalla</h3>
+          <p class="ev-facts">Streamed 15 March 2024</p><p class="ev-sum">Three days streamed live: divans, then the competition on the third day.</p></div>
       </article>
       <article class="ev" data-type="Camp" data-fade>
         <button class="ev-pic" type="button" data-full="/kit/img/ev/p08.jpg" aria-label="Open the poster for Sikhi Camp"><img src="/kit/img/ev/p08.jpg" alt="The poster for Sikhi Camp." loading="lazy"></button>
@@ -282,6 +413,11 @@ a.oncard:hover{ transform:translateY(-3px); }
         <button class="ev-pic" type="button" data-full="/kit/img/ev/e21.jpg" aria-label="Open the poster for Gatka Fight Night"><img src="/kit/img/ev/e21.jpg" alt="The poster for Gatka Fight Night." loading="lazy"></button>
         <div class="ev-txt"><p class="ev-type">Competition</p><h3>Gatka Fight Night</h3>
           <p class="ev-facts">27 January 2024 · 7pm · Guru Tegh Bahadur Gurdwara, Leicester UK</p><p class="ev-sum">An evening of Gatka fights dedicated to the Avtar Purb of Dhan Dhan Baba Deep Singh Ji, with displays of swordplay and stick fighting.</p></div>
+      </article>
+      <article class="ev" data-type="Samagam" data-fade>
+        <a class="ev-pic ev-yt" href="https://www.youtube.com/watch?v=dcL_cvT7YQU" target="_blank" rel="noopener"><span class="ev-yt-in"><i aria-hidden="true"></i><b>Watch on YouTube</b><small>Samagam · 2024</small></span><span class="sr">Dasam Darbar: Prakash Purab Sri Guru Gobind Singh Ji, on YouTube</span></a>
+        <div class="ev-txt"><p class="ev-type">Samagam</p><h3>Dasam Darbar: Prakash Purab Sri Guru Gobind Singh Ji</h3>
+          <p class="ev-facts">Streamed 16 January 2024</p><p class="ev-sum">A samagam for the Prakash Purab of Sri Guru Gobind Singh Ji, streamed live over several days.</p></div>
       </article>
       <article class="ev" data-type="Samagam" data-fade>
         <button class="ev-pic" type="button" data-full="/kit/img/ev/e22.jpg" aria-label="Open the poster for Gurpurab of Sri Guru Gobind Singh Ji"><img src="/kit/img/ev/e22.jpg" alt="The poster for Gurpurab of Sri Guru Gobind Singh Ji." loading="lazy"></button>
@@ -298,6 +434,11 @@ a.oncard:hover{ transform:translateY(-3px); }
   <section class="yr" data-year="2023">
     <h2 class="yr-h">2023</h2>
     <div class="evs">
+      <article class="ev" data-type="Other" data-fade>
+        <a class="ev-pic ev-yt" href="https://www.youtube.com/watch?v=gWEaaNF0HuE" target="_blank" rel="noopener"><span class="ev-yt-in"><i aria-hidden="true"></i><b>Watch on YouTube</b><small>Other · 2023</small></span><span class="sr">Gatka at the Leicester Nagar Kirtan, on YouTube</span></a>
+        <div class="ev-txt"><p class="ev-type">Other</p><h3>Gatka at the Leicester Nagar Kirtan</h3>
+          <p class="ev-facts">Dec 2023 · Leicester</p><p class="ev-sum">Gatka at the Leicester Nagar Kirtan, December 2023.</p></div>
+      </article>
       <article class="ev" data-type="Camp" data-fade>
         <button class="ev-pic" type="button" data-full="/kit/img/ev/p10.jpg" aria-label="Open the poster for Sikhi Camp"><img src="/kit/img/ev/p10.jpg" alt="The poster for Sikhi Camp." loading="lazy"></button>
         <div class="ev-txt"><p class="ev-type">Camp</p><h3>Sikhi Camp</h3>
@@ -333,6 +474,21 @@ a.oncard:hover{ transform:translateY(-3px); }
         <div class="ev-txt"><p class="ev-type">Competition</p><h3>Tag Archery Competition</h3>
           <p class="ev-facts">13 May 2023 · 2-5 pm · Guru Tegh Bahadur Gurdwara, 106 East Park Road, Leicester</p><p class="ev-sum">Tag archery competition, 2 vs 2, ages 14+. Open to all skill levels; registration required.</p></div>
       </article>
+      <article class="ev" data-type="Other" data-fade>
+        <a class="ev-pic ev-yt" href="https://www.youtube.com/watch?v=LxPSwjKL5BY" target="_blank" rel="noopener"><span class="ev-yt-in"><i aria-hidden="true"></i><b>Watch on YouTube</b><small>Other · 2023</small></span><span class="sr">Vaisakhi Nagar Kirtan: Gatka, on YouTube</span></a>
+        <div class="ev-txt"><p class="ev-type">Other</p><h3>Vaisakhi Nagar Kirtan: Gatka</h3>
+          <p class="ev-facts">Vaisakhi 2023 · Leicester</p><p class="ev-sum">Gatka at the Vaisakhi Nagar Kirtan in Leicester.</p></div>
+      </article>
+      <article class="ev" data-type="Other" data-fade>
+        <a class="ev-pic ev-yt" href="https://www.youtube.com/watch?v=gMfi1wi3wAw" target="_blank" rel="noopener"><span class="ev-yt-in"><i aria-hidden="true"></i><b>Watch on YouTube</b><small>Other · 2023</small></span><span class="sr">Vaisakhi Gatka at John Lewis, on YouTube</span></a>
+        <div class="ev-txt"><p class="ev-type">Other</p><h3>Vaisakhi Gatka at John Lewis</h3>
+          <p class="ev-facts">15 April 2023 · John Lewis, Leicester</p><p class="ev-sum">A gatka demonstration for Vaisakhi at John Lewis, Leicester.</p></div>
+      </article>
+      <article class="ev" data-type="Camp" data-fade>
+        <a class="ev-pic ev-yt" href="https://www.youtube.com/watch?v=aeOb2zAB-pY" target="_blank" rel="noopener"><span class="ev-yt-in"><i aria-hidden="true"></i><b>Watch on YouTube</b><small>Camp · 2023</small></span><span class="sr">Sikhi Camp, on YouTube</span></a>
+        <div class="ev-txt"><p class="ev-type">Camp</p><h3>Sikhi Camp</h3>
+          <p class="ev-facts">12th April 2023</p><p class="ev-sum">A day of the Sikhi Camp in the Easter holidays.</p></div>
+      </article>
       <article class="ev" data-type="Hola Mohalla" data-fade>
         <button class="ev-pic" type="button" data-full="/kit/img/ev/e25.jpg" aria-label="Open the poster for Patshahi Dasvi National Hola Mohalla UK 2023 Competitions"><img src="/kit/img/ev/e25.jpg" alt="The poster for Patshahi Dasvi National Hola Mohalla UK 2023 Competitions." loading="lazy"></button>
         <div class="ev-txt"><p class="ev-type">Hola Mohalla</p><h3>Patshahi Dasvi National Hola Mohalla UK 2023 Competitions</h3>
@@ -347,6 +503,11 @@ a.oncard:hover{ transform:translateY(-3px); }
         <button class="ev-pic" type="button" data-full="/kit/img/ev/e26.jpg" aria-label="Open the poster for 25 Singh Lareevaar Sri Akhand Paath Samagam"><img src="/kit/img/ev/e26.jpg" alt="The poster for 25 Singh Lareevaar Sri Akhand Paath Samagam." loading="lazy"></button>
         <div class="ev-txt"><p class="ev-type">Samagam</p><h3>25 Singh Lareevaar Sri Akhand Paath Samagam</h3>
           <p class="ev-facts">Friday 2nd - Sunday 4th December 2022 · Arambh 10 am · Gurdwara Gur Panth Parkash</p><p class="ev-sum">Commemorating the Shaheedi Purab of Sri Guru Tegh Bahadur Ji and the second barsi of Sant Giani Mohan Singh Ji Khalsa Bhindranwale. Amrit Sanchar on Saturday, Sehaj Paath Bhog and Raag Darbar at 6pm, Bhog and Mahan Smagam on Sunday.</p></div>
+      </article>
+      <article class="ev" data-type="Kirtan" data-fade>
+        <a class="ev-pic ev-yt" href="https://www.youtube.com/watch?v=AvvmJPow-oo" target="_blank" rel="noopener"><span class="ev-yt-in"><i aria-hidden="true"></i><b>Watch on YouTube</b><small>Kirtan · 2022</small></span><span class="sr">Shaheedi Bunga Tour, on YouTube</span></a>
+        <div class="ev-txt"><p class="ev-type">Kirtan</p><h3>Shaheedi Bunga Tour</h3>
+          <p class="ev-facts">Sept 2022 · South Shields, Newcastle and London</p><p class="ev-sum">A kirtan tour to South Shields, Newcastle and London.</p></div>
       </article>
       <article class="ev" data-type="Samagam" data-fade>
         <button class="ev-pic" type="button" data-full="/kit/img/ev/p16.jpg" aria-label="Open the poster for Bhog of Sri Guru Granth Sahib Ji Path Bodh Samagam"><img src="/kit/img/ev/p16.jpg" alt="The poster for Bhog of Sri Guru Granth Sahib Ji Path Bodh Samagam." loading="lazy"></button>
@@ -363,6 +524,16 @@ a.oncard:hover{ transform:translateY(-3px); }
         <div class="ev-txt"><p class="ev-type">Camp</p><h3>Gurbani Vidhya Camp Summer 2020</h3>
           <p class="ev-facts">Starting 18th July for 6 Weeks</p><p class="ev-sum">A six-week Gurbani Vidhya Camp starting 18th July, with several teaching accounts tagged.</p></div>
       </article>
+      <article class="ev" data-type="Camp" data-fade>
+        <a class="ev-pic ev-yt" href="https://www.youtube.com/watch?v=DnPyY7Fj3ww" target="_blank" rel="noopener"><span class="ev-yt-in"><i aria-hidden="true"></i><b>Watch on YouTube</b><small>Camp · 2022</small></span><span class="sr">Sikhi Camp, on YouTube</span></a>
+        <div class="ev-txt"><p class="ev-type">Camp</p><h3>Sikhi Camp</h3>
+          <p class="ev-facts">June 2022 · Leicester</p><p class="ev-sum">The Sikhi Camp in Leicester, June 2022.</p></div>
+      </article>
+      <article class="ev" data-type="Other" data-fade>
+        <a class="ev-pic ev-yt" href="https://www.youtube.com/watch?v=qUMiEj6c3dI" target="_blank" rel="noopener"><span class="ev-yt-in"><i aria-hidden="true"></i><b>Watch on YouTube</b><small>Other · 2022</small></span><span class="sr">Gatka at the Leicester Nagar Kirtan, on YouTube</span></a>
+        <div class="ev-txt"><p class="ev-type">Other</p><h3>Gatka at the Leicester Nagar Kirtan</h3>
+          <p class="ev-facts">May 2022 · Leicester</p><p class="ev-sum">Gatka at the Leicester Nagar Kirtan, May 2022.</p></div>
+      </article>
       <article class="ev" data-type="Classes" data-fade>
         <button class="ev-pic" type="button" data-full="/kit/img/ev/e29.jpg" aria-label="Open the poster for Shaheedi Bunga Akhara Archery Classes"><img src="/kit/img/ev/e29.jpg" alt="The poster for Shaheedi Bunga Akhara Archery Classes." loading="lazy"></button>
         <div class="ev-txt"><p class="ev-type">Classes</p><h3>Shaheedi Bunga Akhara Archery Classes</h3>
@@ -378,10 +549,20 @@ a.oncard:hover{ transform:translateY(-3px); }
         <div class="ev-txt"><p class="ev-type">Classes</p><h3>Archery Classes</h3>
           <p class="ev-facts">Every Sunday · 6-7:30pm · Sri Guru Tegh Bahadhar Gurdwara Sahib</p><p class="ev-sum">Archery classes by Shaheedi Bunga sewadars at Shaheedi Bunga Akhara. Every Sunday 6-7:30pm, ages 14+.</p></div>
       </article>
+      <article class="ev" data-type="Other" data-fade>
+        <a class="ev-pic ev-yt" href="https://www.youtube.com/watch?v=vITxz_-02f4" target="_blank" rel="noopener"><span class="ev-yt-in"><i aria-hidden="true"></i><b>Watch on YouTube</b><small>Other · 2022</small></span><span class="sr">Gatka at the barsi of Baba Bir Singh Ji Naurangabad, on YouTube</span></a>
+        <div class="ev-txt"><p class="ev-type">Other</p><h3>Gatka at the barsi of Baba Bir Singh Ji Naurangabad</h3>
+          <p class="ev-facts">April 2022</p><p class="ev-sum">The akhara's gatka at the barsi of Baba Bir Singh Ji Naurangabad.</p></div>
+      </article>
       <article class="ev" data-type="Hola Mohalla" data-fade>
         <button class="ev-pic" type="button" data-full="/kit/img/ev/e30.jpg" aria-label="Open the poster for Patshahi Dasvi National Hola Mohalla UK 2022 Competition"><img src="/kit/img/ev/e30.jpg" alt="The poster for Patshahi Dasvi National Hola Mohalla UK 2022 Competition." loading="lazy"></button>
         <div class="ev-txt"><p class="ev-type">Hola Mohalla</p><h3>Patshahi Dasvi National Hola Mohalla UK 2022 Competition</h3>
           <p class="ev-facts">19th &amp; 20th March 2022 · Leicester</p><p class="ev-sum">Hola Mohalla competition in Leicester with sign-up by online form, where participants choose their activity.</p></div>
+      </article>
+      <article class="ev" data-type="Camp" data-fade>
+        <a class="ev-pic ev-yt" href="https://www.youtube.com/watch?v=F5--Lm-YiNA" target="_blank" rel="noopener"><span class="ev-yt-in"><i aria-hidden="true"></i><b>Watch on YouTube</b><small>Camp · 2022</small></span><span class="sr">Sikhi Camp, on YouTube</span></a>
+        <div class="ev-txt"><p class="ev-type">Camp</p><h3>Sikhi Camp</h3>
+          <p class="ev-facts">17 Feb 2022 · Guru Tegh Bahadur Gurdwara, then Guru Nanak Gurdwara</p><p class="ev-sum">Two days of the Sikhi Camp in Leicester during the February half-term.</p></div>
       </article>
       <article class="ev" data-type="Kirtan" data-fade>
         <button class="ev-pic" type="button" data-full="/kit/img/ev/p20.jpg" aria-label="Open the poster for Raag Darbar"><img src="/kit/img/ev/p20.jpg" alt="The poster for Raag Darbar." loading="lazy"></button>
@@ -423,6 +604,11 @@ Bhog - 24th October 2021 · Guru Nanak Gurdwara</p><p class="ev-sum">Sri Akhand 
         <button class="ev-pic" type="button" data-full="/kit/img/ev/p22.jpg" aria-label="Open the poster for Archery and Shaster Vidhya"><img src="/kit/img/ev/p22.jpg" alt="The poster for Archery and Shaster Vidhya." loading="lazy"></button>
         <div class="ev-txt"><p class="ev-type">Classes</p><h3>Archery and Shaster Vidhya</h3>
           <p class="ev-facts">Starts 10th October, Sundays · 3-4pm · Guru Nanak Gurdwara, Holy Bones, Leicester, LE1 4LJ</p><p class="ev-sum">Two-month Sunday course for 6 individuals at a time introducing Sikh shastervidhya, including archery and bladed arts. Only those who are serious should apply.</p></div>
+      </article>
+      <article class="ev" data-type="Samagam" data-fade>
+        <a class="ev-pic ev-yt" href="https://www.youtube.com/watch?v=s_sJTfWwxrw" target="_blank" rel="noopener"><span class="ev-yt-in"><i aria-hidden="true"></i><b>Watch on YouTube</b><small>Samagam · 2021</small></span><span class="sr">Sehaj Paath Bhog, Joti Jot Purab Sri Guru Nanak Dev Ji, on YouTube</span></a>
+        <div class="ev-txt"><p class="ev-type">Samagam</p><h3>Sehaj Paath Bhog, Joti Jot Purab Sri Guru Nanak Dev Ji</h3>
+          <p class="ev-facts">10th October 2021</p><p class="ev-sum">The Bhog of a Sehaj Paath for the Joti Jot Purab of Sri Guru Nanak Dev Ji.</p></div>
       </article>
       <article class="ev" data-type="Kirtan" data-fade>
         <button class="ev-pic" type="button" data-full="/kit/img/ev/e35.jpg" aria-label="Open the poster for Monthly Raag Keertan"><img src="/kit/img/ev/e35.jpg" alt="The poster for Monthly Raag Keertan." loading="lazy"></button>
@@ -509,10 +695,60 @@ Bhog - 24th October 2021 · Guru Nanak Gurdwara</p><p class="ev-sum">Sri Akhand 
   <section class="yr" data-year="2018">
     <h2 class="yr-h">2018</h2>
     <div class="evs">
+      <article class="ev" data-type="Other" data-fade>
+        <a class="ev-pic ev-yt" href="https://www.youtube.com/watch?v=jLzqvQBRfh0" target="_blank" rel="noopener"><span class="ev-yt-in"><i aria-hidden="true"></i><b>Watch on YouTube</b><small>Other · 2018</small></span><span class="sr">Leicester Nagar Kirtan: Gatka, on YouTube</span></a>
+        <div class="ev-txt"><p class="ev-type">Other</p><h3>Leicester Nagar Kirtan: Gatka</h3>
+          <p class="ev-facts">November 2018 · Leicester</p><p class="ev-sum">Gatka at the Leicester Nagar Kirtan, November 2018.</p></div>
+      </article>
+      <article class="ev" data-type="Camp" data-fade>
+        <a class="ev-pic ev-yt" href="https://www.youtube.com/watch?v=W4G2b9gvY7U" target="_blank" rel="noopener"><span class="ev-yt-in"><i aria-hidden="true"></i><b>Watch on YouTube</b><small>Camp · 2018</small></span><span class="sr">Sehaj Paath Camp, on YouTube</span></a>
+        <div class="ev-txt"><p class="ev-type">Camp</p><h3>Sehaj Paath Camp</h3>
+          <p class="ev-facts">August 2018</p><p class="ev-sum">A Sehaj Paath camp in August 2018.</p></div>
+      </article>
+      <article class="ev" data-type="Camp" data-fade>
+        <a class="ev-pic ev-yt" href="https://www.youtube.com/watch?v=gi0KUVmb49g" target="_blank" rel="noopener"><span class="ev-yt-in"><i aria-hidden="true"></i><b>Watch on YouTube</b><small>Camp · 2018</small></span><span class="sr">Summer Santhiya Camp, on YouTube</span></a>
+        <div class="ev-txt"><p class="ev-type">Camp</p><h3>Summer Santhiya Camp</h3>
+          <p class="ev-facts">Summer 2018</p><p class="ev-sum">The summer Santhiya camp of 2018.</p></div>
+      </article>
+      <article class="ev" data-type="Other" data-fade>
+        <a class="ev-pic ev-yt" href="https://www.youtube.com/watch?v=HYcudCpnUzo" target="_blank" rel="noopener"><span class="ev-yt-in"><i aria-hidden="true"></i><b>Watch on YouTube</b><small>Other · 2018</small></span><span class="sr">Leicester Nagar Kirtan, on YouTube</span></a>
+        <div class="ev-txt"><p class="ev-type">Other</p><h3>Leicester Nagar Kirtan</h3>
+          <p class="ev-facts">April 2018 · Leicester</p><p class="ev-sum">The Leicester Nagar Kirtan, April 2018.</p></div>
+      </article>
+      <article class="ev" data-type="Camp" data-fade>
+        <a class="ev-pic ev-yt" href="https://www.youtube.com/watch?v=amNoqoMz4ho" target="_blank" rel="noopener"><span class="ev-yt-in"><i aria-hidden="true"></i><b>Watch on YouTube</b><small>Camp · 2018</small></span><span class="sr">Sehaj Paath Camp, on YouTube</span></a>
+        <div class="ev-txt"><p class="ev-type">Camp</p><h3>Sehaj Paath Camp</h3>
+          <p class="ev-facts">March 2018</p><p class="ev-sum">A Sehaj Paath camp in March 2018.</p></div>
+      </article>
       <article class="ev" data-type="Camp" data-fade>
         <button class="ev-pic" type="button" data-full="/kit/img/ev/p29.jpg" aria-label="Open the poster for Kamaai Camp"><img src="/kit/img/ev/p29.jpg" alt="The poster for Kamaai Camp." loading="lazy"></button>
         <div class="ev-txt"><p class="ev-type">Camp</p><h3>Kamaai Camp</h3>
           <p class="ev-facts">12th - 18th February 2018 · Gurdwara Sri Dashmesh Sahib Ji Leicester LE4 6RB</p><p class="ev-sum">Singh's Kamai Camp in memory of 3 Mahapurakhs and the Wada Ghalughara: a week of Amritvela, Naam Simran, Gurbani and Seva.</p></div>
+      </article>
+    </div>
+  </section>
+  <section class="yr" data-year="2017">
+    <h2 class="yr-h">2017</h2>
+    <div class="evs">
+      <article class="ev" data-type="Camp" data-fade>
+        <a class="ev-pic ev-yt" href="https://www.youtube.com/watch?v=k4-hQfdygP4" target="_blank" rel="noopener"><span class="ev-yt-in"><i aria-hidden="true"></i><b>Watch on YouTube</b><small>Camp · 2017</small></span><span class="sr">December Sehaj Paath Camp, on YouTube</span></a>
+        <div class="ev-txt"><p class="ev-type">Camp</p><h3>December Sehaj Paath Camp</h3>
+          <p class="ev-facts">December 2017</p><p class="ev-sum">A Sehaj Paath camp with Amrit vela and evening diwans, Asa di Vaar, Aarti Aarta and Raagmala.</p></div>
+      </article>
+      <article class="ev" data-type="Other" data-fade>
+        <a class="ev-pic ev-yt" href="https://www.youtube.com/watch?v=jn8pGP0fflk" target="_blank" rel="noopener"><span class="ev-yt-in"><i aria-hidden="true"></i><b>Watch on YouTube</b><small>Other · 2017</small></span><span class="sr">Leicester Nagar Kirtan, on YouTube</span></a>
+        <div class="ev-txt"><p class="ev-type">Other</p><h3>Leicester Nagar Kirtan</h3>
+          <p class="ev-facts">November 2017 · Leicester</p><p class="ev-sum">The Leicester Nagar Kirtan, November 2017.</p></div>
+      </article>
+      <article class="ev" data-type="Samagam" data-fade>
+        <a class="ev-pic ev-yt" href="https://www.youtube.com/watch?v=if7--Bb3HgM" target="_blank" rel="noopener"><span class="ev-yt-in"><i aria-hidden="true"></i><b>Watch on YouTube</b><small>Samagam · 2017</small></span><span class="sr">October Akhand Paath Sahib, on YouTube</span></a>
+        <div class="ev-txt"><p class="ev-type">Samagam</p><h3>October Akhand Paath Sahib</h3>
+          <p class="ev-facts">October 2017</p><p class="ev-sum">An Akhand Paath Sahib in October 2017.</p></div>
+      </article>
+      <article class="ev" data-type="Samagam" data-fade>
+        <a class="ev-pic ev-yt" href="https://www.youtube.com/watch?v=OdNWSo-r5kk" target="_blank" rel="noopener"><span class="ev-yt-in"><i aria-hidden="true"></i><b>Watch on YouTube</b><small>Samagam · 2017</small></span><span class="sr">Akhand Paath Sahib, Leicester, on YouTube</span></a>
+        <div class="ev-txt"><p class="ev-type">Samagam</p><h3>Akhand Paath Sahib, Leicester</h3>
+          <p class="ev-facts">August 2017</p><p class="ev-sum">An Akhand Paath Sahib in Leicester, recorded for the channel.</p></div>
       </article>
     </div>
   </section>
