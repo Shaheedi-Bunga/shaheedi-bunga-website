@@ -3,6 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- the site loads everything from itself and sends nothing anywhere (see /privacy/); this says so to the browser.
+     Inline script and style stay allowed: every page carries its own. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; media-src 'self'; font-src 'self'; connect-src 'self'; object-src 'none'; frame-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Kirtan Vidyala · Shaheedi Bunga</title>
 <link rel="canonical" href="https://www.shaheedibunga.com/saaj/dilruba/">
 <meta property="og:type" content="website">
@@ -85,7 +89,7 @@ html[data-mood="dark"] .kart .arch{ background:radial-gradient(120% 80% at 50% 3
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="mast">
-  <a class="brand" href="/" aria-label="Shaheedi Bunga, home"><img src="/kit/img/gurmat-vidyala-84.png" alt="" width="40" height="40">
+  <a class="brand" href="/" aria-label="Shaheedi Bunga, home"><img src="/kit/img/gurmat-vidyala-84.png" alt="" width="40" height="40" srcset="/kit/img/_w/gurmat-vidyala-84-84.webp">
     <span><b>Shaheedi Bunga</b><i>Gurmat Vidyala</i></span></a>
   <nav aria-label="Main" id="site-nav"><div class="vid is-current"><button class="vid-btn" type="button" aria-expanded="false" aria-controls="vid-panel">Vidyale<i aria-hidden="true"></i></button><div class="vid-panel" id="vid-panel"><div class="vid-grid"><a class="vid-item" href="/santhiya/"><span class="vid-gur" lang="pa">ਸੰਥਿਆ ਵਿਦਿਆਲਾ</span><b>Santhiya</b><small>Reading sudh Gurbani</small></a><a class="vid-item" href="/saaj/dilruba/"><span class="vid-gur" lang="pa">ਕੀਰਤਨ ਵਿਦਿਆਲਾ</span><b>Kirtan</b><small>Tanti saaj and raag</small></a><a class="vid-item" href="/akhara/archery/"><span class="vid-gur" lang="pa">ਤੀਰ ਅੰਦਾਜ਼ੀ</span><b>Archery Akhara</b><small>Sundays, ages 14 and over</small></a><a class="vid-item" href="/classes/#tabla"><span class="vid-gur" lang="pa">ਤਬਲਾ ਤੇ ਜੋੜੀ</span><b>Tabla &amp; Jori</b><small>Running: ask</small></a><a class="vid-item" href="/classes/#katha"><span class="vid-gur" lang="pa">ਕਥਾ ਵਿਦਿਆਲਾ</span><b>Katha</b><small>Page coming</small></a><a class="vid-item" href="/classes/#itihaas"><span class="vid-gur" lang="pa">ਇਤਿਹਾਸ ਵਿਦਿਆਲਾ</span><b>Itihaas</b><small>Wednesday evenings</small></a></div><div class="vid-foot"><a href="/classes/" aria-current="page">All classes →</a><a href="/camps/">Camps →</a></div></div></div><a href="/events/">Events</a><a href="/sikhi-calendar/">Calendar</a><a href="/gallery/">Gallery</a><a href="/resources/">Resources</a><a href="/about/">About</a><a href="/contact/">Contact</a><a href="/donate/">Donate</a></nav>
   <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav"><span>Menu</span><i aria-hidden="true"></i></button>
@@ -163,21 +167,21 @@ html[data-mood="dark"] .kart .arch{ background:radial-gradient(120% 80% at 50% 3
   </div>
   <div class="wall" id="wall">
     <div class="col">
-      <figure><img src="/kit/img/p-kirtan-ensemble.jpg" alt="Players seated behind the rail before the mirrored wall, dilrubas raised and tabla to one side." loading="lazy"></figure>
-      <figure><img src="/kit/img/p-tabla-player.jpg" alt="A student in a white keski playing tabla, both hands on the drums." loading="lazy"></figure>
-      <figure><img src="/Assets/Kirtan/tiles/k30.jpg" alt="Two students on stage playing tanti saaj at the microphones." loading="lazy"></figure>
-      <figure><img src="/kit/img/p-harmonium-elder.jpg" alt="An elder Singh with a white beard at the harmonium, singing into the microphone." loading="lazy"></figure>
+      <figure><img src="/kit/img/p-kirtan-ensemble.jpg" alt="Players seated behind the rail before the mirrored wall, dilrubas raised and tabla to one side." loading="lazy" width="1200" height="1600" srcset="/kit/img/_w/p-kirtan-ensemble-480.webp 480w, /kit/img/_w/p-kirtan-ensemble-960.webp 960w, /kit/img/p-kirtan-ensemble.jpg 1200w" sizes="(max-width:760px) 100vw, 50vw"></figure>
+      <figure><img src="/kit/img/p-tabla-player.jpg" alt="A student in a white keski playing tabla, both hands on the drums." loading="lazy" width="1200" height="1600" srcset="/kit/img/_w/p-tabla-player-480.webp 480w, /kit/img/_w/p-tabla-player-960.webp 960w, /kit/img/p-tabla-player.jpg 1200w" sizes="(max-width:760px) 100vw, 50vw"></figure>
+      <figure><img src="/Assets/Kirtan/tiles/k30.jpg" alt="Two students on stage playing tanti saaj at the microphones." loading="lazy" width="560" height="700" srcset="/Assets/Kirtan/tiles/_w/k30-480.webp 480w, /Assets/Kirtan/tiles/k30.jpg 560w" sizes="(max-width:760px) 100vw, 50vw"></figure>
+      <figure><img src="/kit/img/p-harmonium-elder.jpg" alt="An elder Singh with a white beard at the harmonium, singing into the microphone." loading="lazy" width="1200" height="1600" srcset="/kit/img/_w/p-harmonium-elder-480.webp 480w, /kit/img/_w/p-harmonium-elder-960.webp 960w, /kit/img/p-harmonium-elder.jpg 1200w" sizes="(max-width:760px) 100vw, 50vw"></figure>
     </div>
     <div class="col">
-      <figure><img src="/Assets/Kirtan/tiles/k11.jpg" alt="Close on the gaj crossing the dilruba's strings." loading="lazy"></figure>
-      <figure><img src="/kit/img/p-kirtan-dilruba.jpg" alt="A young player bowing the dilruba between the microphones, tabla beside them." loading="lazy"></figure>
-      <figure><img src="/kit/img/p-tabla-duo.jpg" alt="Two students playing tabla side by side on the floor of the hall." loading="lazy"></figure>
-      <figure><img src="/kit/img/p-kirtan-saaj-student.jpg" alt="A student seated cross-legged with a tanti saaj across the lap." loading="lazy"></figure>
+      <figure><img src="/Assets/Kirtan/tiles/k11.jpg" alt="Close on the gaj crossing the dilruba's strings." loading="lazy" width="560" height="700" srcset="/Assets/Kirtan/tiles/_w/k11-480.webp 480w, /Assets/Kirtan/tiles/k11.jpg 560w" sizes="(max-width:760px) 100vw, 50vw"></figure>
+      <figure><img src="/kit/img/p-kirtan-dilruba.jpg" alt="A young player bowing the dilruba between the microphones, tabla beside them." loading="lazy" width="1200" height="1600" srcset="/kit/img/_w/p-kirtan-dilruba-480.webp 480w, /kit/img/_w/p-kirtan-dilruba-960.webp 960w, /kit/img/p-kirtan-dilruba.jpg 1200w" sizes="(max-width:760px) 100vw, 50vw"></figure>
+      <figure><img src="/kit/img/p-tabla-duo.jpg" alt="Two students playing tabla side by side on the floor of the hall." loading="lazy" width="1200" height="1600" srcset="/kit/img/_w/p-tabla-duo-480.webp 480w, /kit/img/_w/p-tabla-duo-960.webp 960w, /kit/img/p-tabla-duo.jpg 1200w" sizes="(max-width:760px) 100vw, 50vw"></figure>
+      <figure><img src="/kit/img/p-kirtan-saaj-student.jpg" alt="A student seated cross-legged with a tanti saaj across the lap." loading="lazy" width="1200" height="1600" srcset="/kit/img/_w/p-kirtan-saaj-student-480.webp 480w, /kit/img/_w/p-kirtan-saaj-student-960.webp 960w, /kit/img/p-kirtan-saaj-student.jpg 1200w" sizes="(max-width:760px) 100vw, 50vw"></figure>
     </div>
     <div class="col">
-      <figure><img src="/kit/img/p-kirtan-dilruba-student.jpg" alt="A student seated on the floor holding a dilruba upright, the gaj in the other hand." loading="lazy"></figure>
-      <figure><img src="/Assets/Kirtan/tiles/k15.jpg" alt="Two students on stage, one at the microphone and one at the tabla." loading="lazy"></figure>
-      <figure><img src="/Assets/Kirtan/tiles/k03.jpg" alt="The sangat gathered outside for a group photograph." loading="lazy"></figure>
+      <figure><img src="/kit/img/p-kirtan-dilruba-student.jpg" alt="A student seated on the floor holding a dilruba upright, the gaj in the other hand." loading="lazy" width="1200" height="1600" srcset="/kit/img/_w/p-kirtan-dilruba-student-480.webp 480w, /kit/img/_w/p-kirtan-dilruba-student-960.webp 960w, /kit/img/p-kirtan-dilruba-student.jpg 1200w" sizes="(max-width:760px) 100vw, 50vw"></figure>
+      <figure><img src="/Assets/Kirtan/tiles/k15.jpg" alt="Two students on stage, one at the microphone and one at the tabla." loading="lazy" width="560" height="700" srcset="/Assets/Kirtan/tiles/_w/k15-480.webp 480w, /Assets/Kirtan/tiles/k15.jpg 560w" sizes="(max-width:760px) 100vw, 50vw"></figure>
+      <figure><img src="/Assets/Kirtan/tiles/k03.jpg" alt="The sangat gathered outside for a group photograph." loading="lazy" width="440" height="550" srcset="/Assets/Kirtan/tiles/_w/k03-440.webp"></figure>
       <figure><video muted playsinline loop preload="none" aria-hidden="true" poster="/kit/img/v-kirtan-darbar.jpg" data-src="/kit/img/v-kirtan-darbar.mp4"></video></figure>
     </div>
   </div>

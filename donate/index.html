@@ -3,6 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- the site loads everything from itself and sends nothing anywhere (see /privacy/); this says so to the browser.
+     Inline script and style stay allowed: every page carries its own. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; media-src 'self'; font-src 'self'; connect-src 'self'; object-src 'none'; frame-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Support the Vidyala · Shaheedi Bunga</title>
 <meta name="description" content="How to support Shaheedi Bunga — a registered charity in Leicester teaching Gurmat free of charge, run entirely by volunteers.">
 <link rel="canonical" href="https://www.shaheedibunga.com/donate/">
@@ -55,7 +59,7 @@
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="mast">
-  <a class="brand" href="/" aria-label="Shaheedi Bunga, home"><img src="/kit/img/gurmat-vidyala-84.png" alt="" width="40" height="40">
+  <a class="brand" href="/" aria-label="Shaheedi Bunga, home"><img src="/kit/img/gurmat-vidyala-84.png" alt="" width="40" height="40" srcset="/kit/img/_w/gurmat-vidyala-84-84.webp">
     <span><b>Shaheedi Bunga</b><i>Gurmat Vidyala</i></span></a>
   <nav aria-label="Main" id="site-nav"><div class="vid"><button class="vid-btn" type="button" aria-expanded="false" aria-controls="vid-panel">Vidyale<i aria-hidden="true"></i></button><div class="vid-panel" id="vid-panel"><div class="vid-grid"><a class="vid-item" href="/santhiya/"><span class="vid-gur" lang="pa">ਸੰਥਿਆ ਵਿਦਿਆਲਾ</span><b>Santhiya</b><small>Reading sudh Gurbani</small></a><a class="vid-item" href="/saaj/dilruba/"><span class="vid-gur" lang="pa">ਕੀਰਤਨ ਵਿਦਿਆਲਾ</span><b>Kirtan</b><small>Tanti saaj and raag</small></a><a class="vid-item" href="/akhara/archery/"><span class="vid-gur" lang="pa">ਤੀਰ ਅੰਦਾਜ਼ੀ</span><b>Archery Akhara</b><small>Sundays, ages 14 and over</small></a><a class="vid-item" href="/classes/#tabla"><span class="vid-gur" lang="pa">ਤਬਲਾ ਤੇ ਜੋੜੀ</span><b>Tabla &amp; Jori</b><small>Running: ask</small></a><a class="vid-item" href="/classes/#katha"><span class="vid-gur" lang="pa">ਕਥਾ ਵਿਦਿਆਲਾ</span><b>Katha</b><small>Page coming</small></a><a class="vid-item" href="/classes/#itihaas"><span class="vid-gur" lang="pa">ਇਤਿਹਾਸ ਵਿਦਿਆਲਾ</span><b>Itihaas</b><small>Wednesday evenings</small></a></div><div class="vid-foot"><a href="/classes/">All classes →</a><a href="/camps/">Camps →</a></div></div></div><a href="/events/">Events</a><a href="/sikhi-calendar/">Calendar</a><a href="/gallery/">Gallery</a><a href="/resources/">Resources</a><a href="/about/">About</a><a href="/contact/">Contact</a><a href="/donate/" aria-current="page">Donate</a></nav>
   <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav"><span>Menu</span><i aria-hidden="true"></i></button>
@@ -73,7 +77,7 @@
         not a teacher, not a trustee. What the charity spends goes on the things the classes need.</p>
     </div>
     <figure class="phero-art">
-      <div class="arch"><img src="/kit/img/k-k24.jpg" alt="A student with a dilruba across the lap, its case open beside them."></div>
+      <div class="arch"><img src="/kit/img/k-k24.jpg" alt="A student with a dilruba across the lap, its case open beside them." width="560" height="700" srcset="/kit/img/_w/k-k24-480.webp 480w, /kit/img/k-k24.jpg 560w" sizes="(max-width:760px) 100vw, 50vw"></div>
       <span class="arch-line" aria-hidden="true"></span>
       <figcaption>An instrument lent, at the Kirtan Vidyala</figcaption>
     </figure>
@@ -105,9 +109,9 @@
         order goes straight into a child's hands. The same is true of granths and pothis. <b>Ask before buying anything</b>:
         what is short changes term to term.</p>
       <div class="inkind">
-        <figure data-fade><div class="arch"><img src="/kit/img/p-kirtan-dilruba.jpg" alt="A young player bowing the dilruba between the microphones." loading="lazy"></div><figcaption>Dilruba<small>Bowed saaj</small></figcaption></figure>
-        <figure data-fade><div class="arch"><img src="/kit/img/p-tabla-duo.jpg" alt="Two students playing tabla side by side." loading="lazy"></div><figcaption>Tabla<small>Taal</small></figcaption></figure>
-        <figure data-fade><div class="arch"><img src="/kit/img/p-santhiya-tables.jpg" alt="A student seen from behind at the reading tables, pothis open along the row." loading="lazy"></div><figcaption>Granths &amp; pothis<small>Santhiya</small></figcaption></figure>
+        <figure data-fade><div class="arch"><img src="/kit/img/p-kirtan-dilruba.jpg" alt="A young player bowing the dilruba between the microphones." loading="lazy" width="1200" height="1600" srcset="/kit/img/_w/p-kirtan-dilruba-480.webp 480w, /kit/img/_w/p-kirtan-dilruba-960.webp 960w, /kit/img/p-kirtan-dilruba.jpg 1200w" sizes="(max-width:760px) 45vw, 50vw"></div><figcaption>Dilruba<small>Bowed saaj</small></figcaption></figure>
+        <figure data-fade><div class="arch"><img src="/kit/img/p-tabla-duo.jpg" alt="Two students playing tabla side by side." loading="lazy" width="1200" height="1600" srcset="/kit/img/_w/p-tabla-duo-480.webp 480w, /kit/img/_w/p-tabla-duo-960.webp 960w, /kit/img/p-tabla-duo.jpg 1200w" sizes="(max-width:760px) 45vw, 50vw"></div><figcaption>Tabla<small>Taal</small></figcaption></figure>
+        <figure data-fade><div class="arch"><img src="/kit/img/p-santhiya-tables.jpg" alt="A student seen from behind at the reading tables, pothis open along the row." loading="lazy" width="1200" height="1600" srcset="/kit/img/_w/p-santhiya-tables-480.webp 480w, /kit/img/_w/p-santhiya-tables-960.webp 960w, /kit/img/p-santhiya-tables.jpg 1200w" sizes="(max-width:760px) 100vw, 50vw"></div><figcaption>Granths &amp; pothis<small>Santhiya</small></figcaption></figure>
       </div>
     </div>
   </section>

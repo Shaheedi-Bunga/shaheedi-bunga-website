@@ -23,6 +23,34 @@ const part = n => fs.readFileSync(path.join(PART, n), 'utf8');
 const attrs = s => Object.fromEntries([...s.matchAll(/(\w+)="([^"]*)"/g)].map(m => [m[1], m[2]]));
 const esc = s => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;');
 
+/* Every photograph gets its size and a WebP srcset from img-sizes.json, which
+   _tools/make-webp.py writes. `sizes` is how wide the picture is drawn: the
+   default suits a half-width figure; a page whose pictures are smaller says so
+   below, and one <img data-sizes="…"> can say so for itself. */
+const SIZES = JSON.parse(fs.readFileSync(path.join(here, 'img-sizes.json'), 'utf8'));
+const PAGE_SIZES = { gallery:'(max-width:760px) 50vw, 25vw', events:'(max-width:480px) 100vw, (max-width:1100px) 40vw, 360px' };
+const webp = (p, w) => p.replace(/([^/]+)\.(jpe?g|png)$/i, `_w/$1-${w}.webp`);
+function responsive(h, name){
+  return h.replace(/<img\b([^>]*?)\s*\/?>/g, (m, a) => {
+    const src = (/\ssrc="([^"]+)"/.exec(a) || [])[1];
+    if (!src || !/^(img\/|\/Assets\/).*\.(jpe?g|png)$/i.test(src)) return m;
+    const z = SIZES[src];
+    if (!z) throw new Error(`${name}: ${src} has no WebP copies; run python3 _tools/make-webp.py`);
+    let out = a;
+    if (!/\swidth=/.test(out)) out += ` width="${z.w}" height="${z.h}"`;
+    if (!/\ssrcset=/.test(out)) {
+      const own = (/\sdata-sizes="([^"]+)"/.exec(out) || [])[1];
+      out = out.replace(/\sdata-sizes="[^"]*"/, '');
+      /* a small picture has one copy at its own size: swap the format, no sizes.
+         Otherwise the copies, then the original as the widest choice. */
+      out += z.v.length === 1 && z.v[0] === z.w
+        ? ` srcset="${webp(src, z.w)}"`
+        : ` srcset="${[...z.v.map(w => `${webp(src, w)} ${w}w`), `${src} ${z.w}w`].join(', ')}" sizes="${own || PAGE_SIZES[name] || '(max-width:760px) 100vw, 50vw'}"`;
+    }
+    return `<img${out}>`;
+  });
+}
+
 /* page name → its address on the site */
 const ROUTES = { classes:'classes', santhiya:'santhiya', kirtan:'saaj/dilruba', archery:'akhara/archery',
   camps:'camps', about:'about', donate:'donate', contact:'contact', gallery:'gallery',
@@ -128,6 +156,32 @@ ${sorted.filter(e => year(e) === y).map(e => {
   </section>`).join('\n');
 }
 
+/* Search engines read who the charity is (About, Contact) and what it runs
+   (Events) from these blocks. Facts only from the pages themselves: the
+   Charity Commission number, the registered address, the public contacts.
+   An event is listed only when it has a day and a place that names its town
+   (a venue in several towns, or one that names none, is left out). */
+const SITE = 'https://www.shaheedibunga.com';
+const ORG = { '@type':'NGO', '@id':SITE + '/#charity', name:'Shaheedi Bunga', url:SITE + '/',
+  logo:SITE + '/Assets/Brand/gurmat-vidyala-512.png', email:'gurmat@shaheedibunga.com', telephone:'+447394848407',
+  description:'A Sikh education charity in Leicester. Every class is free and taught by volunteers.',
+  address:{ '@type':'PostalAddress', streetAddress:'22 Beckett Road', addressLocality:'Leicester', postalCode:'LE5 0HE', addressCountry:'GB' },
+  identifier:{ '@type':'PropertyValue', propertyID:'Charity Commission for England and Wales', value:'1185103' },
+  sameAs:['https://www.instagram.com/shaheedi_bunga_uk/', 'https://www.youtube.com/@shaheedibunga'] };
+const TOWNS = ['Leicester', 'Hull', 'Sunderland', 'Smethwick', 'West Bromwich', 'Derby'];
+const town = v => { const t = TOWNS.filter(n => v.includes(n)); return t.length === 1 && !/ then |;| and /.test(v) ? t[0] : null; };
+const ld = o => `<script type="application/ld+json">${JSON.stringify({ '@context':'https://schema.org', ...o }).replace(/</g, '\\u003c')}</script>\n`;
+function jsonld(name){
+  if (name === 'about' || name === 'contact') return ld(ORG);
+  if (name !== 'events') return '';
+  const dated = EV.filter(e => e.venue && town(e.venue) && /^\d{4}-\d{2}-\d{2}$/.test(e.start) && /\b\d{1,2}(st|nd|rd|th)?\b/.test(e.when));
+  return ld({ '@graph':[ORG, ...dated.map(e => ({ '@type':'Event', name:e.title, description:e.summary,
+    startDate:e.start, ...(e.end ? { endDate:e.end } : {}),
+    eventAttendanceMode:'https://schema.org/OfflineEventAttendanceMode', eventStatus:'https://schema.org/EventScheduled',
+    location:{ '@type':'Place', name:e.venue, address:{ '@type':'PostalAddress', addressLocality:town(e.venue), addressCountry:'GB' } },
+    ...(e.img ? { image:SITE + '/kit/' + e.img } : {}), organizer:{ '@id':SITE + '/#charity' }, isAccessibleForFree:true }))] });
+}
+
 function page(f, live){
   const name = f.replace(/\.html$/, '');
   const metaFile = path.join(PART, 'meta', name + '.html');
@@ -135,7 +189,7 @@ function page(f, live){
   h = h.replace(/<!--@head([^>]*)-->/, (_, a) => part('head.html')
           .replace('{{title}}', esc(attrs(a).title || 'Shaheedi Bunga'))
           .replace('{{robots}}', live ? '' : '<meta name="robots" content="noindex">\n')
-          .replace('{{meta}}', live && fs.existsSync(metaFile) ? fs.readFileSync(metaFile, 'utf8') : ''))
+          .replace('{{meta}}', live && fs.existsSync(metaFile) ? fs.readFileSync(metaFile, 'utf8') + jsonld(name) : ''))
        .replace(/<!--@mast([^>]*)-->/, (_, a) => mast(attrs(a)))
        .replace(/<!--@foot-->/, () => part('foot.html'))
        .replace(/<!--@scripts-->/, () => part('scripts.html'))
@@ -143,6 +197,7 @@ function page(f, live){
        .replace(/<!--@events-->/, () => events());
   const left = h.match(/<!--@\w+/);
   if (left) throw new Error(`${f}: ${left[0]} was not filled in`);
+  h = responsive(h, name);
   if (!live) return h;
 
   return toLive(h, f);
@@ -157,6 +212,7 @@ function toLive(h, f){
         return `href="/${route}/${hash || ''}"`;
       })
        .replace(/(src|href|data-still|data-bow|data-thumb|poster|data-src|data-full)="(img|lib)\//g, '$1="/kit/$2/')
+       .replace(/srcset="([^"]+)"/g, (m, v) => `srcset="${v.replace(/(^|, )img\//g, '$1/kit/img/')}"`)
        .replace(/href="kit\.css"/g, 'href="/kit/kit.css"')
        .replace(/src="kit\.js"/g, 'src="/kit/kit.js"');
   const stray = h.match(/\b(src|href|data-still|data-bow|data-thumb)="(?!\/|https?:|mailto:|tel:|#|data:)[^"]+"/);
