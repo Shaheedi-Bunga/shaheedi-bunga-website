@@ -29,7 +29,7 @@ const esc = s => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;');
    below, and one <img data-sizes="…"> can say so for itself. */
 const SIZES = JSON.parse(fs.readFileSync(path.join(here, 'img-sizes.json'), 'utf8'));
 const PAGE_SIZES = { gallery:'(max-width:760px) 50vw, 25vw', events:'(max-width:480px) 100vw, (max-width:1100px) 40vw, 360px' };
-const webp = (p, w) => p.replace(/([^/]+)\.(jpe?g|png)$/i, `_w/$1-${w}.webp`);
+const webp = (p, w) => p.replace(/([^/]+)\.(jpe?g|png)$/i, `webp/$1-${w}.webp`);
 function responsive(h, name){
   return h.replace(/<img\b([^>]*?)\s*\/?>/g, (m, a) => {
     const src = (/\ssrc="([^"]+)"/.exec(a) || [])[1];
