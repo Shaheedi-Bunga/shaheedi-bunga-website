@@ -322,73 +322,51 @@ a:focus-visible, button:focus-visible{ outline:2px solid var(--focus); outline-o
 .loop video{ width:100%; aspect-ratio:16/9; object-fit:cover; display:block; border-radius:3px; background:var(--cream-3); filter:var(--photo); }
 .loop figcaption{ font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--navy-70); margin-top:12px; }
 
-/* ── TRIAL palettes (Decide mode, 2026-10-27): ?palette=b|c|d. Not chosen yet. ──
-   B deep: crisper cream, deeper navy, photos nearly ungraded.
-   C warm: parchment cream, softer navy, warm photo grade.
-   D ink: near-white paper, darkest navy, gold kept for lines and numerals. */
-html[data-palette="b"]{ --cream:#FBF8F2; --cream-2:#F1EADB; --cream-3:#E6DAC2; --navy:#0E1F3D; --navy-70:rgba(14,31,61,.76);
-  --gold-text:#74520F; --gold:#A87D22; --focus:#74520F; --line:rgba(14,31,61,.13); --panel:#0E1F3D; --faded:rgba(14,31,61,.70);
-  --photo:sepia(.05) saturate(.97) contrast(1.05); }
-html[data-palette="b"][data-mood="dark"]{ --cream:#091428; --cream-2:#101C33; --cream-3:#18253F; --ink-dark:#091428;
-  --navy:#F1EBDD; --navy-70:rgba(241,235,221,.76); --gold-text:#E8C77E; --gold:#CFA54C; --focus:#E8C77E; --line:rgba(241,235,221,.12);
-  --panel:#15233F; --faded:rgba(241,235,221,.55); --photo:sepia(.06) saturate(.92) brightness(.92) contrast(1.06); }
-html[data-palette="c"]{ --cream:#F8F1E2; --cream-2:#EFE4CC; --cream-3:#E4D5B6; --navy:#1B2C4E; --navy-70:rgba(27,44,78,.76);
-  --gold-text:#7A5212; --gold:#B8862A; --focus:#7A5212; --line:rgba(27,44,78,.15); --panel:#1B2C4E; --faded:rgba(27,44,78,.70);
-  --photo:sepia(.14) saturate(.9) contrast(1.03); }
-html[data-palette="c"][data-mood="dark"]{ --cream:#121A2C; --cream-2:#192338; --cream-3:#212D45; --ink-dark:#121A2C;
-  --navy:#F1EBDD; --navy-70:rgba(241,235,221,.75); --gold-text:#E6C47E; --gold:#C79C45; --focus:#E6C47E; --line:rgba(241,235,221,.13);
-  --panel:#22304F; --faded:rgba(241,235,221,.55); --photo:sepia(.16) saturate(.86) brightness(.9) contrast(1.05); }
-html[data-palette="d"]{ --cream:#FFFDF8; --cream-2:#F4F0E6; --cream-3:#E8E1D2; --navy:#0A1630; --navy-70:rgba(10,22,48,.76);
-  --gold-text:#785810; --gold:#B08A2E; --focus:#785810; --line:rgba(10,22,48,.12); --panel:#0A1630; --faded:rgba(10,22,48,.70);
-  --photo:saturate(.98) contrast(1.04); }
-html[data-palette="d"][data-mood="dark"]{ --cream:#060D1C; --cream-2:#0D1628; --cream-3:#152036; --ink-dark:#060D1C;
-  --navy:#F1EBDD; --navy-70:rgba(241,235,221,.76); --gold-text:#E9CB85; --gold:#D2AA55; --focus:#E9CB85; --line:rgba(241,235,221,.12);
-  --panel:#111D36; --faded:rgba(241,235,221,.55); --photo:saturate(.94) brightness(.92) contrast(1.05); }
-
-/* ── TRIAL E "shine" (2026-10-27): the user's brief, "near white but gradient design
-   that shines, font also sparkling". D's paper and ink, plus light: a wash of gold
+/* ── THE PALETTE, "shine" (chosen 2026-10-27 over three quieter refinements). The
+   user's brief: "near white but gradient design that shines, font also sparkling".
+   It overrides the tokens at the top of this file. Near-white paper and deep ink, plus light: a wash of gold
    and navy behind each hero, gold display words in a metallic gradient with a slow
    sheen, and a lit edge on the navy cards. English display type only: Gurmukhi is
    never given the gradient or the motion. Reduced motion keeps the gold, not the sheen. */
-html[data-palette="e"]{ --cream:#FFFDF9; --cream-2:#F6F2EA; --cream-3:#ECE5D6; --navy:#0B1731; --navy-70:rgba(11,23,49,.76);
+html:root{ --cream:#FFFDF9; --cream-2:#F6F2EA; --cream-3:#ECE5D6; --navy:#0B1731; --navy-70:rgba(11,23,49,.76);
   --gold-text:#785810; --gold:#B8902F; --focus:#785810; --line:rgba(11,23,49,.11); --panel:#0B1731; --faded:rgba(11,23,49,.70);
   --photo:saturate(1) contrast(1.04);
   --sheen:linear-gradient(100deg,#6E4E0C 0%,#86610F 34%,#C9A04A 44%,#EBD08E 48%,#C9A04A 52%,#86610F 62%,#6E4E0C 100%); }
-html[data-palette="e"][data-mood="dark"]{ --cream:#070E1E; --cream-2:#0E172B; --cream-3:#162139; --ink-dark:#070E1E;
+html[data-mood="dark"]{ --cream:#070E1E; --cream-2:#0E172B; --cream-3:#162139; --ink-dark:#070E1E;
   --navy:#F3EEE2; --navy-70:rgba(243,238,226,.76); --gold-text:#EBCD88; --gold:#D4AC57; --focus:#EBCD88; --line:rgba(243,238,226,.11);
   --panel:#101C37; --faded:rgba(243,238,226,.55); --photo:saturate(.96) brightness(.93) contrast(1.05);
   --sheen:linear-gradient(100deg,#B98B32 0%,#E2BE6E 30%,#FFF1C4 45%,#E2BE6E 60%,#B98B32 100%); }
 /* light: a wash behind the hero, and a faint warm glow down the page */
-html[data-palette="e"] body{ background:
+html body{ background:
   radial-gradient(1200px 600px at 85% -10%, rgba(214,174,82,.16), transparent 60%),
   radial-gradient(900px 520px at -10% 10%, rgba(30,60,130,.07), transparent 60%), var(--cream); }
-html[data-palette="e"] .phero, html[data-palette="e"] [data-hero]{ background:
+html .phero, html [data-hero]{ background:
   radial-gradient(900px 420px at 78% 18%, rgba(226,190,110,.22), transparent 62%),
   radial-gradient(700px 380px at 8% 85%, rgba(40,70,140,.08), transparent 60%), transparent; }
-html[data-palette="e"][data-mood="dark"] .phero, html[data-palette="e"][data-mood="dark"] [data-hero]{ background:
+html[data-mood="dark"] .phero, html[data-mood="dark"] [data-hero]{ background:
   radial-gradient(900px 420px at 78% 18%, rgba(226,190,110,.16), transparent 62%),
   radial-gradient(700px 380px at 8% 85%, rgba(70,110,200,.14), transparent 60%), var(--hero-bg); }
-html[data-palette="e"][data-mood="dark"] body{ background:
+html[data-mood="dark"] body{ background:
   radial-gradient(1200px 600px at 85% -10%, rgba(214,174,82,.10), transparent 60%), var(--cream); }
 /* sparkle: the gold words of a display heading, never Gurmukhi */
 /* the hero reveal wraps each word in its own .w box, so the metal goes on the
    word as well as on an unsplit em */
-html[data-palette="e"] .display em:not(:lang(pa)), html[data-palette="e"] .h-l em:not(:lang(pa)),
-html[data-palette="e"] .display em:not(:lang(pa)) .w, html[data-palette="e"] .h-l em:not(:lang(pa)) .w{
+html .display em:not(:lang(pa)), html .h-l em:not(:lang(pa)),
+html .display em:not(:lang(pa)) .w, html .h-l em:not(:lang(pa)) .w{
   background:var(--sheen); background-size:220% 100%; background-position:100% 0;
   -webkit-background-clip:text; background-clip:text; color:transparent; -webkit-text-fill-color:transparent; }
 @media (prefers-reduced-motion:no-preference){
-  html[data-palette="e"] .display em:not(:lang(pa)), html[data-palette="e"] .h-l em:not(:lang(pa)),
-  html[data-palette="e"] .display em:not(:lang(pa)) .w, html[data-palette="e"] .h-l em:not(:lang(pa)) .w{ animation:sb-sheen 7s ease-in-out 1s infinite; }
+  html .display em:not(:lang(pa)), html .h-l em:not(:lang(pa)),
+  html .display em:not(:lang(pa)) .w, html .h-l em:not(:lang(pa)) .w{ animation:sb-sheen 7s ease-in-out 1s infinite; }
 }
 @keyframes sb-sheen{ 0%,55%{ background-position:100% 0; } 85%,100%{ background-position:-20% 0; } }
 /* the navy cards: a lit edge and a soft sheen from the top corner */
-html[data-palette="e"] .pcard.ink, html[data-palette="e"] .oncard.ink, html[data-palette="e"] .ask, html[data-palette="e"] .day.today{
+html .pcard.ink, html .oncard.ink, html .ask, html .day.today{
   background:linear-gradient(150deg, #1B2C52 0%, var(--panel) 46%, #070F22 100%);
   box-shadow:inset 0 0 0 1px rgba(226,194,122,.28), 0 24px 50px -28px rgba(11,23,49,.55); }
-html[data-palette="e"] .oncard:not(.ink), html[data-palette="e"] .pcard:not(.ink):not(:has(img)){
+html .oncard:not(.ink), html .pcard:not(.ink):not(:has(img)){
   background:linear-gradient(160deg, #FFFFFF 0%, var(--cream-2) 100%); box-shadow:inset 0 0 0 1px rgba(184,144,47,.18); }
-html[data-palette="e"][data-mood="dark"] .oncard:not(.ink){ background:linear-gradient(160deg, #13203A 0%, var(--cream-2) 100%); box-shadow:inset 0 0 0 1px rgba(226,194,122,.16); }
+html[data-mood="dark"] .oncard:not(.ink){ background:linear-gradient(160deg, #13203A 0%, var(--cream-2) 100%); box-shadow:inset 0 0 0 1px rgba(226,194,122,.16); }
 /* the year numerals and big figures take the metal too */
-html[data-palette="e"] .yr-h, html[data-palette="e"] .pcard .num:not(:lang(pa)){
+html .yr-h, html .pcard .num:not(:lang(pa)){
   background:var(--sheen); -webkit-background-clip:text; background-clip:text; color:transparent; -webkit-text-fill-color:transparent; }

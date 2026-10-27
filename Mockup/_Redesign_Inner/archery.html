@@ -13,9 +13,7 @@
      there is never a flash of the wrong mode -->
 <script>(function(){var m=(/[?&]mood=(light|dark)/.exec(location.search)||[])[1];
   if(!m){try{m=localStorage.getItem("sb-mood");}catch(e){}}
-  document.documentElement.dataset.mood=m==="dark"?"dark":"light";
-  /* TRIAL ONLY: ?palette=b|c|d previews a colour option; never stored */
-  var pl=(/[?&]palette=([bcde])/.exec(location.search)||[])[1]; if(pl) document.documentElement.dataset.palette=pl;})();</script>
+  document.documentElement.dataset.mood=m==="dark"?"dark":"light";})();</script>
 
 <style>
 /* ── hero: the scroll draws the bow, then looses it ──────────────────────
