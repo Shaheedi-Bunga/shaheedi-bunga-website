@@ -364,18 +364,22 @@ html[data-palette="e"] body{ background:
   radial-gradient(900px 520px at -10% 10%, rgba(30,60,130,.07), transparent 60%), var(--cream); }
 html[data-palette="e"] .phero, html[data-palette="e"] [data-hero]{ background:
   radial-gradient(900px 420px at 78% 18%, rgba(226,190,110,.22), transparent 62%),
-  radial-gradient(700px 380px at 8% 85%, rgba(40,70,140,.08), transparent 60%), var(--hero-bg); }
+  radial-gradient(700px 380px at 8% 85%, rgba(40,70,140,.08), transparent 60%), transparent; }
 html[data-palette="e"][data-mood="dark"] .phero, html[data-palette="e"][data-mood="dark"] [data-hero]{ background:
   radial-gradient(900px 420px at 78% 18%, rgba(226,190,110,.16), transparent 62%),
   radial-gradient(700px 380px at 8% 85%, rgba(70,110,200,.14), transparent 60%), var(--hero-bg); }
 html[data-palette="e"][data-mood="dark"] body{ background:
   radial-gradient(1200px 600px at 85% -10%, rgba(214,174,82,.10), transparent 60%), var(--cream); }
 /* sparkle: the gold words of a display heading, never Gurmukhi */
-html[data-palette="e"] .display em:not(:lang(pa)), html[data-palette="e"] .h-l em:not(:lang(pa)){
+/* the hero reveal wraps each word in its own .w box, so the metal goes on the
+   word as well as on an unsplit em */
+html[data-palette="e"] .display em:not(:lang(pa)), html[data-palette="e"] .h-l em:not(:lang(pa)),
+html[data-palette="e"] .display em:not(:lang(pa)) .w, html[data-palette="e"] .h-l em:not(:lang(pa)) .w{
   background:var(--sheen); background-size:220% 100%; background-position:100% 0;
   -webkit-background-clip:text; background-clip:text; color:transparent; -webkit-text-fill-color:transparent; }
 @media (prefers-reduced-motion:no-preference){
-  html[data-palette="e"] .display em:not(:lang(pa)), html[data-palette="e"] .h-l em:not(:lang(pa)){ animation:sb-sheen 7s ease-in-out 1s infinite; }
+  html[data-palette="e"] .display em:not(:lang(pa)), html[data-palette="e"] .h-l em:not(:lang(pa)),
+  html[data-palette="e"] .display em:not(:lang(pa)) .w, html[data-palette="e"] .h-l em:not(:lang(pa)) .w{ animation:sb-sheen 7s ease-in-out 1s infinite; }
 }
 @keyframes sb-sheen{ 0%,55%{ background-position:100% 0; } 85%,100%{ background-position:-20% 0; } }
 /* the navy cards: a lit edge and a soft sheen from the top corner */
