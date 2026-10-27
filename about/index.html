@@ -17,6 +17,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/Assets/Brand/favicon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="/Assets/Brand/apple-touch-icon-180.png">
+<link rel="manifest" href="/site.webmanifest">
 <link rel="stylesheet" href="/lib/fonts.css">
 <link rel="stylesheet" href="/kit/kit.css">
 <!-- before paint: light unless this viewer chose dark (or ?mood= asks), so
@@ -32,7 +33,7 @@
 .plate .frame{ overflow:hidden; aspect-ratio:1920/1000; border-radius:3px; }
 .plate img{ width:100%; height:118%; object-fit:cover; object-position:50% 40%; filter:sepia(.35) contrast(1.06); }
 html[data-mood="dark"] .plate img{ filter:sepia(.45) brightness(.82) contrast(1.1); }
-.plate figcaption{ font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--navy-70); margin:12px var(--gx) 0; }
+.plate figcaption{ font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--navy-70); margin:12px var(--gx) 0; }
 .cine .plate .frame{ clip-path:inset(0 var(--gx) round 3px); }
 
 .quote{ font-family:var(--display); font-weight:500; font-size:max(30px,calc(var(--u)*4.4)); line-height:1.1; letter-spacing:-.015em; margin:0; max-width:24ch; }
@@ -40,7 +41,7 @@ html[data-mood="dark"] .plate img{ filter:sepia(.45) brightness(.82) contrast(1.
 
 .aims{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:calc(var(--u)*1.4); margin-top:calc(var(--u)*2.4); }
 .aim{ background:var(--cream-2); border-radius:3px; padding:calc(var(--u)*2.2); display:flex; gap:calc(var(--u)*1.6); align-items:baseline; }
-.aim .k{ font-family:var(--gur); font-weight:600; font-size:max(28px,calc(var(--u)*2.6)); color:var(--gold); line-height:1; }
+.aim .k{ font-family:var(--gur); font-weight:600; font-size:max(28px,calc(var(--u)*2.6)); color:var(--gold-text); line-height:1; }
 .aim b{ font-family:var(--display); font-weight:500; font-size:max(22px,calc(var(--u)*1.9)); line-height:1.1; }
 @media(max-width:700px){ .aims{ grid-template-columns:1fr; } }
 
@@ -54,7 +55,7 @@ html[data-mood="dark"] .plate img{ filter:sepia(.45) brightness(.82) contrast(1.
   border-radius:4px; padding:calc(var(--u)*3) calc(var(--u)*3.4); margin-top:calc(var(--u)*4); text-decoration:none; transition:transform .5s var(--ease-out); }
 .reg:hover{ transform:translateY(-3px); }
 .sangat{ margin:calc(var(--u)*4) 0; } .sangat img{ width:100%; aspect-ratio:16/9; object-fit:cover; border-radius:3px; display:block; filter:var(--photo); }
-.sangat figcaption{ font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--navy-70); margin-top:12px; }
+.sangat figcaption{ font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--navy-70); margin-top:12px; }
 .reg b{ font-family:var(--display); font-weight:500; font-size:max(24px,calc(var(--u)*2.4)); }
 .reg span{ font-family:var(--mono); font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--gold-lite); }
 </style>
@@ -153,12 +154,12 @@ html[data-mood="dark"] .plate img{ filter:sepia(.45) brightness(.82) contrast(1.
 <footer class="foot">
   <p class="big">Come and sit<br>with the <em>sangat.</em></p>
   <div class="cols">
-    <div><h4>Shaheedi Bunga</h4><p style="margin:0;max-width:34ch">A Sikh education charity in Leicester. Every class is free and taught by volunteers.</p></div>
-    <div><h4>Vidyale</h4><a href="/santhiya/">Santhiya</a><a href="/saaj/dilruba/">Kirtan</a><a href="/akhara/archery/">Archery</a><a href="/classes/">All classes</a><a href="/camps/">Camps</a><a href="/events/">Events</a><a href="/sikhi-calendar/">Calendar</a></div>
-    <div><h4>Charity</h4><a href="/about/">About</a><a href="/donate/">Donate</a><a href="/gallery/">Gallery</a><a href="/resources/">Resources</a><a href="/library/">Library</a></div>
-    <div><h4>Contact</h4><a href="https://wa.me/447394848407" target="_blank" rel="noopener">+44 7394 848407</a><a href="mailto:gurmat@shaheedibunga.com">gurmat@shaheedibunga.com</a><a href="/safeguarding/">Safeguarding</a><a href="/privacy/">Privacy</a></div>
+    <div><h2>Shaheedi Bunga</h2><p style="margin:0;max-width:34ch">A Sikh education charity in Leicester. Every class is free and taught by volunteers.</p></div>
+    <div><h2>Vidyale</h2><a href="/santhiya/">Santhiya</a><a href="/saaj/dilruba/">Kirtan</a><a href="/akhara/archery/">Archery</a><a href="/classes/">All classes</a><a href="/camps/">Camps</a><a href="/events/">Events</a><a href="/sikhi-calendar/">Calendar</a></div>
+    <div><h2>Charity</h2><a href="/about/">About</a><a href="/donate/">Donate</a><a href="/gallery/">Gallery</a><a href="/resources/">Resources</a><a href="/library/">Library</a></div>
+    <div><h2>Contact</h2><a href="https://wa.me/447394848407" target="_blank" rel="noopener">+44 7394 848407</a><a href="mailto:gurmat@shaheedibunga.com">gurmat@shaheedibunga.com</a><a href="/safeguarding/">Safeguarding</a><a href="/privacy/">Privacy</a></div>
   </div>
-  <div class="legal"><span>Registered charity in England &amp; Wales · 1185103</span><a href="/" style="display:inline">Home · the Parikrama</a></div>
+  <div class="legal"><span>Registered charity in England &amp; Wales · 1185103</span><a href="/" style="display:inline-block;padding:4px 0">Home · the Parikrama</a></div>
 </footer>
 
 <script src="/kit/lib/gsap.min.js"></script>

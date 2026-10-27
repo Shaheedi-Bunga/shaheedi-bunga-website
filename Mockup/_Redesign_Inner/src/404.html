@@ -1,0 +1,48 @@
+<!--@head title="Page not found"-->
+<style>
+/* the ways back, set like the Contact page's lines */
+.ways{ border-top:1px solid var(--navy); }
+.way{ display:grid; grid-template-columns:160px 1fr auto; gap:calc(var(--u)*2); align-items:baseline; padding:calc(var(--u)*2.2) 0;
+  border-bottom:1px solid var(--line); text-decoration:none; }
+.way .k{ font-family:var(--mono); font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--gold-text); }
+.way .v{ font-family:var(--display); font-weight:500; font-size:max(28px,calc(var(--u)*3.6)); line-height:1.05; transition:transform .7s var(--ease-out), color .3s; }
+.way .go{ font-size:22px; transition:transform .6s var(--ease-out); }
+a.way:hover .v{ transform:translateX(calc(var(--u)*1.4)); color:var(--gold-text); }
+a.way:hover .go{ transform:translate(4px,-4px); }
+a.way:focus-visible{ outline:2px solid var(--focus); outline-offset:4px; }
+@media(max-width:700px){ .way{ grid-template-columns:1fr auto; } .way .k{ grid-column:1/-1; } }
+</style>
+</head>
+<body>
+<!--@mast current=""-->
+
+<main id="main">
+<section class="phero no-art paper" data-hero>
+  <div class="phero-in" style="min-height:min(52svh,560px)">
+    <div>
+      <p class="eyebrow">Shaheedi Bunga · 404</p>
+      <span class="gur gur-line" lang="pa">ਪੰਨਾ ਨਹੀਂ ਮਿਲਿਆ</span>
+      <h1 class="display">This page <em>is not here.</em></h1>
+      <p class="lede">The address may be old, or mistyped. Everything the vidyala runs is still a click away.</p>
+    </div>
+  </div>
+</section>
+
+<div class="wrapx paper">
+  <section class="band" style="border-top:0">
+    <nav class="ways" aria-label="Ways back into the site">
+      <a class="way" href="classes.html"><span class="k">Classes</span><span class="v">Find a class</span><span class="go" aria-hidden="true">↗</span></a>
+      <a class="way" href="events.html"><span class="k">Events</span><span class="v">What's on this week</span><span class="go" aria-hidden="true">↗</span></a>
+      <a class="way" href="calendar.html"><span class="k">Calendar</span><span class="v">Gurpurabs and sangrand</span><span class="go" aria-hidden="true">↗</span></a>
+      <a class="way" href="contact.html"><span class="k">Contact</span><span class="v">Ask us</span><span class="go" aria-hidden="true">↗</span></a>
+      <a class="way" href="index.html"><span class="k">Home</span><span class="v">The Parikrama</span><span class="go" aria-hidden="true">↗</span></a>
+    </nav>
+  </section>
+</div>
+</main>
+
+<!--@foot-->
+<!--@scripts-->
+<script>KIT.start();</script>
+</body>
+</html>

@@ -32,6 +32,9 @@ Allow: /classes/
 Allow: /santhiya/
 Allow: /resources/
 Allow: /gallery/
+Allow: /events/
+Allow: /camps/
+Allow: /kit/
 Allow: /contact/
 Allow: /about/
 Allow: /donate/
@@ -39,6 +42,8 @@ Allow: /privacy/
 Allow: /safeguarding/
 Allow: /sikhi-calendar/
 Allow: /site.css
+Allow: /site.webmanifest
+Allow: /favicon.ico
 Allow: /lib/          # three.js + the packed models, needed to render the home page
 Allow: /Assets/Kirtan/
 Allow: /Assets/Archery/

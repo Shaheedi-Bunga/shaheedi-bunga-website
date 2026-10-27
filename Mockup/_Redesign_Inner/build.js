@@ -185,7 +185,10 @@ for (const [name, route] of Object.entries(ROUTES)) {
   fs.writeFileSync(path.join(dir, 'index.html'), page(name + '.html', true));
   live++;
 }
-console.log(`published ${live} pages at their addresses, assets in /kit/`);
+/* GitHub Pages serves /404.html for any address it does not have, so it is
+   built like the rest but written at the root, with every link absolute */
+fs.writeFileSync(path.join(ROOT, '404.html'), page('404.html', true));
+console.log(`published ${live} pages at their addresses and /404.html, assets in /kit/`);
 
 /* the shell, for a page this build does not make: _tools/fit-calendar.py
    puts these into the calendar so it carries the same masthead, footer and

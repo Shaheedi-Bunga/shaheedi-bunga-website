@@ -1,0 +1,16 @@
+{
+  "name": "Shaheedi Bunga",
+  "short_name": "Shaheedi Bunga",
+  "description": "Gurmat Vidyala in Leicester: free santhiya, kirtan, archery and Sikhi classes.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0B1731",
+  "theme_color": "#0B1731",
+  "lang": "en-GB",
+  "icons": [
+    { "src": "/Assets/Brand/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/Assets/Brand/gurmat-vidyala-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/Assets/Brand/apple-touch-icon-180.png", "sizes": "180x180", "type": "image/png" }
+  ]
+}

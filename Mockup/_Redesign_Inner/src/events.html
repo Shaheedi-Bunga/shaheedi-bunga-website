@@ -8,7 +8,7 @@
   transition:transform .5s var(--ease-out); }
 a.oncard:hover{ transform:translateY(-3px); }
 .oncard.ink{ background:var(--panel); color:var(--panel-ink); }
-.oncard small{ font-family:var(--mono); font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--gold-text); }
+.oncard small{ font-family:var(--mono); font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--gold-text); }
 .oncard.ink small{ color:var(--gold-lite); }
 .oncard b{ font-family:var(--display); font-weight:500; font-size:max(26px,calc(var(--u)*2.4)); line-height:1.05; }
 .oncard p{ margin:0; color:var(--navy-70); } .oncard.ink p{ color:rgba(244,239,228,.8); }
@@ -39,15 +39,19 @@ a.oncard:hover{ transform:translateY(-3px); }
 .ev-yt i{ width:54px; height:54px; border-radius:50%; border:1px solid rgba(226,194,122,.7); position:relative; }
 .ev-yt i::after{ content:""; position:absolute; left:22px; top:17px; border-left:14px solid #E2C27A; border-top:10px solid transparent; border-bottom:10px solid transparent; }
 .ev-yt b{ font-family:var(--mono); font-weight:400; font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:#E2C27A; }
-.ev-yt small{ font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:rgba(244,239,228,.7); }
+.ev-yt small{ font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:rgba(244,239,228,.7); }
 .sr{ position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
-.ev-type{ font-family:var(--mono); font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--gold-text); margin:0 0 .6em; }
+.ev-type{ font-family:var(--mono); font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--gold-text); margin:0 0 .6em; }
 .ev h3{ font-family:var(--display); font-weight:500; font-size:max(22px,calc(var(--u)*1.8)); line-height:1.05; margin:0 0 .5em; }
 .ev-facts{ font-size:14px; line-height:1.45; margin:0 0 .6em; }
 .ev-sum{ font-size:14px; line-height:1.5; color:var(--navy-70); margin:0; }
 @media(max-width:1100px){ .evs{ grid-template-columns:1fr; } }
 @media(max-width:760px){ .yr{ grid-template-columns:1fr; gap:14px; } .yr-h{ position:static; } }
 @media(max-width:480px){ .ev{ grid-template-columns:1fr; } }
+/* phones: a full-width 4:5 navy card held nothing but a play mark, 44 times over; a short strip says the same */
+@media(max-width:480px){ .ev-yt{ aspect-ratio:auto; justify-items:start; }
+  .ev-yt-in{ grid-template-columns:auto 1fr; justify-items:start; align-items:center; column-gap:14px; row-gap:2px; padding:14px 16px; text-align:left; }
+  .ev-yt-in i{ grid-row:span 2; width:44px; height:44px; } .ev-yt i::after{ left:17px; top:12px; } }
 
 .pv{ border:0; padding:0; background:transparent; max-width:min(92vw,900px); max-height:92vh; }
 .pv::backdrop{ background:rgba(8,12,22,.92); }
