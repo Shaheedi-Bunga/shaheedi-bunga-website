@@ -30,6 +30,17 @@ a.oncard:hover{ transform:translateY(-3px); }
 .ev-pic{ padding:0; border:0; background:var(--cream-3); border-radius:3px; overflow:hidden; cursor:zoom-in; display:block; }
 .ev-pic img{ width:100%; display:block; transition:transform .8s var(--ease-out); }
 .ev-pic:hover img{ transform:scale(1.03); }
+/* an event with no poster: a navy card that links to its video */
+.ev-yt{ display:grid; place-items:center; aspect-ratio:4/5; text-decoration:none; color:var(--panel-ink);
+  background:radial-gradient(120% 80% at 80% 0%, rgba(226,194,122,.28), transparent 60%), linear-gradient(160deg,#1B2C52 0%,var(--panel) 55%,#070F22 100%);
+  box-shadow:inset 0 0 0 1px rgba(226,194,122,.3); cursor:pointer; transition:box-shadow .5s var(--ease-out); }
+.ev-yt:hover{ box-shadow:inset 0 0 0 1px rgba(226,194,122,.7), 0 18px 40px -22px rgba(11,23,49,.6); }
+.ev-yt-in{ display:grid; justify-items:center; gap:10px; text-align:center; padding:16px; }
+.ev-yt i{ width:54px; height:54px; border-radius:50%; border:1px solid rgba(226,194,122,.7); position:relative; }
+.ev-yt i::after{ content:""; position:absolute; left:22px; top:17px; border-left:14px solid #E2C27A; border-top:10px solid transparent; border-bottom:10px solid transparent; }
+.ev-yt b{ font-family:var(--mono); font-weight:400; font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:#E2C27A; }
+.ev-yt small{ font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:rgba(244,239,228,.7); }
+.sr{ position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
 .ev-type{ font-family:var(--mono); font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--gold-text); margin:0 0 .6em; }
 .ev h3{ font-family:var(--display); font-weight:500; font-size:max(22px,calc(var(--u)*1.8)); line-height:1.05; margin:0 0 .5em; }
 .ev-facts{ font-size:14px; line-height:1.45; margin:0 0 .6em; }
@@ -55,7 +66,7 @@ a.oncard:hover{ transform:translateY(-3px); }
       <p class="eyebrow">Events</p>
       <h1 class="display">What's on, <em>and what has been.</em></h1>
       <p class="lede">The weekly classes run all year. Around them come the camps, the samagams and Hola Mohalla UK. Below is
-        every one announced since 2019, with the poster it went out on.</p>
+        every one announced or filmed since 2017, with the poster it went out on or the video it was streamed in.</p>
     </div>
   </div>
 </section>

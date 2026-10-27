@@ -35,13 +35,32 @@ const ELSEWHERE = { calendar:'sikhi-calendar' };
 /* Library sits next to Resources on purpose: Resources is what the vidyala
    reads from, the Library is what the vidhiarti made out of it. They are the
    same errand, so they are neighbours. */
-const NAV = [['classes', 'Classes'], ['camps', 'Camps'], ['events', 'Events'], ['calendar', 'Calendar'], ['resources', 'Resources'],
-             ['library', 'Library'], ['gallery', 'Gallery'],
-             ['about', 'About'], ['contact', 'Contact'], ['donate', 'Donate']];
+/* The top row. 'vidyale' is the drop-down below; Library sits in the footer
+   until it has items (2026-10-27). */
+const NAV = [['vidyale', 'Vidyale'], ['events', 'Events'], ['calendar', 'Calendar'], ['gallery', 'Gallery'],
+             ['resources', 'Resources'], ['about', 'About'], ['contact', 'Contact'], ['donate', 'Donate']];
+
+/* Each vidyala has its own place: the three with pages first, then the three
+   still on the Classes page. Gurmukhi names as on the Classes page. */
+const VIDYALE = [
+  { href:'santhiya.html', gur:'ਸੰਥਿਆ ਵਿਦਿਆਲਾ', en:'Santhiya', note:'Reading sudh Gurbani' },
+  { href:'kirtan.html', gur:'ਕੀਰਤਨ ਵਿਦਿਆਲਾ', en:'Kirtan', note:'Tanti saaj and raag' },
+  { href:'archery.html', gur:'ਤੀਰ ਅੰਦਾਜ਼ੀ', en:'Archery Akhara', note:'Sundays, ages 14 and over' },
+  { href:'classes.html#tabla', gur:'ਤਬਲਾ ਤੇ ਜੋੜੀ', en:'Tabla & Jori', note:'Running: ask' },
+  { href:'classes.html#katha', gur:'ਕਥਾ ਵਿਦਿਆਲਾ', en:'Katha', note:'Page coming' },
+  { href:'classes.html#itihaas', gur:'ਇਤਿਹਾਸ ਵਿਦਿਆਲਾ', en:'Itihaas', note:'Wednesday evenings' } ];
+const VIDYALE_PAGES = ['santhiya', 'kirtan', 'archery', 'classes', 'camps'];
 
 function mast(a){
-  const nav = NAV.map(([k, label]) =>
-    `<a href="${k}.html"${k === a.current ? ' aria-current="page"' : ''}>${label}</a>`).join('');
+  const nav = NAV.map(([k, label]) => k !== 'vidyale'
+    ? `<a href="${k}.html"${k === a.current ? ' aria-current="page"' : ''}>${label}</a>`
+    : `<div class="vid${VIDYALE_PAGES.includes(a.current) ? ' is-current' : ''}">`
+      + `<button class="vid-btn" type="button" aria-expanded="false" aria-controls="vid-panel">${label}<i aria-hidden="true"></i></button>`
+      + `<div class="vid-panel" id="vid-panel"><div class="vid-grid">`
+      + VIDYALE.map(v => `<a class="vid-item" href="${v.href}"${v.href === a.current + '.html' ? ' aria-current="page"' : ''}>`
+          + `<span class="vid-gur" lang="pa">${v.gur}</span><b>${esc(v.en)}</b><small>${v.note}</small></a>`).join('')
+      + `</div><div class="vid-foot"><a href="classes.html"${a.current === 'classes' ? ' aria-current="page"' : ''}>All classes →</a>`
+      + `<a href="camps.html"${a.current === 'camps' ? ' aria-current="page"' : ''}>Camps →</a></div></div></div>`).join('');
   const text = encodeURIComponent(`Sat Sri Akal — I'd like to ask about ${a.wa || 'classes'}.`);
   return part('mast.html').replace('{{nav}}', nav).replace('{{wa}}', `https://wa.me/447394848407?text=${text}`);
 }
@@ -92,10 +111,16 @@ function events(){
     <h2 class="yr-h">${y}</h2>
     <div class="evs">
 ${sorted.filter(e => year(e) === y).map(e => {
-      if (!fs.existsSync(path.join(here, e.img))) throw new Error(`events.json: ${e.img} does not exist`);
       const facts = [e.when, e.time, e.venue].filter(Boolean).map(html).join(' · ');
+      /* an event known only from YouTube: no poster, a link out instead
+         (a plain link - nothing is loaded from YouTube) */
+      if (!e.img && !e.yt) throw new Error(`events.json: ${e.id} has neither a poster nor a video`);
+      if (e.img && !fs.existsSync(path.join(here, e.img))) throw new Error(`events.json: ${e.img} does not exist`);
+      const pic = e.img
+        ? `<button class="ev-pic" type="button" data-full="${e.img}" aria-label="Open the poster for ${html(e.title)}"><img src="${e.img}" alt="The poster for ${html(e.title)}." loading="lazy"></button>`
+        : `<a class="ev-pic ev-yt" href="https://www.youtube.com/watch?v=${encodeURIComponent(e.yt)}" target="_blank" rel="noopener"><span class="ev-yt-in"><i aria-hidden="true"></i><b>Watch on YouTube</b><small>${html(e.type)} · ${html((e.start || e.posted).slice(0, 4))}</small></span><span class="sr">${html(e.title)}, on YouTube</span></a>`;
       return `      <article class="ev" data-type="${html(e.type)}" data-fade>
-        <button class="ev-pic" type="button" data-full="${e.img}" aria-label="Open the poster for ${html(e.title)}"><img src="${e.img}" alt="The poster for ${html(e.title)}." loading="lazy"></button>
+        ${pic}
         <div class="ev-txt"><p class="ev-type">${html(e.type)}</p><h3>${html(e.title)}</h3>
           ${facts ? `<p class="ev-facts">${facts}</p>` : ''}<p class="ev-sum">${html(e.summary)}</p></div>
       </article>`; }).join('\n')}
