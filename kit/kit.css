@@ -201,7 +201,7 @@ html[data-mood="dark"] .mast.solid{ background:rgba(12,19,34,.88); color:#F4EFE4
 html[data-mood="dark"] .pcard.ink, html[data-mood="dark"] .day.today{ box-shadow:inset 0 0 0 1px rgba(226,194,122,.45); }
 .day.today .pa{ color:var(--gold-lite); } .day.today .en, .day.today li span{ color:rgba(244,239,228,.75); }
 .day.today::before{ content:"Today"; position:absolute; top:calc(var(--u)*-1.1); left:calc(var(--u)*1.4);
-  font:10px/1 var(--mono); letter-spacing:.18em; text-transform:uppercase; background:var(--gold); color:var(--ink-dark); padding:5px 8px; border-radius:2px; }
+  font:11px/1 var(--mono); letter-spacing:.18em; text-transform:uppercase; background:var(--gold); color:var(--ink-dark); padding:5px 8px; border-radius:2px; }
 /* phone: one day per row, the day's names on the left, its sessions on the right */
 /* phone: the badge sits under the English day name in the left column, clear
    of both the Gurmukhi name and the sessions */
