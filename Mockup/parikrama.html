@@ -113,6 +113,30 @@ canvas{ display:block; position:fixed; inset:0; z-index:0; }
 .menu-btn:focus-visible,.links a:focus-visible,.nav-cta:focus-visible,.brand:focus-visible{
   outline:2px solid var(--gold); outline-offset:3px; }
 
+/* the header Vidyale panel, as on the inner pages: navy glass, gold edge,
+   Gurmukhi above English. Gurmukhi is never letter-spaced or upper-cased. */
+.nav::after{ content:""; position:absolute; left:0; right:0; bottom:-1px; height:1px; pointer-events:none;
+  background:linear-gradient(90deg, transparent, rgba(201,160,74,.5) 18%, #F1DB9C 50%, rgba(201,160,74,.5) 82%, transparent);
+  box-shadow:0 0 14px rgba(226,194,122,.4); }
+.vdrop-menu.vd-wide{ left:-28px; transform:none; width:min(620px,86vw); padding:22px; border-radius:6px;
+  background:linear-gradient(150deg, rgba(27,44,82,.97) 0%, rgba(11,23,49,.97) 50%, rgba(5,11,26,.98) 100%);
+  border:0; box-shadow:inset 0 0 0 1px rgba(226,194,122,.35), 0 30px 70px -30px rgba(0,0,0,.8); }
+.vd-grid{ display:grid; grid-template-columns:1fr 1fr; gap:6px; }
+.vdrop-menu.vd-wide a.vd-item{ display:grid; gap:2px; padding:12px 14px; border-radius:4px; letter-spacing:0; text-transform:none;
+  font-family:var(--sans); font-weight:400; color:#F4EFE4; }
+.vdrop-menu.vd-wide a.vd-item:hover, .vdrop-menu.vd-wide a.vd-item:focus-visible{ background:rgba(226,194,122,.10); box-shadow:inset 0 0 0 1px rgba(226,194,122,.25); color:#F4EFE4; }
+.vd-gur, .mgur{ font-family:"Noto Serif Gurmukhi",serif; font-size:15px; letter-spacing:0; text-transform:none; color:#EBD08E; line-height:1.5; }
+.vd-item b{ font-family:"Cormorant Garamond","Source Serif 4",Georgia,serif; font-weight:500; font-size:22px; line-height:1.05; letter-spacing:0; }
+.vd-item small{ font-family:var(--sans); font-size:10px; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:rgba(244,239,228,.66); }
+.vd-foot{ display:flex; gap:24px; margin-top:14px; padding:14px 14px 0; border-top:1px solid rgba(226,194,122,.2); }
+.vdrop-menu.vd-wide .vd-foot a{ display:inline; padding:0; font-size:11px; letter-spacing:.16em; color:#E2C27A; }
+.vdrop-menu.vd-wide a:focus-visible{ outline:2px solid #E2C27A; outline-offset:3px; }
+.menu nav a .mgur{ font-size:14px; }
+/* ".vdrop-menu span" (every span in a drop-down: small caps, .13em tracking)
+   outranks ".vd-gur" - so the Gurmukhi is named at the same weight */
+.vdrop-menu.vd-wide span.vd-gur{ display:block; padding:0; font-family:"Noto Serif Gurmukhi",serif; font-size:15px; font-weight:500;
+  letter-spacing:0; text-transform:none; color:#EBD08E; line-height:1.5; }
+
 /* under the header (z 8), not over it: over it, the panel covered its own
    Close button and a tap there landed on a link. It scrolls from the top -
    centred, a long list ran off both ends of a phone screen. */
@@ -979,20 +1003,26 @@ html.still .drift img{ animation:none; }
       <span class="brand-en">Shaheedi Bunga</span>
     </span>
   </a>
+  <!-- the same top row and Vidyale panel as the inner pages (2026-10-27):
+       each vidyala has its own place, Gurmukhi and English -->
   <nav class="links" aria-label="Main">
-    <a href="classes/">Classes</a>
     <div class="vdrop">
-      <button type="button" class="vdrop-btn" aria-expanded="false">Vidyale <i aria-hidden="true">&#9662;</i></button>
-      <div class="vdrop-menu" hidden>
-        <a href="/santhiya/" data-route="santhiya">Santhiya Vidyala</a>
-        <a href="/saaj/dilruba/" data-route="dilruba">Kirtan Vidyala</a>
-        <a href="/akhara/archery/" data-route="archery">Archery Akhara</a>
-        <span class="soon">Tabla &amp; Jori Vidyala &middot; soon</span>
-        <span class="soon">Katha Vidyala &middot; soon</span>
-        <span class="soon">Itihaas Vidyala &middot; soon</span>
+      <button type="button" class="vdrop-btn" aria-expanded="false" aria-controls="vd-panel">Vidyale <i aria-hidden="true">&#9662;</i></button>
+      <div class="vdrop-menu vd-wide" id="vd-panel" hidden>
+        <div class="vd-grid">
+          <a class="vd-item" href="/santhiya/" data-route="santhiya"><span class="vd-gur" lang="pa">ਸੰਥਿਆ ਵਿਦਿਆਲਾ</span><b>Santhiya</b><small>Reading sudh Gurbani</small></a>
+          <a class="vd-item" href="/saaj/dilruba/" data-route="dilruba"><span class="vd-gur" lang="pa">ਕੀਰਤਨ ਵਿਦਿਆਲਾ</span><b>Kirtan</b><small>Tanti saaj and raag</small></a>
+          <a class="vd-item" href="/akhara/archery/" data-route="archery"><span class="vd-gur" lang="pa">ਤੀਰ ਅੰਦਾਜ਼ੀ</span><b>Archery Akhara</b><small>Sundays, ages 14 and over</small></a>
+          <a class="vd-item" href="/classes/#tabla"><span class="vd-gur" lang="pa">ਤਬਲਾ ਤੇ ਜੋੜੀ</span><b>Tabla &amp; Jori</b><small>Running: ask</small></a>
+          <a class="vd-item" href="/classes/#katha"><span class="vd-gur" lang="pa">ਕਥਾ ਵਿਦਿਆਲਾ</span><b>Katha</b><small>Page coming</small></a>
+          <a class="vd-item" href="/classes/#itihaas"><span class="vd-gur" lang="pa">ਇਤਿਹਾਸ ਵਿਦਿਆਲਾ</span><b>Itihaas</b><small>Wednesday evenings</small></a>
+        </div>
+        <div class="vd-foot"><a href="classes/">All classes &rarr;</a><a href="camps/">Camps &rarr;</a></div>
       </div>
     </div>
-    <a href="camps/">Camps</a>
+    <a href="events/">Events</a>
+    <a href="sikhi-calendar/">Calendar</a>
+    <a href="gallery/">Gallery</a>
     <a href="resources/">Resources</a>
     <a href="about/">About</a>
   </nav>
@@ -1009,15 +1039,17 @@ html.still .drift img{ animation:none; }
 <div class="menu" id="menu" hidden>
   <nav aria-label="All pages">
     <a href="classes/"><b>Find a class</b><i>Every vidyala in one list, all free</i></a>
-    <a href="/santhiya/" data-route="santhiya"><b>Santhiya Vidyala</b><i>Learn to read sudh Gurbani</i></a>
+    <a href="/santhiya/" data-route="santhiya"><span class="mgur" lang="pa">ਸੰਥਿਆ ਵਿਦਿਆਲਾ</span><b>Santhiya Vidyala</b><i>Learn to read sudh Gurbani</i></a>
     <!-- Real pages, not panels: they are read rather than experienced, and
          keeping them out of this file keeps them off its 11MB. -->
-    <a href="/saaj/dilruba/" data-route="dilruba"><b>Kirtan Vidyala</b><i>Kirtan on the tanti saaj &mdash; dilruba, taus, rabab, saranda</i></a>
-    <a href="/akhara/archery/" data-route="archery"><b>Archery Akhara</b><i>Traditional archery &mdash; Sundays at East Park Road</i></a>
+    <a href="/saaj/dilruba/" data-route="dilruba"><span class="mgur" lang="pa">ਕੀਰਤਨ ਵਿਦਿਆਲਾ</span><b>Kirtan Vidyala</b><i>Kirtan on the tanti saaj &mdash; dilruba, taus, rabab, saranda</i></a>
+    <a href="/akhara/archery/" data-route="archery"><span class="mgur" lang="pa">ਤੀਰ ਅੰਦਾਜ਼ੀ</span><b>Archery Akhara</b><i>Traditional archery &mdash; Sundays at East Park Road</i></a>
     <a href="camps/"><b>Camps</b><i>Whole days and weeks: Sikhi Camp, santhiya camps, Hola Mohalla UK</i></a>
-    <a class="soon" aria-disabled="true"><b>Tabla &amp; Jori Vidyala</b><i>Page coming soon</i></a>
-    <a class="soon" aria-disabled="true"><b>Katha Vidyala</b><i>Page coming soon</i></a>
-    <a class="soon" aria-disabled="true"><b>Itihaas Vidyala</b><i>Page coming soon</i></a>
+    <a href="/classes/#tabla"><span class="mgur" lang="pa">ਤਬਲਾ ਤੇ ਜੋੜੀ</span><b>Tabla &amp; Jori</b><i>Running &mdash; ask for a place</i></a>
+    <a href="/classes/#katha"><span class="mgur" lang="pa">ਕਥਾ ਵਿਦਿਆਲਾ</span><b>Katha Vidyala</b><i>Page coming</i></a>
+    <a href="/classes/#itihaas"><span class="mgur" lang="pa">ਇਤਿਹਾਸ ਵਿਦਿਆਲਾ</span><b>Itihaas Vidyala</b><i>Wednesday evenings</i></a>
+    <a href="events/"><b>Events</b><i>What&rsquo;s on, and every camp and samagam since 2017</i></a>
+    <a href="sikhi-calendar/"><b>Sikhi Calendar</b><i>Gurpurabs, sangrand and masya</i></a>
     <a href="resources/"><b>Resources</b><i>Granths, katha and the weekly talks</i></a>
     <a href="gallery/"><b>Gallery</b><i>Photographs from the classes and samagams</i></a>
     <a href="about/"><b>About</b><i>The bunga, the trustees, the charity</i></a>
