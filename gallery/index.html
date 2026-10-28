@@ -31,6 +31,31 @@
   document.documentElement.dataset.mood=m==="dark"?"dark":"light";})();</script>
 
 <style>
+/* the picked hero (lifted from the hero mockups, 2026-10-28): its own tokens, from the kit's */
+.hx{ --ink:var(--navy); --muted:var(--navy-70); --gold:var(--gold-text); --gold-lite:#B8902F; --night:#070E1E; --night-2:#101C37; --sans:var(--body); }
+html[data-mood="dark"] .hx{ --ink:#F3EEE2; --muted:rgba(243,238,226,.74); --gold:#EBCD88; --gold-lite:#D4AC57; }
+@keyframes upcol{to{transform:translateY(-50%)}}
+.hx .k{font:11px/1.4 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+.hx .gur-big{display:block;font:600 clamp(44px,6.4vw,92px)/1.25 var(--gur);color:var(--gold);margin-top:14px}
+.hx .hxlede{color:var(--muted);max-width:40ch;margin-top:18px;font-size:clamp(16px,1.3vw,19px)}
+.hx .meta{display:flex;flex-wrap:wrap;gap:clamp(18px,3vw,44px);margin-top:26px;padding-top:16px;border-top:1px solid var(--line)}
+.hx .meta span{font:11px/1.4 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.hx .meta b{display:block;font:500 clamp(22px,2vw,30px)/1.2 var(--display);letter-spacing:0;text-transform:none;color:var(--ink);margin-top:4px}
+.hx.hero2{position:relative;overflow:clip;min-height:min(100svh,940px);padding-block:76px 56px;
+  padding-left:max(16px,4vw,env(safe-area-inset-left,0px));padding-right:max(16px,4vw,env(safe-area-inset-right,0px))}
+.hx.hero2 h1{font:500 clamp(46px,6.8vw,104px)/.98 var(--display);margin:0}
+.hx.hero2 h1 em{font-style:italic;color:var(--gold)}
+.hx.dc{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(24px,4vw,64px);align-items:center}
+.hx .dc-cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;height:min(80vh,720px);overflow:hidden;
+  -webkit-mask:linear-gradient(transparent,#000 12%,#000 88%,transparent);mask:linear-gradient(transparent,#000 12%,#000 88%,transparent)}
+.hx .dc-col>div{display:grid;gap:12px;animation:upcol 40s linear infinite}
+.hx .dc-col.u>div{animation-direction:reverse;animation-duration:48s}
+.hx .dc-cols:hover .dc-col>div{animation-play-state:paused}
+.hx .dc-col img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:6px;display:block}
+@media(max-width:860px){.hx.dc{grid-template-columns:minmax(0,1fr)}
+.hx .dc-cols{height:60vh}}
+@media (prefers-reduced-motion:reduce){.hx .dc-col>div{animation:none!important}}
+
 /* the filter: sticks under the masthead while you browse */
 .filters{ position:sticky; top:62px; z-index:20; display:flex; gap:8px; flex-wrap:wrap; padding:14px var(--gx);
   background:color-mix(in srgb,var(--cream) 88%,transparent); backdrop-filter:blur(12px); border-bottom:1px solid var(--line); }
@@ -84,15 +109,10 @@
 
 
 <main id="main">
-<section class="phero no-art paper" data-hero>
-  <div class="phero-in" style="min-height:min(62svh,640px)">
-    <div>
-      <p class="eyebrow">Gallery</p>
-      <h1 class="display">Many <em>afternoons.</em></h1>
-      <p class="lede">Classes, camps and samagams from across the Leicester gurdware. Photographs taken by the sangat,
-        at Shaheedi Bunga's own programmes.</p>
-    </div>
-  </div>
+<section data-hero class="hx hero2 dc" data-init="columns">
+  <div class="dc-copy"><p class="k">Gallery</p><span class="gur-big" lang="pa">ਤਸਵੀਰਾਂ</span><h1>Many <em>afternoons.</em></h1>
+    <p class="hxlede">Classes, camps and samagams, photographed by the sangat.</p><div class="meta"><span>Photographs<b>102</b></span><span>Sections<b>Four</b></span><span>Taken by<b>The sangat</b></span></div></div>
+  <div class="dc-cols"><div class="dc-col"><div><img src="/kit/img/hero/gallery-09c50f64.webp" width="360" height="480" alt=""><img src="/kit/img/hero/gallery-eeb5e64c.webp" width="360" height="480" alt=""><img src="/kit/img/hero/gallery-49280ffc.webp" width="360" height="480" alt=""><img src="/kit/img/hero/gallery-09c50f64.webp" width="360" height="480" alt=""><img src="/kit/img/hero/gallery-eeb5e64c.webp" width="360" height="480" alt=""><img src="/kit/img/hero/gallery-49280ffc.webp" width="360" height="480" alt=""></div></div><div class="dc-col u"><div><img src="/kit/img/hero/gallery-14cc2bf5.webp" width="360" height="480" alt=""><img src="/kit/img/hero/gallery-185d8765.webp" width="360" height="480" alt=""><img src="/kit/img/hero/gallery-540fc324.webp" width="360" height="480" alt=""><img src="/kit/img/hero/gallery-14cc2bf5.webp" width="360" height="480" alt=""><img src="/kit/img/hero/gallery-185d8765.webp" width="360" height="480" alt=""><img src="/kit/img/hero/gallery-540fc324.webp" width="360" height="480" alt=""></div></div><div class="dc-col"><div><img src="/kit/img/hero/gallery-f267f33f.webp" width="360" height="270" alt=""><img src="/kit/img/hero/gallery-a263a13a.webp" width="360" height="480" alt=""><img src="/kit/img/hero/gallery-d5879b11.webp" width="360" height="480" alt=""><img src="/kit/img/hero/gallery-f267f33f.webp" width="360" height="270" alt=""><img src="/kit/img/hero/gallery-a263a13a.webp" width="360" height="480" alt=""><img src="/kit/img/hero/gallery-d5879b11.webp" width="360" height="480" alt=""></div></div></div>
 </section>
 
 <div class="filters" role="group" aria-label="Show photographs from">
@@ -235,6 +255,23 @@
 <script src="/kit/lib/lenis.min.js"></script>
 <script src="/kit/kit.js"></script>
 
+<script>
+/* the picked hero's motion, lifted from the hero mockups; nothing here runs with reduced motion */
+(() => {
+const still = matchMedia('(prefers-reduced-motion: reduce)').matches, coarse = matchMedia('(pointer: coarse)').matches;
+const INIT = {};
+const inView = el => { const r = el.getBoundingClientRect(); return r.bottom > 0 && r.top < innerHeight; };
+function follow(el, fn){ el.addEventListener('pointermove', e => { const r = el.getBoundingClientRect();
+  fn((e.clientX - r.left) / r.width * 2 - 1, (e.clientY - r.top) / r.height * 2 - 1, e); }); el.addEventListener('pointerleave', () => fn(0, 0, null)); }
+
+function track(el, fn){ el.addEventListener('pointermove', e => { const r = el.getBoundingClientRect();
+  fn((e.clientX - r.left) / r.width * 2 - 1, (e.clientY - r.top) / r.height * 2 - 1, e); }); el.addEventListener('pointerleave', () => fn(0, 0, null)); }
+function tilt(stage, max){ const sx = gsap.quickTo(stage, 'rotationY', {duration:.6, ease:'power3'}), sy = gsap.quickTo(stage, 'rotationX', {duration:.6, ease:'power3'});
+  return (x, y) => { sx(x * max); sy(-y * max); }; }
+INIT.columns = s => { if (!still) gsap.from(s.querySelectorAll('.dc-col'), { y:80, opacity:0, duration:1.2, ease:'power3.out', stagger:.12 }); };
+document.querySelectorAll('.hx[data-init]').forEach(s => { try { INIT[s.dataset.init](s); } catch (e) { console.error(s.dataset.init, e); } });
+})();
+</script>
 <script src="/kit/lib/Flip.min.js"></script>
 <script>
 /* filter + viewer: plain JS, so both work with motion off. With motion on,

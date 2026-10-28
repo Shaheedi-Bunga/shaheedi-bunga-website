@@ -37,6 +37,7 @@ testing without saving it.
 | `src/gallery.html` | 81 photographs, Flip filters, a full-screen viewer (arrow keys, Escape, focus kept inside) |
 | `src/resources.html` | the calendar card, one search across every file, a contents list that follows the page |
 | `src/safeguarding.html`, `privacy.html` | policy layout; 999 first; tap-to-call numbers; privacy updated for the switch |
+| `.hx` heroes | the hero picked for each page from the hero mockups (2026-10-28): its HTML in place of the page's `.phero`, its CSS scoped under `.hx` in the page's `<style>`, its motion in one script after `<!--@scripts-->`; pictures in `img/hero/`. Kirtan keeps its live hero; Tabla, Katha and Itihaas are still drafts |
 | `img/` | resized copies. Fresco, Akal Bunga, Harmandir Sahib and the Vaaran folio are public domain, sourced in `Content/Puratan_Art/SOURCES.md` |
 
 ## Rules kept

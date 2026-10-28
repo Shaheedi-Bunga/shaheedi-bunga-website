@@ -24,6 +24,33 @@
      noindex preview beside build.js and is linked from nowhere. Places and
      unknowns settled by the user 2026-10-27: all gurdwaras, contact us to inquire. -->
 <style>
+/* the picked hero (lifted from the hero mockups, 2026-10-28): its own tokens, from the kit's */
+.hx{ --ink:var(--navy); --muted:var(--navy-70); --gold:var(--gold-text); --gold-lite:#B8902F; --night:#070E1E; --night-2:#101C37; --sans:var(--body); }
+html[data-mood="dark"] .hx{ --ink:#F3EEE2; --muted:rgba(243,238,226,.74); --gold:#EBCD88; --gold-lite:#D4AC57; }
+.hx .k{font:11px/1.4 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+.hx .gur-big{display:block;font:600 clamp(44px,6.4vw,92px)/1.25 var(--gur);color:var(--gold);margin-top:14px}
+.hx .hxlede{color:var(--muted);max-width:40ch;margin-top:18px;font-size:clamp(16px,1.3vw,19px)}
+.hx .meta{display:flex;flex-wrap:wrap;gap:clamp(18px,3vw,44px);margin-top:26px;padding-top:16px;border-top:1px solid var(--line)}
+.hx .meta span{font:11px/1.4 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.hx .meta b{display:block;font:500 clamp(22px,2vw,30px)/1.2 var(--display);letter-spacing:0;text-transform:none;color:var(--ink);margin-top:4px}
+.hx.night .meta b{color:#F3EEE2}
+.hx.hero2{position:relative;overflow:clip;min-height:min(100svh,940px);padding-block:76px 56px;
+  padding-left:max(16px,4vw,env(safe-area-inset-left,0px));padding-right:max(16px,4vw,env(safe-area-inset-right,0px))}
+.hx.hero2.night{background:radial-gradient(90% 70% at 70% 40%,#13203A,#070E1E);color:#F3EEE2;--muted:rgba(243,238,226,.74);--gold:#EBCD88;--line:rgba(243,238,226,.16);--ink:#F3EEE2}
+.hx.hero2 h1{font:500 clamp(46px,6.8vw,104px)/.98 var(--display);margin:0}
+.hx.hero2 h1 em{font-style:italic;color:var(--gold)}
+.hx.cr{padding:0;min-height:0}
+.hx .cr-pin{position:relative;height:100svh;min-height:620px;overflow:hidden;perspective:700px;perspective-origin:50% 45%;
+  background:radial-gradient(60% 50% at 50% 45%,#1C2A48,#060C1C)}
+.hx .cr-hall{position:absolute;left:50%;top:50%;width:0;height:0;transform-style:preserve-3d}
+.hx .cr-p{position:absolute;margin:0;width:260px;left:-130px;top:-200px;transform-style:preserve-3d}
+.hx .cr-p img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block;border:8px solid #2A1C0C;outline:2px solid #B8902F;box-shadow:0 30px 60px -20px rgba(0,0,0,.8)}
+.hx .cr-p figcaption{font:12px/1.4 var(--sans);color:rgba(243,238,226,.75);margin-top:10px}
+.hx .cr-copy{position:absolute;left:max(16px,4vw);bottom:40px;z-index:5;max-width:560px;text-shadow:0 2px 20px rgba(0,0,0,.8)}
+.hx .cr-copy .hxlede{display:none}
+.hx .cr-now{min-height:1.4em;margin-top:14px;color:#EBCD88}
+.hx .cr-pin::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(6,12,28,.85),rgba(6,12,28,.1) 50%,transparent),radial-gradient(40% 40% at 50% 45%,transparent,rgba(6,12,28,.6))}
+
 .tbc{ background:rgba(184,144,47,.16); border-bottom:1px dashed var(--gold); padding:0 .2em; font-style:normal; }
 .draftbar{ position:sticky; top:var(--mastH,74px); z-index:5; background:var(--navy); color:var(--cream); font:12px/1.4 var(--mono);
   letter-spacing:.08em; text-transform:uppercase; text-align:center; padding:8px 16px; }
@@ -46,20 +73,9 @@
 
 <p class="draftbar">Draft for checking · not on the site yet</p>
 <main id="main">
-<section class="phero no-art paper" data-hero>
-  <div class="phero-in">
-    <div>
-      <p class="eyebrow">Gurmat Vidyala · 06 · Itihaas</p>
-      <span class="gur gur-line" lang="pa">ਇਤਿਹਾਸ ਵਿਦਿਆਲਾ</span>
-      <h1 class="display">Itihaas <em>Vidyala</em></h1>
-      <p class="lede">The history of the Panth: the sakhian, the shaheeds, and the bungas these classes are named after.</p>
-      <dl class="facts3">
-        <div><dt>When</dt><dd>Wednesday evenings</dd></div>
-        <div><dt>Where</dt><dd>At all our gurdwaras</dd></div>
-        <div><dt>Fee</dt><dd>None</dd></div>
-      </dl>
-    </div>
-  </div>
+<section data-hero class="hx hero2 cr night" data-init="corridor">
+  <div class="cr-pin"><div class="cr-hall"><figure class="cr-p" style="--i:0"><img src="img/hero/itihaas-82a4f4af.webp" width="560" height="869" alt="Baba Deep Singh Ji · wall painting, Gurdwara Baba Atal Rai"><figcaption>Baba Deep Singh Ji · wall painting, Gurdwara Baba Atal Rai</figcaption></figure><figure class="cr-p" style="--i:1"><img src="img/hero/itihaas-62d3af51.webp" width="560" height="700" alt="Bhai Gurdas Ji · fresco, Gurdwara Baba Atal Rai"><figcaption>Bhai Gurdas Ji · fresco, Gurdwara Baba Atal Rai</figcaption></figure><figure class="cr-p" style="--i:2"><img src="img/hero/itihaas-a024a1f5.webp" width="560" height="327" alt="The four Sahibzade · mural, Gurdwara Baba Atal Rai"><figcaption>The four Sahibzade · mural, Gurdwara Baba Atal Rai</figcaption></figure><figure class="cr-p" style="--i:3"><img src="img/hero/itihaas-5db1b929.webp" width="560" height="700" alt="Akali Phula Singh Ji · c.1850–70, V&A"><figcaption>Akali Phula Singh Ji · c.1850–70, V&A</figcaption></figure><figure class="cr-p" style="--i:4"><img src="img/hero/itihaas-a5e0c46c.webp" width="560" height="726" alt="S. Jassa Singh Ahluwalia · c.1859"><figcaption>S. Jassa Singh Ahluwalia · c.1859</figcaption></figure><figure class="cr-p" style="--i:5"><img src="img/hero/itihaas-c070464f.webp" width="560" height="454" alt="An Akali Nihang Singh · 19th century"><figcaption>An Akali Nihang Singh · 19th century</figcaption></figure><figure class="cr-p" style="--i:6"><img src="img/hero/itihaas-b7088f27.webp" width="720" height="569" alt="Akali Nihang Singhs on the march · Company School, Lahore, c.1885"><figcaption>Akali Nihang Singhs on the march · Company School, Lahore, c.1885</figcaption></figure><figure class="cr-p" style="--i:7"><img src="img/hero/itihaas-74999143.webp" width="720" height="590" alt="Baba Deep Singh Ji at Amritsar, 1757 · Gian Singh Naqqash"><figcaption>Baba Deep Singh Ji at Amritsar, 1757 · Gian Singh Naqqash</figcaption></figure><figure class="cr-p" style="--i:8"><img src="img/hero/itihaas-b38665fd.webp" width="720" height="517" alt="Baba Deep Singh Ji leading the Singhs · early 20th century"><figcaption>Baba Deep Singh Ji leading the Singhs · early 20th century</figcaption></figure><figure class="cr-p" style="--i:9"><img src="img/hero/itihaas-d2c396d8.webp" width="720" height="956" alt="The battle of Sirhind, 1710 · manuscript folio, c.1770"><figcaption>The battle of Sirhind, 1710 · manuscript folio, c.1770</figcaption></figure><figure class="cr-p" style="--i:10"><img src="img/hero/itihaas-e36ee01f.webp" width="720" height="523" alt="Morcha Guru Ka Bagh, 1922 · photograph"><figcaption>Morcha Guru Ka Bagh, 1922 · photograph</figcaption></figure><figure class="cr-p" style="--i:11"><img src="img/hero/itihaas-42fb24eb.webp" width="720" height="768" alt="A Shaheedi Jatha leaves for Jaito, 1924 · photograph"><figcaption>A Shaheedi Jatha leaves for Jaito, 1924 · photograph</figcaption></figure><figure class="cr-p" style="--i:12"><img src="img/hero/itihaas-a1b95a67.webp" width="720" height="1076" alt="Sardar Jassa Singh Ramgarhia · late 18th century"><figcaption>Sardar Jassa Singh Ramgarhia · late 18th century</figcaption></figure><figure class="cr-p" style="--i:13"><img src="img/hero/itihaas-2b5be51e.webp" width="720" height="720" alt="Shaheed Baba Deep Singh Ji · fresco, Gurdwara Baba Atal Rai"><figcaption>Shaheed Baba Deep Singh Ji · fresco, Gurdwara Baba Atal Rai</figcaption></figure></div><div class="cr-copy"><p class="k">Gurmat Vidyala · 06 · Itihaas</p><span class="gur-big" lang="pa">ਇਤਿਹਾਸ ਵਿਦਿਆਲਾ</span><h1>Itihaas <em>Vidyala</em></h1>
+    <p class="hxlede">The history of the Panth: the sakhian, the shaheeds, and the bungas these classes are named after.</p><div class="meta"><span>When<b>Wednesday evenings</b></span><span>Where<b>All our gurdwaras</b></span><span>Fee<b>None</b></span></div><p class="cr-now k" aria-live="polite"></p></div></div>
 </section>
 <div class="wrapx paper">
   <section class="band" style="border-top:0">
@@ -99,6 +115,31 @@
 <script src="lib/lenis.min.js"></script>
 <script src="kit.js"></script>
 
+<script>
+/* the picked hero's motion, lifted from the hero mockups; nothing here runs with reduced motion */
+(() => {
+const still = matchMedia('(prefers-reduced-motion: reduce)').matches, coarse = matchMedia('(pointer: coarse)').matches;
+const INIT = {};
+const inView = el => { const r = el.getBoundingClientRect(); return r.bottom > 0 && r.top < innerHeight; };
+function follow(el, fn){ el.addEventListener('pointermove', e => { const r = el.getBoundingClientRect();
+  fn((e.clientX - r.left) / r.width * 2 - 1, (e.clientY - r.top) / r.height * 2 - 1, e); }); el.addEventListener('pointerleave', () => fn(0, 0, null)); }
+
+function track(el, fn){ el.addEventListener('pointermove', e => { const r = el.getBoundingClientRect();
+  fn((e.clientX - r.left) / r.width * 2 - 1, (e.clientY - r.top) / r.height * 2 - 1, e); }); el.addEventListener('pointerleave', () => fn(0, 0, null)); }
+function tilt(stage, max){ const sx = gsap.quickTo(stage, 'rotationY', {duration:.6, ease:'power3'}), sy = gsap.quickTo(stage, 'rotationX', {duration:.6, ease:'power3'});
+  return (x, y) => { sx(x * max); sy(-y * max); }; }
+INIT.corridor = s => { const pin = s.querySelector('.cr-pin'), hall = s.querySelector('.cr-hall'), P = [...s.querySelectorAll('.cr-p')], now = s.querySelector('.cr-now');
+  const GAP = 520, n = P.length;
+  P.forEach((p, i) => { const side = i % 2 ? 1 : -1, z = -i * GAP / 2;
+    p.style.transform = `translate3d(${side * 380}px,0,${z}px) rotateY(${-side * 62}deg)`; });
+  const walk = prog => { const z = prog * (n / 2) * GAP; hall.style.transform = `translateZ(${z}px)`;
+    const k = Math.min(n - 1, Math.max(0, Math.round(z / (GAP / 2)))); now.textContent = P[k].querySelector('figcaption').textContent; };
+  if (still) { walk(.08); return; }
+  s.style.height = '360vh'; pin.style.position = 'sticky'; pin.style.top = '0'; walk(0);
+  ScrollTrigger.create({ trigger:s, start:'top top', end:'bottom bottom', onUpdate:self => walk(self.progress) }); };
+document.querySelectorAll('.hx[data-init]').forEach(s => { try { INIT[s.dataset.init](s); } catch (e) { console.error(s.dataset.init, e); } });
+})();
+</script>
 <script>KIT.start();</script>
 </body>
 </html>

@@ -1,5 +1,33 @@
 <!--@head title="About"-->
 <style>
+/* the picked hero (lifted from the hero mockups, 2026-10-28): its own tokens, from the kit's */
+.hx{ --ink:var(--navy); --muted:var(--navy-70); --gold:var(--gold-text); --gold-lite:#B8902F; --night:#070E1E; --night-2:#101C37; --sans:var(--body); }
+html[data-mood="dark"] .hx{ --ink:#F3EEE2; --muted:rgba(243,238,226,.74); --gold:#EBCD88; --gold-lite:#D4AC57; }
+.hx .k{font:11px/1.4 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+.hx .gur-big{display:block;font:600 clamp(44px,6.4vw,92px)/1.25 var(--gur);color:var(--gold);margin-top:14px}
+.hx .hxlede{color:var(--muted);max-width:40ch;margin-top:18px;font-size:clamp(16px,1.3vw,19px)}
+.hx .meta{display:flex;flex-wrap:wrap;gap:clamp(18px,3vw,44px);margin-top:26px;padding-top:16px;border-top:1px solid var(--line)}
+.hx .meta span{font:11px/1.4 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.hx .meta b{display:block;font:500 clamp(22px,2vw,30px)/1.2 var(--display);letter-spacing:0;text-transform:none;color:var(--ink);margin-top:4px}
+.hx.hero2{position:relative;overflow:clip;min-height:min(100svh,940px);padding-block:76px 56px;
+  padding-left:max(16px,4vw,env(safe-area-inset-left,0px));padding-right:max(16px,4vw,env(safe-area-inset-right,0px))}
+.hx.hero2 h1{font:500 clamp(46px,6.8vw,104px)/.98 var(--display);margin:0}
+.hx.hero2 h1 em{font-style:italic;color:var(--gold)}
+.hx.nb{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(24px,4vw,64px);align-items:center}
+.hx .nb-years{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0}
+.hx .nb-y{font:500 22px/1 var(--display);padding:10px 16px;border-radius:999px;border:0;background:var(--cream-2);box-shadow:inset 0 0 0 1px var(--line);color:inherit;cursor:pointer}
+.hx .nb-y[aria-pressed="true"]{background:#7A1C1C;color:#FBF4E2;box-shadow:none}
+.hx .nb-board{position:relative;min-height:min(78vh,680px);border-radius:14px;padding:28px;display:flex;flex-wrap:wrap;gap:22px;align-content:center;justify-content:center;
+  background:radial-gradient(circle at 30% 20%,rgba(255,255,255,.18),transparent 60%),repeating-radial-gradient(circle at 10% 10%,rgba(90,55,20,.12) 0 1px,transparent 1px 4px),#B88A56;
+  box-shadow:inset 0 0 0 10px #6E4A22,inset 0 0 40px rgba(40,20,5,.5),0 30px 60px -30px rgba(40,25,5,.6)}
+.hx .nb-p{position:relative;margin:0;width:clamp(150px,13vw,210px);background:#FDFBF5;padding:8px 8px 10px;transform:rotate(var(--r));box-shadow:0 14px 22px -10px rgba(30,15,0,.6);transition:transform .3s}
+.hx .nb-p[hidden]{display:none}
+.hx .nb-p:hover{transform:rotate(0) scale(1.06);z-index:3}
+.hx .nb-p img{width:100%;display:block}
+.hx .nb-p figcaption{font-size:12px;line-height:1.3;color:#3A2A10;margin-top:6px}
+.hx .nb-pin{position:absolute;top:-7px;left:50%;width:14px;height:14px;margin-left:-7px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#E86A5A,#8A1C14);box-shadow:0 3px 4px rgba(0,0,0,.4);z-index:2}
+@media(max-width:860px){.hx.nb{grid-template-columns:minmax(0,1fr)}}
+
 /* the Darbar Sahib photograph opens from a framed plate to the full width
    as you scroll past it */
 .plate{ margin:0 0 calc(var(--u)*2); position:relative; }
@@ -37,16 +65,10 @@ html[data-mood="dark"] .plate img{ filter:sepia(.45) brightness(.82) contrast(1.
 <!--@mast current="about"-->
 
 <main id="main">
-<section class="phero no-art paper" data-hero>
-  <div class="phero-in">
-    <div>
-      <p class="eyebrow">About the charity</p>
-      <h1 class="display">The place of <em>the martyrs.</em></h1>
-      <p class="lede">Shaheedi Bunga is a registered charity in Leicester. It teaches Gurmat (reading Gurbani,
-        kirtan on the tanti saaj, and traditional archery) across the city's gurdware. Every class is free and
-        taught by volunteers.</p>
-    </div>
-  </div>
+<section data-hero class="hx hero2 nb" data-init="noticeboard">
+  <div class="nb-copy"><p class="k">About the charity</p><span class="gur-big" lang="pa">ਸ਼ਹੀਦੀ ਬੁੰਗਾ</span><h1>The place of <em>the martyrs.</em></h1><p class="hxlede">Since 2019: samagams, camps, talks and classes. These are the posters the sangat saw.</p>
+    <div class="nb-years" role="group" aria-label="Choose a year"><button class="nb-y" data-y="2019" aria-pressed="false">2019</button><button class="nb-y" data-y="2022" aria-pressed="false">2022</button><button class="nb-y" data-y="2023" aria-pressed="false">2023</button><button class="nb-y" data-y="2025" aria-pressed="true">2025</button></div><div class="meta"><span>Charity<b>1185103</b></span><span>Registered<b>30 Aug 2019</b></span><span>Gurdware<b>Two</b></span></div></div>
+  <div class="nb-board"><figure class="nb-p" data-y="2019" style="--r:-5deg"><i class="nb-pin"></i><img src="img/hero/about-3a580190.webp" width="540" height="405" alt="Poster: Sri Akhand Paath Sahib, 21–23 June 2019"><figcaption>Sri Akhand Paath Sahib, 21–23 June 2019</figcaption></figure><figure class="nb-p" data-y="2019" style="--r:-2deg"><i class="nb-pin"></i><img src="img/hero/about-c27b9e35.webp" width="540" height="675" alt="Poster: Gurbani Katha Vichaar, Birmingham, June 2019"><figcaption>Gurbani Katha Vichaar, Birmingham, June 2019</figcaption></figure><figure class="nb-p" data-y="2022" style="--r:1deg"><i class="nb-pin"></i><img src="img/hero/about-893350ac.webp" width="540" height="540" alt="Poster: Hola Mohalla UK War Games, 19–20 March 2022"><figcaption>Hola Mohalla UK War Games, 19–20 March 2022</figcaption></figure><figure class="nb-p" data-y="2022" style="--r:4deg"><i class="nb-pin"></i><img src="img/hero/about-3d0acd86.webp" width="540" height="540" alt="Poster: Bhog of the Paath Bodh Samagam, 28 August 2022"><figcaption>Bhog of the Paath Bodh Samagam, 28 August 2022</figcaption></figure><figure class="nb-p" data-y="2022" style="--r:-4deg"><i class="nb-pin"></i><img src="img/hero/about-c8c8c96b.webp" width="540" height="675" alt="Poster: Shaheedi Bunga Online Academy"><figcaption>Shaheedi Bunga Online Academy</figcaption></figure><figure class="nb-p" data-y="2022" style="--r:-1deg"><i class="nb-pin"></i><img src="img/hero/about-2cda3264.webp" width="540" height="540" alt="Poster: The Shaheedi Bunga tour"><figcaption>The Shaheedi Bunga tour</figcaption></figure><figure class="nb-p" data-y="2022" style="--r:2deg"><i class="nb-pin"></i><img src="img/hero/about-d5514aa7.webp" width="540" height="540" alt="Poster: 25 Singh Lareevaar Sri Akhand Paath Samagam, December 2022"><figcaption>25 Singh Lareevaar Sri Akhand Paath Samagam, December 2022</figcaption></figure><figure class="nb-p" data-y="2023" style="--r:5deg"><i class="nb-pin"></i><img src="img/hero/about-055342b4.webp" width="540" height="675" alt="Poster: Gurbani Vidhya Camp, 7–20 August 2023"><figcaption>Gurbani Vidhya Camp, 7–20 August 2023</figcaption></figure><figure class="nb-p" data-y="2025" style="--r:-3deg"><i class="nb-pin"></i><img src="img/hero/about-6c333912.webp" width="540" height="540" alt="Poster: Hola Mohalla UK 2025, 23 March"><figcaption>Hola Mohalla UK 2025, 23 March</figcaption></figure><figure class="nb-p" data-y="2025" style="--r:0deg"><i class="nb-pin"></i><img src="img/hero/about-96dfd2e0.webp" width="540" height="675" alt="Poster: Gurmat Samagam, Hola Mohalla 2025"><figcaption>Gurmat Samagam, Hola Mohalla 2025</figcaption></figure><figure class="nb-p" data-y="2025" style="--r:3deg"><i class="nb-pin"></i><img src="img/hero/about-7c4bbe6f.webp" width="540" height="671" alt="Poster: Monday Night Talks, March and April"><figcaption>Monday Night Talks, March and April</figcaption></figure><figure class="nb-p" data-y="2025" style="--r:-5deg"><i class="nb-pin"></i><img src="img/hero/about-80ea6963.webp" width="540" height="675" alt="Poster: The weekly timetable"><figcaption>The weekly timetable</figcaption></figure></div>
 </section>
 
 <figure class="plate" id="plate">
@@ -118,6 +140,28 @@ html[data-mood="dark"] .plate img{ filter:sepia(.45) brightness(.82) contrast(1.
 
 <!--@foot-->
 <!--@scripts-->
+<script>
+/* the picked hero's motion, lifted from the hero mockups; nothing here runs with reduced motion */
+(() => {
+const still = matchMedia('(prefers-reduced-motion: reduce)').matches, coarse = matchMedia('(pointer: coarse)').matches;
+const INIT = {};
+const inView = el => { const r = el.getBoundingClientRect(); return r.bottom > 0 && r.top < innerHeight; };
+function follow(el, fn){ el.addEventListener('pointermove', e => { const r = el.getBoundingClientRect();
+  fn((e.clientX - r.left) / r.width * 2 - 1, (e.clientY - r.top) / r.height * 2 - 1, e); }); el.addEventListener('pointerleave', () => fn(0, 0, null)); }
+
+function track(el, fn){ el.addEventListener('pointermove', e => { const r = el.getBoundingClientRect();
+  fn((e.clientX - r.left) / r.width * 2 - 1, (e.clientY - r.top) / r.height * 2 - 1, e); }); el.addEventListener('pointerleave', () => fn(0, 0, null)); }
+function tilt(stage, max){ const sx = gsap.quickTo(stage, 'rotationY', {duration:.6, ease:'power3'}), sy = gsap.quickTo(stage, 'rotationX', {duration:.6, ease:'power3'});
+  return (x, y) => { sx(x * max); sy(-y * max); }; }
+INIT.noticeboard = s => { const B = [...s.querySelectorAll('.nb-y')], P = [...s.querySelectorAll('.nb-p')];
+  const show = y => { B.forEach(b => b.setAttribute('aria-pressed', b.dataset.y === y)); const on = P.filter(p => p.dataset.y === y);
+    P.forEach(p => p.hidden = p.dataset.y !== y);
+    if (!still) gsap.fromTo(on, { y:-70, opacity:0, rotation:'-=14' }, { y:0, opacity:1, rotation:(i, el) => getComputedStyle(el).getPropertyValue('--r'), duration:.6, ease:'back.out(1.6)', stagger:.09 }); };
+  B.forEach(b => b.addEventListener('click', () => show(b.dataset.y)));
+  show(B[B.length - 1].dataset.y); };
+document.querySelectorAll('.hx[data-init]').forEach(s => { try { INIT[s.dataset.init](s); } catch (e) { console.error(s.dataset.init, e); } });
+})();
+</script>
 <script>
 KIT.start(function(gsap, ST){
   gsap.to("[data-plate]", { yPercent:-12, ease:"none", scrollTrigger:{ trigger:"#plate", start:"top bottom", end:"bottom top", scrub:true } });
