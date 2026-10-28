@@ -69,6 +69,12 @@ html[data-mood="dark"] .hx{ --ink:#F3EEE2; --muted:rgba(243,238,226,.74); --gold
 .soon b{ font-family:var(--display); font-weight:500; font-size:max(24px,calc(var(--u)*2.2)); display:block; }
 .soon span{ font-family:var(--mono); font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--gold-text); }
 .empty{ display:none; color:var(--navy-70); font-size:17px; } .empty.on{ display:block; }
+/* two portrait photographs side by side (after about.html's .sangat figure) */
+.pair{ display:grid; grid-template-columns:1fr 1fr; gap:calc(var(--u)*1.4); margin:calc(var(--u)*4) 0; max-width:960px; }
+.pair figure{ margin:0; }
+.pair img{ width:100%; aspect-ratio:3/4; object-fit:cover; border-radius:3px; display:block; filter:var(--photo); }
+.pair figcaption{ font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--navy-70); margin-top:12px; }
+@media(max-width:600px){ .pair{ grid-template-columns:1fr; } }
 </style>
 </head>
 <body>
@@ -84,10 +90,17 @@ html[data-mood="dark"] .hx{ --ink:#F3EEE2; --muted:rgba(243,238,226,.74); --gold
 
 <a class="cal" href="/sikhi-calendar/" data-fade>
   <span class="gur" lang="pa">ਸਿੱਖੀ ਕੈਲੰਡਰ</span>
-  <span><b>Sikhi Calendar</b><p>The Nanakshahi calendar: today's date, the gurpurabs coming up, and the month and the year at a glance.
-    Panjabi dates first, English dates underneath.</p></span>
+  <span><b>Sikhi Calendar</b><p>The Nanakshahi calendar shows today's date, the gurpurabs coming up, and the whole month and year.
+    Panjabi dates come first, with the English dates underneath.</p></span>
   <span class="go">Open the calendar →</span>
 </a>
+
+<div class="wrapx paper">
+  <div class="pair">
+    <figure data-fade><img src="img/p-paath-reading.jpg" data-sizes="(max-width:600px) 100vw, 45vw" alt="A Singh reading from the saroop of Sri Guru Granth Sahib Ji at a paath samagam, the hall behind." loading="lazy"><figcaption>Paath samagam</figcaption></figure>
+    <figure data-fade><img src="img/p-santhiya-mic.jpg" data-sizes="(max-width:600px) 100vw, 45vw" alt="A Singh in a santhiya class reading from a pothi on a rehal into a microphone." loading="lazy"><figcaption>Santhiya class</figcaption></figure>
+  </div>
+</div>
 
 <div class="lib paper">
   <nav class="toc" aria-label="Collections">
@@ -101,11 +114,11 @@ html[data-mood="dark"] .hx{ --ink:#F3EEE2; --muted:rgba(243,238,226,.74); --gold
     <label class="find"><span class="sr">Find a granth or talk</span>
       <input type="search" id="q" placeholder="Find a granth or a talk…" autocomplete="off">
       <output id="qn" for="q" aria-live="polite"></output></label>
-    <p class="empty" id="empty">Nothing matches that. Try a shorter word, or the Gurmukhi spelling.</p>
+    <p class="empty" id="empty">Nothing matches that search. Try a shorter word, or the Gurmukhi spelling.</p>
 
     <section class="coll" id="santheya">
       <div class="coll-head"><h2>Santheya Granths</h2><span class="coll-meta">11 files · about 1.5 GB</span></div>
-      <p class="about">The pothis santhiya is read from: larivaar granths, gutke, and the Kartarpuri Bir photographs.</p>
+      <p class="about">Santhiya classes read from these pothis, which include larivaar granths, gutke and photographs of the Kartarpuri Bir.</p>
       <ul class="files">
         <li><span class="nm">1604 Kartarpuri Bir Some Photos.pdf</span><span class="sz">118.2 MB</span></li>
         <li><span class="nm">Kabit Bhai Gurdas Ji.pdf</span><span class="sz">3.5 MB</span></li>
@@ -124,7 +137,7 @@ html[data-mood="dark"] .hx{ --ink:#F3EEE2; --muted:rgba(243,238,226,.74); --gold
 
     <section class="coll" id="katha">
       <div class="coll-head"><h2>Katha Granths</h2><span class="coll-meta">17 files · about 0.6 GB</span></div>
-      <p class="about">The jeevani of each Guru Sahib, the sakhian, and the sampardavali: what katha is prepared from.</p>
+      <p class="about">Katha is prepared from these granths: the jeevani of each Guru Sahib, the sakhian, and the sampardavali.</p>
       <ul class="files">
         <li><span class="nm gur" lang="pa">ਅਸਟਮ ਬਲਬੀਰਾ — ਜੀਵਨੀ ਗੁਰੂ ਹਰਿ ਕ੍ਰਿਸਨ ਜੀ</span><span class="sz">63.3 MB</span></li>
         <li><span class="nm gur" lang="pa">ਆਦਿ ਸਿੱਖ ਤੇ ਆਦਿ ਸਾਖੀਆਂ — ਸਤਿਬੀਰ ਸਿੰਘ</span><span class="sz">11.1 MB</span></li>
@@ -149,7 +162,7 @@ html[data-mood="dark"] .hx{ --ink:#F3EEE2; --muted:rgba(243,238,226,.74); --gold
 
     <section class="coll" id="nanak">
       <div class="coll-head"><h2>Sri Nanak Prakash</h2><span class="coll-meta">a folder · and one pothi</span></div>
-      <p class="about">Suraj Parkash Granth, and a folder of Guru Nanak Dev Ji.</p>
+      <p class="about">One raas of the Suraj Parkash Granth, and a folder on Guru Nanak Dev Ji.</p>
       <ul class="files">
         <li><span class="nm">Guru Nanak Dev Ji — folder</span><span class="sz">—</span></li>
         <li><span class="nm">Raas 9, Suraj Parkash Granth.pdf</span><span class="sz">39.2 MB</span></li>
@@ -159,7 +172,7 @@ html[data-mood="dark"] .hx{ --ink:#F3EEE2; --muted:rgba(243,238,226,.74); --gold
 
     <section class="coll" id="talks">
       <div class="coll-head"><h2>Weekly Talks</h2><span class="coll-meta">14 talks · about 0.6 GB</span></div>
-      <p class="about">The Monday Night Talks, written up. Fourteen so far.</p>
+      <p class="about">These are the Monday Night Talks, written up. There are fourteen so far.</p>
       <ul class="files">
         <li><span class="nm">Week 1 — Katha Sri Guru Tegh Bahadur Sahib Ji (Chapters 1–14)</span><span class="sz">116.6 MB</span></li>
         <li><span class="nm">Week 2 — Beyond the Mind</span><span class="sz">7.8 MB</span></li>

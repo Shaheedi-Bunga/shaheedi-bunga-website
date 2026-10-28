@@ -62,6 +62,12 @@ a.way:hover .go{ transform:translate(6px,-6px); }
 .social a{ font-family:var(--display); font-size:max(22px,calc(var(--u)*2)); text-decoration:none; padding:.4em 1em; border:1px solid var(--line);
   border-radius:100px; transition:border-color .3s, background .3s; }
 .social a:hover{ border-color:var(--gold); background:var(--cream-2); }
+/* two portrait photographs side by side (after about.html's .sangat figure) */
+.pair{ display:grid; grid-template-columns:1fr 1fr; gap:calc(var(--u)*1.4); margin:calc(var(--u)*4) 0; max-width:960px; }
+.pair figure{ margin:0; }
+.pair img{ width:100%; aspect-ratio:3/4; object-fit:cover; border-radius:3px; display:block; filter:var(--photo); }
+.pair figcaption{ font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--navy-70); margin-top:12px; }
+@media(max-width:600px){ .pair{ grid-template-columns:1fr; } }
 </style>
 </head>
 <body>
@@ -73,7 +79,7 @@ a.way:hover .go{ transform:translate(6px,-6px); }
     <div class="fg-row gur" lang="pa"><span>ਵਾਹਿਗੁਰੂ ਜੀ ਕਾ ਖ਼ਾਲਸਾ ॥ ਵਾਹਿਗੁਰੂ ਜੀ ਕੀ ਫ਼ਤਹਿ ॥ </span></div>
     <div class="fg-row o"><span>Waheguru Ji Ka Khalsa · Waheguru Ji Ki Fateh · </span></div></div>
   <div class="fg-copy"><p class="k">Contact</p><span class="gur-mid" lang="pa">ਸੰਪਰਕ</span><h1>Come and <em>find us.</em></h1>
-    <p class="hxlede">WhatsApp is quickest. Someone will tell you this week's classes and where to turn up. No booking, no fee.</p>
+    <p class="hxlede">WhatsApp is the quickest way to reach us. We'll reply with this week's classes and where to go. There is no booking and no fee.</p>
     <div class="fg-places"><div><b>Gipsy Lane</b><span>Gurudwara Shri Guru Dashmesh Sahib</span></div><div><b>East Park Road</b><span>Guru Tegh Bahadur Gurdwara</span></div></div></div>
   <div class="fg-art"><img src="img/hero/contact-b16388b5.webp" width="900" height="1115" alt="Two Singhs greet each other with joined hands before a glowing gurdwara doorway, a Nishan Sahib beside it.">
     <a class="mg-btn fg-btn" href="#contact"><span>WhatsApp<br><small>+44 7394 848407</small></span></a></div>
@@ -91,18 +97,22 @@ a.way:hover .go{ transform:translate(6px,-6px); }
       <div class="vcards">
         <div class="vcard" data-fade><div class="pic"><img src="img/p-archery-full-draw.jpg" data-sizes="(max-width:760px) 100vw, 27vw" alt="An archer in a blue chola at full draw, the string drawn back to the face." loading="lazy"></div>
           <div class="t"><h3>Guru Tegh Bahadur Gurdwara</h3>
-            <p>106 East Park Road, Leicester LE5 4QB · santhiya, tabla, and the Archery Akhara on Sundays</p>
+            <p>106 East Park Road, Leicester LE5 4QB. Santhiya, tabla, and the Archery Akhara on Sundays.</p>
             <a href="https://maps.google.com/?q=106+East+Park+Road+Leicester+LE5+4QB" target="_blank" rel="noopener">Open in Maps ↗</a></div></div>
         <div class="vcard" data-fade><div class="pic"><img src="img/k-k02.jpg" data-sizes="(max-width:760px) 100vw, 27vw" alt="A student bowing the dilruba, seated at the microphone." loading="lazy"></div>
           <div class="t"><h3>Gurudwara Shri Guru Dashmesh Sahib</h3>
-            <p>49 Gipsy Lane, Leicester · the Kirtan Vidyala, nine classes a week, tabla and jori, and santhiya every day</p>
+            <p>49 Gipsy Lane, Leicester. The Kirtan Vidyala with nine classes a week, tabla and jori, and santhiya every day.</p>
             <a href="https://maps.google.com/?q=49+Gipsy+Lane+Leicester+LE4+6RB" target="_blank" rel="noopener">Open in Maps ↗</a></div></div>
       </div>
     </div>
   </section>
+  <div class="pair">
+    <figure data-fade><img src="img/p-gurdwara-visit.jpg" data-sizes="(max-width:600px) 100vw, 45vw" alt="Two Singhs standing barefoot beside a Gurmantar and Mool Mantar board in a gurdwara, one in white bana, the other in white with a blue parna." loading="lazy"><figcaption>At the gurdwara</figcaption></figure>
+    <figure data-fade><img src="img/p-sevadars.jpg" data-sizes="(max-width:600px) 100vw, 45vw" alt="Three Singhs in bana and parnas standing together in a gurdwara hall." loading="lazy"><figcaption>In the gurdwara hall</figcaption></figure>
+  </div>
 
   <section class="band">
-    <h2 data-fade><small>Online</small>Classes, talks and samagams.</h2>
+    <h2 data-fade><small>Online</small>Find our classes, talks and samagams online.</h2>
     <div class="body">
       <div class="social" data-fade>
         <a href="https://www.instagram.com/shaheedi_bunga_uk/" target="_blank" rel="noopener">Instagram</a>
@@ -114,8 +124,8 @@ a.way:hover .go{ transform:translate(6px,-6px); }
 
   <section class="band">
     <h2 data-fade><small>Charity</small>1185103</h2>
-    <div class="body"><p data-fade>Registered in England and Wales. If something about a child's safety worries you, see
-      <a href="safeguarding.html">raising a concern</a>.</p></div>
+    <div class="body"><p data-fade>Shaheedi Bunga is a registered charity in England and Wales. If you are worried about a child's safety, read
+      <a href="safeguarding.html">how to raise a concern</a>.</p></div>
   </section>
   <div style="height:calc(var(--u)*8)"></div>
 </div>

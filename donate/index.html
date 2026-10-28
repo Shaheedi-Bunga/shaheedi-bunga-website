@@ -84,6 +84,11 @@ html[data-mood="dark"] .hx{ --ink:#F3EEE2; --muted:rgba(243,238,226,.74); --gold
 .inkind .arch{ aspect-ratio:3/4; --archH:30%; }
 .inkind img{ width:100%; height:100%; object-fit:cover; filter:var(--photo); }
 .inkind figcaption{ font-family:var(--display); font-size:max(20px,calc(var(--u)*1.7)); margin-top:10px; }
+.solo{ margin:calc(var(--u)*3) 0 0; max-width:420px; }
+.solo .arch{ aspect-ratio:3/4; --archH:30%; }
+.solo img{ width:100%; height:100%; object-fit:cover; filter:var(--photo); }
+.solo figcaption{ font-family:var(--display); font-size:max(20px,calc(var(--u)*1.7)); margin-top:10px; }
+.solo figcaption small{ display:block; font-family:var(--mono); font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--gold-text); margin-top:4px; }
 .inkind figcaption small{ display:block; font-family:var(--mono); font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--gold-text); margin-top:4px; }
 @media(max-width:700px){ .inkind{ grid-template-columns:1fr 1fr; } .inkind figure:last-child{ display:none; } }
 </style>
@@ -102,17 +107,17 @@ html[data-mood="dark"] .hx{ --ink:#F3EEE2; --muted:rgba(243,238,226,.74); --gold
 <main id="main">
 <section data-hero class="hx hero2 au" data-init="aurora">
   <div class="au-bg"><i></i><i></i><i></i></div>
-  <div class="au-copy"><p class="k">Support the Vidyala</p><span class="gur-big" lang="pa">ਦਸਵੰਧ</span><h1>Nothing is <em>charged.</em></h1><div class="meta"><span>Fee<b>None</b></span><span>Paid staff<b>None</b></span><span>Charity<b>1185103</b></span></div></div>
-  <div class="au-tick" aria-hidden="true"><div class="au-list"><p>Instruments are lent out.</p><p>Granths are shared.</p><p>Nobody is paid.</p><p>Every class is free.</p><p>Not a teacher, not a trustee.</p>
-    <p>Instruments are lent out.</p><p>Granths are shared.</p><p>Nobody is paid.</p><p>Every class is free.</p><p>Not a teacher, not a trustee.</p></div></div>
+  <div class="au-copy"><p class="k">Support the Vidyala</p><span class="gur-big" lang="pa">ਦਸਵੰਧ</span><h1>Help keep every class <em>free.</em></h1><div class="meta"><span>Fee<b>None</b></span><span>Paid staff<b>None</b></span><span>Charity<b>1185103</b></span></div></div>
+  <div class="au-tick" aria-hidden="true"><div class="au-list"><p>Instruments are lent to students.</p><p>Granths are shared.</p><p>Every class is free.</p><p>Every teacher is a volunteer.</p><p>No trustee is paid.</p>
+    <p>Instruments are lent to students.</p><p>Granths are shared.</p><p>Every class is free.</p><p>Every teacher is a volunteer.</p><p>No trustee is paid.</p></div></div>
   <img class="au-fig" src="/kit/img/hero/donate-b8c3c42a.webp" width="760" height="760" alt="A Singh in blue bana holding out a stringed instrument as a gift.">
 </section>
 
 <div class="wrapx paper">
   <section class="band">
-    <h2 data-fade><small>How to give</small>Straight to the charity's own account.</h2>
+    <h2 data-fade><small>How to give</small>Give by bank transfer.</h2>
     <div class="body">
-      <p data-fade>By bank transfer. There is no form to fill in and nothing to sign up to.</p>
+      <p data-fade>Your gift goes straight into the charity's own account. There is no form to fill in and nothing to sign up for.</p>
       <div class="bank" data-fade>
         <div class="ttl"><b>Shaheedi Bunga</b><span>Registered charity · 1185103</span></div>
         <dl>
@@ -127,11 +132,11 @@ html[data-mood="dark"] .hx{ --ink:#F3EEE2; --muted:rgba(243,238,226,.74); --gold
   </section>
 
   <section class="band">
-    <h2 data-fade><small>Seva in kind</small>An instrument, straight into a child's hands.</h2>
+    <h2 data-fade><small>Seva in kind</small>Give an instrument, a granth or a pothi.</h2>
     <div class="body">
-      <p data-fade>Instruments are lent to students who do not have their own, so a dilruba, taus or tabla in working
-        order goes straight into a child's hands. The same is true of granths and pothis. <b>Ask before buying anything</b>:
-        what is short changes term to term.</p>
+      <p data-fade>We lend instruments to students who don't have their own, so a dilruba, taus or tabla in working
+        order goes straight into a child's hands. Granths and pothis are passed on in the same way. <b>Please ask before you buy anything</b>,
+        because what we are short of changes from term to term.</p>
       <div class="inkind">
         <figure data-fade><div class="arch"><img src="/kit/img/p-kirtan-dilruba.jpg" alt="A young player bowing the dilruba between the microphones." loading="lazy" width="1200" height="1600" srcset="/kit/img/webp/p-kirtan-dilruba-480.webp 480w, /kit/img/webp/p-kirtan-dilruba-960.webp 960w, /kit/img/p-kirtan-dilruba.jpg 1200w" sizes="(max-width:760px) 45vw, 50vw"></div><figcaption>Dilruba<small>Bowed saaj</small></figcaption></figure>
         <figure data-fade><div class="arch"><img src="/kit/img/p-tabla-duo.jpg" alt="Two students playing tabla side by side." loading="lazy" width="1200" height="1600" srcset="/kit/img/webp/p-tabla-duo-480.webp 480w, /kit/img/webp/p-tabla-duo-960.webp 960w, /kit/img/p-tabla-duo.jpg 1200w" sizes="(max-width:760px) 45vw, 50vw"></div><figcaption>Tabla<small>Taal</small></figcaption></figure>
@@ -141,10 +146,11 @@ html[data-mood="dark"] .hx{ --ink:#F3EEE2; --muted:rgba(243,238,226,.74); --gold
   </section>
 
   <section class="band">
-    <h2 data-fade><small>Before you give</small>Ask what is short.</h2>
+    <h2 data-fade><small>Before you give</small>Ask us what is needed.</h2>
     <div class="body">
-      <p data-fade>One message will tell you what the classes need this term, whether that is money, an instrument or a pothi.</p>
+      <p data-fade>Send us a message and we'll tell you what the classes need this term, whether that is money, an instrument or a pothi.</p>
       <p data-fade><a class="wa" href="https://wa.me/447394848407?text=Sat%20Sri%20Akal%20%E2%80%94%20I'd%20like%20to%20ask%20what%20the%20classes%20need." target="_blank" rel="noopener" style="color:#fff"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.6 2 2.18 6.42 2.18 11.86c0 1.74.46 3.44 1.32 4.94L2.1 22l5.34-1.4a9.8 9.8 0 0 0 4.6 1.17h.01c5.43 0 9.85-4.42 9.85-9.86 0-2.63-1.02-5.11-2.88-6.97A9.79 9.79 0 0 0 12.04 2z"/></svg>Ask on WhatsApp</a></p>
+      <figure class="solo" data-fade><div class="arch"><img src="/kit/img/p-paath-saroop.jpg" alt="Seen over a Singh's shoulder, the saroop of Sri Guru Granth Sahib Ji open on white rumalas at a paath samagam." loading="lazy" width="1500" height="2000" srcset="/kit/img/webp/p-paath-saroop-480.webp 480w, /kit/img/webp/p-paath-saroop-960.webp 960w, /kit/img/p-paath-saroop.jpg 1500w" sizes="(max-width:760px) 90vw, 32vw"></div><figcaption>Paath samagam<small>Sri Guru Granth Sahib Ji</small></figcaption></figure>
     </div>
   </section>
   <div style="height:calc(var(--u)*8)"></div>
