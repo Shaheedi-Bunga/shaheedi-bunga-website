@@ -16,7 +16,9 @@ html[data-mood="dark"] .hx{ --ink:#F3EEE2; --muted:rgba(243,238,226,.74); --gold
 .hx .gur-mid{display:block;font:600 clamp(26px,3vw,40px)/1.4 var(--gur);color:var(--gold);margin:10px 0 2px}
 .hx.zm{padding:0;min-height:0}
 .hx .zm-pin{position:relative;height:100svh;min-height:600px;overflow:hidden;perspective:900px}
-.hx .zm-stage{position:absolute;inset:0;transform-style:preserve-3d}
+.hx .zm-stage{position:absolute;inset:0;transform-style:preserve-3d;z-index:1}
+/* the heading stays in front of the posters, even while they come forward in 3D */
+.hx .zm-copy{transform:translateZ(0)}
 .hx .zm-i{position:absolute;left:50%;top:50%;width:min(300px,52vw);transform:translate(-50%,-50%);border-radius:6px;box-shadow:0 30px 60px -20px rgba(0,0,0,.8)}
 .hx .zm-pin::after{content:"";position:absolute;inset:0;z-index:4;pointer-events:none;background:linear-gradient(90deg,rgba(5,10,22,.85),rgba(5,10,22,.2) 55%,transparent)}
 .hx .zm-copy{position:absolute;left:max(16px,4vw);bottom:40px;z-index:5;max-width:600px;text-shadow:0 2px 20px rgba(0,0,0,.7)}

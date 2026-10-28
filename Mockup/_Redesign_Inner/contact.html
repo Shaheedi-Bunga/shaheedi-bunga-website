@@ -50,6 +50,8 @@ html[data-mood="dark"] .hx{ --ink:#F3EEE2; --muted:rgba(243,238,226,.74); --gold
 .hx .fg-art{justify-self:end;width:min(100%,500px);margin-bottom:12vh}
 .hx .fg-art img{width:100%;display:block;border-radius:999px 999px 10px 10px;box-shadow:0 40px 80px -30px rgba(0,0,0,.7),0 0 0 1px rgba(235,205,136,.3)}
 .hx .fg-btn{position:absolute!important;left:-60px;bottom:-40px}
+/* between phone and wide desktop the copy reaches the picture: keep the button over the picture, not the venues */
+@media(min-width:861px) and (max-width:1279px){.hx .fg-btn{left:auto;right:-16px}}
 @media(max-width:860px){.hx.fg{grid-template-columns:minmax(0,1fr)}
 .hx .fg-art{justify-self:center;margin-bottom:40px}
 .hx .fg-btn{left:10px;bottom:-30px}}
