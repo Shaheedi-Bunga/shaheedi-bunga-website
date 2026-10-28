@@ -21,6 +21,38 @@
   document.documentElement.dataset.mood=m==="dark"?"dark":"light";})();</script>
 
 <style>
+/* the picked hero (lifted from the hero mockups, 2026-10-28): its own tokens, from the kit's */
+.hx{ --ink:var(--navy); --muted:var(--navy-70); --gold:var(--gold-text); --gold-lite:#B8902F; --night:#070E1E; --night-2:#101C37; --sans:var(--body); }
+html[data-mood="dark"] .hx{ --ink:#F3EEE2; --muted:rgba(243,238,226,.74); --gold:#EBCD88; --gold-lite:#D4AC57; }
+@keyframes drift1{to{transform:translate(18vw,10vh) scale(1.2)}}
+@keyframes drift2{to{transform:translate(-20vw,12vh) scale(.85)}}
+@keyframes up{to{transform:translateY(-50%)}}
+.hx .k{font:11px/1.4 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+.hx .gur-big{display:block;font:600 clamp(44px,6.4vw,92px)/1.25 var(--gur);color:var(--gold);margin-top:14px}
+.hx .meta{display:flex;flex-wrap:wrap;gap:clamp(18px,3vw,44px);margin-top:26px;padding-top:16px;border-top:1px solid var(--line)}
+.hx .meta span{font:11px/1.4 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.hx .meta b{display:block;font:500 clamp(22px,2vw,30px)/1.2 var(--display);letter-spacing:0;text-transform:none;color:var(--ink);margin-top:4px}
+.hx.hero2{position:relative;overflow:clip;min-height:min(100svh,940px);padding-block:76px 56px;
+  padding-left:max(16px,4vw,env(safe-area-inset-left,0px));padding-right:max(16px,4vw,env(safe-area-inset-right,0px))}
+.hx.hero2 h1{font:500 clamp(46px,6.8vw,104px)/.98 var(--display);margin:0}
+.hx.hero2 h1 em{font-style:italic;color:var(--gold)}
+.hx.au{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.6fr) minmax(0,.7fr);gap:24px;align-items:end;background:#0B1731;color:#F3EEE2;--muted:rgba(243,238,226,.78);--gold:#EBCD88;--line:rgba(243,238,226,.16);--ink:#F3EEE2}
+.hx .au-bg{position:absolute;inset:0;overflow:hidden;filter:blur(90px);opacity:.5}
+.hx .au-bg i{position:absolute;width:55vw;aspect-ratio:1;border-radius:50%;mix-blend-mode:screen}
+.hx .au-bg i:nth-child(1){left:-10%;top:-20%;background:#B8902F;animation:drift1 18s ease-in-out infinite alternate}
+.hx .au-bg i:nth-child(2){right:-15%;top:10%;background:#2C4A9A;animation:drift2 22s ease-in-out infinite alternate}
+.hx .au-bg i:nth-child(3){left:30%;bottom:-40%;background:#7A1C1C;animation:drift1 26s ease-in-out infinite alternate-reverse}
+.hx.au::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.08;background-image:repeating-radial-gradient(circle at 17% 23%,#fff 0 1px,transparent 1px 3px)}
+.hx .au-copy,.hx .au-tick,.hx .au-fig{position:relative;z-index:2}
+.hx .au-tick{height:300px;overflow:hidden;-webkit-mask:linear-gradient(transparent,#000 20%,#000 80%,transparent);mask:linear-gradient(transparent,#000 20%,#000 80%,transparent)}
+.hx .au-list{animation:up 16s linear infinite}
+.hx .au-list p{font:500 26px/1.3 var(--display);margin:0 0 18px;color:#F1DB9C}
+.hx .au-fig{width:100%;max-width:360px;justify-self:end;filter:drop-shadow(0 30px 40px rgba(0,0,0,.5))}
+@media(max-width:860px){.hx.au{grid-template-columns:minmax(0,1fr)}
+.hx .au-tick{height:180px}
+.hx .au-fig{max-width:260px}}
+@media (prefers-reduced-motion:reduce){.hx .au-list,.hx .au-bg i{animation:none!important}}
+
 /* the bank details as a plate: navy, gold hairlines, every line copyable */
 .bank{ background:var(--panel); color:var(--panel-ink); border-radius:6px; padding:calc(var(--u)*3.4); position:relative; overflow:hidden;
   box-shadow:0 40px 80px -50px rgba(12,19,34,.6); }
@@ -58,20 +90,12 @@
 
 
 <main id="main">
-<section class="phero paper" data-hero>
-  <div class="phero-in">
-    <div>
-      <p class="eyebrow">Support the Vidyala</p>
-      <h1 class="display">Nothing is <em>charged.</em></h1>
-      <p class="lede">Every class is free. Instruments are lent out, granths are shared, and nobody is paid:
-        not a teacher, not a trustee. What the charity spends goes on the things the classes need.</p>
-    </div>
-    <figure class="phero-art">
-      <div class="arch"><img src="img/k-k24.jpg" alt="A student with a dilruba across the lap, its case open beside them." width="560" height="700" srcset="img/webp/k-k24-480.webp 480w, img/k-k24.jpg 560w" sizes="(max-width:760px) 100vw, 50vw"></div>
-      <span class="arch-line" aria-hidden="true"></span>
-      <figcaption>An instrument lent, at the Kirtan Vidyala</figcaption>
-    </figure>
-  </div>
+<section data-hero class="hx hero2 au" data-init="aurora">
+  <div class="au-bg"><i></i><i></i><i></i></div>
+  <div class="au-copy"><p class="k">Support the Vidyala</p><span class="gur-big" lang="pa">ਦਸਵੰਧ</span><h1>Nothing is <em>charged.</em></h1><div class="meta"><span>Fee<b>None</b></span><span>Paid staff<b>None</b></span><span>Charity<b>1185103</b></span></div></div>
+  <div class="au-tick" aria-hidden="true"><div class="au-list"><p>Instruments are lent out.</p><p>Granths are shared.</p><p>Nobody is paid.</p><p>Every class is free.</p><p>Not a teacher, not a trustee.</p>
+    <p>Instruments are lent out.</p><p>Granths are shared.</p><p>Nobody is paid.</p><p>Every class is free.</p><p>Not a teacher, not a trustee.</p></div></div>
+  <img class="au-fig" src="img/hero/donate-b8c3c42a.webp" width="760" height="760" alt="A Singh in blue bana holding out a stringed instrument as a gift.">
 </section>
 
 <div class="wrapx paper">
@@ -134,6 +158,23 @@
 <script src="lib/lenis.min.js"></script>
 <script src="kit.js"></script>
 
+<script>
+/* the picked hero's motion, lifted from the hero mockups; nothing here runs with reduced motion */
+(() => {
+const still = matchMedia('(prefers-reduced-motion: reduce)').matches, coarse = matchMedia('(pointer: coarse)').matches;
+const INIT = {};
+const inView = el => { const r = el.getBoundingClientRect(); return r.bottom > 0 && r.top < innerHeight; };
+function follow(el, fn){ el.addEventListener('pointermove', e => { const r = el.getBoundingClientRect();
+  fn((e.clientX - r.left) / r.width * 2 - 1, (e.clientY - r.top) / r.height * 2 - 1, e); }); el.addEventListener('pointerleave', () => fn(0, 0, null)); }
+
+function track(el, fn){ el.addEventListener('pointermove', e => { const r = el.getBoundingClientRect();
+  fn((e.clientX - r.left) / r.width * 2 - 1, (e.clientY - r.top) / r.height * 2 - 1, e); }); el.addEventListener('pointerleave', () => fn(0, 0, null)); }
+function tilt(stage, max){ const sx = gsap.quickTo(stage, 'rotationY', {duration:.6, ease:'power3'}), sy = gsap.quickTo(stage, 'rotationX', {duration:.6, ease:'power3'});
+  return (x, y) => { sx(x * max); sy(-y * max); }; }
+INIT.aurora = s => { if (!still) gsap.from(s.querySelector('.au-fig'), { y:60, opacity:0, duration:1.4, ease:'power3.out' }); };
+document.querySelectorAll('.hx[data-init]').forEach(s => { try { INIT[s.dataset.init](s); } catch (e) { console.error(s.dataset.init, e); } });
+})();
+</script>
 <script>
 /* copy buttons: work with or without motion, and say so to a screen reader */
 document.querySelectorAll("[data-copy]").forEach(function(b){

@@ -21,6 +21,39 @@
   document.documentElement.dataset.mood=m==="dark"?"dark":"light";})();</script>
 
 <style>
+/* the picked hero (lifted from the hero mockups, 2026-10-28): its own tokens, from the kit's */
+.hx{ --ink:var(--navy); --muted:var(--navy-70); --gold:var(--gold-text); --gold-lite:#B8902F; --night:#070E1E; --night-2:#101C37; --sans:var(--body); }
+html[data-mood="dark"] .hx{ --ink:#F3EEE2; --muted:rgba(243,238,226,.74); --gold:#EBCD88; --gold-lite:#D4AC57; }
+.hx .k{font:11px/1.4 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+.hx .hxlede{color:var(--muted);max-width:40ch;margin-top:18px;font-size:clamp(16px,1.3vw,19px)}
+.hx.hero2{position:relative;overflow:clip;min-height:min(100svh,940px);padding-block:76px 56px;
+  padding-left:max(16px,4vw,env(safe-area-inset-left,0px));padding-right:max(16px,4vw,env(safe-area-inset-right,0px))}
+.hx.hero2.night{background:radial-gradient(90% 70% at 70% 40%,#13203A,#070E1E);color:#F3EEE2;--muted:rgba(243,238,226,.74);--gold:#EBCD88;--line:rgba(243,238,226,.16);--ink:#F3EEE2}
+.hx.hero2 h1{font:500 clamp(46px,6.8vw,104px)/.98 var(--display);margin:0}
+.hx.hero2 h1 em{font-style:italic;color:var(--gold)}
+.hx .gur-mid{display:block;font:600 clamp(26px,3vw,40px)/1.4 var(--gur);color:var(--gold);margin:10px 0 2px}
+.hx .gur{font-family:var(--gur)}
+.hx .mg-btn{position:relative;z-index:3;display:grid;place-items:center;width:clamp(150px,16vw,220px);aspect-ratio:1;border-radius:50%;background:#1F7A4D;color:#fff;text-decoration:none;
+  font:500 20px/1.25 var(--sans);text-align:center;box-shadow:0 20px 40px -16px rgba(31,122,77,.7);will-change:transform}
+.hx .mg-btn small{font-size:12px;opacity:.85}
+@media(max-width:860px){.hx .mg-btn{justify-self:start}}
+.hx.fg{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.9fr);gap:clamp(24px,4vw,64px);align-items:center}
+.hx .fg-mq{position:absolute;left:0;right:0;bottom:22px;display:grid;gap:0;pointer-events:none;z-index:0}
+.hx .fg-row{white-space:nowrap;font:600 clamp(40px,6vw,92px)/1.35 var(--gur);color:rgba(235,205,136,.12)}
+.hx .fg-row.o{font:italic 500 clamp(36px,5.4vw,84px)/1.1 var(--display);color:transparent;-webkit-text-stroke:1px rgba(235,205,136,.35)}
+.hx .fg-row span{display:inline-block;padding-right:.5em}
+.hx .fg-copy,.hx .fg-art{position:relative;z-index:2}
+.hx .fg-places{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:24px}
+.hx .fg-places div{border-top:1px solid var(--line);padding-top:10px}
+.hx .fg-places b{display:block;font:500 24px/1.2 var(--display)}
+.hx .fg-places span{font-size:13px;color:var(--muted)}
+.hx .fg-art{justify-self:end;width:min(100%,500px);margin-bottom:12vh}
+.hx .fg-art img{width:100%;display:block;border-radius:999px 999px 10px 10px;box-shadow:0 40px 80px -30px rgba(0,0,0,.7),0 0 0 1px rgba(235,205,136,.3)}
+.hx .fg-btn{position:absolute!important;left:-60px;bottom:-40px}
+@media(max-width:860px){.hx.fg{grid-template-columns:minmax(0,1fr)}
+.hx .fg-art{justify-self:center;margin-bottom:40px}
+.hx .fg-btn{left:10px;bottom:-30px}}
+
 /* the two ways in, as large lines that move on hover */
 .ways{ border-top:1px solid var(--navy); }
 .way{ display:grid; grid-template-columns:160px 1fr auto; gap:calc(var(--u)*2); align-items:baseline; padding:calc(var(--u)*2.6) 0;
@@ -62,21 +95,15 @@ a.way:hover .go{ transform:translate(6px,-6px); }
 
 
 <main id="main">
-<section class="phero paper" data-hero>
-  <div class="phero-in">
-    <div>
-      <p class="eyebrow">Contact</p>
-      <h1 class="display">Come and <em>find us.</em></h1>
-      <p class="lede">The quickest way is WhatsApp: someone will tell you this week's classes and where to turn up.
-        You do not need to book, and there is no fee.</p>
-      <p data-intro-fade style="margin-top:calc(var(--u)*3)"><a class="wa" href="https://wa.me/447394848407?text=Sat%20Sri%20Akal%20%E2%80%94%20I'd%20like%20to%20ask%20about%20classes." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.6 2 2.18 6.42 2.18 11.86c0 1.74.46 3.44 1.32 4.94L2.1 22l5.34-1.4a9.8 9.8 0 0 0 4.6 1.17h.01c5.43 0 9.85-4.42 9.85-9.86 0-2.63-1.02-5.11-2.88-6.97A9.79 9.79 0 0 0 12.04 2z"/></svg>Message us on WhatsApp</a></p>
-    </div>
-    <figure class="phero-art">
-      <div class="arch"><img src="img/s-d16.jpg" alt="The class seated together on the floor of the hall." width="520" height="520" srcset="img/webp/s-d16-480.webp 480w, img/s-d16.jpg 520w" sizes="(max-width:760px) 100vw, 50vw"></div>
-      <span class="arch-line" aria-hidden="true"></span>
-      <figcaption>Gipsy Lane</figcaption>
-    </figure>
-  </div>
+<section data-hero class="hx hero2 fg night" data-init="fateh">
+  <div class="fg-mq" aria-hidden="true">
+    <div class="fg-row gur" lang="pa"><span>ਵਾਹਿਗੁਰੂ ਜੀ ਕਾ ਖ਼ਾਲਸਾ ॥ ਵਾਹਿਗੁਰੂ ਜੀ ਕੀ ਫ਼ਤਹਿ ॥ </span></div>
+    <div class="fg-row o"><span>Waheguru Ji Ka Khalsa · Waheguru Ji Ki Fateh · </span></div></div>
+  <div class="fg-copy"><p class="k">Contact</p><span class="gur-mid" lang="pa">ਸੰਪਰਕ</span><h1>Come and <em>find us.</em></h1>
+    <p class="hxlede">WhatsApp is quickest. Someone will tell you this week's classes and where to turn up. No booking, no fee.</p>
+    <div class="fg-places"><div><b>Gipsy Lane</b><span>Gurudwara Shri Guru Dashmesh Sahib</span></div><div><b>East Park Road</b><span>Guru Tegh Bahadur Gurdwara</span></div></div></div>
+  <div class="fg-art"><img src="img/hero/contact-b16388b5.webp" width="900" height="1115" alt="Two Singhs greet each other with joined hands before a glowing gurdwara doorway, a Nishan Sahib beside it.">
+    <a class="mg-btn fg-btn" href="#contact"><span>WhatsApp<br><small>+44 7394 848407</small></span></a></div>
 </section>
 
 <div class="wrapx paper">
@@ -138,6 +165,26 @@ a.way:hover .go{ transform:translate(6px,-6px); }
 <script src="lib/lenis.min.js"></script>
 <script src="kit.js"></script>
 
+<script>
+/* the picked hero's motion, lifted from the hero mockups; nothing here runs with reduced motion */
+(() => {
+const still = matchMedia('(prefers-reduced-motion: reduce)').matches, coarse = matchMedia('(pointer: coarse)').matches;
+const INIT = {};
+const inView = el => { const r = el.getBoundingClientRect(); return r.bottom > 0 && r.top < innerHeight; };
+function follow(el, fn){ el.addEventListener('pointermove', e => { const r = el.getBoundingClientRect();
+  fn((e.clientX - r.left) / r.width * 2 - 1, (e.clientY - r.top) / r.height * 2 - 1, e); }); el.addEventListener('pointerleave', () => fn(0, 0, null)); }
+
+function track(el, fn){ el.addEventListener('pointermove', e => { const r = el.getBoundingClientRect();
+  fn((e.clientX - r.left) / r.width * 2 - 1, (e.clientY - r.top) / r.height * 2 - 1, e); }); el.addEventListener('pointerleave', () => fn(0, 0, null)); }
+function tilt(stage, max){ const sx = gsap.quickTo(stage, 'rotationY', {duration:.6, ease:'power3'}), sy = gsap.quickTo(stage, 'rotationX', {duration:.6, ease:'power3'});
+  return (x, y) => { sx(x * max); sy(-y * max); }; }
+INIT.fateh = s => { const rows = [...s.querySelectorAll('.fg-row')]; rows.forEach(r => r.innerHTML = r.innerHTML.repeat(4));
+  if (still) return; let x = [0, 0];
+  gsap.ticker.add(() => { if (!inView(s)) return; rows.forEach((r, i) => { const w = r.firstElementChild.offsetWidth; x[i] += i ? .5 : -.5; if (x[i] < -w) x[i] += w; if (x[i] > 0) x[i] -= w; r.style.transform = `translateX(${x[i]}px)`; }); });
+  INIT.magnetic(s); };
+document.querySelectorAll('.hx[data-init]').forEach(s => { try { INIT[s.dataset.init](s); } catch (e) { console.error(s.dataset.init, e); } });
+})();
+</script>
 <script>KIT.start();</script>
 </body>
 </html>

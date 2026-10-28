@@ -31,6 +31,29 @@
   document.documentElement.dataset.mood=m==="dark"?"dark":"light";})();</script>
 
 <style>
+/* the picked hero (lifted from the hero mockups, 2026-10-28): its own tokens, from the kit's */
+.hx{ --ink:var(--navy); --muted:var(--navy-70); --gold:var(--gold-text); --gold-lite:#B8902F; --night:#070E1E; --night-2:#101C37; --sans:var(--body); }
+html[data-mood="dark"] .hx{ --ink:#F3EEE2; --muted:rgba(243,238,226,.74); --gold:#EBCD88; --gold-lite:#D4AC57; }
+.hx .k{font:11px/1.4 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+.hx.hero2{position:relative;overflow:clip;min-height:min(100svh,940px);padding-block:76px 56px;
+  padding-left:max(16px,4vw,env(safe-area-inset-left,0px));padding-right:max(16px,4vw,env(safe-area-inset-right,0px))}
+.hx.hero2.night{background:radial-gradient(90% 70% at 70% 40%,#13203A,#070E1E);color:#F3EEE2;--muted:rgba(243,238,226,.74);--gold:#EBCD88;--line:rgba(243,238,226,.16);--ink:#F3EEE2}
+.hx.hero2 h1{font:500 clamp(46px,6.8vw,104px)/.98 var(--display);margin:0}
+.hx.hero2 h1 em{font-style:italic;color:var(--gold)}
+.hx .gur-mid{display:block;font:600 clamp(26px,3vw,40px)/1.4 var(--gur);color:var(--gold);margin:10px 0 2px}
+.hx.tys{display:grid;grid-template-columns:minmax(0,1fr);gap:18px;align-content:start;padding-top:clamp(90px,12vh,140px)}
+.hx .tys-box{display:grid;gap:8px;max-width:760px}
+.hx .tys-box input{font:500 clamp(28px,3.4vw,48px)/1.2 var(--display);color:#F3EEE2;background:transparent;border:0;border-bottom:2px solid rgba(235,205,136,.5);padding:8px 0;outline:none;width:100%}
+.hx .tys-box input:focus{border-bottom-color:#F1DB9C}
+.hx .tys-list{list-style:none;margin:0;padding:0;columns:2 320px;column-gap:40px;max-height:46vh;overflow:hidden}
+.hx .tys-list li{break-inside:avoid;display:flex;justify-content:space-between;gap:16px;padding:9px 0;border-bottom:1px solid rgba(235,205,136,.15);color:rgba(243,238,226,.9)}
+.hx .tys-list li[hidden]{display:none}
+.hx .tys-list li:lang(pa) span{font-family:var(--gur)}
+.hx .tys-list small{color:rgba(243,238,226,.5);white-space:nowrap}
+.hx .tys-list li.hit span{color:#F1DB9C}
+@media(max-width:600px){.hx .tys-list li{flex-wrap:wrap;gap:2px 16px}
+.hx .tys-list small{white-space:normal}}
+
 .cal{ display:grid; grid-template-columns:auto 1fr auto; gap:calc(var(--u)*3); align-items:center; background:var(--panel); color:var(--panel-ink);
   border-radius:6px; padding:calc(var(--u)*3.4); margin:0 var(--gx); text-decoration:none; position:relative; overflow:hidden; transition:transform .5s var(--ease-out); }
 .cal:hover{ transform:translateY(-3px); }
@@ -91,20 +114,11 @@
 
 
 <main id="main">
-<section class="phero paper" data-hero>
-  <div class="phero-in">
-    <div>
-      <p class="eyebrow">Resources</p>
-      <h1 class="display">Granths, pothis <em>and talks.</em></h1>
-      <p class="lede">Everything the Vidyala reads from, free to read and download. Each collection opens in Google Drive,
-        where every file below can be read or saved. Some run to hundreds of megabytes, so they are best opened on wifi.</p>
-    </div>
-    <figure class="phero-art">
-      <div class="arch"><img src="/kit/img/folio-vaaran.jpg" alt="A handwritten folio of the Vaaran of Bhai Gurdas Ji, its Gurmukhi lines filling the page." style="filter:sepia(.3) contrast(1.05)" width="1000" height="1151" srcset="/kit/img/webp/folio-vaaran-480.webp 480w, /kit/img/webp/folio-vaaran-960.webp 960w, /kit/img/folio-vaaran.jpg 1000w" sizes="(max-width:760px) 100vw, 50vw"></div>
-      <span class="arch-line" aria-hidden="true"></span>
-      <figcaption>Vaaran Bhai Gurdas Ji · Khalsa College manuscript · c. 17th century</figcaption>
-    </figure>
-  </div>
+<section data-hero class="hx hero2 tys night" data-init="typesearch">
+  <div class="tys-head"><p class="k">Resources</p><span class="gur-mid" lang="pa">ਪੋਥੀਆਂ</span><h1>Granths, pothis <em>and talks.</em></h1></div>
+  <label class="tys-box"><span class="k">Search 44 titles</span><input type="search" placeholder="Search" autocomplete="off" aria-label="Search the resources"></label>
+  <p class="k tys-n" aria-live="polite">44 titles</p>
+  <ol class="tys-list"><li><span>1604 Kartarpuri Bir Some Photos.pdf</span><small>Santheya Granths · 118.2 MB</small></li><li><span>Kabit Bhai Gurdas Ji.pdf</span><small>Santheya Granths · 3.5 MB</small></li><li><span>Sri Guru Granth Sahib Ji.pdf</span><small>Santheya Granths · 464.9 MB</small></li><li><span>VaranBhaiGurdasJiVolII.pdf</span><small>Santheya Granths · 4.4 MB</small></li><li lang="pa"><span>ਸੰਪੂਰਨ ਭਾਈ ਨੰਦਲਾਲ ਜੀ ਗ੍ਰੰਥਾਵਲੀ — ਸੰਥਿਆ ਪੋਥੀ</span><small>Santheya Granths · 99.3 MB</small></li><li lang="pa"><span>ਟਕਸਾਲੀ ਗੁਟਕਾ ਸਾਹਿਬ (ਭਿੰਡਰਾਂ)</span><small>Santheya Granths · 79.7 MB</small></li><li lang="pa"><span>ਪੰਜ ਗ੍ਰੰਥੀ ਲੜੀਵਾਰ</span><small>Santheya Granths · 66.3 MB</small></li><li lang="pa"><span>ਬਾਈ ਵਾਰਾਂ ਲੜੀਵਾਰ</span><small>Santheya Granths · 287.3 MB</small></li><li lang="pa"><span>ਭਗਤ ਬਾਣੀ ਲੜੀਵਾਰ</span><small>Santheya Granths · 80.6 MB</small></li><li lang="pa"><span>ਲੜੀਵਾਰ ਦਸ ਗ੍ਰੰਥੀ (ਨਿਊ ਛਾਪਾ)</span><small>Santheya Granths · 199.9 MB</small></li><li lang="pa"><span>ਲੜੀਵਾਰ ਪੰਜ ਗ੍ਰੰਥੀ (ਦਮਦਮੀ ਟਕਸਾਲ)</span><small>Santheya Granths · 64.2 MB</small></li><li lang="pa"><span>ਅਸਟਮ ਬਲਬੀਰਾ — ਜੀਵਨੀ ਗੁਰੂ ਹਰਿ ਕ੍ਰਿਸਨ ਜੀ</span><small>Katha Granths · 63.3 MB</small></li><li lang="pa"><span>ਆਦਿ ਸਿੱਖ ਤੇ ਆਦਿ ਸਾਖੀਆਂ — ਸਤਿਬੀਰ ਸਿੰਘ</span><small>Katha Granths · 11.1 MB</small></li><li lang="pa"><span>ਇਤਿ ਜਿਨਿ ਕਰੀ — ਜੀਵਨੀ ਗੁਰੂ ਤੇਗ ਬਹਾਦਰ ਸਾਹਿਬ ਜੀ</span><small>Katha Granths · 11.2 MB</small></li><li lang="pa"><span>ਸਿੱਖ ਸੰਪ੍ਰਦਾਵਲੀ</span><small>Katha Granths · 19.7 MB</small></li><li lang="pa"><span>ਸਿੱਖ ਸੰਪਰਦਾਵਲੀ — ਪਿਆਰਾ ਸਿੰਘ ਪਦਮ</span><small>Katha Granths · 19.7 MB</small></li><li lang="pa"><span>ਸ੍ਰੀ ਗੁਰੂ ਗ੍ਰੰਥ ਪ੍ਰਕਾਸ</span><small>Katha Granths · 8.7 MB</small></li><li lang="pa"><span>ਕੁਦਰਤੀ ਨੂਰ — ਜੀਵਨੀ ਗੁਰੂ ਅੰਗਦ ਦੇਵ ਜੀ</span><small>Katha Granths · 138.8 MB</small></li><li lang="pa"><span>ਖਾਲਸਈ ਬੋਲੇ — ਪ੍ਰੋ ਪਿਆਰਾ ਸਿੰਘ ਪਦਮ</span><small>Katha Granths · 1,015 KB</small></li><li lang="pa"><span>ਗੁਰੁ ਭਾਰੀ — ਜੀਵਨੀ ਗੁਰੂ ਹਰਿਗੋਬਿੰਦ ਸਾਹਿਬ ਜੀ</span><small>Katha Granths · 63.2 MB</small></li><li lang="pa"><span>ਗੁਰੂ ਕੀਆਂ ਸਾਖੀਆਂ</span><small>Katha Granths · 14.9 MB</small></li><li lang="pa"><span>ਨਿਰਭਉ ਨਿਰਵੈਰ — ਜੀਵਨੀ ਗੁਰੂ ਹਰਿ ਰਾਇ ਜੀ</span><small>Katha Granths · 66.8 MB</small></li><li lang="pa"><span>ਪਰਤਖ੍ਹ ਹਰਿ — ਜੀਵਨੀ ਗੁਰੂ ਅਰਜਨ ਦੇਵ ਜੀ</span><small>Katha Granths · 33.1 MB</small></li><li lang="pa"><span>ਪਰਬਤੁ ਮੇਰਾਣੁ — ਜੀਵਨੀ ਗੁਰੂ ਅਮਰਦਾਸ ਜੀ</span><small>Katha Granths · 33 MB</small></li><li lang="pa"><span>ਪੁਰਖ ਭਗਵੰਤ — ਜੀਵਨੀ ਗੁਰੂ ਗੋਬਿੰਦ ਸਿੰਘ ਜੀ</span><small>Katha Granths · 76.4 MB</small></li><li lang="pa"><span>ਪੂਰੀ ਹੋਈ ਕਰਾਮਾਤ — ਜੀਵਨੀ ਗੁਰੂ ਰਾਮਦਾਸ ਜੀ</span><small>Katha Granths · 18.9 MB</small></li><li lang="pa"><span>ਬਚਨ ਸਾਈਂ ਲੋਕਾਂ ਦੇ ਤਥਾ ਸੰਤ ਬਚਨਾਵਲੀ</span><small>Katha Granths · 14.7 MB</small></li><li lang="pa"><span>ਬਲਿਓ ਚਿਰਾਗ — ਜੀਵਨੀ ਸ੍ਰੀ ਗੁਰੂ ਨਾਨਕ ਦੇਵ ਜੀ</span><small>Katha Granths · 49 MB</small></li><li><span>Guru Nanak Dev Ji — folder</span><small>Sri Nanak Prakash · —</small></li><li><span>Raas 9, Suraj Parkash Granth.pdf</span><small>Sri Nanak Prakash · 39.2 MB</small></li><li><span>Week 1 — Katha Sri Guru Tegh Bahadur Sahib Ji (Chapters 1–14)</span><small>Weekly Talks · 116.6 MB</small></li><li><span>Week 2 — Beyond the Mind</span><small>Weekly Talks · 7.8 MB</small></li><li><span>Week 3 — The Importance of Sri Dasam Guru Granth Sahib Ji</span><small>Weekly Talks · 3.8 MB</small></li><li><span>Week 4 — The Early Life of Patshahi 9</span><small>Weekly Talks · 49.2 MB</small></li><li><span>Week 5 — The Common Sense of Khalistan, by Bhai Deep Singh Ji</span><small>Weekly Talks · 24.4 MB</small></li><li><span>Week 6 — Role of Akal Takhat in Sikh Governance</span><small>Weekly Talks · 29.8 MB</small></li><li><span>Week 7 — Sincerity to Sikhi</span><small>Weekly Talks · 20 MB</small></li><li><span>Week 8 — Power of Sangat</span><small>Weekly Talks · 1.4 MB</small></li><li><span>Week 9 — The Evolution of Sri Guru Granth Sahib Ji Maharaj, by Bhai Amarjeet Singh</span><small>Weekly Talks · 8.9 MB</small></li><li><span>Week 10 — Katha Sri Guru Tegh Bahadur Sahib Ji (Chapters 15–23)</span><small>Weekly Talks · 116.6 MB</small></li><li><span>Week 11 — Katha Sri Guru Tegh Bahadur Sahib Ji (Chapters 23–29)</span><small>Weekly Talks · 136.4 MB</small></li><li><span>Week 12 — Social Media and Sikhi</span><small>Weekly Talks · 28.8 MB</small></li><li><span>Week 13 — Emergency, Grooming and Targeting of Sikhs (national seminar)</span><small>Weekly Talks · 10.9 MB</small></li><li><span>Week 14 — Katha Sri Guru Tegh Bahadur Sahib Ji (Chapters 30–32)</span><small>Weekly Talks · 12.6 MB</small></li></ol>
 </section>
 
 <a class="cal" href="/sikhi-calendar/" data-fade>
@@ -188,7 +202,7 @@
       <ul class="files">
         <li><span class="nm">Week 1 — Katha Sri Guru Tegh Bahadur Sahib Ji (Chapters 1–14)</span><span class="sz">116.6 MB</span></li>
         <li><span class="nm">Week 2 — Beyond the Mind</span><span class="sz">7.8 MB</span></li>
-        <li><span class="nm">Week 3 — The Importance of Sri Dasam Granth Sahib Ji</span><span class="sz">3.8 MB</span></li>
+        <li><span class="nm">Week 3 — The Importance of Sri Dasam Guru Granth Sahib Ji</span><span class="sz">3.8 MB</span></li>
         <li><span class="nm">Week 4 — The Early Life of Patshahi 9</span><span class="sz">49.2 MB</span></li>
         <li><span class="nm">Week 5 — The Common Sense of Khalistan, by Bhai Deep Singh Ji</span><span class="sz">24.4 MB</span></li>
         <li><span class="nm">Week 6 — Role of Akal Takhat in Sikh Governance</span><span class="sz">29.8 MB</span></li>
@@ -232,6 +246,36 @@
 <script src="/kit/lib/lenis.min.js"></script>
 <script src="/kit/kit.js"></script>
 
+<script>
+/* the picked hero's motion, lifted from the hero mockups; nothing here runs with reduced motion */
+(() => {
+const still = matchMedia('(prefers-reduced-motion: reduce)').matches, coarse = matchMedia('(pointer: coarse)').matches;
+const INIT = {};
+const inView = el => { const r = el.getBoundingClientRect(); return r.bottom > 0 && r.top < innerHeight; };
+function follow(el, fn){ el.addEventListener('pointermove', e => { const r = el.getBoundingClientRect();
+  fn((e.clientX - r.left) / r.width * 2 - 1, (e.clientY - r.top) / r.height * 2 - 1, e); }); el.addEventListener('pointerleave', () => fn(0, 0, null)); }
+
+function track(el, fn){ el.addEventListener('pointermove', e => { const r = el.getBoundingClientRect();
+  fn((e.clientX - r.left) / r.width * 2 - 1, (e.clientY - r.top) / r.height * 2 - 1, e); }); el.addEventListener('pointerleave', () => fn(0, 0, null)); }
+function tilt(stage, max){ const sx = gsap.quickTo(stage, 'rotationY', {duration:.6, ease:'power3'}), sy = gsap.quickTo(stage, 'rotationX', {duration:.6, ease:'power3'});
+  return (x, y) => { sx(x * max); sy(-y * max); }; }
+INIT.typesearch = s => { const inp = s.querySelector('input'), L = [...s.querySelectorAll('.tys-list li')], n = s.querySelector('.tys-n'); let typed = false;
+  const run = () => { const q = inp.value.trim().toLowerCase(); let c = 0;
+    L.forEach(li => { const hit = !q || li.textContent.toLowerCase().includes(q); li.hidden = !hit; li.classList.toggle('hit', !!q && hit); c += hit; });
+    n.textContent = q ? `${c} of ${L.length} titles` : `${L.length} titles`; };
+  inp.addEventListener('input', () => { typed = true; run(); });
+  run(); if (still) return;
+  const Q = ['Week', 'ਜੀਵਨੀ', 'Sri Guru', 'ਲੜੀਵਾਰ', 'Katha']; let qi = 0;
+  const demo = async () => { while (!typed) { if (!inView(s)) { await new Promise(r => setTimeout(r, 600)); continue; }
+      const w = [...Q[qi++ % Q.length]];
+      for (let i = 1; i <= w.length && !typed; i++) { inp.value = w.slice(0, i).join(''); run(); await new Promise(r => setTimeout(r, 140)); }
+      await new Promise(r => setTimeout(r, 1800));
+      while (inp.value && !typed) { inp.value = [...inp.value].slice(0, -1).join(''); run(); await new Promise(r => setTimeout(r, 50)); }
+      await new Promise(r => setTimeout(r, 500)); } };
+  demo(); };
+document.querySelectorAll('.hx[data-init]').forEach(s => { try { INIT[s.dataset.init](s); } catch (e) { console.error(s.dataset.init, e); } });
+})();
+</script>
 <script>
 /* find: hides every file that does not match, and any collection left empty */
 (function(){

@@ -31,6 +31,35 @@
   document.documentElement.dataset.mood=m==="dark"?"dark":"light";})();</script>
 
 <style>
+/* the picked hero (lifted from the hero mockups, 2026-10-28): its own tokens, from the kit's */
+.hx{ --ink:var(--navy); --muted:var(--navy-70); --gold:var(--gold-text); --gold-lite:#B8902F; --night:#070E1E; --night-2:#101C37; --sans:var(--body); }
+html[data-mood="dark"] .hx{ --ink:#F3EEE2; --muted:rgba(243,238,226,.74); --gold:#EBCD88; --gold-lite:#D4AC57; }
+.hx .k{font:11px/1.4 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+.hx.hero{position:relative;min-height:min(100svh,940px);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.9fr);gap:clamp(24px,4vw,64px);
+  align-items:center;padding-block:72px;padding-left:max(16px,4vw,env(safe-area-inset-left,0px));padding-right:max(16px,4vw,env(safe-area-inset-right,0px));
+  border-top:1px solid var(--line);overflow:clip}
+.hx.hero.night{background:radial-gradient(90% 70% at 70% 40%,#13203A,var(--night));color:#F3EEE2;--muted:rgba(243,238,226,.74);--gold:#EBCD88;--line:rgba(243,238,226,.14)}
+.hx .copy{min-width:0;max-width:620px}
+.hx .gur-big{display:block;font:600 clamp(44px,6.4vw,92px)/1.25 var(--gur);color:var(--gold);margin-top:14px}
+.hx .copy h1{font:500 clamp(46px,6.8vw,104px)/.98 var(--display);margin:0}
+.hx .copy h1 em{font-style:italic;color:var(--gold)}
+.hx .hxlede{color:var(--muted);max-width:40ch;margin-top:18px;font-size:clamp(16px,1.3vw,19px)}
+.hx .meta{display:flex;flex-wrap:wrap;gap:clamp(18px,3vw,44px);margin-top:26px;padding-top:16px;border-top:1px solid var(--line)}
+.hx .meta span{font:11px/1.4 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.hx .meta b{display:block;font:500 clamp(22px,2vw,30px)/1.2 var(--display);letter-spacing:0;text-transform:none;color:var(--ink);margin-top:4px}
+.hx.night .meta b{color:#F3EEE2}
+.hx .art{position:relative;justify-self:end;width:min(100%,520px);margin:0;perspective:1100px}
+.hx .hxarch{position:relative;aspect-ratio:4/5;border-radius:999px 999px 6px 6px;overflow:hidden;
+  background:radial-gradient(120% 80% at 50% 30%,var(--cream-2),var(--cream-3));transform-style:preserve-3d}
+.hx .arch-line{position:absolute;inset:-12px -12px -6px;border:1px solid var(--gold-lite);border-bottom:0;border-radius:999px 999px 0 0;pointer-events:none;opacity:.7}
+.hx .art figcaption{font:11px/1.4 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:14px}
+.hx .fig{position:absolute;left:-2%;right:-2%;bottom:-1%;width:104%;display:block;user-select:none;-webkit-user-drag:none}
+.hx .stage{position:absolute;inset:0;transform-style:preserve-3d;will-change:transform}
+@media (max-width:860px){.hx.hero{grid-template-columns:minmax(0,1fr);min-height:0;padding-top:64px}
+.hx .art{justify-self:stretch;width:auto;max-width:460px;margin-inline:auto}}
+.hx .hxarch.dark{background:#060C1C}
+.hx .hxarch canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+
 /* four camps, each a row: number, name in Gurmukhi and English, the words,
    and three facts. Copy is the live page's, word for word. */
 .camps{ border-top:1px solid var(--navy); }
@@ -70,21 +99,12 @@
 
 
 <main id="main">
-<section class="phero paper" data-hero>
-  <div class="phero-in">
-    <div>
-      <p class="eyebrow">Camps</p>
-      <h1 class="display">A fortnight, <em>not an hour.</em></h1>
-      <p class="lede">The weekly classes keep going all year. The camps are the other thing the vidyala does: whole days and
-        whole weeks given to one subject, with teachers who come in for it. They are free, like everything else, and langar
-        runs throughout.</p>
-    </div>
-    <figure class="phero-art">
-      <div class="arch"><img src="/kit/img/p-darbar-arch.jpg" alt="The darbar dressed for a samagam: the palki in orange beneath a canopy hung with marigold garlands, shastar laid before it." width="1200" height="1370" srcset="/kit/img/webp/p-darbar-arch-480.webp 480w, /kit/img/webp/p-darbar-arch-960.webp 960w, /kit/img/p-darbar-arch.jpg 1200w" sizes="(max-width:760px) 100vw, 50vw"></div>
-      <span class="arch-line" aria-hidden="true"></span>
-      <figcaption>The darbar · a samagam, April 2026</figcaption>
-    </figure>
-  </div>
+<section data-init="archCamps" data-hero class="hx hero night">
+  
+  <div class="copy"><p class="k">Camps</p><span class="gur-big" lang="pa">ਕੈਂਪ</span>
+    <h1>A fortnight, <em>not an hour.</em></h1><p class="hxlede">Whole days and whole weeks given to one subject.</p>
+    <div class="meta"><span>Since<b>2018</b></span><span>Where<b>Leicester gurdware</b></span><span>Fee<b>None</b></span></div></div>
+  <figure class="art"><div class="hxarch dark"><div class="stage"><img class="fig" src="/kit/img/hero/camps-abd1500a.webp" width="760" height="760" alt="Two young Singhs at a campfire before a tent, a Nishan Sahib beside it, at night." style="left:0;right:0;bottom:0;width:100%;height:100%;object-fit:cover"></div><canvas></canvas></div><span class="arch-line" aria-hidden="true"></span><figcaption>Move across the fire</figcaption></figure>
 </section>
 
 <div class="wrapx paper">
@@ -170,6 +190,30 @@
 <script src="/kit/lib/lenis.min.js"></script>
 <script src="/kit/kit.js"></script>
 
+<script>
+/* the picked hero's motion, lifted from the hero mockups; nothing here runs with reduced motion */
+(() => {
+const still = matchMedia('(prefers-reduced-motion: reduce)').matches, coarse = matchMedia('(pointer: coarse)').matches;
+const INIT = {};
+const inView = el => { const r = el.getBoundingClientRect(); return r.bottom > 0 && r.top < innerHeight; };
+function follow(el, fn){ el.addEventListener('pointermove', e => { const r = el.getBoundingClientRect();
+  fn((e.clientX - r.left) / r.width * 2 - 1, (e.clientY - r.top) / r.height * 2 - 1, e); }); el.addEventListener('pointerleave', () => fn(0, 0, null)); }
+
+function track(el, fn){ el.addEventListener('pointermove', e => { const r = el.getBoundingClientRect();
+  fn((e.clientX - r.left) / r.width * 2 - 1, (e.clientY - r.top) / r.height * 2 - 1, e); }); el.addEventListener('pointerleave', () => fn(0, 0, null)); }
+function tilt(stage, max){ const sx = gsap.quickTo(stage, 'rotationY', {duration:.6, ease:'power3'}), sy = gsap.quickTo(stage, 'rotationX', {duration:.6, ease:'power3'});
+  return (x, y) => { sx(x * max); sy(-y * max); }; }
+INIT.archCamps = s => { if (still) return; const hxarch = s.querySelector('.hxarch'), cv = hxarch.querySelector('canvas'), cx = cv.getContext('2d'); let wind = 0, P = [];
+  const size = () => { cv.width = hxarch.clientWidth * devicePixelRatio; cv.height = hxarch.clientHeight * devicePixelRatio; }; size(); addEventListener('resize', size);
+  track(hxarch, x => { wind = x * .0016; });
+  gsap.ticker.add(() => { if (!inView(hxarch)) return; if (P.length < 90) P.push({ x:.5 + (Math.random()-.5)*.12, y:.84, z:Math.random(), vy:.0016 + Math.random()*.002, life:1 });
+    cx.clearRect(0,0,cv.width,cv.height);
+    P.forEach(p => { p.y -= p.vy*(.6+p.z); p.x += wind*(.4+p.z) + Math.sin(p.y*40+p.z*9)*.0006; p.life -= .006;
+      cx.globalAlpha = Math.max(0,p.life)*(.5+p.z*.5); cx.fillStyle = p.z > .6 ? '#FFD27A' : '#FF9A3C'; cx.beginPath(); cx.arc(p.x*cv.width, p.y*cv.height, (1+p.z*2.6)*devicePixelRatio, 0, 7); cx.fill(); });
+    P = P.filter(p => p.life > 0 && p.y > 0); }); };
+document.querySelectorAll('.hx[data-init]').forEach(s => { try { INIT[s.dataset.init](s); } catch (e) { console.error(s.dataset.init, e); } });
+})();
+</script>
 <script>KIT.start();</script>
 </body>
 </html>

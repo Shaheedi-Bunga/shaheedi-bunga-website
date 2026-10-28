@@ -21,6 +21,29 @@
   document.documentElement.dataset.mood=m==="dark"?"dark":"light";})();</script>
 
 <style>
+/* the picked hero (lifted from the hero mockups, 2026-10-28): its own tokens, from the kit's */
+.hx{ --ink:var(--navy); --muted:var(--navy-70); --gold:var(--gold-text); --gold-lite:#B8902F; --night:#070E1E; --night-2:#101C37; --sans:var(--body); }
+html[data-mood="dark"] .hx{ --ink:#F3EEE2; --muted:rgba(243,238,226,.74); --gold:#EBCD88; --gold-lite:#D4AC57; }
+.hx .k{font:11px/1.4 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+.hx .meta{display:flex;flex-wrap:wrap;gap:clamp(18px,3vw,44px);margin-top:26px;padding-top:16px;border-top:1px solid var(--line)}
+.hx .meta span{font:11px/1.4 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.hx .meta b{display:block;font:500 clamp(22px,2vw,30px)/1.2 var(--display);letter-spacing:0;text-transform:none;color:var(--ink);margin-top:4px}
+.hx.night .meta b{color:#F3EEE2}
+.hx.hero2{position:relative;overflow:clip;min-height:min(100svh,940px);padding-block:76px 56px;
+  padding-left:max(16px,4vw,env(safe-area-inset-left,0px));padding-right:max(16px,4vw,env(safe-area-inset-right,0px))}
+.hx.hero2.night{background:radial-gradient(90% 70% at 70% 40%,#13203A,#070E1E);color:#F3EEE2;--muted:rgba(243,238,226,.74);--gold:#EBCD88;--line:rgba(243,238,226,.16);--ink:#F3EEE2}
+.hx.hero2 h1{font:500 clamp(46px,6.8vw,104px)/.98 var(--display);margin:0}
+.hx.hero2 h1 em{font-style:italic;color:var(--gold)}
+.hx .gur-mid{display:block;font:600 clamp(26px,3vw,40px)/1.4 var(--gur);color:var(--gold);margin:10px 0 2px}
+.hx.zm{padding:0;min-height:0}
+.hx .zm-pin{position:relative;height:100svh;min-height:600px;overflow:hidden;perspective:900px}
+.hx .zm-stage{position:absolute;inset:0;transform-style:preserve-3d}
+.hx .zm-i{position:absolute;left:50%;top:50%;width:min(300px,52vw);transform:translate(-50%,-50%);border-radius:6px;box-shadow:0 30px 60px -20px rgba(0,0,0,.8)}
+.hx .zm-pin::after{content:"";position:absolute;inset:0;z-index:4;pointer-events:none;background:linear-gradient(90deg,rgba(5,10,22,.85),rgba(5,10,22,.2) 55%,transparent)}
+.hx .zm-copy{position:absolute;left:max(16px,4vw);bottom:40px;z-index:5;max-width:600px;text-shadow:0 2px 20px rgba(0,0,0,.7)}
+.hx .zm-i{width:min(420px,58vw)}
+.hx .zm-pin::after{background:radial-gradient(70% 60% at 0% 100%,rgba(5,10,22,.9),rgba(5,10,22,.4) 50%,transparent 75%)!important}
+
 /* what's on first (the week, the calendar, how camps are announced), then
    every announcement since 2019, newest first, grouped by year. The posters
    are shown as they were posted; a poster opens full size in a dialog. */
@@ -93,15 +116,9 @@ a.oncard:hover{ transform:translateY(-3px); }
 </header>
 
 <main id="main">
-<section class="phero no-art paper" data-hero>
-  <div class="phero-in" style="min-height:min(56svh,580px)">
-    <div>
-      <p class="eyebrow">Events</p>
-      <h1 class="display">What's on, <em>and what has been.</em></h1>
-      <p class="lede">The weekly classes run all year. Around them come the camps, the samagams and Hola Mohalla UK. Below is
-        every one announced or filmed since 2017, with the poster it went out on or the video it was streamed in.</p>
-    </div>
-  </div>
+<section data-hero class="hx hero2 zm night" data-init="zoomthru">
+  <div class="zm-pin"><div class="zm-stage"><img class="zm-i" style="--i:0" src="img/hero/events-a528e8a2.webp" width="1000" height="1334" alt=""><img class="zm-i" style="--i:1" src="img/hero/events-d79bc1fd.webp" width="1000" height="1334" alt=""><img class="zm-i" style="--i:2" src="img/hero/events-a42a8f80.webp" width="1000" height="1334" alt=""><img class="zm-i" style="--i:3" src="img/hero/events-2325f63c.webp" width="1000" height="1334" alt=""><img class="zm-i" style="--i:4" src="img/hero/events-43b5004e.webp" width="1000" height="1250" alt=""><img class="zm-i" style="--i:5" src="img/hero/events-f7f6f660.webp" width="1000" height="1250" alt=""><img class="zm-i" style="--i:6" src="img/hero/events-a03aecf4.webp" width="1000" height="1250" alt=""><img class="zm-i" style="--i:7" src="img/hero/events-037fca34.webp" width="1000" height="1250" alt=""><img class="zm-i" style="--i:8" src="img/hero/events-b7f730ae.webp" width="1000" height="1250" alt=""><img class="zm-i" style="--i:9" src="img/hero/events-b828b8d3.webp" width="1000" height="1243" alt=""></div>
+    <div class="zm-copy"><p class="k">Events</p><span class="gur-mid" lang="pa">ਸਮਾਗਮ</span><h1>What's on, <em>and what has been.</em></h1><div class="meta"><span>On record<b>114</b></span><span>Since<b>2017</b></span><span>Fee<b>None</b></span></div></div></div>
 </section>
 
 <div class="wrapx paper">
@@ -776,6 +793,28 @@ Bhog - 24th October 2021 · Guru Nanak Gurdwara</p><p class="ev-sum">Sri Akhand 
 <script src="lib/lenis.min.js"></script>
 <script src="kit.js"></script>
 
+<script>
+/* the picked hero's motion, lifted from the hero mockups; nothing here runs with reduced motion */
+(() => {
+const still = matchMedia('(prefers-reduced-motion: reduce)').matches, coarse = matchMedia('(pointer: coarse)').matches;
+const INIT = {};
+const inView = el => { const r = el.getBoundingClientRect(); return r.bottom > 0 && r.top < innerHeight; };
+function follow(el, fn){ el.addEventListener('pointermove', e => { const r = el.getBoundingClientRect();
+  fn((e.clientX - r.left) / r.width * 2 - 1, (e.clientY - r.top) / r.height * 2 - 1, e); }); el.addEventListener('pointerleave', () => fn(0, 0, null)); }
+
+function track(el, fn){ el.addEventListener('pointermove', e => { const r = el.getBoundingClientRect();
+  fn((e.clientX - r.left) / r.width * 2 - 1, (e.clientY - r.top) / r.height * 2 - 1, e); }); el.addEventListener('pointerleave', () => fn(0, 0, null)); }
+function tilt(stage, max){ const sx = gsap.quickTo(stage, 'rotationY', {duration:.6, ease:'power3'}), sy = gsap.quickTo(stage, 'rotationX', {duration:.6, ease:'power3'});
+  return (x, y) => { sx(x * max); sy(-y * max); }; }
+INIT.zoomthru = s => { const pin = s.querySelector('.zm-pin'), I = [...s.querySelectorAll('.zm-i')];
+  const place = p => I.forEach((im, i) => { const z = (p * I.length - i) * 700 - 600, o = z > 500 ? Math.max(0, 1 - (z - 500) / 300) : Math.min(1, (z + 2800) / 1400);
+    im.style.transform = `translate(-50%,-50%) translateX(${(i % 2 ? 1 : -1) * 34}%) translateY(${(i % 3 - 1) * 18}%) translateZ(${z}px)`; im.style.opacity = o; });
+  if (still) { place(.15); return; }
+  s.style.height = '320vh'; pin.style.position = 'sticky'; pin.style.top = '0'; place(0);
+  ScrollTrigger.create({ trigger:s, start:'top top', end:'bottom bottom', onUpdate:self => place(self.progress) }); };
+document.querySelectorAll('.hx[data-init]').forEach(s => { try { INIT[s.dataset.init](s); } catch (e) { console.error(s.dataset.init, e); } });
+})();
+</script>
 <script>
 (function(){
   var pv = document.getElementById("pv"), im = pv.querySelector("img");

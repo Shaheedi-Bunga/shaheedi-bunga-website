@@ -24,6 +24,31 @@
      noindex preview beside build.js and is linked from nowhere. Places and
      unknowns settled by the user 2026-10-27: all gurdwaras, contact us to inquire. -->
 <style>
+/* the picked hero (lifted from the hero mockups, 2026-10-28): its own tokens, from the kit's */
+.hx{ --ink:var(--navy); --muted:var(--navy-70); --gold:var(--gold-text); --gold-lite:#B8902F; --night:#070E1E; --night-2:#101C37; --sans:var(--body); }
+html[data-mood="dark"] .hx{ --ink:#F3EEE2; --muted:rgba(243,238,226,.74); --gold:#EBCD88; --gold-lite:#D4AC57; }
+.hx .k{font:11px/1.4 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+.hx .meta{display:flex;flex-wrap:wrap;gap:clamp(18px,3vw,44px);margin-top:26px;padding-top:16px;border-top:1px solid var(--line)}
+.hx .meta span{font:11px/1.4 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.hx .meta b{display:block;font:500 clamp(22px,2vw,30px)/1.2 var(--display);letter-spacing:0;text-transform:none;color:var(--ink);margin-top:4px}
+.hx.hero2{position:relative;overflow:clip;min-height:min(100svh,940px);padding-block:76px 56px;
+  padding-left:max(16px,4vw,env(safe-area-inset-left,0px));padding-right:max(16px,4vw,env(safe-area-inset-right,0px))}
+.hx.hero2 h1{font:500 clamp(46px,6.8vw,104px)/.98 var(--display);margin:0}
+.hx.hero2 h1 em{font-style:italic;color:var(--gold)}
+.hx .gur-mid{display:block;font:600 clamp(26px,3vw,40px)/1.4 var(--gur);color:var(--gold);margin:10px 0 2px}
+.hx .gur{font-family:var(--gur)}
+.hx.mq{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:end;gap:24px}
+.hx .mq-rows{position:absolute;inset:12% 0 auto 0;display:grid;gap:6px;transform:rotate(-4deg);pointer-events:none}
+.hx .mq-row{white-space:nowrap;font-weight:600;font-size:clamp(60px,9vw,140px);line-height:1.25;color:var(--cream-3)}
+.hx .mq-row.o{color:transparent;-webkit-text-stroke:1.5px var(--gold-lite)}
+.hx .mq-row span{display:inline-block;padding-right:.4em}
+.hx .mq-fig{position:relative;z-index:2;grid-column:2;width:min(520px,100%);justify-self:end;filter:drop-shadow(0 24px 34px rgba(11,23,49,.22))}
+.hx .mq-copy{position:relative;z-index:3;grid-column:1;grid-row:1}
+@media(max-width:860px){.hx.mq{grid-template-columns:minmax(0,1fr)}
+.hx .mq-fig,.hx .mq-copy{grid-column:1}
+.hx .mq-fig{grid-row:1}
+.hx .mq-copy{grid-row:2}}
+
 .tbc{ background:rgba(184,144,47,.16); border-bottom:1px dashed var(--gold); padding:0 .2em; font-style:normal; }
 .draftbar{ position:sticky; top:var(--mastH,74px); z-index:5; background:var(--navy); color:var(--cream); font:12px/1.4 var(--mono);
   letter-spacing:.08em; text-transform:uppercase; text-align:center; padding:8px 16px; }
@@ -46,20 +71,15 @@
 
 <p class="draftbar">Draft for checking · not on the site yet</p>
 <main id="main">
-<section class="phero no-art paper" data-hero>
-  <div class="phero-in">
-    <div>
-      <p class="eyebrow">Gurmat Vidyala · 04 · Tabla</p>
-      <span class="gur gur-line" lang="pa">ਤਬਲਾ ਤੇ ਜੋੜੀ</span>
-      <h1 class="display">Tabla <em>&amp; Jori</em></h1>
-      <p class="lede">Taal for the kirtan to stand on. Tabla and jori are taught beside the Kirtan Vidyala, so a student learns to keep the theka that the shabad is sung over.</p>
-      <dl class="facts3">
-        <div><dt>When</dt><dd><a href="contact.html">Contact us to inquire</a></dd></div>
-        <div><dt>Where</dt><dd>At all our gurdwaras</dd></div>
-        <div><dt>Fee</dt><dd>None</dd></div>
-      </dl>
-    </div>
+<section data-hero class="hx hero2 mq" data-init="marquee">
+  <div class="mq-rows" aria-hidden="true">
+    <div class="mq-row gur" lang="pa"><span>ਧਾ ਧਿੰ ਧਿੰ ਧਾ · ਧਾ ਧਿੰ ਧਿੰ ਧਾ · ਧਾ ਤਿੰ ਤਿੰ ਤਾ · ਤਾ ਧਿੰ ਧਿੰ ਧਾ · </span></div>
+    <div class="mq-row gur o" lang="pa"><span>ਧਾ ਧਿੰ ਧਿੰ ਧਾ · ਧਾ ਧਿੰ ਧਿੰ ਧਾ · ਧਾ ਤਿੰ ਤਿੰ ਤਾ · ਤਾ ਧਿੰ ਧਿੰ ਧਾ · </span></div>
+    <div class="mq-row gur" lang="pa"><span>ਧਾ ਧਿੰ ਧਿੰ ਧਾ · ਧਾ ਧਿੰ ਧਿੰ ਧਾ · ਧਾ ਤਿੰ ਤਿੰ ਤਾ · ਤਾ ਧਿੰ ਧਿੰ ਧਾ · </span></div>
   </div>
+  <img class="mq-fig" src="img/hero/tabla-8d8e3a65.webp" width="760" height="760" alt="A young Singh in blue bana playing tabla and jori.">
+  <div class="mq-copy"><p class="k">Gurmat Vidyala · 04 · Tabla</p><span class="gur-mid" lang="pa">ਤਬਲਾ ਤੇ ਜੋੜੀ</span><h1>Tabla <em>&amp; Jori</em></h1>
+    <div class="meta"><span>Theka<b>Teentaal, 16 matra</b></span><span>Where<b>All our gurdwaras</b></span><span>Fee<b>None</b></span></div></div>
 </section>
 <div class="wrapx paper">
   <section class="band" style="border-top:0">
@@ -99,6 +119,30 @@
 <script src="lib/lenis.min.js"></script>
 <script src="kit.js"></script>
 
+<script>
+/* the picked hero's motion, lifted from the hero mockups; nothing here runs with reduced motion */
+(() => {
+const still = matchMedia('(prefers-reduced-motion: reduce)').matches, coarse = matchMedia('(pointer: coarse)').matches;
+const INIT = {};
+const inView = el => { const r = el.getBoundingClientRect(); return r.bottom > 0 && r.top < innerHeight; };
+function follow(el, fn){ el.addEventListener('pointermove', e => { const r = el.getBoundingClientRect();
+  fn((e.clientX - r.left) / r.width * 2 - 1, (e.clientY - r.top) / r.height * 2 - 1, e); }); el.addEventListener('pointerleave', () => fn(0, 0, null)); }
+
+function track(el, fn){ el.addEventListener('pointermove', e => { const r = el.getBoundingClientRect();
+  fn((e.clientX - r.left) / r.width * 2 - 1, (e.clientY - r.top) / r.height * 2 - 1, e); }); el.addEventListener('pointerleave', () => fn(0, 0, null)); }
+function tilt(stage, max){ const sx = gsap.quickTo(stage, 'rotationY', {duration:.6, ease:'power3'}), sy = gsap.quickTo(stage, 'rotationX', {duration:.6, ease:'power3'});
+  return (x, y) => { sx(x * max); sy(-y * max); }; }
+INIT.marquee = s => { if (still) return;
+  const rows = [...s.querySelectorAll('.mq-row')];
+  rows.forEach(r => { r.innerHTML = r.innerHTML.repeat(4); });
+  let boost = 0, x = [0, 0, 0];
+  ScrollTrigger.create({ trigger:s, start:'top bottom', end:'bottom top', onUpdate:self => { boost = Math.min(6, Math.abs(self.getVelocity()) / 400); } });
+  gsap.ticker.add(() => { if (!inView(s)) return; boost *= .94;
+    rows.forEach((r, i) => { const w = r.firstElementChild.offsetWidth; x[i] -= (i % 2 ? -1 : 1) * (0.6 + boost);
+      if (x[i] < -w) x[i] += w; if (x[i] > 0) x[i] -= w; r.style.transform = `translateX(${x[i]}px)`; }); }); };
+document.querySelectorAll('.hx[data-init]').forEach(s => { try { INIT[s.dataset.init](s); } catch (e) { console.error(s.dataset.init, e); } });
+})();
+</script>
 <script>KIT.start();</script>
 </body>
 </html>
