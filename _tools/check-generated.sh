@@ -20,7 +20,7 @@ cd "$(dirname "$0")/.."
 PATHS=("index.html" "404.html" "sikhi-calendar/index.html" "Mockup/_Redesign_Inner" "kit" "new"
        "classes/index.html" "santhiya/index.html" "saaj/dilruba/index.html" "akhara/archery/index.html"
        "library/read" "camps/index.html" "about/index.html" "donate/index.html" "contact/index.html" "gallery/index.html"
-       "resources/index.html" "library/index.html" "safeguarding/index.html" "privacy/index.html")
+       "resources/index.html" "library/index.html" "tabla/index.html" "katha/index.html" "itihaas/index.html" "safeguarding/index.html" "privacy/index.html")
 fail=0
 
 # Refuse to run over someone else's work in progress. More than one session

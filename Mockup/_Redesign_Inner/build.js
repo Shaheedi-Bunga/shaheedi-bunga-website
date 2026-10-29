@@ -54,7 +54,8 @@ function responsive(h, name){
 /* page name → its address on the site */
 const ROUTES = { classes:'classes', santhiya:'santhiya', kirtan:'saaj/dilruba', archery:'akhara/archery',
   camps:'camps', about:'about', donate:'donate', contact:'contact', gallery:'gallery',
-  resources:'resources', library:'library', safeguarding:'safeguarding', privacy:'privacy', events:'events' };
+  resources:'resources', library:'library', safeguarding:'safeguarding', privacy:'privacy', events:'events',
+  tabla:'tabla', katha:'katha', itihaas:'itihaas' };   /* the three published 2026-10-29 */
 
 /* pages that live on the site but are not built here: the calendar is the
    calendar app's page, fitted by _tools/fit-calendar.py */
@@ -68,16 +69,15 @@ const ELSEWHERE = { calendar:'sikhi-calendar' };
 const NAV = [['vidyale', 'Vidyale'], ['events', 'Events'], ['calendar', 'Calendar'], ['gallery', 'Gallery'],
              ['resources', 'Resources'], ['about', 'About'], ['contact', 'Contact'], ['donate', 'Donate']];
 
-/* Each vidyala has its own place: the three with pages first, then the three
-   still on the Classes page. Gurmukhi names as on the Classes page. */
+/* Each vidyala has its own page (all six since 2026-10-29). Gurmukhi names as on the Classes page. */
 const VIDYALE = [
   { href:'santhiya.html', gur:'ਸੰਥਿਆ ਵਿਦਿਆਲਾ', en:'Santhiya', note:'Reading sudh Gurbani' },
   { href:'kirtan.html', gur:'ਕੀਰਤਨ ਵਿਦਿਆਲਾ', en:'Kirtan', note:'Tanti saaj and raag' },
   { href:'archery.html', gur:'ਤੀਰ ਅੰਦਾਜ਼ੀ', en:'Archery Akhara', note:'Sundays, ages 14 and over' },
-  { href:'classes.html#tabla', gur:'ਤਬਲਾ ਤੇ ਜੋੜੀ', en:'Tabla & Jori', note:'Running: ask' },
-  { href:'classes.html#katha', gur:'ਕਥਾ ਵਿਦਿਆਲਾ', en:'Katha', note:'Page coming' },
-  { href:'classes.html#itihaas', gur:'ਇਤਿਹਾਸ ਵਿਦਿਆਲਾ', en:'Itihaas', note:'Wednesday evenings' } ];
-const VIDYALE_PAGES = ['santhiya', 'kirtan', 'archery', 'classes', 'camps'];
+  { href:'tabla.html', gur:'ਤਬਲਾ ਤੇ ਜੋੜੀ', en:'Tabla & Jori', note:'At all our gurdwaras' },
+  { href:'katha.html', gur:'ਕਥਾ ਵਿਦਿਆਲਾ', en:'Katha', note:'Explaining Gurbani to a sangat' },
+  { href:'itihaas.html', gur:'ਇਤਿਹਾਸ ਵਿਦਿਆਲਾ', en:'Itihaas', note:'Wednesday evenings' } ];
+const VIDYALE_PAGES = ['santhiya', 'kirtan', 'archery', 'tabla', 'katha', 'itihaas', 'classes', 'camps'];
 
 function mast(a){
   const nav = NAV.map(([k, label]) => k !== 'vidyale'
