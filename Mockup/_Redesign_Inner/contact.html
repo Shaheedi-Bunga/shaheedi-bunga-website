@@ -111,7 +111,7 @@ a.way:hover .go{ transform:translate(6px,-6px); }
     <p class="hxlede">WhatsApp is the quickest way to reach us. We'll reply with this week's classes and where to go. There is no booking and no fee.</p>
     <div class="fg-places"><div><b>Gipsy Lane</b><span>Gurudwara Shri Guru Dashmesh Sahib</span></div><div><b>East Park Road</b><span>Guru Tegh Bahadur Gurdwara</span></div></div></div>
   <div class="fg-art"><img src="img/hero/contact-b16388b5.webp" width="900" height="1115" alt="Two Singhs greet each other with joined hands before a glowing gurdwara doorway, a Nishan Sahib beside it.">
-    <a class="mg-btn fg-btn" href="#contact"><span>WhatsApp<br><small>+44 7394 848407</small></span></a></div>
+    <a class="mg-btn fg-btn" href="https://wa.me/447394848407" target="_blank" rel="noopener"><span>WhatsApp<br><small>+44 7394 848407</small></span></a></div>
 </section>
 
 <div class="wrapx paper">
@@ -190,6 +190,11 @@ function track(el, fn){ el.addEventListener('pointermove', e => { const r = el.g
   fn((e.clientX - r.left) / r.width * 2 - 1, (e.clientY - r.top) / r.height * 2 - 1, e); }); el.addEventListener('pointerleave', () => fn(0, 0, null)); }
 function tilt(stage, max){ const sx = gsap.quickTo(stage, 'rotationY', {duration:.6, ease:'power3'}), sy = gsap.quickTo(stage, 'rotationX', {duration:.6, ease:'power3'});
   return (x, y) => { sx(x * max); sy(-y * max); }; }
+INIT.magnetic = s => { if (still || coarse) return; const b = s.querySelector('.mg-btn');
+  const bx = gsap.quickTo(b, 'x', {duration:.6, ease:'elastic.out(1,.5)'}), by = gsap.quickTo(b, 'y', {duration:.6, ease:'elastic.out(1,.5)'});
+  s.addEventListener('pointermove', e => { const r = b.getBoundingClientRect(), dx = e.clientX - (r.left + r.width / 2), dy = e.clientY - (r.top + r.height / 2), d = Math.hypot(dx, dy);
+    if (d < 260) { bx(dx * .35); by(dy * .35); } else { bx(0); by(0); } });
+  s.addEventListener('pointerleave', () => { bx(0); by(0); }); };
 INIT.fateh = s => { const rows = [...s.querySelectorAll('.fg-row')]; rows.forEach(r => r.innerHTML = r.innerHTML.repeat(4));
   if (still) return; let x = [0, 0];
   gsap.ticker.add(() => { if (!inView(s)) return; rows.forEach((r, i) => { const w = r.firstElementChild.offsetWidth; x[i] += i ? .5 : -.5; if (x[i] < -w) x[i] += w; if (x[i] > 0) x[i] -= w; r.style.transform = `translateX(${x[i]}px)`; }); });
