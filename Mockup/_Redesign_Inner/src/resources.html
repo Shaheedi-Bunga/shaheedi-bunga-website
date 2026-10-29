@@ -14,6 +14,7 @@ html[data-mood="dark"] .hx{ --ink:#F3EEE2; --muted:rgba(243,238,226,.74); --gold
 .hx .tys-box{display:grid;gap:8px;max-width:760px}
 .hx .tys-box input{font:500 clamp(28px,3.4vw,48px)/1.2 var(--display);color:#F3EEE2;background:transparent;border:0;border-bottom:2px solid rgba(235,205,136,.5);padding:8px 0;outline:none;width:100%}
 .hx .tys-box input:focus{border-bottom-color:#F1DB9C}
+.hx .tys-box input:focus-visible{outline:2px solid #E2C27A;outline-offset:6px;border-radius:2px}
 .hx .tys-list{list-style:none;margin:0;padding:0;columns:2 320px;column-gap:40px;max-height:46vh;overflow:hidden}
 .hx .tys-list li{break-inside:avoid;display:flex;justify-content:space-between;gap:16px;padding:9px 0;border-bottom:1px solid rgba(235,205,136,.15);color:rgba(243,238,226,.9)}
 .hx .tys-list li[hidden]{display:none}
@@ -223,6 +224,8 @@ INIT.typesearch = s => { const inp = s.querySelector('input'), L = [...s.querySe
     L.forEach(li => { const hit = !q || li.textContent.toLowerCase().includes(q); li.hidden = !hit; li.classList.toggle('hit', !!q && hit); c += hit; });
     n.textContent = q ? `${c} of ${L.length} titles` : `${L.length} titles`; };
   inp.addEventListener('input', () => { typed = true; run(); });
+  /* the demo stops the moment someone comes to the box, and leaves it empty for them */
+  inp.addEventListener('focus', () => { if (!typed) { typed = true; inp.value = ''; run(); } });
   run(); if (still) return;
   const Q = ['Week', 'ਜੀਵਨੀ', 'Sri Guru', 'ਲੜੀਵਾਰ', 'Katha']; let qi = 0;
   const demo = async () => { while (!typed) { if (!inView(s)) { await new Promise(r => setTimeout(r, 600)); continue; }
