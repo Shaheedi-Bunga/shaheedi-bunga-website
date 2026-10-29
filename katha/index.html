@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- the site loads everything from itself and sends nothing anywhere (see /privacy/); this says so to the browser.
+     Inline script and style stay allowed: every page carries its own. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; media-src 'self'; font-src 'self'; connect-src 'self'; object-src 'none'; frame-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Katha Vidyala · Shaheedi Bunga</title>
+<link rel="icon" href="/Assets/Brand/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="/Assets/Brand/apple-touch-icon-180.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="stylesheet" href="/lib/fonts.css">
+<link rel="stylesheet" href="/kit/kit.css">
+<!-- before paint: light unless this viewer chose dark (or ?mood= asks), so
+     there is never a flash of the wrong mode -->
+<script>(function(){var m=(/[?&]mood=(light|dark)/.exec(location.search)||[])[1];
+  if(!m){try{m=localStorage.getItem("sb-mood");}catch(e){}}
+  document.documentElement.dataset.mood=m==="dark"?"dark":"light";})();</script>
+
+<style>
+/* the picked hero (lifted from the hero mockups, 2026-10-28): its own tokens, from the kit's */
+.hx{ --ink:var(--navy); --muted:var(--navy-70); --gold:var(--gold-text); --gold-lite:#B8902F; --night:#070E1E; --night-2:#101C37; --sans:var(--body); }
+html[data-mood="dark"] .hx{ --ink:#F3EEE2; --muted:rgba(243,238,226,.74); --gold:#EBCD88; --gold-lite:#D4AC57; }
+.hx .k{font:11px/1.4 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+.hx.hero{position:relative;min-height:min(100svh,940px);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.9fr);gap:clamp(24px,4vw,64px);
+  align-items:center;padding-block:72px;padding-left:max(16px,4vw,env(safe-area-inset-left,0px));padding-right:max(16px,4vw,env(safe-area-inset-right,0px));
+  border-top:1px solid var(--line);overflow:clip}
+.hx .copy{min-width:0;max-width:620px}
+.hx .gur-big{display:block;font:600 clamp(44px,6.4vw,92px)/1.25 var(--gur);color:var(--gold);margin-top:14px}
+.hx .copy h1{font:500 clamp(46px,6.8vw,104px)/.98 var(--display);margin:0}
+.hx .copy h1 em{font-style:italic;color:var(--gold)}
+.hx .hxlede{color:var(--muted);max-width:40ch;margin-top:18px;font-size:clamp(16px,1.3vw,19px)}
+.hx .meta{display:flex;flex-wrap:wrap;gap:clamp(18px,3vw,44px);margin-top:26px;padding-top:16px;border-top:1px solid var(--line)}
+.hx .meta span{font:11px/1.4 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.hx .meta b{display:block;font:500 clamp(22px,2vw,30px)/1.2 var(--display);letter-spacing:0;text-transform:none;color:var(--ink);margin-top:4px}
+.hx .art{position:relative;justify-self:end;width:min(100%,520px);margin:0;perspective:1100px}
+.hx .hxarch{position:relative;aspect-ratio:4/5;border-radius:999px 999px 6px 6px;overflow:hidden;
+  background:radial-gradient(120% 80% at 50% 30%,var(--cream-2),var(--cream-3));transform-style:preserve-3d}
+.hx .arch-line{position:absolute;inset:-12px -12px -6px;border:1px solid var(--gold-lite);border-bottom:0;border-radius:999px 999px 0 0;pointer-events:none;opacity:.7}
+.hx .art figcaption{font:11px/1.4 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:14px}
+.hx .fig{position:absolute;left:-2%;right:-2%;bottom:-1%;width:104%;display:block;user-select:none;-webkit-user-drag:none}
+.hx .stage{position:absolute;inset:0;transform-style:preserve-3d;will-change:transform}
+@media (max-width:860px){.hx.hero{grid-template-columns:minmax(0,1fr);min-height:0;padding-top:64px}
+.hx .art{justify-self:stretch;width:auto;max-width:460px;margin-inline:auto}}
+.hx .halo{position:absolute;left:50%;top:34%;width:78%;aspect-ratio:1;border-radius:50%;transform:translate(-50%,-50%) translateZ(-120px);
+  background:radial-gradient(circle,rgba(235,205,136,.85),rgba(235,205,136,.18) 55%,transparent 70%)}
+.hx .hxarch canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+
+.tbc{ background:rgba(184,144,47,.16); border-bottom:1px dashed var(--gold); padding:0 .2em; font-style:normal; }
+.facts3{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:calc(var(--u)*2); border-top:1px solid var(--line); padding-top:calc(var(--u)*2); margin-top:calc(var(--u)*3); }
+.facts3 dt{ font-family:var(--mono); font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--gold-text); }
+.facts3 dd{ margin:.3em 0 0; font-family:var(--display); font-size:max(24px,calc(var(--u)*2.6)); line-height:1.15; }
+.record li{ margin:.7em 0; max-width:70ch; }
+@media(max-width:700px){ .facts3{ grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="mast">
+  <a class="brand" href="/" aria-label="Shaheedi Bunga, home"><img src="/kit/img/gurmat-vidyala-84.png" alt="" width="40" height="40" srcset="/kit/img/webp/gurmat-vidyala-84-84.webp">
+    <span><b>Shaheedi Bunga</b><i>Gurmat Vidyala</i></span></a>
+  <nav aria-label="Main" id="site-nav"><div class="vid is-current"><button class="vid-btn" type="button" aria-expanded="false" aria-controls="vid-panel">Vidyale<i aria-hidden="true"></i></button><div class="vid-panel" id="vid-panel"><div class="vid-grid"><a class="vid-item" href="/santhiya/"><span class="vid-gur" lang="pa">ਸੰਥਿਆ ਵਿਦਿਆਲਾ</span><b>Santhiya</b><small>Reading sudh Gurbani</small></a><a class="vid-item" href="/saaj/dilruba/"><span class="vid-gur" lang="pa">ਕੀਰਤਨ ਵਿਦਿਆਲਾ</span><b>Kirtan</b><small>Tanti saaj and raag</small></a><a class="vid-item" href="/akhara/archery/"><span class="vid-gur" lang="pa">ਤੀਰ ਅੰਦਾਜ਼ੀ</span><b>Archery Akhara</b><small>Sundays, ages 14 and over</small></a><a class="vid-item" href="/tabla/"><span class="vid-gur" lang="pa">ਤਬਲਾ ਤੇ ਜੋੜੀ</span><b>Tabla &amp; Jori</b><small>At all our gurdwaras</small></a><a class="vid-item" href="/katha/" aria-current="page"><span class="vid-gur" lang="pa">ਕਥਾ ਵਿਦਿਆਲਾ</span><b>Katha</b><small>Explaining Gurbani to a sangat</small></a><a class="vid-item" href="/itihaas/"><span class="vid-gur" lang="pa">ਇਤਿਹਾਸ ਵਿਦਿਆਲਾ</span><b>Itihaas</b><small>Wednesday evenings</small></a></div><div class="vid-foot"><a href="/classes/">All classes →</a><a href="/camps/">Camps →</a></div></div></div><a href="/events/">Events</a><a href="/sikhi-calendar/">Calendar</a><a href="/gallery/">Gallery</a><a href="/resources/">Resources</a><a href="/about/">About</a><a href="/contact/">Contact</a><a href="/donate/">Donate</a></nav>
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav"><span>Menu</span><i aria-hidden="true"></i></button>
+  <a class="wa" href="https://wa.me/447394848407?text=Sat%20Sri%20Akal%20%E2%80%94%20I'd%20like%20to%20ask%20about%20classes." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.6 2 2.18 6.42 2.18 11.86c0 1.74.46 3.44 1.32 4.94L2.1 22l5.34-1.4a9.8 9.8 0 0 0 4.6 1.17h.01c5.43 0 9.85-4.42 9.85-9.86 0-2.63-1.02-5.11-2.88-6.97A9.79 9.79 0 0 0 12.04 2z"/></svg>WhatsApp</a>
+</header>
+
+<main id="main">
+<section data-init="archKatha" data-hero class="hx hero">
+  
+  <div class="copy"><p class="k">Gurmat Vidyala · 05 · Katha</p><span class="gur-big" lang="pa">ਕਥਾ ਵਿਦਿਆਲਾ</span>
+    <h1>Katha <em>Vidyala</em></h1><p class="hxlede">Learn to give katha: to understand what a shabad says and explain it clearly to a sangat.</p>
+    <div class="meta"><span>When<b>Ask us</b></span><span>Where<b>All our gurdwaras</b></span><span>Fee<b>None</b></span></div></div>
+  <figure class="art"><div class="hxarch"><div class="stage"><div class="halo"></div><img class="fig" src="/kit/img/hero/katha-1cd86a88.webp" width="760" height="760" alt="An elder Singh at a pothi on a rehal, one hand raised as they explain."></div></div><span class="arch-line" aria-hidden="true"></span><figcaption>Katha from the pothi</figcaption></figure>
+</section>
+<div class="wrapx paper">
+  <section class="band" style="border-top:0">
+    <h2>What is taught</h2>
+    <p>You learn to read a shabad closely, work out what it is saying, and explain it to a sangat plainly and correctly. <a href="/contact/">Contact us</a> to ask who the class is for and who teaches it.</p>
+    <figure class="phero-art"><div class="arch"><img src="/kit/img/p-katha-teaching.jpg" alt="A Singh in a white kurta and chola and a black waistcoat, standing in the hall and explaining with one hand raised." loading="lazy" width="1500" height="2000" srcset="/kit/img/webp/p-katha-teaching-480.webp 480w, /kit/img/webp/p-katha-teaching-960.webp 960w, /kit/img/p-katha-teaching.jpg 1500w" sizes="(max-width:800px) 100vw, 33vw"></div><figcaption>Sikhi Camp · January 2024</figcaption></figure>
+  </section>
+  <section class="band">
+    <h2>What we have run before</h2>
+    <ul class="record">
+      <li>Gurbani Katha Vichaar (Larivaar Gurbani and Itihaas Katha) by Giani Baljinder Singh Ji (Shaheedi Bunga UK): Guru Arjan Dev Ji Gurdwara, Derby, 17 to 23 June 2019, and Sri Guru Har Rai Sahib Gurdwara Ji, West Bromwich, 24 to 30 June 2019.</li>
+      <li>Katha workshops by Gursikh vidhvaans at the Gurbani Vidhya Camp, 7 to 20 August 2023, Gurdwara Guru Tegh Bahadur, 106 East Park Road.</li>
+      <li>Katha Hazari: Katha Vichar by Sant Giani Inderjeet Singh Ji Raqbe Wale, 28 to 30 June 2023, 7pm, Gurdwara Guru Tegh Bahadur Sahib Ji, 106 East Park Road.</li>
+    </ul>
+    <p><a href="/events/">Every event since 2017 ↗</a></p>
+    <figure class="phero-art"><div class="arch"><img src="/kit/img/p-katha-talk.jpg" alt="A Singh giving katha from the stage at a samagam, a second Singh beside them, with microphones and a speaker in front." loading="lazy" width="1500" height="2000" srcset="/kit/img/webp/p-katha-talk-480.webp 480w, /kit/img/webp/p-katha-talk-960.webp 960w, /kit/img/p-katha-talk.jpg 1500w" sizes="(max-width:800px) 100vw, 33vw"></div><figcaption>Katha at a samagam</figcaption></figure>
+  </section>
+  <section class="band">
+    <h2>Ask us before your first class.</h2>
+    <p>Send us a message and we'll tell you the day, the room and who is teaching. You can reach us on
+      <a href="https://wa.me/447394848407" target="_blank" rel="noopener">WhatsApp +44 7394 848407</a> or at
+      <a href="mailto:gurmat@shaheedibunga.com">gurmat@shaheedibunga.com</a>.</p>
+  </section>
+</div>
+</main>
+<footer class="foot">
+  <p class="big">Come and sit<br>with the <em>sangat.</em></p>
+  <div class="cols">
+    <div><h2>Shaheedi Bunga</h2><p style="margin:0;max-width:34ch">A Sikh education charity in Leicester. Every class is free and taught by volunteers.</p></div>
+    <div><h2>Vidyale</h2><a href="/santhiya/">Santhiya</a><a href="/saaj/dilruba/">Kirtan</a><a href="/akhara/archery/">Archery</a><a href="/classes/">All classes</a><a href="/camps/">Camps</a><a href="/events/">Events</a><a href="/sikhi-calendar/">Calendar</a></div>
+    <div><h2>Charity</h2><a href="/about/">About</a><a href="/donate/">Donate</a><a href="/gallery/">Gallery</a><a href="/resources/">Resources</a><a href="/library/">Library</a></div>
+    <div><h2>Contact</h2><a href="https://wa.me/447394848407" target="_blank" rel="noopener">+44 7394 848407</a><a href="mailto:gurmat@shaheedibunga.com">gurmat@shaheedibunga.com</a><a href="/safeguarding/">Safeguarding</a><a href="/privacy/">Privacy</a></div>
+  </div>
+  <div class="legal"><span>Registered charity in England &amp; Wales · 1185103</span><a href="/" style="display:inline-block;padding:4px 0">Home · the Parikrama</a></div>
+</footer>
+
+<script src="/kit/lib/gsap.min.js"></script>
+<script src="/kit/lib/ScrollTrigger.min.js"></script>
+<script src="/kit/lib/SplitText.min.js"></script>
+<script src="/kit/lib/lenis.min.js"></script>
+<script src="/kit/kit.js"></script>
+
+<script>
+/* the picked hero's motion, lifted from the hero mockups; nothing here runs with reduced motion */
+(() => {
+const still = matchMedia('(prefers-reduced-motion: reduce)').matches, coarse = matchMedia('(pointer: coarse)').matches;
+const INIT = {};
+const inView = el => { const r = el.getBoundingClientRect(); return r.bottom > 0 && r.top < innerHeight; };
+function follow(el, fn){ el.addEventListener('pointermove', e => { const r = el.getBoundingClientRect();
+  fn((e.clientX - r.left) / r.width * 2 - 1, (e.clientY - r.top) / r.height * 2 - 1, e); }); el.addEventListener('pointerleave', () => fn(0, 0, null)); }
+
+function track(el, fn){ el.addEventListener('pointermove', e => { const r = el.getBoundingClientRect();
+  fn((e.clientX - r.left) / r.width * 2 - 1, (e.clientY - r.top) / r.height * 2 - 1, e); }); el.addEventListener('pointerleave', () => fn(0, 0, null)); }
+function tilt(stage, max){ const sx = gsap.quickTo(stage, 'rotationY', {duration:.6, ease:'power3'}), sy = gsap.quickTo(stage, 'rotationX', {duration:.6, ease:'power3'});
+  return (x, y) => { sx(x * max); sy(-y * max); }; }
+INIT.archKatha = s => { if (still) return; const hxarch = s.querySelector('.hxarch'), stage = hxarch.querySelector('.stage'), t = tilt(stage, 14);
+  for (let i = 0; i < 14; i++) { const m = document.createElement('i'); m.className = 'mote'; stage.appendChild(m);
+    gsap.set(m, { left:(10 + Math.random()*80)+'%', top:(10 + Math.random()*70)+'%', z:60 + Math.random()*120, scale:.5 + Math.random() });
+    gsap.to(m, { y:'-=' + (30 + Math.random()*50), opacity:.2 + Math.random()*.7, duration:3 + Math.random()*3, yoyo:true, repeat:-1, ease:'sine.inOut' }); }
+  track(hxarch, (x, y) => t(x, y)); };
+document.querySelectorAll('.hx[data-init]').forEach(s => { try { INIT[s.dataset.init](s); } catch (e) { console.error(s.dataset.init, e); } });
+})();
+</script>
+<script>KIT.start();</script>
+</body>
+</html>
