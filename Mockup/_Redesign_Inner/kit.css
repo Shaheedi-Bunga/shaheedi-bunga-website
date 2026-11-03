@@ -463,9 +463,9 @@ html.menu-open .mast{ background:linear-gradient(100deg, #14264E 0%, #0B1731 55%
    page transitions, and the hand details. Every piece is off under reduced
    motion, and the hand details exist only on a fine pointer (html.hand). */
 
-/* the line reveal (kit.js api.rise): a mask per line, with room below for
+/* the line reveal (kit.js api.rise; rise-ln, since the Donate bank rows own .ln): a mask per line, with room below for
    descenders so the g and y are not cut while they rise */
-.ln-mask{ padding-bottom:.14em; margin-bottom:-.14em; }
+.rise-ln-mask{ padding-bottom:.14em; margin-bottom:-.14em; }
 
 /* the heroes' grain, richer than the page's: stock you could touch */
 html .phero.paper::before, html [data-hero].paper::before{ opacity:1;

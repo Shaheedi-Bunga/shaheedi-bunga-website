@@ -97,7 +97,7 @@ window.KIT = (function(){
      split is undone and the sheen crosses the whole phrase again. Returns the
      timeline, so a page can place it inside its own. */
   api.rise = function(el, vars){
-    var s = SplitText.create(el, { type:"lines,words", wordsClass:"w", linesClass:"ln", mask:"lines" });
+    var s = SplitText.create(el, { type:"lines,words", wordsClass:"w", linesClass:"rise-ln", mask:"lines" });
     var gold = s.words.filter(function(w){ return w.closest("em:not(:lang(pa))"); }), x = 0, total = 0;
     gold.forEach(function(w){ total += w.offsetWidth; });
     gold.forEach(function(w){
