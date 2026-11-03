@@ -457,3 +457,26 @@ html.menu-open .mast{ background:linear-gradient(100deg, #14264E 0%, #0B1731 55%
   html.menu-open .mast nav .vid-panel{ border-bottom:1px solid rgba(226,194,122,.18); }
   html.menu-open .mast nav .vid-foot{ border-top-color:rgba(226,194,122,.18); }
 }
+
+/* ── a pangti of Gurbani under a page's heading: Gurmukhi and its Ang only, never letter-spaced ── */
+.pangti{ margin:1.1em 0 0; display:flex; flex-wrap:wrap; align-items:baseline; gap:.2em 1.1em; }
+.pangti .gur{ margin:0; font-size:max(20px,calc(var(--u)*1.45)); line-height:1.75; color:var(--hero-gold); }
+.pangti figcaption{ font-family:var(--mono); font-size:max(11px,calc(var(--u)*.66)); letter-spacing:.14em; text-transform:uppercase; color:var(--hero-muted); }
+
+/* ── a chart: inline SVG drawn from kit tokens, with its numbers in a table beneath ── */
+.chart{ max-width:820px; margin:2em 0 0; padding:max(16px,calc(var(--u)*1.6)); border:1px solid var(--line); border-radius:6px; background:var(--cream-2); }
+.chart-t{ font-family:var(--display); font-size:max(22px,calc(var(--u)*1.6)); font-weight:600; line-height:1.15; margin:0 0 .6em; }
+@media(min-width:801px){ .band > .chart{ grid-column:2; } }   /* in a two-column band the chart sits under the text, not under the heading */
+.chart svg{ display:block; width:100%; height:auto; overflow:visible; }
+.chart .g{ stroke:var(--line); stroke-width:1; }
+.chart .ax{ fill:var(--navy-70); font:12px var(--body); }
+.chart .lb{ fill:var(--navy); font:600 12px var(--body); }
+.chart .br{ fill:var(--gold-text); }
+.chart .ln{ fill:none; stroke:var(--gold-text); stroke-width:2.5; stroke-linejoin:round; }
+.chart .dt{ fill:var(--gold-text); }
+.chart-c{ margin:.9em 0 0; font-size:.88em; color:var(--navy-70); }
+.chart-n{ margin-top:.8em; font-size:.88em; }
+.chart-n summary{ cursor:pointer; color:var(--gold-text); }
+.chart-n table{ margin-top:.6em; border-collapse:collapse; width:100%; max-width:30em; }
+.chart-n th, .chart-n td{ text-align:left; padding:.3em .6em .3em 0; border-bottom:1px solid var(--line); }
+.chart-n td + td, .chart-n th + th{ text-align:right; }
