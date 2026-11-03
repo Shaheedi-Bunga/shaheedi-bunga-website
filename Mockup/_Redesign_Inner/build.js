@@ -198,6 +198,8 @@ function page(f, live){
   const left = h.match(/<!--@\w+/);
   if (left) throw new Error(`${f}: ${left[0]} was not filled in`);
   h = responsive(h, name);
+  /* draft markers (<!--draft:id-->) are for review in the sources only */
+  h = h.replace(/<!--draft:[^>]*-->/g, '');
   if (!live) return h;
 
   return toLive(h, f);

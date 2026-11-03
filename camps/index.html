@@ -69,6 +69,8 @@ html[data-mood="dark"] .hx{ --ink:#F3EEE2; --muted:rgba(243,238,226,.74); --gold
 .camp h2{ font-family:var(--display); font-weight:500; font-size:max(34px,calc(var(--u)*4.6)); line-height:.95; margin:0; letter-spacing:-.015em; }
 .camp h2 .gur{ display:block; font-size:max(17px,calc(var(--u)*1.4)); color:var(--gold-text); margin-bottom:.6em; line-height:1.4; }
 .camp .body p{ margin:0; color:var(--navy-70); font-size:max(17px,calc(var(--u)*1.2)); max-width:48ch; }
+.camp .body p + p{ margin-top:1em; }
+.camp .body p a{ color:var(--gold-text); }
 .camp dl{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:calc(var(--u)*1.6); margin:calc(var(--u)*2.4) 0 0; padding-top:calc(var(--u)*1.6); border-top:1px solid var(--line); }
 .camp dt{ font-family:var(--mono); font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--gold-text); margin-bottom:.5em; }
 .camp dd{ margin:0; font-size:max(15px,calc(var(--u)*1)); line-height:1.4; }
@@ -102,8 +104,9 @@ html[data-mood="dark"] .hx{ --ink:#F3EEE2; --muted:rgba(243,238,226,.74); --gold
 <section data-init="archCamps" data-hero class="hx hero night">
   
   <div class="copy"><p class="k">Camps</p><span class="gur-big" lang="pa">ਕੈਂਪ</span>
-    <h1>Come for a day, <em>or a fortnight.</em></h1><p class="hxlede">Our camps run for whole days, and some for whole weeks, in the school holidays and around Hola Mohalla.</p>
-    <div class="meta"><span>Since<b>2018</b></span><span>Where<b>Leicester gurdwaras</b></span><span>Fee<b>None</b></span></div></div>
+    <h1>Come for a day, <em>or a fortnight.</em></h1><p class="hxlede">Every camp is free. They run in the school holidays and the weeks around Hola Mohalla. A Sikhi Camp can be a single Saturday, and the Gurbani Vidhya Camp runs for two weeks.</p>
+    <figure class="pangti"><p class="gur" lang="pa">ਸਤਸੰਗਤਿ ਕੈਸੀ ਜਾਣੀਐ ॥</p><figcaption>Sri Guru Granth Sahib Ji, Ang 72</figcaption></figure>
+    <div class="meta"><span>Since<b>2017</b></span><span>Where<b>Leicester gurdwaras</b></span><span>Fee<b>None</b></span></div></div>
   <figure class="art"><div class="hxarch dark"><div class="stage"><img class="fig" src="/kit/img/hero/camps-abd1500a.webp" width="760" height="760" alt="Two young Singhs at a campfire before a tent, a Nishan Sahib beside it, at night." style="left:0;right:0;bottom:0;width:100%;height:100%;object-fit:cover"></div><canvas></canvas></div><span class="arch-line" aria-hidden="true"></span><figcaption>Move your pointer across the fire</figcaption></figure>
 </section>
 
@@ -113,8 +116,8 @@ html[data-mood="dark"] .hx{ --ink:#F3EEE2; --muted:rgba(243,238,226,.74); --gold
       <p class="n">01</p>
       <h2><span class="gur" lang="pa">ਗੁਰਬਾਣੀ ਵਿੱਦਿਆ ਕੈਂਪ</span>Gurbani Vidhya Camp</h2>
       <div class="body">
-        <p>A two-week camp in the summer, and the most in-depth teaching we do. The class takes one granth and works
-          through it properly over the fortnight.</p>
+        <p>Our most in-depth teaching. Over the fortnight the class takes one Granth and works through it carefully.</p>
+        <p>Students follow the reading in their own Pothi Sahib, and every vishraam and the uchaaran of every word is explained as they go.</p>
         <dl><div><dt>Where</dt><dd>Guru Tegh Bahadur Gurdwara</dd></div><div><dt>When</dt><dd>Two weeks each August</dd></div>
           <div><dt>For</dt><dd>Older students and adults</dd></div></dl>
         <div class="cpics">
@@ -128,8 +131,8 @@ html[data-mood="dark"] .hx{ --ink:#F3EEE2; --muted:rgba(243,238,226,.74); --gold
       <p class="n">02</p>
       <h2><span class="gur" lang="pa">ਗੁਰਬਾਣੀ ਸੰਥਿਆ ਕੈਂਪ</span>Gurbani Santhiya Camp</h2>
       <div class="body">
-        <p>Santhiya every day for several days in a row, in the morning or the afternoon, with no other classes alongside.
-          It is the quickest way to improve your reading.</p>
+        <p>Santhiya every day for four or five days in a row, in the morning or the afternoon. It is the quickest way to improve your reading.</p>
+        <p>Places are limited, so message us early.</p>
         <dl><div><dt>Where</dt><dd>Gurudwara Shri Guru Dashmesh Sahib</dd></div><div><dt>When</dt><dd>Several times a year, in the holidays</dd></div>
           <div><dt>For</dt><dd>Any age, any level</dd></div></dl>
       </div>
@@ -138,19 +141,19 @@ html[data-mood="dark"] .hx{ --ink:#F3EEE2; --muted:rgba(243,238,226,.74); --gold
       <p class="n">03</p>
       <h2><span class="gur" lang="pa">ਸਿੱਖੀ ਕੈਂਪ</span>Sikhi Camp</h2>
       <div class="body">
-        <p>Our camp for children, and the biggest event the vidyala runs by numbers. Children from about five upwards spend
-          whole days on itihaas, kirtan, games and langar.</p>
+        <p>Our camp for children, and the biggest event the Vidyala runs by numbers. Children spend whole days on Itihaas and Kirtan, along with Gatka, dastaar tying, arts and crafts, talks, sport, games and Langar.</p>
+        <p>The Easter camp of April 2025 brought 190 children to Guru Tegh Bahadur Gurdwara.</p>
         <dl><div><dt>Where</dt><dd>Moves between the gurdwaras</dd></div><div><dt>When</dt><dd>School holidays</dd></div>
-          <div><dt>For</dt><dd>Children from 5</dd></div></dl>
+          <div><dt>For</dt><dd>Ages 5 to 18</dd></div></dl>
       </div>
     </section>
     <section class="camp" data-fade>
       <p class="n">04</p>
       <h2><span class="gur" lang="pa">ਹੋਲਾ ਮਹੱਲਾ</span>Hola Mohalla UK</h2>
       <div class="body">
-        <p>A national gathering that we host, with gatka, archery, horse riding, axe and chakar throwing, and rifle shooting.
-          It is a day of shastar vidya, run as an open event rather than a class.</p>
-        <dl><div><dt>Where</dt><dd>Leicester: the venue changes</dd></div><div><dt>When</dt><dd>Around Hola Mohalla, in March</dd></div>
+        <p>The Patshahi Dasvi National Hola Mohalla UK is a national gathering that we host, with Gatka, archery, horse riding, axe and chakar throwing, and rifle shooting. It is run as an open event rather than a class.</p>
+        <p>In 2026 it came to Gurudwara Shri Guru Dashmesh Sahib on Saturday 7 March.</p>
+        <dl><div><dt>Where</dt><dd>Leicester. The venue changes.</dd></div><div><dt>When</dt><dd>Around Hola Mohalla, in March</dd></div>
           <div><dt>For</dt><dd>Everyone</dd></div></dl>
       </div>
     </section>
@@ -168,8 +171,7 @@ html[data-mood="dark"] .hx{ --ink:#F3EEE2; --muted:rgba(243,238,226,.74); --gold
     <img src="/kit/img/ig-singhs-camp-langar.jpg" alt="Langar cooking in a large pot inside the camp tent." loading="lazy" width="1440" height="1439" srcset="/kit/img/webp/ig-singhs-camp-langar-480.webp 480w, /kit/img/webp/ig-singhs-camp-langar-960.webp 960w, /kit/img/ig-singhs-camp-langar.jpg 1440w" sizes="(max-width:760px) 45vw, 22vw">
   </div><p class="cpics-cap">Singhs Camp · summer 2022</p>
   <!-- the live page linked instagram.com/shaheedibunga; the charity's account is @shaheedi_bunga_uk -->
-  <p class="tail" data-fade>We announce camps on <a href="https://www.instagram.com/shaheedi_bunga_uk/" target="_blank" rel="noopener">Instagram</a>
-    first. If you'd like us to tell you when the next one opens, <a href="/contact/">message us</a>.</p>
+  <p class="tail" data-fade><a href="/contact/">Send us a message on WhatsApp</a> and we'll tell you when the next camp opens. Camps go up on <a href="https://www.instagram.com/shaheedi_bunga_uk/" target="_blank" rel="noopener">Instagram</a> first, often less than a week before they start.</p>
 </div>
 </main>
 
