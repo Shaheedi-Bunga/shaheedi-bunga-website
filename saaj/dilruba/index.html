@@ -266,10 +266,9 @@ html[data-mood="dark"] .kart .arch{ background:radial-gradient(120% 80% at 50% 3
 
 KIT.start(function(gsap, ST){
   var E = "expo.out";
-  var words = SplitText.create("[data-intro]", { type:"words", wordsClass:"w", mask:"words" }).words;
   gsap.timeline({ defaults:{ ease:E } })
     .from(".khero .eyebrow", { opacity:0, y:12, duration:.9 }, .1)
-    .from(words, { yPercent:115, duration:1.4, stagger:.09 }, .3)
+    .add(KIT.rise(document.querySelector("[data-intro]")), .3)
     .from(".khero [data-intro-fade]", { opacity:0, y:24, duration:1.1, stagger:.12 }, .2)
     .from(".kart", { opacity:0, y:50, duration:1.6 }, .2);
 

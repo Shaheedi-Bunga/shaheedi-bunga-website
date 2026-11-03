@@ -457,3 +457,68 @@ html.menu-open .mast{ background:linear-gradient(100deg, #14264E 0%, #0B1731 55%
   html.menu-open .mast nav .vid-panel{ border-bottom:1px solid rgba(226,194,122,.18); }
   html.menu-open .mast nav .vid-foot{ border-top-color:rgba(226,194,122,.18); }
 }
+
+/* ── PREMIUM PASS (draft, 2026-10-27; trials in Mockup/_Premium_Trials/) ─────
+   The type, the gold that catches the light, a richer grain on the heroes,
+   page transitions, and the hand details. Every piece is off under reduced
+   motion, and the hand details exist only on a fine pointer (html.hand). */
+
+/* the line reveal (kit.js api.rise): a mask per line, with room below for
+   descenders so the g and y are not cut while they rise */
+.ln-mask{ padding-bottom:.14em; margin-bottom:-.14em; }
+
+/* the heroes' grain, richer than the page's: stock you could touch */
+html .phero.paper::before, html [data-hero].paper::before{ opacity:1;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .28 0 0 0 0 .16 0 0 0 .13 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+html[data-mood="dark"] .phero.paper::before, html[data-mood="dark"] [data-hero].paper::before{ opacity:.35; }
+
+/* gold that catches the light: on a fine pointer the hero's gold words lose
+   the timed sweep and take a highlight where the pointer is (kit.js hand()).
+   Touch screens keep the sweep. @property lets the highlight glide. */
+@property --lx{ syntax:"<percentage>"; inherits:true; initial-value:30%; }
+@property --ly{ syntax:"<percentage>"; inherits:true; initial-value:20%; }
+html.hand .lit{ transition:--lx .5s var(--ease-out), --ly .5s var(--ease-out); }
+html.hand .lit .display em:not(:lang(pa)), html.hand .lit .h-l em:not(:lang(pa)){ animation:none;
+  background:radial-gradient(circle at var(--lx) var(--ly), rgba(255,246,214,.95) 0%, rgba(255,240,196,0) 22%),
+    linear-gradient(100deg,#6E4E0C 0%,#8A6512 30%,#B08A2E 48%,#86610F 70%,#5E420A 100%);
+  -webkit-background-clip:text; background-clip:text; }
+html[data-mood="dark"].hand .lit .display em:not(:lang(pa)), html[data-mood="dark"].hand .lit .h-l em:not(:lang(pa)){
+  background:radial-gradient(circle at var(--lx) var(--ly), rgba(255,250,232,1) 0%, rgba(255,240,196,0) 24%),
+    linear-gradient(100deg,#B98B32 0%,#E2BE6E 35%,#F3D99A 50%,#C9A04A 70%,#9C7426 100%);
+  -webkit-background-clip:text; background-clip:text; }
+
+/* page transitions: between pages of the site the masthead stays put and the
+   page cross-fades. Browsers without cross-document transitions (Firefox)
+   change page as before; reduced motion changes page at once. */
+@media (prefers-reduced-motion:no-preference){
+  @view-transition{ navigation:auto; }
+  .mast{ view-transition-name:mast; }
+  ::view-transition-old(root){ animation:.28s ease both sb-vt-out; }
+  ::view-transition-new(root){ animation:.42s cubic-bezier(.16,1,.3,1) .06s both sb-vt-in; }
+}
+@keyframes sb-vt-out{ to{ opacity:0; } }
+@keyframes sb-vt-in{ from{ opacity:0; transform:translateY(10px); } }
+
+/* the hand · cards lean toward the pointer, with the light on them (not the
+   photograph cards: their ::after is the caption shade) */
+html.hand .pcard:not(:has(img)), html.hand a.oncard{ transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));
+  transition:transform .5s var(--ease-out); }
+html.hand .pcard:not(:has(img)):hover, html.hand a.oncard:hover{ transition-duration:.12s; }
+html.hand .pcard:not(:has(img))::after, html.hand a.oncard::after{ content:""; position:absolute; inset:0; border-radius:inherit; pointer-events:none;
+  opacity:0; transition:opacity .3s; background:radial-gradient(380px circle at var(--mx,50%) var(--my,50%), rgba(241,219,156,.18), transparent 45%); }
+html.hand .pcard:not(:has(img)):hover::after, html.hand a.oncard:hover::after{ opacity:1; }
+html.hand .pcard:not(:has(img)), html.hand a.oncard{ position:relative; }
+/* the hand · a light follows the pointer along a list row */
+html.hand a.venue, html.hand a.way{ position:relative; isolation:isolate; }
+html.hand a.venue::before, html.hand a.way::before{ content:""; position:absolute; inset:0; z-index:-1; pointer-events:none; opacity:0;
+  transition:opacity .35s; background:radial-gradient(280px circle at var(--mx,50%) var(--my,50%), rgba(214,174,82,.18), transparent 70%); }
+html.hand a.venue:hover::before, html.hand a.way:hover::before, a.venue:focus-visible::before, a.way:focus-visible::before{ opacity:1; }
+
+/* [data-silk] (kit.js silk()): the canvas sits under the surface's content */
+.has-silk{ overflow:hidden; }
+.has-silk > canvas.silk{ position:absolute; inset:0; width:100%; height:100%; z-index:-1; border-radius:inherit; pointer-events:none; display:block; }
+
+/* the navy panels take the light sheen in both moods: the light-mode metal is a
+   dark gold, about 2.5:1 on navy (the "Ask us" band showed it) */
+html .ask, html .pcard.ink, html .oncard.ink{
+  --sheen:linear-gradient(100deg,#B98B32 0%,#E2BE6E 30%,#FFF1C4 45%,#E2BE6E 60%,#B98B32 100%); }

@@ -263,7 +263,7 @@ a.row:hover::after{ transform:scaleX(1); }
 </section>
 
 <section style="padding-bottom:calc(var(--u)*10)">
-  <div class="ask paper">
+  <div class="ask paper" data-silk>
     <img class="folio" src="img/folio-vaaran.jpg" alt="" width="1000" height="1151" srcset="img/webp/folio-vaaran-480.webp 480w, img/webp/folio-vaaran-960.webp 960w, img/folio-vaaran.jpg 1000w" sizes="50vw">
     <div><p class="eyebrow">Ask us</p>
       <h2 class="display" data-split>Not sure where <em>to start?</em></h2></div>
@@ -321,10 +321,9 @@ KIT.start(function(gsap, ST){
   var E = "expo.out", dark = document.documentElement.dataset.mood === "dark";
 
   /* intro */
-  var words = SplitText.create("[data-intro]", { type:"words", wordsClass:"w", mask:"words" }).words;
   gsap.timeline({ defaults:{ ease:E } })
     .from(".chero .eyebrow", { opacity:0, y:12, duration:.9 }, .1)
-    .from(words, { yPercent:115, duration:1.4, stagger:.09 }, .25)
+    .add(KIT.rise(document.querySelector("[data-intro]")), .25)
     .from("[data-intro-fade]", { opacity:0, y:24, duration:1.1, stagger:.12 }, .7)
     .from(".chero-art", dark ? { opacity:0, scale:1.08, duration:2.2, ease:"power2.out" }
                              : { opacity:0, y:40, duration:1.6 }, 0);
