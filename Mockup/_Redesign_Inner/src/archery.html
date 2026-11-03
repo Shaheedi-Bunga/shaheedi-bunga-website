@@ -215,10 +215,9 @@ var BOW = (function(){
 
 KIT.start(function(gsap, ST){
   var E = "expo.out";
-  var words = SplitText.create("[data-intro]", { type:"words", wordsClass:"w", mask:"words" }).words;
   gsap.timeline({ defaults:{ ease:E } })
     .from(".ahero .eyebrow", { opacity:0, y:12, duration:.9 }, .1)
-    .from(words, { yPercent:115, duration:1.3, stagger:.14 }, .25)
+    .add(KIT.rise(document.querySelector("[data-intro]")), .25)
     .from(".ahero [data-intro-fade]", { opacity:0, y:22, duration:1.1, stagger:.12 }, .2)
     .from(".bowwrap", { opacity:0, x:40, duration:1.6 }, .3);
 
