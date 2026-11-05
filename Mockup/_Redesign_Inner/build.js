@@ -157,15 +157,12 @@ ${sorted.filter(e => year(e) === y).map(e => {
   </section>`).join('\n');
 }
 
-/* THE GALLERY. gallery.json -> /gallery/: one tab per year, newest first, each a
-   plain grid of photographs (the user's pick, 2026-11-05: years only, no albums or
-   subject filters). Thin years share a tab, so there are five: 2024, 2023, 2022,
-   2019-2021, and "Earlier years" (2018 and every photograph with no year). */
+/* THE GALLERY. gallery.json -> /gallery/: every year stacked, newest first, each a
+   row of thumbnails with "See all" to open the rest of that year (the user's pick,
+   2026-11-05). Photographs with no year come last, as "Date not recorded". */
 const GAL = JSON.parse(fs.readFileSync(path.join(here, 'gallery.json'), 'utf8'));
 const photoWord = n => n + (n === 1 ? ' photograph' : ' photographs');
-const GAL_TABS = [ { id:'2024', label:'2024', years:['2024'] }, { id:'2023', label:'2023', years:['2023'] },
-  { id:'2022', label:'2022', years:['2022'] }, { id:'2019-2021', label:'2019–2021', years:['2021', '2020', '2019'] },
-  { id:'earlier', label:'Earlier years', years:['2018', null] } ];
+const GAL_SHOW = 12;   /* thumbnails a year shows before "See all" */
 function galleryData(){
   const P = GAL.photos, seen = new Set();
   for (const p of P) {
@@ -174,30 +171,30 @@ function galleryData(){
     seen.add(p.img);
     const f = p.img.startsWith('/') ? path.join(ROOT, p.img) : path.join(here, p.img);
     if (!fs.existsSync(f)) throw new Error(`gallery.json: ${p.img} does not exist`);
-    if (!GAL_TABS.some(t => t.years.includes(p.year || null))) throw new Error(`gallery.json: ${p.img} has the year ${p.year}, which no tab holds`);
   }
-  const tabs = GAL_TABS.map(t => ({ ...t, ph: t.years.flatMap(y => P.filter(p => (p.year || null) === y)) })).filter(t => t.ph.length);
-  return { P, tabs };
+  const years = [...new Set(P.map(p => p.year).filter(Boolean))].sort((x, y) => y.localeCompare(x));
+  const groups = years.map(y => ({ id:y, label:y, ph:P.filter(p => p.year === y) }));
+  const none = P.filter(p => !p.year);
+  if (none.length) groups.push({ id:'undated', label:'Date not recorded', ph:none });
+  return { P, groups };
 }
-function galleryTile(p){
-  return `<figure class="tile"${p.event ? ` data-event="${html(p.event)}"` : ''}>`
+function galleryTile(p, hide){
+  return `<figure class="tile"${p.event ? ` data-event="${html(p.event)}"` : ''}${hide ? ' hidden' : ''}>`
     + `<button type="button" class="open" data-full="${p.img}" aria-label="Open photograph: ${html(p.alt)}">`
-    + `<img src="${p.img}" alt="${html(p.alt)}" data-sizes="(max-width:760px) 34vw, 20vw" loading="lazy" decoding="async"></button></figure>`;
+    + `<img src="${p.img}" alt="${html(p.alt)}" data-sizes="(max-width:760px) 34vw, 16vw" loading="lazy" decoding="async"></button></figure>`;
 }
 function gallery(){
-  const { tabs } = galleryData();
-  const bar = `<div class="filters" role="tablist" aria-label="Photographs by year">
-${tabs.map((t, i) => `  <button type="button" role="tab" id="t-${t.id}" aria-controls="p-${t.id}" aria-selected="${i === 0}" tabindex="${i === 0 ? 0 : -1}">${html(t.label)}<span>${t.ph.length}</span></button>`).join('\n')}
-</div>`;
-  const body = tabs.map((t, i) => `  <section class="yr" id="p-${t.id}" role="tabpanel" aria-labelledby="t-${t.id}"${i ? ' hidden' : ''}>
-    <h2 class="yr-h">${html(t.label)}<span class="yr-n">${photoWord(t.ph.length)}</span></h2>
+  const { groups } = galleryData();
+  const jump = `<nav class="yjump" aria-label="Jump to a year">${groups.map(g => `<a href="#y-${g.id}">${html(g.label)}</a>`).join('')}</nav>`;
+  return jump + '\n<div id="gal">\n' + groups.map(g => `  <section class="yr" id="y-${g.id}" aria-labelledby="h-${g.id}">
+    <h2 class="yr-h" id="h-${g.id}">${html(g.label)}<span class="yr-n">${photoWord(g.ph.length)}</span></h2>
     <div class="ygrid">
-${t.ph.map(p => '      ' + galleryTile(p)).join('\n')}
-    </div>
-  </section>`).join('\n');
-  return bar + '\n<div id="gal">\n' + body + '\n</div>';
+${g.ph.map((p, i) => '      ' + galleryTile(p, i >= GAL_SHOW)).join('\n')}
+    </div>${g.ph.length > GAL_SHOW ? `
+    <button type="button" class="more-btn" aria-expanded="false">See all ${photoWord(g.ph.length)}</button>` : ''}
+  </section>`).join('\n') + '\n</div>';
 }
-const galleryStats = () => { const g = galleryData(); return { photos: g.P.length, years: g.tabs.length }; };
+const galleryStats = () => { const g = galleryData(); return { photos: g.P.length, years: g.groups.filter(x => x.id !== 'undated').length }; };
 
 /* Search engines read who the charity is (About, Contact) and what it runs
    (Events) from these blocks. Facts only from the pages themselves: the

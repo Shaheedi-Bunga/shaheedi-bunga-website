@@ -64,9 +64,19 @@ dialog.alb::backdrop{ background:rgba(8,12,22,.7); }
 .alb-hd p{ margin:4px 0 0; font:11px/1.5 var(--mono); letter-spacing:.14em; text-transform:uppercase; color:var(--navy-70); }
 .alb-bd{ overflow:auto; overscroll-behavior:contain; padding:calc(var(--u)*2) var(--gx) calc(var(--u)*5); }
 .alb-photos{ display:grid; grid-template-columns:repeat(auto-fill,minmax(190px,1fr)); gap:10px; }
-.ygrid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:10px; }
-@media(max-width:600px){ .ygrid{ grid-template-columns:repeat(3,minmax(0,1fr)); gap:6px; } }
-.yr[hidden]{ display:none; }
+/* stacked years of thumbnails: six across, three on a phone; the rest of a year opens with "See all" */
+.yjump{ position:sticky; top:62px; z-index:20; display:flex; gap:6px; overflow-x:auto; scrollbar-width:thin; padding:12px var(--gx);
+  background:color-mix(in srgb, var(--cream) 92%, transparent); backdrop-filter:blur(8px); border-bottom:1px solid var(--line); }
+.yjump a{ flex:none; font:11px/1 var(--mono); letter-spacing:.1em; text-transform:uppercase; text-decoration:none; color:var(--navy-70);
+  border:1px solid var(--line); border-radius:100px; padding:9px 13px; }
+.yjump a:hover, .yjump a:focus-visible{ border-color:var(--gold); color:var(--navy); }
+.yr{ scroll-margin-top:120px; }
+.ygrid{ display:grid; grid-template-columns:repeat(6,minmax(0,1fr)); gap:8px; }
+@media(max-width:900px){ .ygrid{ grid-template-columns:repeat(4,minmax(0,1fr)); } }
+@media(max-width:600px){ .ygrid{ grid-template-columns:repeat(3,minmax(0,1fr)); gap:5px; } }
+.more-btn{ margin-top:14px; font:11px/1 var(--mono); letter-spacing:.12em; text-transform:uppercase; color:var(--gold-text); background:none;
+  border:1px solid var(--line); border-radius:100px; padding:12px 18px; min-height:44px; cursor:pointer; }
+.more-btn:hover{ border-color:var(--gold); }
 .tile{ margin:0; aspect-ratio:1; border-radius:3px; overflow:hidden; background:var(--cream-3); }
 .tile[hidden], .alb-photos[hidden]{ display:none; }
 .open{ display:block; width:100%; height:100%; padding:0; border:0; background:none; cursor:zoom-in; }
@@ -152,24 +162,19 @@ document.querySelectorAll('.hx[data-init]').forEach(s => { try { INIT[s.dataset.
 })();
 </script>
 <script>
-/* year tabs and the viewer: plain JS on a native dialog, so focus is trapped and Escape closes it */
+/* "See all" and the viewer: plain JS on a native dialog, so focus is trapped and Escape closes it */
 (function(){
-  var tabs = [].slice.call(document.querySelectorAll('.filters [role="tab"]')),
-      lb = document.getElementById("lb"), im = document.getElementById("lbImg"), cap = document.getElementById("lbCap"), num = document.getElementById("lbN"),
+  var lb = document.getElementById("lb"), im = document.getElementById("lbImg"), cap = document.getElementById("lbCap"), num = document.getElementById("lbN"),
       list = [], i = 0, opener = null;
-  function pick(t, focus){
-    tabs.forEach(function(x){
-      var on = x === t; x.setAttribute("aria-selected", on); x.tabIndex = on ? 0 : -1;
-      document.getElementById(x.getAttribute("aria-controls")).hidden = !on;
-    });
-    if(focus) t.focus();
-    if(window.ScrollTrigger) ScrollTrigger.refresh();
-  }
-  tabs.forEach(function(t, k){
-    t.addEventListener("click", function(){ pick(t); });
-    t.addEventListener("keydown", function(e){
-      var n = e.key === "ArrowRight" ? k + 1 : e.key === "ArrowLeft" ? k - 1 : e.key === "Home" ? 0 : e.key === "End" ? tabs.length - 1 : null;
-      if(n === null) return; e.preventDefault(); pick(tabs[(n + tabs.length) % tabs.length], true);
+  /* "See all" opens the rest of a year; pressed again it folds back to the first row */
+  [].forEach.call(document.querySelectorAll(".more-btn"), function(b){
+    var sec = b.closest(".yr"), extra = [].slice.call(sec.querySelectorAll(".tile[hidden]")), n = sec.querySelectorAll(".tile").length, word = b.textContent;
+    b.addEventListener("click", function(){
+      var open = b.getAttribute("aria-expanded") !== "true";
+      extra.forEach(function(t){ t.hidden = !open; });
+      b.setAttribute("aria-expanded", open); b.textContent = open ? "Show fewer" : word;
+      if(!open) sec.scrollIntoView({ block:"start" });
+      if(window.ScrollTrigger) ScrollTrigger.refresh();
     });
   });
   function lock(){
@@ -177,7 +182,7 @@ document.querySelectorAll('.hx[data-init]').forEach(s => { try { INIT[s.dataset.
     document.documentElement.style.overflow = any ? "hidden" : "";
     if(KIT.lenis){ any ? KIT.lenis.stop() : KIT.lenis.start(); }
   }
-  /* a photograph: the viewer steps through the open year's photographs */
+  /* a photograph: the viewer steps through the year's photographs that are showing */
   function show(k){
     i = (k + list.length) % list.length;
     var t = list[i], g = t.querySelector("img");
@@ -188,7 +193,7 @@ document.querySelectorAll('.hx[data-init]').forEach(s => { try { INIT[s.dataset.
   document.addEventListener("click", function(e){
     var b = e.target.closest && e.target.closest(".open"); if(!b) return;
     var t = b.closest(".tile"); opener = b;
-    list = [].slice.call(t.parentNode.querySelectorAll(".tile"));
+    list = [].slice.call(t.parentNode.querySelectorAll(".tile")).filter(function(x){ return !x.hidden; });
     show(list.indexOf(t)); lb.showModal(); lock();
   });
   lb.addEventListener("close", function(){ lock(); if(opener) opener.focus(); });
