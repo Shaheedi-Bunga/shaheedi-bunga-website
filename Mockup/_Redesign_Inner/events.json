@@ -1572,19 +1572,6 @@
    "posted": "2026-08-15"
   },
   {
-   "id": "n01",
-   "title": "Guru Tegh Bahadur Camp 3",
-   "type": "Camp",
-   "when": "13th & 14th July 2024",
-   "start": "2024-07-13",
-   "end": "2024-07-14",
-   "time": null,
-   "venue": "Guru Tegh Bahadur Gurdwara, New House Road, Huddersfield HD2 1EG",
-   "summary": "Two days of workshops for children aged 5 and over and for adults, with bouncy castles, team building, creative sessions and Kesh Sambaal.",
-   "img": "img/ev/n01.jpg",
-   "posted": "2024-06-04"
-  },
-  {
    "id": "n02",
    "title": "Huddersfield Sports Day Tournament",
    "type": "Competition",
@@ -1690,19 +1677,6 @@
    "img": "img/ev/n10.jpg",
    "posted": "2022-06-12",
    "alt": "A Singh in white drawing a bow at an indoor range, a target on a stand to one side."
-  },
-  {
-   "id": "n12",
-   "title": "Amrit Sanchaar",
-   "type": "Other",
-   "when": "Saturday 12th March 2022",
-   "start": "2022-03-12",
-   "end": "2022-03-12",
-   "time": null,
-   "venue": "Guru Nanak Gurdwara, 65-67 Walsall Road, Willenhall WV13 2RD",
-   "summary": "An Amrit Sanchaar on Saturday 12th March at 11am. Kakaars will be provided.",
-   "img": "img/ev/n12.jpg",
-   "posted": "2022-03-03"
   },
   {
    "id": "n13",
