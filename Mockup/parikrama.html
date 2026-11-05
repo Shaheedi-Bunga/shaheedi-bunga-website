@@ -1,8 +1,8 @@
 <html lang="en">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Shaheedi Bunga &middot; Gurmat Vidyala, Leicester</title>
-<meta name="description" content="Free Gurmat classes in Leicester, open to any age: santhiya, kirtan on the tanti saaj, and the Archery Akhara. A registered charity, no. 1185103.">
+<title>Shaheedi Bunga &middot; Gurmat Vidyala, UK and worldwide</title>
+<meta name="description" content="Free Gurmat classes for any age: Santhiya, Kirtan on the Tanti Saaj, Tabla, Jori, Gatka, kavishri, the Archery Akhara and much more. A registered charity, no. 1185103.">
 <link rel="icon" href="Assets/Brand/favicon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="Assets/Brand/apple-touch-icon-180.png">
 <link rel="manifest" href="site.webmanifest">
@@ -14,8 +14,8 @@
 <link rel="canonical" href="https://www.shaheedibunga.com/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Shaheedi Bunga">
-<meta property="og:title" content="Shaheedi Bunga &middot; Gurmat Vidyala, Leicester">
-<meta property="og:description" content="Free Gurmat classes in Leicester, open to any age: santhiya, kirtan on the tanti saaj, and the Archery Akhara.">
+<meta property="og:title" content="Shaheedi Bunga &middot; Gurmat Vidyala, UK and worldwide">
+<meta property="og:description" content="Free Gurmat classes for any age: Santhiya, Kirtan on the Tanti Saaj, Tabla, Jori, Gatka, kavishri, the Archery Akhara and much more.">
 <meta property="og:url" content="https://www.shaheedibunga.com/">
 <meta property="og:image" content="https://www.shaheedibunga.com/share/home.jpg">
 <meta property="og:image:width" content="1200">
@@ -210,6 +210,12 @@ h2{ font-family:"Source Serif 4",Georgia,serif; font-weight:600;
 .body{ margin:20px 0 0; max-width:46ch; font-size:clamp(15px,1.5vw,19px);
        color:rgba(244,241,232,.9); line-height:1.68; text-shadow:0 2px 24px rgba(0,0,0,1); }
 .ch.right .body{ margin-left:auto; }
+/* a pangti of Gurbani under the heading: Gurmukhi + Ang only, never letter-spaced */
+.pangti{ margin:22px 0 0; }
+.pangti .gur{ margin:0; font-family:"Noto Serif Gurmukhi",serif; font-weight:600; letter-spacing:0;
+  font-size:clamp(19px,1.9vw,26px); line-height:1.7; color:var(--gold); text-shadow:0 2px 24px rgba(0,0,0,1); }
+.pangti figcaption{ margin-top:4px; font-family:var(--sans); font-size:11px; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--dim); text-shadow:0 2px 18px rgba(0,0,0,1); }
 .note{ margin:22px 0 0; font-family:var(--sans); font-size:11.5px; letter-spacing:.16em;
        text-transform:uppercase; color:var(--dim); }
 .note a{ display:inline-flex; align-items:center; min-height:44px; margin:-14px 0; }
@@ -379,115 +385,6 @@ body.nogl canvas,body.nogl .stage,body.nogl .rail,body.nogl .cue,body.nogl .scri
 #vidd .vdrop-menu a:hover{ background:rgba(180,137,44,.1); }
 #vidd .vid-back:hover{ border-color:rgba(180,137,44,.5); background:rgba(180,137,44,.09); }
 
-/* ── the week: one calendar, Monday first, with the empty hours cut out ──
-   The whole week is on screen at once. This timetable is small and highly
-   regular — five identical mornings, then the evenings — and its shape is
-   the most useful thing about it, which a day-at-a-time tab strip threw
-   away. The axis is banded rather than continuous: nothing happens between
-   10:00 and 17:00, and seven blank hours of grid say nothing. */
-#vidd .wk{ padding:calc(var(--u)*1.4) calc(var(--u)*2.3) calc(var(--u)*3.4); }
-#vidd .wk-top{ display:flex; align-items:baseline; justify-content:space-between;
-  gap:calc(var(--u)*1.4); flex-wrap:wrap; padding-bottom:calc(var(--u)*1.1); }
-#vidd .wk h2{ font-size:max(26px, calc(var(--u)*3.2)); letter-spacing:-.05em; }
-#vidd .wk-next{ margin:0; font-family:var(--mono); font-size:max(11px, calc(var(--u)*0.8));
-  letter-spacing:.13em; text-transform:uppercase; color:var(--gold); }
-
-#vidd .wk-grid{ --gut:calc(var(--u)*3.6); --rowh:max(46px, calc(var(--u)*3.9)); }
-#vidd .wk-head, #vidd .wk-band{ display:grid;
-  grid-template-columns:var(--gut) repeat(7, minmax(0,1fr)); }
-#vidd .wk-band{ position:relative; height:calc(var(--rowh) * var(--hrs)); }
-
-#vidd .wk-dh{ font-family:var(--mono); font-size:max(10px, calc(var(--u)*0.74));
-  letter-spacing:.15em; text-transform:uppercase; color:rgba(22,41,74,.5);
-  padding:0 0 calc(var(--u)*0.55); text-align:center; }
-#vidd .wk-dh.today{ color:var(--gold); }
-#vidd .wk-dh i{ display:block; font-style:normal; font-size:max(8.5px, calc(var(--u)*0.58));
-  letter-spacing:.1em; color:rgba(22,41,74,.34); margin-top:2px; }
-#vidd .wk-dh.today i{ color:rgba(180,137,44,.72); }
-
-/* hour rules, behind the day tracks only */
-#vidd .wk-rules{ position:absolute; top:0; bottom:0; left:var(--gut); right:0;
-  pointer-events:none;
-  background-image:linear-gradient(to bottom, var(--vline) 0 1px, transparent 1px);
-  background-size:100% calc(100% / var(--hrs)); background-repeat:repeat-y; }
-#vidd .wk-gutter{ position:relative; }
-#vidd .wk-hr{ position:absolute; right:calc(var(--u)*0.7); transform:translateY(-50%);
-  font-family:var(--mono); font-size:max(9.5px, calc(var(--u)*0.68));
-  color:rgba(22,41,74,.4); white-space:nowrap; }
-#vidd .wk-col{ position:relative; border-left:1px solid var(--vline); }
-#vidd .wk-col:last-child{ border-right:1px solid var(--vline); }
-#vidd .wk-col.today{ background:rgba(180,137,44,.07); }
-
-/* the break between bands: the hours with nothing in them, said once */
-#vidd .wk-break{ display:flex; align-items:center; gap:calc(var(--u)*0.9);
-  margin-left:var(--gut); padding:calc(var(--u)*0.72) 0; }
-#vidd .wk-break::before, #vidd .wk-break::after{ content:""; flex:1 1 auto; height:1px;
-  background:repeating-linear-gradient(90deg, var(--vline) 0 3px, transparent 3px 7px); }
-#vidd .wk-break span{ font-family:var(--mono); font-size:max(9px, calc(var(--u)*0.62));
-  letter-spacing:.16em; text-transform:uppercase; color:rgba(22,41,74,.34);
-  white-space:nowrap; }
-
-/* a class. Its height is its length, so a two-hour Saturday looks like one. */
-#vidd .wk-blk{ position:absolute; left:3px; right:3px; appearance:none; cursor:pointer;
-  display:flex; flex-direction:column; justify-content:center; gap:1px;
-  padding:calc(var(--u)*0.3) calc(var(--u)*0.5); text-align:left; overflow:hidden;
-  background:rgba(180,137,44,.16); border:1px solid rgba(180,137,44,.38);
-  border-left:2px solid var(--gold); border-radius:2px; color:var(--vtext);
-  transition:background .18s ease, transform .18s ease; }
-#vidd .wk-blk .t{ font-family:var(--mono); font-size:max(11.5px, calc(var(--u)*0.92));
-  color:#7C5E13; }
-#vidd .wk-blk .e{ font-family:var(--mono); font-size:max(9px, calc(var(--u)*0.64));
-  color:rgba(22,41,74,.52); }
-#vidd .wk-blk:hover, #vidd .wk-blk:focus-visible{ background:rgba(180,137,44,.28);
-  transform:translateY(-1px); outline:none; }
-#vidd .wk-blk:focus-visible{ box-shadow:0 0 0 2px var(--gold); }
-#vidd .wk-blk[aria-pressed="true"]{ background:rgba(180,137,44,.32); }
-#vidd .wk-blk.now{ background:var(--gold); border-color:var(--gold); }
-#vidd .wk-blk.now .t{ color:#FFFDF6; }
-#vidd .wk-blk.now .e{ color:rgba(255,253,246,.82); }
-#vidd .wk-blk.past{ opacity:.5; }
-
-/* where the clock is, right now */
-#vidd .wk-now{ position:absolute; left:var(--gut); right:0; height:1px;
-  background:var(--gold); pointer-events:none; z-index:2; }
-#vidd .wk-now::before{ content:""; position:absolute; left:-3px; top:-2.5px;
-  width:6px; height:6px; border-radius:50%; background:var(--gold); }
-
-/* the line under the grid: whichever class you are pointing at */
-#vidd .wk-detail{ margin:calc(var(--u)*1.2) 0 0; min-height:calc(var(--u)*2.2);
-  font-size:max(14px, calc(var(--u)*1.18)); color:var(--vtext); }
-#vidd .wk-detail .d{ font-family:var(--mono); font-size:max(10px, calc(var(--u)*0.72));
-  letter-spacing:.14em; text-transform:uppercase; color:var(--gold);
-  margin-right:calc(var(--u)*0.8); }
-#vidd .wk-detail .w{ color:rgba(22,41,74,.62); }
-#vidd .wk-where{ margin:calc(var(--u)*0.9) 0 0; padding-top:calc(var(--u)*0.9);
-  border-top:1px solid var(--vline); font-size:max(12.5px, calc(var(--u)*0.98));
-  color:rgba(22,41,74,.66); }
-#vidd .wk-where b{ font-weight:500; color:var(--vtext); }
-#vidd .wk-where .soon{ font-family:var(--mono); font-size:max(9.5px, calc(var(--u)*0.66));
-  letter-spacing:.13em; text-transform:uppercase; color:rgba(22,41,74,.45); }
-
-/* narrow screens: seven tracks stop being readable, so the same week
-   becomes a list — still whole, still Monday first, no tabs. */
-#vidd .wk-list{ display:none; }
-@media (max-width:760px){
-  #vidd .wk-grid{ display:none; }
-  #vidd .wk-list{ display:block; }
-  #vidd .wk-d{ display:flex; align-items:baseline; gap:calc(var(--u)*1.2);
-    padding:calc(var(--u)*0.85) 0; border-bottom:1px solid var(--vline); }
-  #vidd .wk-d .dy{ flex:0 0 calc(var(--u)*7); font-family:var(--mono);
-    font-size:max(10.5px, calc(var(--u)*0.78)); letter-spacing:.14em;
-    text-transform:uppercase; color:rgba(22,41,74,.55); }
-  #vidd .wk-d.today .dy{ color:var(--gold); }
-  #vidd .wk-d .cl{ display:flex; flex-wrap:wrap; gap:calc(var(--u)*0.6); }
-  #vidd .wk-d .chip{ font-family:var(--mono); font-size:max(11px, calc(var(--u)*0.88));
-    color:#7C5E13; background:rgba(180,137,44,.16);
-    border:1px solid rgba(180,137,44,.32); border-radius:2px;
-    padding:calc(var(--u)*0.26) calc(var(--u)*0.62); }
-  #vidd .wk-d .chip.now{ background:var(--gold); border-color:var(--gold); color:#FFFDF6; }
-  #vidd .wk-d .none{ font-size:max(12px, calc(var(--u)*0.94)); color:rgba(22,41,74,.34); }
-}
-@media (prefers-reduced-motion:reduce){ #vidd .wk-blk{ transition:none; } }
 
 #vidd .dil-stage{ position:relative; display:grid; place-items:center;
   padding:calc(var(--u)*0.6) 0; }
@@ -1012,11 +909,11 @@ html.still .drift img{ animation:none; }
       <div class="vdrop-menu vd-wide" id="vd-panel" hidden>
         <div class="vd-grid">
           <a class="vd-item" href="/santhiya/" data-route="santhiya"><span class="vd-gur" lang="pa">ਸੰਥਿਆ ਵਿਦਿਆਲਾ</span><b>Santhiya</b><small>Reading sudh Gurbani</small></a>
-          <a class="vd-item" href="/saaj/dilruba/" data-route="dilruba"><span class="vd-gur" lang="pa">ਕੀਰਤਨ ਵਿਦਿਆਲਾ</span><b>Kirtan</b><small>Tanti saaj and raag</small></a>
-          <a class="vd-item" href="/akhara/archery/" data-route="archery"><span class="vd-gur" lang="pa">ਤੀਰ ਅੰਦਾਜ਼ੀ</span><b>Archery Akhara</b><small>Sundays, ages 14 and over</small></a>
-          <a class="vd-item" href="/tabla/"><span class="vd-gur" lang="pa">ਤਬਲਾ ਤੇ ਜੋੜੀ</span><b>Tabla &amp; Jori</b><small>At all our gurdwaras</small></a>
-          <a class="vd-item" href="/katha/"><span class="vd-gur" lang="pa">ਕਥਾ ਵਿਦਿਆਲਾ</span><b>Katha</b><small>Explaining Gurbani to a sangat</small></a>
-          <a class="vd-item" href="/itihaas/"><span class="vd-gur" lang="pa">ਇਤਿਹਾਸ ਵਿਦਿਆਲਾ</span><b>Itihaas</b><small>Wednesday evenings</small></a>
+          <a class="vd-item" href="/saaj/dilruba/" data-route="dilruba"><span class="vd-gur" lang="pa">ਕੀਰਤਨ ਵਿਦਿਆਲਾ</span><b>Kirtan</b><small>Tanti Saaj and Raag</small></a>
+          <a class="vd-item" href="/akhara/archery/" data-route="archery"><span class="vd-gur" lang="pa">ਤੀਰ ਅੰਦਾਜ਼ੀ</span><b>Archery Akhara</b><small>Traditional archery</small></a>
+          <a class="vd-item" href="/tabla/"><span class="vd-gur" lang="pa">ਤਬਲਾ ਤੇ ਜੋੜੀ</span><b>Tabla &amp; Jori</b><small>Locally and online</small></a>
+          <a class="vd-item" href="/katha/"><span class="vd-gur" lang="pa">ਕਥਾ ਵਿਦਿਆਲਾ</span><b>Katha</b><small>Explaining Gurbani to a Sangat</small></a>
+          <a class="vd-item" href="/itihaas/"><span class="vd-gur" lang="pa">ਇਤਿਹਾਸ ਵਿਦਿਆਲਾ</span><b>Itihaas</b><small>Sikh history</small></a>
         </div>
         <div class="vd-foot"><a href="classes/">All classes &rarr;</a><a href="camps/">Camps &rarr;</a></div>
       </div>
@@ -1025,6 +922,7 @@ html.still .drift img{ animation:none; }
     <a href="sikhi-calendar/">Calendar</a>
     <a href="gallery/">Gallery</a>
     <a href="resources/">Resources</a>
+    <a href="press/">Press</a>
     <a href="about/">About</a>
   </nav>
   <div class="nav-end">
@@ -1039,20 +937,22 @@ html.still .drift img{ animation:none; }
 
 <div class="menu" id="menu" hidden>
   <nav aria-label="All pages">
-    <a href="classes/"><b>Find a class</b><i>Every vidyala in one list. All are free.</i></a>
+    <a href="classes/"><b>Find a class</b><i>Every Vidyala in one list. All are free.</i></a>
     <a href="/santhiya/" data-route="santhiya"><span class="mgur" lang="pa">ਸੰਥਿਆ ਵਿਦਿਆਲਾ</span><b>Santhiya Vidyala</b><i>Learn to read sudh Gurbani</i></a>
     <!-- Real pages, not panels: they are read rather than experienced, and
          keeping them out of this file keeps them off its 11MB. -->
-    <a href="/saaj/dilruba/" data-route="dilruba"><span class="mgur" lang="pa">ਕੀਰਤਨ ਵਿਦਿਆਲਾ</span><b>Kirtan Vidyala</b><i>Kirtan on the tanti saaj: dilruba, taus, rabab and saranda</i></a>
-    <a href="/akhara/archery/" data-route="archery"><span class="mgur" lang="pa">ਤੀਰ ਅੰਦਾਜ਼ੀ</span><b>Archery Akhara</b><i>Traditional archery, on Sundays at East Park Road</i></a>
-    <a href="camps/"><b>Camps</b><i>Whole days and weeks: Sikhi Camp, santhiya camps, Hola Mohalla UK</i></a>
-    <a href="/tabla/"><span class="mgur" lang="pa">ਤਬਲਾ ਤੇ ਜੋੜੀ</span><b>Tabla &amp; Jori</b><i>Tabla and jori, at all our gurdwaras</i></a>
-    <a href="/katha/"><span class="mgur" lang="pa">ਕਥਾ ਵਿਦਿਆਲਾ</span><b>Katha Vidyala</b><i>Explaining Gurbani to a sangat</i></a>
-    <a href="/itihaas/"><span class="mgur" lang="pa">ਇਤਿਹਾਸ ਵਿਦਿਆਲਾ</span><b>Itihaas Vidyala</b><i>Wednesday evenings</i></a>
-    <a href="events/"><b>Events</b><i>What&rsquo;s on, and every camp and samagam since 2017</i></a>
+    <a href="/saaj/dilruba/" data-route="dilruba"><span class="mgur" lang="pa">ਕੀਰਤਨ ਵਿਦਿਆਲਾ</span><b>Kirtan Vidyala</b><i>Kirtan on the Tanti Saaj: Dilruba, Taus, Rabab, Saranda, Sarangi and much more</i></a>
+    <a href="/akhara/archery/" data-route="archery"><span class="mgur" lang="pa">ਤੀਰ ਅੰਦਾਜ਼ੀ</span><b>Archery Akhara</b><i>Traditional archery</i></a>
+    <a href="camps/"><b>Camps</b><i>Whole days and weeks: Sikhi Camp, Santhiya camps, Hola Mohalla UK</i></a>
+    <a href="/tabla/"><span class="mgur" lang="pa">ਤਬਲਾ ਤੇ ਜੋੜੀ</span><b>Tabla &amp; Jori</b><i>Taught at all our gurdwaras and online</i></a>
+    <a href="/katha/"><span class="mgur" lang="pa">ਕਥਾ ਵਿਦਿਆਲਾ</span><b>Katha Vidyala</b><i>Learn to explain Gurbani to a Sangat</i></a>
+    <a href="/itihaas/"><span class="mgur" lang="pa">ਇਤਿਹਾਸ ਵਿਦਿਆਲਾ</span><b>Itihaas Vidyala</b><i>Sikh history</i></a>
+    <a href="events/"><b>Events</b><i>What&rsquo;s on, and every camp and Samagam since 2017</i></a>
     <a href="sikhi-calendar/"><b>Sikhi Calendar</b><i>Gurpurabs, sangrand and masya</i></a>
-    <a href="resources/"><b>Resources</b><i>Granths, katha and the weekly talks</i></a>
-    <a href="gallery/"><b>Gallery</b><i>Photographs from the classes and samagams</i></a>
+    <a href="resources/"><b>Resources</b><i>Granths, the weekly talks, and Katha on YouTube</i></a>
+    <a href="press/"><b>Shaheedi Bunga Press</b><i>Our printed editions, and the books on the way</i></a>
+    <a href="beyond/"><b>Beyond the Vidyala</b><i>The Sikh World Championships, the Chess School and more</i></a>
+    <a href="gallery/"><b>Gallery</b><i>Photographs from the classes and Samagams</i></a>
     <a href="about/"><b>About</b><i>The bunga, the trustees and the charity</i></a>
     <a href="contact/"><b>Contact</b><i>WhatsApp, email, and where to find us</i></a>
     <a href="donate/"><b>Support the Vidyala</b><i>Give, lend an instrument, or give your time</i></a>
@@ -1066,40 +966,42 @@ html.still .drift img{ animation:none; }
     <h1 class="gm" lang="pa">ਸ਼ਹੀਦੀ ਬੁੰਗਾ</h1>
     <p class="en">Shaheedi&nbsp;Bunga</p>
     <p class="body">The place of the martyrs.</p>
+    <figure class="pangti"><p class="gur" lang="pa">ਜਉ ਤਉ ਪ੍ਰੇਮ ਖੇਲਣ ਕਾ ਚਾਉ ॥</p><figcaption>Sri Guru Granth Sahib Ji, Ang 1412</figcaption></figure>
+    <p class="body">Guru Nanak Dev Ji calls it the game of love, and whoever wants to play it comes ready to give everything.</p>
   </div>
 
   <div class="ch" data-ch="1">
     <p class="eyebrow">Amritsar</p>
     <h2>Around this sarovar stood more than seventy bungas.</h2>
-    <p class="body">The misls and the jathas who kept watch over the Darbar Sahib built them.
-      Each bunga was a residence and a school.</p>
+    <p class="body">The misls and the jathas who kept watch over Sri Darbar Sahib built them.
+      Each bunga was a place to live and a school.</p>
   </div>
 
   <div class="ch right" data-ch="2">
     <p class="eyebrow">What was taught</p>
-    <h2>They taught santhiya, shastar&nbsp;vidya, itihaas and kirtan.</h2>
+    <h2>The bungas taught Santhiya, Shastar&nbsp;Vidya, Itihaas and Kirtan.</h2>
     <p class="body">A bunga was where a Sikh came to learn to read Gurbani correctly, to hold a
-      shastar, to keep the rehat, and to sing the raags as they were given.</p>
+      shastar, to keep the rehat, and to sing the Raags as they were given.</p>
   </div>
 
   <div class="ch" data-ch="3">
     <p class="eyebrow">What happened to them</p>
     <h2>Almost all of them were pulled down.</h2>
-    <p class="body">They were cleared during the last century as the parikrama was widened. Of more
+    <p class="body">They were cleared during the last century, when the parikrama was widened. Of more
       than seventy, a handful of towers still stand at the sarovar&rsquo;s edge.</p>
   </div>
 
   <div class="ch right" data-ch="4">
     <p class="eyebrow">The one we are named for</p>
     <h2>Shaheedan da Bunga.</h2>
-    <p class="body">This was the bunga of the shaheedi jatha, the Singhs who gave their heads for the
-      Panth and taught there in between. The building is gone, and the teaching it held carries on.</p>
+    <p class="body">This was the bunga of the shaheedi jatha, the Singhs who taught there and gave their heads for the
+      Panth. The building is gone, and the teaching it held carries on.</p>
   </div>
 
   <div class="ch" data-ch="5">
     <p class="eyebrow">Students teaching worldwide</p>
     <h2>So we raise it again, on whatever ground we are given.</h2>
-    <p class="body">Today it is a gurdwara hall in Leicester on a Tuesday night, a vidyala in
+    <p class="body">Today the bunga is a gurdwara hall in Leicester on a Tuesday night, a Vidyala in
       Panjab, and the towns where students who learned here now teach.</p>
     <dl class="where">
       <div><dt>Africa</dt><dd>Nairobi, Kenya</dd></div>
@@ -1112,11 +1014,11 @@ html.still .drift img{ animation:none; }
     <div class="cta">
       <!-- /classes/ is the page this button always wanted: every vidyala in
            one list, each one leading to its own page. It deliberately carries
-           no times of its own - the Kirtan Vidyala's nine and the akhara's
-           Sunday both live on their class pages, and a third copy would drift
+           no times of its own - each Vidyala's days and times
+           live on its class page, and a third copy would drift
            the first time one of them moved. -->
       <a class="btn solid" href="classes/">Find a class</a>
-      <a class="btn" href="about/">What we teach</a>
+      <a class="btn" href="about/">About Shaheedi Bunga</a>
     </div>
     <p class="note">Registered charity in England &amp; Wales &middot; 1185103<br>
       <a href="privacy/">Privacy</a> &middot; <a href="safeguarding/">Safeguarding</a></p>
@@ -1161,7 +1063,7 @@ html.still .drift img{ animation:none; }
   <header class="s2hero" id="s2hero">
    <div class="s2pin" id="s2pin">
     <div class="s2stage"><canvas id="s2c" aria-hidden="true"></canvas></div>
-    <p class="lbl s2meta" id="s2meta">01 &mdash; <b>Santhiya Vidyala</b> &middot; Gipsy Lane, Leicester</p>
+    <p class="lbl s2meta" id="s2meta">01 &mdash; <b>Santhiya Vidyala</b> &middot; Leicester and online</p>
 
     <!-- THREE COPY LAYERS, one on screen at a time.
 
@@ -1186,18 +1088,14 @@ html.still .drift img{ animation:none; }
       <div class="s2caps" id="s2caps">
         <p class="lede s2cap" data-i="0">Santhiya teaches you to read Gurbani the way
           it was given, with every lagga matra and every bisraam, and without hurrying.</p>
-        <p class="lede s2cap" data-i="1">There is no fee and no audition, and any age can
-          join. You do not need to read a word of Gurmukhi before you start.</p>
-        <p class="lede s2cap" data-i="2">Every day at Gurudwara Shri Guru Dashmesh
-          Sahib on Gipsy Lane, and online. You can sit at the back if you like, and
-          nobody will ask you to read.</p>
+        <p class="lede s2cap" data-i="1">Any age can join, and there is no fee and no audition.
+          You do not need to read a word of Gurmukhi before you start.</p>
+        <p class="lede s2cap" data-i="2">Classes run every day at most of the gurdwaras in Leicester, and online.</p>
       </div>
       <div class="s2type" id="s2type">
         <span class="gur" lang="pa">ਸ਼ੁੱਧ ਗੁਰਬਾਣੀ ਪੜ੍ਹਨੀ ਸਿੱਖੋ</span>
         <h1><span>Learn to read</span><span>sudh Gurbani.</span></h1>
-        <p class="lede s2lede">Santhiya runs every day at Gurudwara Shri Guru Dashmesh Sahib. You do
-          not need to read a word of Gurmukhi to start, and you will not be the oldest
-          person in the room.</p>
+        <p class="lede s2lede">You will not be the oldest person in the room.</p>
       </div>
     </div>
     <p class="s2hint" id="s2hint">Keep scrolling</p>
@@ -1209,11 +1107,11 @@ html.still .drift img{ animation:none; }
     <div class="rib-pin">
       <div class="rib-head">
         <div>
-          <p class="lbl">02 &mdash; The vidyala</p>
-          <h2 style="margin-top:calc(var(--u)*0.6)">Fifteen years of mornings.</h2>
+          <p class="lbl">02 &mdash; The Vidyala</p>
+          <h2 style="margin-top:calc(var(--u)*0.6)">With Guru Sahib Ji&rsquo;s blessing, many years of Seva.</h2>
         </div>
         <p class="lede" style="max-width:26ch">Camps, weekly classes and saptah paath have
-          filled the same room for as long as anyone can remember.</p>
+          filled the same room, year after year.</p>
       </div>
       <div class="rib-stage"><div class="rib-track" id="ribTrack"></div></div>
       <div class="rib-fallback" id="ribFall"></div>
@@ -1230,37 +1128,17 @@ html.still .drift img{ animation:none; }
     <div class="vsec vsec--full">
       <p class="lbl">03 &mdash; Santhiya, every day</p>
       <div>
-        <div class="jantri" data-rv id="jantri">
-          <div class="j-row" data-d="1"><div class="j-day"><b>Monday</b><span lang="pa">ਸੋਮਵਾਰ</span></div>
-            <div class="j-sess"><p><b>8am</b>Morning santhiya</p><p><b>6pm</b>Santhiya</p></div></div>
-          <div class="j-row" data-d="2"><div class="j-day"><b>Tuesday</b><span lang="pa">ਮੰਗਲਵਾਰ</span></div>
-            <div class="j-sess"><p><b>8am</b>Morning santhiya</p><p><b>6pm</b>Santhiya</p></div></div>
-          <div class="j-row rest" data-d="3"><div class="j-day"><b>Wednesday</b><span lang="pa">ਬੁੱਧਵਾਰ</span></div>
-            <div class="j-sess"><p><b>8am</b>Morning santhiya</p><p>Itihaas in the evening, not santhiya</p></div></div>
-          <div class="j-row" data-d="4"><div class="j-day"><b>Thursday</b><span lang="pa">ਵੀਰਵਾਰ</span></div>
-            <div class="j-sess"><p><b>8am</b>Morning santhiya</p><p><b>6pm</b>Santhiya</p></div></div>
-          <div class="j-row" data-d="5"><div class="j-day"><b>Friday</b><span lang="pa">ਸ਼ੁੱਕਰਵਾਰ</span></div>
-            <div class="j-sess"><p><b>8am</b>Morning santhiya</p><p><b>6pm</b>Santhiya</p></div></div>
-          <div class="j-row" data-d="6"><div class="j-day"><b>Saturday</b><span lang="pa">ਸ਼ਨੀਵਾਰ</span></div>
-            <div class="j-sess"><p><b>3pm</b>Weekend school</p></div></div>
-          <div class="j-row" data-d="0"><div class="j-day"><b>Sunday</b><span lang="pa">ਐਤਵਾਰ</span></div>
-            <div class="j-sess"><p><b>3pm</b>Weekend school</p></div></div>
-        </div>
-        <script>(function(){var d=new Date().getDay();
-          var r=document.querySelector('#jantri .j-row[data-d="'+d+'"]'); if(r)r.classList.add("today");})();</script>
-        <p class="vnote" style="margin-top:calc(var(--u)*0.9)">This timetable is for santhiya
-          at Gipsy Lane only. The four gurdwaras below run their own santhiya as well.
-          Message us for their times.</p>
+        <p class="vnote" data-rv>Santhiya runs every day in Leicester, at our Vidyalas worldwide, and online.</p>
         <div class="venues">
-          <div><b>Gurudwara Shri Guru Dashmesh Sahib</b><span>49 Gipsy Lane, Leicester LE4 6RB<br>The timetable above</span>
+          <div><b>Gurudwara Shri Guru Dashmesh Sahib</b><span>49 Gipsy Lane, Leicester LE4 6RB</span>
             <a href="https://maps.google.com/?q=49+Gipsy+Lane+Leicester+LE4+6RB" target="_blank" rel="noopener">Maps &nearr;</a></div>
-          <div><b>Guru Tegh Bahadur Gurdwara</b><span>106 East Park Road, LE5 4QB<br>Santhiya runs here too. Ask us for times</span>
+          <div><b>Guru Tegh Bahadur Gurdwara</b><span>106 East Park Road, LE5 4QB</span>
             <a href="https://maps.google.com/?q=106+East+Park+Road+Leicester+LE5+4QB" target="_blank" rel="noopener">Maps &nearr;</a></div>
-          <div><b>Gurdwara Sahib Ramgarhia Board</b><span>2 Sri Guru Ramdas Way, LE5 1GN<br>Tuesday from 6pm</span>
+          <div><b>Gurdwara Sahib Ramgarhia Board</b><span>2 Sri Guru Ramdas Way, LE5 1GN</span>
             <a href="https://maps.google.com/?q=2+Sri+Guru+Ramdas+Way+Leicester+LE5+1GN" target="_blank" rel="noopener">Maps &nearr;</a></div>
-          <div><b>Gurdwara Gur Panth Parkash</b><span>19 Ashford Road, LE2 6AA<br>Saturday 11am</span>
+          <div><b>Gurdwara Gur Panth Parkash</b><span>19 Ashford Road, LE2 6AA</span>
             <a href="https://maps.google.com/?q=19+Ashford+Road+Leicester+LE2+6AA" target="_blank" rel="noopener">Maps &nearr;</a></div>
-          <div><b>Gurdwara Shri Guru Harkrishan Sahib</b><span>48 Kenilworth Drive, Oadby LE2 5LG<br>Friday from 6pm</span>
+          <div><b>Gurdwara Shri Guru Harkrishan Sahib</b><span>48 Kenilworth Drive, Oadby LE2 5LG</span>
             <a href="https://maps.google.com/?q=48+Kenilworth+Drive+Oadby+LE2+5LG" target="_blank" rel="noopener">Maps &nearr;</a></div>
           <div><b>Online</b><span>Wherever you are<br>Ask us how to join</span></div>
         </div>
@@ -1269,11 +1147,9 @@ html.still .drift img{ animation:none; }
   </div>
 
   <section class="vcta">
-    <p class="gurline gur" lang="pa" data-rv>ਸੋਮਵਾਰ ਨੂੰ ਆਓ</p>
-    <h2 data-rv>Come on Monday.</h2>
-    <p data-rv>Come at eight in the morning to 49 Gipsy Lane. There is no fee and no
-        audition, and you do not need any Gurmukhi. You can sit at the back if you like,
-        and nobody will ask you to read.</p>
+    <p class="gurline gur" lang="pa" data-rv>ਕਲਾਸ ਵਿੱਚ ਆਓ</p>
+    <h2 data-rv>Come to a class.</h2>
+    <p data-rv>Message us on WhatsApp and we'll tell you this week's times. You can sit at the back if you like, and nobody will ask you to read.</p>
     <p class="wa-row" data-rv><a class="wa" href="__WA__" target="_blank" rel="noopener">__WASVG__ Message us on WhatsApp</a></p>
     <p class="contact" data-rv>Or email gurmat@shaheedibunga.com</p>
   </section>
@@ -1311,7 +1187,7 @@ html.still .drift img{ animation:none; }
     <div class="akstage"><canvas id="akc" aria-hidden="true"></canvas></div>
     <div class="akmist" aria-hidden="true"></div>
     <p class="lbl" style="position:absolute;top:calc(var(--u)*5.5);left:calc(var(--u)*2.3);z-index:3">
-      01 &mdash; <b>Archery Akhara</b> &middot; Guru Tegh Bahadur Gurdwara</p>
+      01 &mdash; <b>Archery Akhara</b> &middot; Leicester</p>
     <div class="akdraw" aria-hidden="true">
       <span>Draw</span>
       <span class="bar"><i id="akBar"></i></span>
@@ -1319,14 +1195,8 @@ html.still .drift img{ animation:none; }
     </div>
     <div class="akcopy">
       <p class="gurline gur" lang="pa" data-rv>ਤੀਰ ਅੰਦਾਜ਼ੀ</p>
-      <h1 data-rv style="font-size:max(40px,calc(var(--u)*7.0));letter-spacing:-.055em;line-height:.88">Draw. Breathe.<br>Release.</h1>
-      <p class="lede" data-rv style="margin-top:calc(var(--u)*1.2)">Learn the dhanush the
-        Khalsa carried, taught the way it was taught: stance, breath and the loose.</p>
-      <!-- The whole page is a long scroll, and the one thing most people came for
-           was at the bottom of it. Said once, here, where they arrive.
-           The same time is stated again in section 04 and the closing call -
-           CHANGE ALL THREE TOGETHER. -->
-      <p class="akwhen" data-rv>Sundays 2.30&ndash;4pm &middot; East Park Road</p>
+      <h1 data-rv style="font-size:max(40px,calc(var(--u)*7.0));letter-spacing:-.055em;line-height:.88">Learn the bow the Khalsa carried.</h1>
+      <p class="lede" data-rv style="margin-top:calc(var(--u)*1.2)">We teach the Dhanush the way it was taught: stance, breath and the loose.</p>
     </div>
     <p class="s2hint">Keep scrolling to draw</p>
    </div>
@@ -1335,14 +1205,6 @@ html.still .drift img{ animation:none; }
   <!-- 2 ─ the arrow-flight ribbon -->
   <section class="arib" id="arib">
     <div class="arib-pin">
-      <div class="arib-head">
-        <div>
-          <p class="lbl">02 &mdash; The range</p>
-          <h2 style="margin-top:calc(var(--u)*0.6)">Down the shooting line.</h2>
-        </div>
-        <p class="lede" style="max-width:24ch">Sunday afternoons, the hall at Guru Tegh
-          Bahadur Gurdwara, and a boss at eighteen metres.</p>
-      </div>
       <div class="arib-stage">
         <div class="arib-track" id="aribTrack"></div>
         <div class="aflight" id="aflight" aria-hidden="true"></div>
@@ -1383,41 +1245,6 @@ html.still .drift img{ animation:none; }
       </div>
       <div class="bulls-rail" id="bullsRail"><i class="on"></i><i></i><i></i><i></i><i></i></div>
     </div>
-  </section>
-
-  <!-- 4 ─ the league. The standings table was REMOVED on Ustad Ji's word:
-       a new one goes in when the new league starts. It is deliberately not
-       commented out - an HTML comment still ships to every visitor, and view
-       source would have published the fifteen names just as surely as the
-       table did. The markup and the roster are in git history; see
-       Content_Drafts/archery-to-confirm.md for the commit to recover from.
-       The .lg table styles are left in place, ready for the new table. -->
-  <div class="vwrap" style="padding-top:calc(var(--u)*5)">
-    <div class="vsec">
-      <p class="lbl">04 &mdash; When</p>
-      <div>
-        <!-- 2.30pm is the charity's own poster (Assets/Instagram/timetable-poster-gtb.jpg)
-             and Content_Drafts/timetable-confirmed.md, confirmed by Ustad Ji. The page
-             said 3-4pm, which was a half-hour slip. This time also appears under the
-             hero and in the closing call - CHANGE ALL THREE TOGETHER. -->
-        <p data-rv><strong>Sundays, 2.30&ndash;4pm</strong>: archery and shastar vidya at
-          Guru Tegh Bahadur Gurdwara, 106 East Park Road, Leicester LE5 4QB.
-          Air rifling runs Saturday afternoons at the same hall.</p>
-        <p data-rv style="margin-top:calc(var(--u)*1.1)">Bows, arrows and safety equipment are
-          provided. <strong>Ages 14 and over</strong> on Sundays; younger archers shoot at
-          camps and the Sikhi Camp tag-archery sessions.</p>
-      </div>
-    </div>
-  </div>
-
-  <section class="vcta">
-    <p class="gurline gur" lang="pa" data-rv>ਐਤਵਾਰ ਨੂੰ ਆਓ</p>
-    <h2 data-rv>Come on Sunday.</h2>
-    <!-- The time again - see the hero and section 04. CHANGE ALL THREE TOGETHER. -->
-    <p data-rv>Come at half past two to East Park Road. You do not need your own
-        bow, or to have held one before.</p>
-    <p class="wa-row" data-rv><a class="wa" href="__WAA__" target="_blank" rel="noopener">__WASVG__ Message us on WhatsApp</a></p>
-    <p class="contact" data-rv>Or email gurmat@shaheedibunga.com</p>
   </section>
 
   <p class="vfoot">Shaheedi Bunga &middot; Registered charity in England &amp; Wales &middot; 1185103</p>
@@ -1486,15 +1313,11 @@ html.still .drift img{ animation:none; }
            and the heading is honest about what follows. Sentence case and a
            full stop, like every other heading on the site. -->
       <h2 id="dsayH" data-rv>A test of commitment.</h2>
-      <p class="lead" data-rv>Learn kirtan on the instruments it was written for:
-        dilruba, taus, rabab and saranda.</p>
-      <p data-rv>It takes time, and it asks real commitment and determination. You do
-        not need Gurmukhi to start, but you will need it later, for shabads and
-        Asa di Vaar.</p>
-      <p data-rv>There are nine classes a week at Gurudwara Shri Guru Dashmesh Sahib,
-        Gipsy Lane: every weekday morning, two evenings, and both days of the weekend.
-        Every class is open to any age. There are no terms to wait for, so you can come
-        to the next class. There is no fee and no audition.</p>
+      <p class="lead" data-rv>Learn Kirtan on the instruments it was written for:
+        Dilruba, Taus, Rabab and Saranda.</p>
+      <p data-rv>It takes time to learn. You do not need Gurmukhi to start, but you will
+        need it later, for Shabads and Asa di Vaar.</p>
+      <p data-rv>Every class is open to any age, and there is no fee and no audition. There are no terms to wait for, so you can start at the next class.</p>
       <p data-rv>If you don't have an instrument, we'll lend you one. You can get your
         own later, once you know you will keep going.</p>
 
@@ -1512,24 +1335,6 @@ html.still .drift img{ animation:none; }
          aria-label="Photographs from Shaheedi Bunga's classes, drifting slowly. Focus to pause."></div>
   </section>
 
-  <!-- The week. One calendar, Monday first, every class on screen at once.
-       Data lives in DTT below, in the same shape as CLASSES in
-       Mockup/journey.html, so a real change drops straight in. -->
-  <section class="wk" aria-labelledby="wkH">
-    <div class="wk-top">
-      <h2 id="wkH">The week</h2>
-      <p class="wk-next" id="wkNext"></p>
-    </div>
-
-    <div class="wk-grid" id="wkGrid">
-      <div class="wk-head" id="wkHead"></div>
-      <div class="wk-bands" id="wkBands"></div>
-    </div>
-    <div class="wk-list" id="wkList"></div>
-
-    <p class="wk-detail" id="wkDetail" aria-live="polite"></p>
-    <p class="wk-where" id="wkWhere"></p>
-  </section>
   <p class="vfoot">Shaheedi Bunga &middot; Registered charity in England &amp; Wales &middot; 1185103</p>
 </section>
 
@@ -1767,287 +1572,6 @@ html.still .drift img{ animation:none; }
     }
   }
   if (!customElements.get('dilruba-bow')) customElements.define('dilruba-bow', DilrubaBow);
-})();
-</script>
-
-<script>
-/* Kirtan Vidyala — the week.
- *
- * One calendar, Monday first: seven day tracks, each class a block whose
- * height is its length, so the shape of the week reads at a glance — five
- * two-hour mornings, then the evenings. A day-at-a-time tab strip hid
- * exactly that, and left a single row in a full-width table.
- *
- * DTT is the same shape as CLASSES in Mockup/journey.html:
- *   day 0=Sunday..6=Saturday, h/m = 24h start, mins = length,
- *   gm/en = names, at = a VENUES key.
- *
- * Every row is a GIPSY LANE class, given by Harteg, who attends them; the
- * mornings are there too, confirmed. There is no Ages column by design:
- * every class is open to any age, so the note says it once. Not yet known:
- * whether any row is a beginners/continuing split (so all read simply
- * "Dilruba"), and the classes at other gurdware, marked coming soon.
- *
- * The bands are derived from the data, so a 07:00 or 21:00 class widens its
- * band on its own, and a new midday class closes the break by itself.
- */
-(function () {
-  'use strict';
-  var VENUES = {
-    gipsy: { short:"Gipsy Lane",
-             full:"Gurudwara Shri Guru Dashmesh Sahib &middot; 49 Gipsy Lane, Leicester" }
-  };
-  /* Empty on purpose. There were classes at Guru Tegh Bahadur Gurudwara and
-     there are not any more, so "coming soon" would be wrong in both
-     directions — it promises a return nobody has announced. Add a venue here
-     only when one is actually starting. */
-  var SOON = [];
-  var DTT = [
-    /* mornings: Monday to Friday */
-    { day:1, h:8,  m:0, mins:120, gm:"ਦਿਲਰੁਬਾ", en:"Dilruba", at:"gipsy" },
-    { day:2, h:8,  m:0, mins:120, gm:"ਦਿਲਰੁਬਾ", en:"Dilruba", at:"gipsy" },
-    { day:3, h:8,  m:0, mins:120, gm:"ਦਿਲਰੁਬਾ", en:"Dilruba", at:"gipsy" },
-    { day:4, h:8,  m:0, mins:120, gm:"ਦਿਲਰੁਬਾ", en:"Dilruba", at:"gipsy" },
-    { day:5, h:8,  m:0, mins:120, gm:"ਦਿਲਰੁਬਾ", en:"Dilruba", at:"gipsy" },
-    /* evenings */
-    { day:2, h:19, m:0, mins:60,  gm:"ਦਿਲਰੁਬਾ", en:"Dilruba", at:"gipsy" },
-    { day:4, h:19, m:0, mins:60,  gm:"ਦਿਲਰੁਬਾ", en:"Dilruba", at:"gipsy" },
-    { day:6, h:17, m:0, mins:120, gm:"ਦਿਲਰੁਬਾ", en:"Dilruba", at:"gipsy" },
-    { day:0, h:17, m:0, mins:60,  gm:"ਦਿਲਰੁਬਾ", en:"Dilruba", at:"gipsy" }
-  ];
-
-  var DAYS  = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-  var SHORT = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
-  /* the week reads Monday first */
-  var ORDER = [1,2,3,4,5,6,0];
-
-  var head = document.getElementById("wkHead");
-  var bands = document.getElementById("wkBands");
-  var list = document.getElementById("wkList");
-  var nextEl = document.getElementById("wkNext");
-  var detail = document.getElementById("wkDetail");
-  var whereEl = document.getElementById("wkWhere");
-  if (!head || !bands) return;
-
-  var pad = function (n) { return (n < 10 ? "0" : "") + n; };
-  var hm  = function (mins) { var t = ((mins % 1440) + 1440) % 1440;
-    return pad(Math.floor(t / 60)) + ":" + pad(t % 60); };
-  var startOf = function (c) { return c.h * 60 + c.m; };
-  var endOf   = function (c) { return startOf(c) + c.mins; };
-  var venue   = function (c) { return VENUES[c.at] || { short:c.at, full:c.at }; };
-  var forDay  = function (d) {
-    return DTT.filter(function (c) { return c.day === d; })
-              .sort(function (a, b) { return startOf(a) - startOf(b); });
-  };
-
-  /* The axis is banded, not continuous. Classes are clustered, and any gap
-     of GAP minutes or more between clusters becomes a labelled break rather
-     than blank grid — with mornings at 08:00 and evenings at 17:00, a
-     continuous axis spends seven of its twelve hours saying nothing. Each
-     band is rounded out to whole hours so the rules land on the labels. */
-  var GAP = 120;
-  var BANDS = (function () {
-    var sorted = DTT.slice().sort(function (a, b) { return startOf(a) - startOf(b); });
-    var out = [];
-    sorted.forEach(function (c) {
-      var last = out[out.length - 1];
-      if (last && startOf(c) <= last.b + GAP) { last.b = Math.max(last.b, endOf(c)); }
-      else { out.push({ a:startOf(c), b:endOf(c) }); }
-    });
-    return out.map(function (band) {
-      var a = Math.floor(band.a / 60) * 60, b = Math.ceil(band.b / 60) * 60;
-      if (b === a) b = a + 60;
-      return { a:a, b:b, span:b - a };
-    });
-  })();
-  var bandOf = function (t) {
-    for (var i = 0; i < BANDS.length; i++) {
-      if (t >= BANDS[i].a && t <= BANDS[i].b) return i;
-    }
-    return -1;
-  };
-  var pctIn = function (band, mins) { return ((mins - band.a) / band.span) * 100; };
-
-  function now()      { var n = new Date(); return n.getHours() * 60 + n.getMinutes(); }
-  function todayIdx() { return new Date().getDay(); }
-  function state(c) {
-    if (c.day !== todayIdx()) return "";
-    var n = now();
-    if (n >= startOf(c) && n < endOf(c)) return "now";
-    return n >= endOf(c) ? "past" : "";
-  }
-
-  /* the next class, wrapping into next week if today's are done */
-  function findNext() {
-    var n = now(), t = todayIdx();
-    for (var ahead = 0; ahead < 8; ahead++) {
-      var d = (t + ahead) % 7, l = forDay(d);
-      for (var i = 0; i < l.length; i++) {
-        if (ahead > 0 || endOf(l[i]) > n) return { c:l[i], ahead:ahead, d:d };
-      }
-    }
-    return null;
-  }
-
-  function whenWord(ahead, d) {
-    return ahead === 0 ? "Today" : ahead === 1 ? "Tomorrow" : DAYS[d];
-  }
-
-  /* the line under the grid — the next class by default, or whichever block
-     is being pointed at or has focus */
-  function showDetail(c, label) {
-    var v = venue(c);
-    detail.innerHTML = '<span class="d">' + label + "</span>" +
-      hm(startOf(c)) + " &ndash; " + hm(endOf(c)) + " &middot; " + c.en +
-      ' <span class="w">&middot; ' + v.full + "</span>";
-  }
-  function resetDetail() {
-    var n = findNext();
-    if (!n) { detail.textContent = ""; return; }
-    showDetail(n.c, whenWord(n.ahead, n.d));
-  }
-
-  function build() {
-    /* day headings */
-    head.innerHTML = '<div class="wk-corner"></div>';
-    ORDER.forEach(function (d) {
-      var n = forDay(d).length;
-      var el = document.createElement("div");
-      el.className = "wk-dh" + (d === todayIdx() ? " today" : "");
-      el.innerHTML = "<b>" + SHORT[d] + "</b><i>" +
-        (n ? n + (n > 1 ? " classes" : " class") : "&mdash;") + "</i>";
-      head.appendChild(el);
-    });
-
-    bands.innerHTML = "";
-    var n = now(), inBand = bandOf(n);
-
-    BANDS.forEach(function (band, bi) {
-      /* the hours with nothing in them, said once instead of drawn */
-      if (bi > 0) {
-        var brk = document.createElement("div");
-        brk.className = "wk-break";
-        brk.innerHTML = "<span>no classes &middot; " + hm(BANDS[bi - 1].b) +
-                        " &ndash; " + hm(band.a) + "</span>";
-        bands.appendChild(brk);
-      }
-
-      var wrap = document.createElement("div");
-      wrap.className = "wk-band";
-      wrap.style.setProperty("--hrs", String(band.span / 60));
-
-      var rules = document.createElement("div");
-      rules.className = "wk-rules";
-      rules.setAttribute("aria-hidden", "true");
-      wrap.appendChild(rules);
-
-      var gut = document.createElement("div");
-      gut.className = "wk-gutter";
-      gut.setAttribute("aria-hidden", "true");
-      for (var t = band.a; t <= band.b; t += 60) {
-        var lab = document.createElement("span");
-        lab.className = "wk-hr";
-        lab.style.top = pctIn(band, t) + "%";
-        lab.textContent = hm(t);
-        gut.appendChild(lab);
-      }
-      wrap.appendChild(gut);
-
-      ORDER.forEach(function (d) {
-        var col = document.createElement("div");
-        col.className = "wk-col" + (d === todayIdx() ? " today" : "");
-        var mine = forDay(d).filter(function (c) {
-          return startOf(c) >= band.a && startOf(c) < band.b;
-        });
-        col.setAttribute("role", "group");
-        col.setAttribute("aria-label", DAYS[d] + ", " +
-          (mine.length ? mine.length + " class" + (mine.length > 1 ? "es" : "")
-                       : "no class") + " between " + hm(band.a) + " and " + hm(band.b));
-        mine.forEach(function (c) { col.appendChild(blockFor(c, d, band)); });
-        wrap.appendChild(col);
-      });
-
-      /* the clock, in whichever band holds it */
-      if (bi === inBand) {
-        var line = document.createElement("div");
-        line.className = "wk-now";
-        line.style.top = pctIn(band, n) + "%";
-        line.setAttribute("aria-hidden", "true");
-        wrap.appendChild(line);
-      }
-
-      bands.appendChild(wrap);
-    });
-
-    buildList();
-  }
-
-  function blockFor(c, d, band) {
-    var st = state(c);
-    var b = document.createElement("button");
-    b.type = "button";
-    b.className = "wk-blk" + (st ? " " + st : "");
-    b.style.top = pctIn(band, startOf(c)) + "%";
-    b.style.height = (c.mins / band.span) * 100 + "%";
-    b.setAttribute("aria-pressed", "false");
-    b.setAttribute("aria-label", DAYS[d] + " " + hm(startOf(c)) + " to " + hm(endOf(c)) +
-      ", " + c.en + ", " + venue(c).short + (st === "now" ? ", on now" : ""));
-    b.innerHTML = '<span class="t">' + hm(startOf(c)) + "</span>" +
-                  '<span class="e">&rarr; ' + hm(endOf(c)) + "</span>";
-    var label = st === "now" ? "On now" : DAYS[d];
-    b.addEventListener("mouseenter", function () { showDetail(c, label); });
-    b.addEventListener("focus",      function () { showDetail(c, label); });
-    b.addEventListener("mouseleave", resetDetail);
-    b.addEventListener("blur",       resetDetail);
-    b.addEventListener("click", function () {
-      bands.querySelectorAll(".wk-blk").forEach(function (o) {
-        o.setAttribute("aria-pressed", o === b ? "true" : "false");
-      });
-      showDetail(c, label);
-    });
-    return b;
-  }
-
-  /* the same week as a list, for narrow screens */
-  function buildList() {
-    list.innerHTML = "";
-    ORDER.forEach(function (d) {
-      var l = forDay(d);
-      var row = document.createElement("div");
-      row.className = "wk-d" + (d === todayIdx() ? " today" : "");
-      var chips = l.map(function (c) {
-        return '<span class="chip' + (state(c) === "now" ? " now" : "") + '">' +
-               hm(startOf(c)) + "&ndash;" + hm(endOf(c)) + "</span>";
-      }).join("");
-      row.innerHTML = '<span class="dy">' + SHORT[d] + "</span>" +
-        (l.length ? '<span class="cl">' + chips + "</span>"
-                  : '<span class="none">No class</span>');
-      list.appendChild(row);
-    });
-  }
-
-  function renderNext() {
-    var n = findNext();
-    if (!n) { nextEl.textContent = ""; return; }
-    nextEl.innerHTML = state(n.c) === "now"
-      ? "On now &middot; until " + hm(endOf(n.c))
-      : "Next &middot; " + whenWord(n.ahead, n.d).toLowerCase() + " " + hm(startOf(n.c));
-  }
-
-  function renderWhere() {
-    var out = Object.keys(VENUES).map(function (k) {
-      var n = DTT.filter(function (c) { return c.at === k; }).length;
-      return "<b>" + VENUES[k].full + "</b> &middot; " + n + " class" + (n === 1 ? "" : "es") + " a week";
-    }).join(" &nbsp; ");
-    if (SOON.length) {
-      out += ' <span class="soon">&nbsp;&middot;&nbsp; ' + SOON.join(", ") + ": coming soon</span>";
-    }
-    whereEl.innerHTML = out;
-  }
-
-  build(); renderNext(); renderWhere(); resetDetail();
-  /* left open, the clock line and "on now" would go stale */
-  setInterval(function () { build(); renderNext(); resetDetail(); }, 60000);
 })();
 </script>
 
@@ -2622,7 +2146,7 @@ function brackets(width,y,h,step,m,into){
 }
 
 /* ═══════════════════ HARMANDIR SAHIB ═══════════════════
-   The first draft: a marble arcaded ground storey, gilt above the
+   The first version, a marble arcaded ground storey, gilt above the
    chhajja, jaali screens on the second, the Sheesh Mahal, and a tall
    ribbed inverted-lotus dome.                                       */
 function harmandir(){

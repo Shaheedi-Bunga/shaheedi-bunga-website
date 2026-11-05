@@ -12,9 +12,6 @@
 .ahero h1{ font-size:max(52px,calc(var(--u)*8)); line-height:.88; }
 .ahero h1 span{ display:block; } .ahero h1 span:last-child{ color:var(--hero-gold); font-style:italic; }
 .ahero .lede{ color:var(--hero-muted); margin-top:calc(var(--u)*2.2); max-width:36ch; }
-.ahero .when{ display:inline-flex; gap:.8em; align-items:center; margin-top:calc(var(--u)*2.4); padding:.8em 1.2em; border:1px solid var(--hero-line);
-  border-radius:100px; font-family:var(--mono); font-size:max(11px,calc(var(--u)*.7)); letter-spacing:.14em; text-transform:uppercase; }
-.ahero .when b{ color:var(--hero-gold); font-weight:500; }
 /* the frame is wide enough for the arrow at rest, which stands well forward of the bow */
 .bowwrap{ position:relative; height:min(74vh,720px); justify-self:center; aspect-ratio:1/1; max-width:100%; }
 .bowwrap svg{ width:100%; height:100%; overflow:visible; }
@@ -85,10 +82,9 @@
     <div class="hero-copy">
       <p class="eyebrow">Akhara · 03 · Archery</p>
       <span class="gur gur-line" lang="pa" data-intro-fade>ਤੀਰ ਅੰਦਾਜ਼ੀ</span>
-      <h1 class="display" data-intro><span>Draw.</span><span>Breathe.</span><span>Release.</span></h1>
-      <p class="lede" data-intro-fade>Learn the dhanush, the bow the Khalsa carried. We teach it as it was taught: stance, breath and the loose.</p>
-      <!-- the time is also in the facts and the closing call: CHANGE ALL THREE TOGETHER -->
-      <p class="when" data-intro-fade><b>Sundays 2.30–4pm</b> · East Park Road</p>
+      <h1 class="display" data-intro><span>Learn the bow</span> <span>the Khalsa carried.</span></h1>
+      <p class="lede" data-intro-fade>We teach archery with the Dhanush as it was taught: stance, breath and the release.</p>
+      <figure class="pangti"><p class="gur" lang="pa">ਸੂਰਾ ਸੋ ਪਹਿਚਾਨੀਐ ਜੁ ਲਰੈ ਦੀਨ ਕੇ ਹੇਤ ॥</p><figcaption>Sri Guru Granth Sahib Ji, Ang 1105</figcaption></figure>
     </div>
     <div class="bowwrap" aria-hidden="true">
       <svg viewBox="30 0 520 520" id="bow">
@@ -110,21 +106,33 @@
  </div>
 </section>
 
+<!-- opening: Gurbani metaphor -->
+<div class="wrapx paper">
+  <div class="opening" style="padding:calc(var(--u)*4) 0 0">
+  <figure class="pangti" style="margin:0 0 1em"><p class="gur" lang="pa">ਗਗਨ ਦਮਾਮਾ ਬਾਜਿਓ ਪਰਿਓ ਨੀਸਾਨੈ ਘਾਉ ॥</p><figcaption>Sri Guru Granth Sahib Ji, Ang 1105</figcaption></figure>
+  <p style="margin:0 0 1em;color:var(--navy-70);font-size:max(17px,calc(var(--u)*1.2));max-width:56ch">The drum sounds, the aim is taken, and the mark is struck. Bhagat Kabeer Ji is writing of the battle inside the mind, and the bow teaches the same lesson: a still mind, a steady breath, and an arrow that goes where you look.</p>
+  </div>
+</div>
+
 <section class="promises range paper" aria-label="The range">
  <div class="ppin">
   <div class="sec-head">
     <div><p class="eyebrow">The range</p><h2 class="display h-l" data-split>Down the shooting line.</h2></div>
-    <p class="lede">We shoot on Sunday afternoons in the hall at Guru Tegh Bahadur Gurdwara, at a boss eighteen metres away.</p>
+    <p class="lede">In the hall at Guru Tegh Bahadur Gurdwara, archers shoot at a target boss eighteen metres away.</p>
   </div>
   <div class="ptrack">
+    <figure class="pcard"><img src="img/lib/2022/2022-07-gurbani-vidhya-camp-2022-archery-256.jpg" data-sizes="(max-width:760px) 100vw, 28vw" alt="A Singh in white at full draw, the bow bent and the arrow drawn back to the cheek." loading="lazy"><figcaption>Gurbani Vidhya Camp archery · July 2022</figcaption></figure>
     <figure class="pcard"><img src="img/p-archery-full-draw.jpg" data-sizes="(max-width:760px) 100vw, 28vw" alt="An archer in a blue chola at full draw, the string drawn back to the face." loading="lazy"><figcaption>Full draw</figcaption></figure>
-    <figure class="pcard"><img src="img/p-archery-aim.jpg" data-sizes="(max-width:760px) 100vw, 28vw" alt="The same archer sighting down the arrow before the release." loading="lazy"><figcaption>The aim</figcaption></figure>
+    <figure class="pcard"><img src="img/lib/2022/2022-07-gurbani-vidhya-camp-2022-archery-259.jpg" data-sizes="(max-width:760px) 100vw, 28vw" alt="A Singh in white at full draw in the training hall, targets on the far wall." loading="lazy"><figcaption>The aim</figcaption></figure>
     <figure class="pcard"><img src="/Assets/Archery/tiles/a10.jpg" alt="A line of archers taking aim, arrows ready in their stands." loading="lazy"><figcaption>The line</figcaption></figure>
     <figure class="pcard"><img src="img/p-archery-podium.jpg" data-sizes="(max-width:760px) 100vw, 28vw" alt="Young archers gathered on and around the podium after the competition." loading="lazy"><figcaption>The podium</figcaption></figure>
-    <figure class="pcard"><img src="/Assets/Archery/tiles/a08.jpg" alt="A young archer in a white chola, bow raised." loading="lazy"><figcaption>Bow raised</figcaption></figure>
+    <figure class="pcard"><img src="img/lib/2022/2022-07-gurbani-vidhya-camp-2022-archery-258.jpg" alt="A student in a purple chola drawing a bow beside a padded pillar." loading="lazy"><figcaption>Bow raised</figcaption></figure>
     <figure class="pcard"><img src="/Assets/Archery/tiles/a01.jpg" alt="A target face, the gold shot through by arrows." loading="lazy"><figcaption>The gold</figcaption></figure>
-    <figure class="pcard"><img src="img/p-shastar-display.jpg" data-sizes="(max-width:760px) 100vw, 28vw" alt="A Singh in white at the microphone, holding up a shastar in each hand." loading="lazy"><figcaption>Shastar vidya</figcaption></figure>
+    <figure class="pcard"><img src="img/p-shastar-display.jpg" data-sizes="(max-width:760px) 100vw, 28vw" alt="A Singh in white at the microphone, holding up a shastar in each hand." loading="lazy"><figcaption>Shastar Vidya</figcaption></figure>
     <figure class="pcard"><img src="img/p-shastar-dhal.jpg" data-sizes="(max-width:760px) 100vw, 28vw" alt="An old dhal with four bosses, laid on a white cloth." loading="lazy"><figcaption>The dhal</figcaption></figure>
+    <figure class="pcard"><img src="img/lib/2022/2022-07-gurbani-vidhya-camp-2022-archery-254.jpg" data-sizes="(max-width:760px) 100vw, 28vw" alt="A Singh in white with a long grey beard holding a bow and arrow, others looking on behind." loading="lazy"><figcaption>Gurbani Vidhya Camp archery · July 2022</figcaption></figure>
+    <figure class="pcard"><img src="img/lib/2022/2022-07-gurbani-vidhya-camp-2022-archery-248.jpg" data-sizes="(max-width:760px) 100vw, 28vw" alt="An archer in light blue drawing a bow in the hall, the target boss behind." loading="lazy"><figcaption>Gurbani Vidhya Camp archery · July 2022</figcaption></figure>
+    <figure class="pcard"><img src="img/lib/2022/2022-03-archery-range-196.jpg" data-sizes="(max-width:760px) 100vw, 28vw" alt="An archer holding a long bow beside a target with a cluster of arrows in the gold." loading="lazy"><figcaption>At the range · March 2022</figcaption></figure>
   </div>
   <div class="pbar"><i></i></div>
  </div>
@@ -141,13 +149,13 @@
         <div class="pillar on"><h3><span lang="pa">ਖੜਾ ਹੋਣਾ</span>Stance</h3>
           <p>Before you lift the bow, you square your feet, hips and shoulders to the target and settle your weight. Most bad shots go wrong here.</p></div>
         <div class="pillar"><h3><span lang="pa">ਸਾਹ</span>Breath</h3>
-          <p>You draw as you breathe in, and loose while you hold the breath. Much of archery is learning to breathe well.</p></div>
+          <p>You draw as you breathe in, and release while you hold the breath. Much of archery is learning to breathe well.</p></div>
         <div class="pillar"><h3><span lang="pa">ਧਿਆਨ</span>Focus</h3>
           <p>You aim at one ring rather than the whole target, and then at one point inside that ring. Your eye goes where the arrow will.</p></div>
         <div class="pillar"><h3><span lang="pa">ਛੋੜਨਾ</span>Release</h3>
-          <p>The loose is a letting go. If you force it, it shows in the arrow. This is the part that takes years to learn.</p></div>
+          <p>At the release you let the string go. If you force it, it shows in the arrow. This is the part that takes years to learn.</p></div>
         <div class="pillar"><h3><span lang="pa">ਮੁਹਾਰਤ</span>Mastery</h3>
-          <p>Mastery is hitting dead centre again and again without thinking about any of the above. Nobody gets there completely, but you keep getting closer.</p></div>
+          <p>Mastery is hitting dead centre again and again without thinking about the four steps above. Nobody gets there completely, but you keep getting closer.</p></div>
       </div>
       <div class="rail" id="rail"><i class="on"></i><i></i><i></i><i></i><i></i></div>
     </div>
@@ -165,25 +173,25 @@
 
 <section class="sec paper">
   <div class="sec-head">
-    <div><p class="eyebrow">When and where</p><h2 class="display h-l" data-split>Sunday afternoons.</h2></div>
-    <p class="lede">We teach archery and shastar vidya together, in the hall at Guru Tegh Bahadur Gurdwara.</p>
+    <div><p class="eyebrow">When and where</p><h2 class="display h-l" data-split>Where we shoot.</h2></div>
+    <p class="lede">We teach archery and Shastar Vidya together.</p>
   </div>
   <dl class="facts">
-    <div class="fact" data-fade><dt>When</dt><dd>Sundays, 2.30–4pm<small>Come at half past two. You can start any week.</small></dd></div>
+    <div class="fact" data-fade><dt>When</dt><dd>You can start any week.</dd></div>
     <div class="fact" data-fade><dt>Where</dt><dd>Guru Tegh Bahadur Gurdwara<small>106 East Park Road, Leicester LE5 4QB · <a href="https://maps.google.com/?q=106+East+Park+Road+Leicester+LE5+4QB" target="_blank" rel="noopener">Maps ↗</a></small></dd></div>
-    <div class="fact" data-fade><dt>Ages</dt><dd>14 and over on Sundays<small>Younger archers shoot at camps and at the Sikhi Camp tag-archery sessions.</small></dd></div>
-    <div class="fact" data-fade><dt>Equipment</dt><dd>Provided<small>We provide bows, arrows and safety equipment, so you don't need to bring anything.</small></dd></div>
-    <div class="fact" data-fade><dt>Also here</dt><dd>Air rifling<small>Saturday afternoons, in the same hall.</small></dd></div>
-    <div class="fact" data-fade><dt>Fee</dt><dd>None<small>Every class at the vidyala is free.</small></dd></div>
+    <div class="fact" data-fade><dt>Ages</dt><dd>14 and over<small>Younger archers shoot at camps and at the Sikhi Camp tag-archery sessions.</small></dd></div>
+    <div class="fact" data-fade><dt>Equipment</dt><dd>Provided<small>We provide bows, arrows and safety equipment.</small></dd></div>
+    <div class="fact" data-fade><dt>Also here</dt><dd>Air rifling<small>In the same hall.</small></dd></div>
+    <div class="fact" data-fade><dt>Fee</dt><dd>None</dd></div>
   </dl>
 </section>
 
 <section class="sec invite paper">
   <div class="frame">
     <span class="arch-line" aria-hidden="true"></span><span class="arch-line two" aria-hidden="true"></span>
-    <span class="gur" lang="pa" data-fade>ਐਤਵਾਰ ਨੂੰ ਆਓ</span>
-    <h2 class="display h-l" data-split>Come on <em>Sunday.</em></h2>
-    <p data-fade>Come at half past two to Guru Tegh Bahadur Gurdwara, 106 East Park Road. You don't need a bow, and you don't need to have held one before.</p>
+    <span class="gur" lang="pa" data-fade>ਕਲਾਸ ਵਿੱਚ ਆਓ</span>
+    <h2 class="display h-l" data-split>Come and <em>shoot.</em></h2>
+    <p data-fade>Message us on WhatsApp for this week's times. You don't need a bow, and you don't need to have held one before.</p>
     <div class="acts" data-fade>
       <a class="wa" href="https://wa.me/447394848407?text=Sat%20Sri%20Akal%20%E2%80%94%20I'd%20like%20to%20ask%20about%20the%20Archery%20Akhara." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.6 2 2.18 6.42 2.18 11.86c0 1.74.46 3.44 1.32 4.94L2.1 22l5.34-1.4a9.8 9.8 0 0 0 4.6 1.17h.01c5.43 0 9.85-4.42 9.85-9.86 0-2.63-1.02-5.11-2.88-6.97A9.79 9.79 0 0 0 12.04 2z"/></svg>Message us on WhatsApp</a>
       <a class="mail" href="mailto:gurmat@shaheedibunga.com">gurmat@shaheedibunga.com</a>
@@ -219,10 +227,9 @@ var BOW = (function(){
 
 KIT.start(function(gsap, ST){
   var E = "expo.out";
-  var words = SplitText.create("[data-intro]", { type:"words", wordsClass:"w", mask:"words" }).words;
   gsap.timeline({ defaults:{ ease:E } })
     .from(".ahero .eyebrow", { opacity:0, y:12, duration:.9 }, .1)
-    .from(words, { yPercent:115, duration:1.3, stagger:.14 }, .25)
+    .add(KIT.rise(document.querySelector("[data-intro]")), .25)
     .from(".ahero [data-intro-fade]", { opacity:0, y:22, duration:1.1, stagger:.12 }, .2)
     .from(".bowwrap", { opacity:0, x:40, duration:1.6 }, .3);
 

@@ -26,44 +26,83 @@ html[data-mood="dark"] .hx{ --ink:#F3EEE2; --muted:rgba(243,238,226,.74); --gold
 @media (prefers-reduced-motion:reduce){.hx .dc-col>div{animation:none!important}}
 
 /* the filter: sticks under the masthead while you browse */
-.filters{ position:sticky; top:62px; z-index:20; display:flex; gap:8px; flex-wrap:wrap; padding:14px var(--gx);
+.filters{ position:sticky; top:62px; z-index:20; display:flex; gap:6px; flex-wrap:wrap; padding:14px var(--gx);
   background:color-mix(in srgb,var(--cream) 88%,transparent); backdrop-filter:blur(12px); border-bottom:1px solid var(--line); }
-.filters button{ font:11px/1 var(--mono); letter-spacing:.14em; text-transform:uppercase; color:var(--navy-70); background:transparent;
-  border:1px solid var(--line); border-radius:100px; padding:11px 15px; min-height:44px; cursor:pointer; transition:border-color .3s, background .3s, color .3s; }
-.filters button span{ opacity:.6; margin-left:.5em; }
-.filters button:hover{ border-color:var(--gold); }
+.filters button, .bt{ font:11px/1 var(--mono); letter-spacing:.08em; text-transform:uppercase; color:var(--navy-70); background:transparent;
+  border:1px solid var(--line); border-radius:100px; padding:11px 10px; min-height:44px; cursor:pointer; transition:border-color .3s, background .3s, color .3s; }
+.filters button span{ opacity:.6; margin-left:.4em; }
+.filters button:hover, .bt:hover{ border-color:var(--gold); }
 .filters button[aria-pressed="true"]{ background:var(--panel); color:var(--panel-ink); border-color:var(--panel); }
-.filters button:focus-visible, .open:focus-visible, .lb button:focus-visible{ outline:2px solid var(--focus); outline-offset:3px; }
+.filters button:focus-visible, .bt:focus-visible, .alb-open:focus-visible, .open:focus-visible, .lb button:focus-visible{ outline:2px solid var(--focus); outline-offset:3px; }
+@media(max-width:600px){ .filters{ flex-wrap:nowrap; overflow-x:auto; scroll-snap-type:x proximity; scrollbar-width:thin; }
+  .filters button{ flex:none; scroll-snap-align:start; } }
 
-/* the wall of photographs: a balanced grid, three tile shapes */
-.grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); grid-auto-flow:dense; gap:calc(var(--u)*1.2);
-  padding:calc(var(--u)*3) var(--gx) calc(var(--u)*8); }
-.tile{ margin:0; border-radius:3px; overflow:hidden; background:var(--cream-3); aspect-ratio:1; }
-.tile:nth-child(7n+1){ grid-row:span 2; aspect-ratio:auto; }
-.tile:nth-child(11n+4){ grid-column:span 2; aspect-ratio:2/1; }
-.tile[hidden]{ display:none; }
+/* a year: its heading and its album cards */
+.yr{ padding:calc(var(--u)*5) var(--gx) 0; }
+.yr:last-child{ padding-bottom:calc(var(--u)*8); }
+.yr[hidden], .album[hidden]{ display:none; }
+.yr-h{ display:flex; align-items:baseline; flex-wrap:wrap; gap:6px 20px; margin:0 0 calc(var(--u)*2); padding-bottom:14px; border-bottom:1px solid var(--line);
+  font:500 clamp(34px,4.4vw,64px)/1 var(--display); }
+.yr-n{ font:11px/1.4 var(--mono); letter-spacing:.16em; text-transform:uppercase; color:var(--navy-70); }
+.albums{ display:grid; grid-template-columns:repeat(auto-fill,minmax(250px,1fr)); gap:calc(var(--u)*2) calc(var(--u)*1.6); }
+.alb-open{ display:block; width:100%; padding:0; border:0; background:none; text-align:left; cursor:pointer; color:inherit; font:inherit; }
+.alb-cover{ display:block; aspect-ratio:4/3; overflow:hidden; border-radius:3px; background:var(--cream-3); }
+.alb-cover img{ width:100%; height:100%; object-fit:cover; display:block; filter:var(--photo); transition:transform 1s var(--ease-out), filter .5s; }
+.alb-open:hover .alb-cover img{ transform:scale(1.04); filter:none; }
+.album.more .alb-cover{ box-shadow:5px 5px 0 -1px var(--cream-3), 5px 5px 0 0 var(--line); }
+.alb-txt{ display:block; padding:12px 2px 0; }
+.alb-name{ display:block; font:500 clamp(18px,1.5vw,22px)/1.25 var(--display); }
+.alb-txt small{ display:block; margin-top:5px; font:11px/1.5 var(--mono); letter-spacing:.14em; text-transform:uppercase; color:var(--navy-70); }
+@media(max-width:600px){ .albums{ grid-template-columns:1fr 1fr; gap:22px 12px; } .alb-name{ font-size:16px; } .alb-txt small{ letter-spacing:.08em; } }
+
+/* an open album: a full-screen dialog of thumbnails */
+dialog.alb{ position:fixed; inset:0; margin:0; width:100%; height:100%; max-width:none; max-height:none; border:0; padding:0; background:var(--cream); color:var(--navy); }
+dialog.alb[open]{ display:grid; grid-template-rows:auto minmax(0,1fr); }
+dialog.alb::backdrop{ background:rgba(8,12,22,.7); }
+.alb-hd{ display:flex; align-items:center; justify-content:space-between; gap:16px; padding:14px var(--gx); border-bottom:1px solid var(--line); }
+.alb-hd h2{ margin:0; font:500 clamp(22px,2.4vw,34px)/1.15 var(--display); }
+.alb-hd p{ margin:4px 0 0; font:11px/1.5 var(--mono); letter-spacing:.14em; text-transform:uppercase; color:var(--navy-70); }
+.alb-bd{ overflow:auto; overscroll-behavior:contain; padding:calc(var(--u)*2) var(--gx) calc(var(--u)*5); }
+.alb-photos{ display:grid; grid-template-columns:repeat(auto-fill,minmax(190px,1fr)); gap:10px; }
+/* stacked years of thumbnails: six across, three on a phone; the rest of a year opens with "See all" */
+.yjump{ position:sticky; top:62px; z-index:20; display:flex; gap:6px; overflow-x:auto; scrollbar-width:thin; padding:12px var(--gx);
+  background:color-mix(in srgb, var(--cream) 92%, transparent); backdrop-filter:blur(8px); border-bottom:1px solid var(--line); }
+.yjump a{ flex:none; font:11px/1 var(--mono); letter-spacing:.1em; text-transform:uppercase; text-decoration:none; color:var(--navy-70);
+  border:1px solid var(--line); border-radius:100px; padding:9px 13px; }
+.yjump a:hover, .yjump a:focus-visible{ border-color:var(--gold); color:var(--navy); }
+.yr{ scroll-margin-top:120px; }
+.ygrid{ display:grid; grid-template-columns:repeat(6,minmax(0,1fr)); gap:8px; }
+@media(max-width:900px){ .ygrid{ grid-template-columns:repeat(4,minmax(0,1fr)); } }
+@media(max-width:600px){ .ygrid{ grid-template-columns:repeat(3,minmax(0,1fr)); gap:5px; } }
+.more-btn{ margin-top:14px; font:11px/1 var(--mono); letter-spacing:.12em; text-transform:uppercase; color:var(--gold-text); background:none;
+  border:1px solid var(--line); border-radius:100px; padding:12px 18px; min-height:44px; cursor:pointer; }
+.more-btn:hover{ border-color:var(--gold); }
+.tile{ margin:0; aspect-ratio:1; border-radius:3px; overflow:hidden; background:var(--cream-3); }
+.tile[hidden], .alb-photos[hidden]{ display:none; }
 .open{ display:block; width:100%; height:100%; padding:0; border:0; background:none; cursor:zoom-in; }
-.open img{ width:100%; height:100%; object-fit:cover; filter:var(--photo); transition:transform 1s var(--ease-out), filter .5s; }
+.open img{ width:100%; height:100%; object-fit:cover; display:block; filter:var(--photo); transition:transform 1s var(--ease-out), filter .5s; }
 .open:hover img{ transform:scale(1.04); filter:none; }
-@media(max-width:600px){ .grid{ grid-template-columns:1fr 1fr; } .tile:nth-child(11n+4){ grid-column:span 2; } }
+@media(max-width:600px){ .alb-photos{ grid-template-columns:repeat(3,minmax(0,1fr)); gap:6px; } }
 
-.note{ padding:0 var(--gx); margin:calc(var(--u)*-2) 0 calc(var(--u)*3); font-size:14px; color:var(--navy-70); max-width:70ch; }
+.note{ padding:calc(var(--u)*3) var(--gx) calc(var(--u)*5); font-size:14px; color:var(--navy-70); max-width:70ch; margin:0; }
 .note a{ color:var(--gold-text); }
 
-/* the viewer */
-.lb{ position:fixed; inset:0; z-index:200; display:grid; grid-template-rows:1fr auto; background:rgba(8,12,22,.94); color:#F4EFE4; opacity:0; pointer-events:none;
-  transition:opacity .35s; }
-.lb.on{ opacity:1; pointer-events:auto; }
-.lb[hidden]{ display:none; }   /* the class sets display:grid, which would beat [hidden] */
+/* the viewer: a dialog too, so it opens above an open album */
+dialog.lb{ position:fixed; inset:0; margin:0; width:100%; height:100%; max-width:none; max-height:none; border:0; padding:0;
+  background:rgba(8,12,22,.94); color:#F4EFE4; animation:lbin .3s; }
+dialog.lb[open]{ display:grid; grid-template-rows:minmax(0,1fr) auto; }
+dialog.lb::backdrop{ background:transparent; }
+@keyframes lbin{ from{ opacity:0; } }
 .lb figure{ margin:0; display:grid; place-items:center; padding:70px 80px 10px; min-height:0; }
-.lb img{ max-width:100%; max-height:100%; border-radius:3px; box-shadow:0 30px 80px -20px rgba(0,0,0,.7); }
+.lb img{ max-width:100%; max-height:100%; object-fit:contain; border-radius:3px; box-shadow:0 30px 80px -20px rgba(0,0,0,.7); }
 .lb .bar{ display:flex; justify-content:space-between; align-items:center; gap:16px; padding:16px var(--gx) 22px; font-family:var(--mono);
   font-size:11px; letter-spacing:.14em; text-transform:uppercase; }
 .lb .cap{ text-transform:none; letter-spacing:0; font-family:var(--body); font-size:15px; color:rgba(244,239,228,.85); flex:1; text-align:center; }
 .lb button{ background:transparent; color:inherit; border:1px solid rgba(244,239,228,.3); border-radius:100px; padding:10px 14px; min-height:44px; cursor:pointer;
   font:11px/1 var(--mono); letter-spacing:.14em; text-transform:uppercase; }
 .lb .x{ position:absolute; top:16px; right:var(--gx); }
-@media(max-width:600px){ .lb figure{ padding:60px 12px 8px; } .lb .cap{ display:none; } }
+@media(max-width:600px){ .lb figure{ padding:64px 12px 8px; } .lb .cap{ display:none; } }
+@media (prefers-reduced-motion:reduce){ .alb-cover img, .open img, dialog.lb{ transition:none; animation:none; } .alb-open:hover .alb-cover img, .open:hover img{ transform:none; } }
 </style>
 </head>
 <body>
@@ -71,133 +110,37 @@ html[data-mood="dark"] .hx{ --ink:#F3EEE2; --muted:rgba(243,238,226,.74); --gold
 
 <main id="main">
 <section data-hero class="hx hero2 dc" data-init="columns">
-  <div class="dc-copy"><p class="k">Gallery</p><span class="gur-big" lang="pa">ਤਸਵੀਰਾਂ</span><h1>Many <em>afternoons.</em></h1>
-    <p class="hxlede">Classes, camps and samagams, photographed by the sangat.</p><div class="meta"><span>Photographs<b>102</b></span><span>Sections<b>Four</b></span><span>Taken by<b>The sangat</b></span></div></div>
+  <div class="dc-copy"><p class="k">Gallery</p><span class="gur-big" lang="pa">ਤਸਵੀਰਾਂ</span><h1>Classes, camps and Samagams, <em>photographed by the Sangat.</em></h1>
+    <p class="hxlede">Among them are Santhiya at the low tables, the Archery Akhara, the Gurbani Vidhya Camp of 2022 and the first inter-akhara Gatka Fight Night.</p><figure class="pangti"><p class="gur" lang="pa">ਮਿਲਿ ਸਤਸੰਗਤਿ ਖੋਜੁ ਦਸਾਈ ਵਿਚਿ ਸੰਗਤਿ ਹਰਿ ਪ੍ਰਭੁ ਵਸੈ ਜੀਉ ॥੨॥</p><figcaption>Sri Guru Granth Sahib Ji, Ang 94</figcaption></figure><div class="meta"><span>Photographs<b>{{gallery-photos}}</b></span><span>Years<b>{{gallery-years}}</b></span><span>Taken by<b>The Sangat</b></span></div></div>
   <div class="dc-cols"><div class="dc-col"><div><img src="img/hero/gallery-09c50f64.webp" width="360" height="480" alt=""><img src="img/hero/gallery-eeb5e64c.webp" width="360" height="480" alt=""><img src="img/hero/gallery-49280ffc.webp" width="360" height="480" alt=""><img src="img/hero/gallery-09c50f64.webp" width="360" height="480" alt=""><img src="img/hero/gallery-eeb5e64c.webp" width="360" height="480" alt=""><img src="img/hero/gallery-49280ffc.webp" width="360" height="480" alt=""></div></div><div class="dc-col u"><div><img src="img/hero/gallery-14cc2bf5.webp" width="360" height="480" alt=""><img src="img/hero/gallery-185d8765.webp" width="360" height="480" alt=""><img src="img/hero/gallery-540fc324.webp" width="360" height="480" alt=""><img src="img/hero/gallery-14cc2bf5.webp" width="360" height="480" alt=""><img src="img/hero/gallery-185d8765.webp" width="360" height="480" alt=""><img src="img/hero/gallery-540fc324.webp" width="360" height="480" alt=""></div></div><div class="dc-col"><div><img src="img/hero/gallery-f267f33f.webp" width="360" height="270" alt=""><img src="img/hero/gallery-a263a13a.webp" width="360" height="480" alt=""><img src="img/hero/gallery-d5879b11.webp" width="360" height="480" alt=""><img src="img/hero/gallery-f267f33f.webp" width="360" height="270" alt=""><img src="img/hero/gallery-a263a13a.webp" width="360" height="480" alt=""><img src="img/hero/gallery-d5879b11.webp" width="360" height="480" alt=""></div></div></div>
 </section>
 
-<div class="filters" role="group" aria-label="Show photographs from">
-  <button type="button" data-f="all" aria-pressed="true">All<span>102</span></button>
-  <button type="button" data-f="kirtan" aria-pressed="false">Kirtan &amp; tanti saaj<span>16</span></button>
-  <button type="button" data-f="archery" aria-pressed="false">The Archery Akhara<span>12</span></button>
-  <button type="button" data-f="santhiya" aria-pressed="false">Santhiya<span>49</span></button>
-  <button type="button" data-f="camps" aria-pressed="false">Camps &amp; samagams<span>25</span></button>
-</div>
-
-<p class="sr" id="fcount" aria-live="polite"></p>
-<div class="grid" id="grid">
-    <figure class="tile" data-cat="kirtan"><button type="button" class="open" aria-label="Open photograph: A student playing the dilruba at a samagam, gaj drawn across the strings"><img src="/Assets/Kirtan/tiles/k01.jpg" alt="A student playing the dilruba at a samagam, gaj drawn across the strings." width="560" height="700" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="kirtan"><button type="button" class="open" aria-label="Open photograph: A student bowing the dilruba, seated at the microphone"><img src="/Assets/Kirtan/tiles/k02.jpg" alt="A student bowing the dilruba, seated at the microphone." width="560" height="700" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="kirtan"><button type="button" class="open" aria-label="Open photograph: The sangat gathered outside for a group photograph"><img src="/Assets/Kirtan/tiles/k03.jpg" alt="The sangat gathered outside for a group photograph." width="440" height="550" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="kirtan"><button type="button" class="open" aria-label="Open photograph: A student at the harmonium, tabla waiting beside them"><img src="/Assets/Kirtan/tiles/k05.jpg" alt="A student at the harmonium, tabla waiting beside them." width="560" height="700" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="kirtan"><button type="button" class="open" aria-label="Open photograph: A close-up of the gaj crossing the dilruba&#x27;s strings"><img src="/Assets/Kirtan/tiles/k11.jpg" alt="A close-up of the gaj crossing the dilruba&#x27;s strings." width="560" height="700" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="kirtan"><button type="button" class="open" aria-label="Open photograph: Two students on stage, one at the microphone and one at the tabla"><img src="/Assets/Kirtan/tiles/k15.jpg" alt="Two students on stage, one at the microphone and one at the tabla." width="560" height="700" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="kirtan"><button type="button" class="open" aria-label="Open photograph: A student playing tabla, hands mid-stroke"><img src="/Assets/Kirtan/tiles/k22.jpg" alt="A student playing tabla, hands mid-stroke." width="560" height="700" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="kirtan"><button type="button" class="open" aria-label="Open photograph: A student with a dilruba across the lap, its case open beside them"><img src="/Assets/Kirtan/tiles/k24.jpg" alt="A student with a dilruba across the lap, its case open beside them." width="560" height="700" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="kirtan"><button type="button" class="open" aria-label="Open photograph: A close-up of hands on the tabla"><img src="/Assets/Kirtan/tiles/k28.jpg" alt="A close-up of hands on the tabla." width="560" height="700" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="kirtan"><button type="button" class="open" aria-label="Open photograph: Two students on stage playing tanti saaj at the microphones"><img src="/Assets/Kirtan/tiles/k30.jpg" alt="Two students on stage playing tanti saaj at the microphones." width="560" height="700" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="kirtan"><button type="button" class="open" aria-label="Open photograph: A student bowing the dilruba on stage beside another player"><img src="/Assets/Kirtan/tiles/k31.jpg" alt="A student bowing the dilruba on stage beside another player." width="560" height="700" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="archery"><button type="button" class="open" aria-label="Open photograph: A target face, the gold shot through by arrows"><img src="/Assets/Archery/tiles/a01.jpg" alt="A target face, the gold shot through by arrows." width="460" height="575" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="archery"><button type="button" class="open" aria-label="Open photograph: Archers in salwar kameez drawing their bows on the mats"><img src="/Assets/Archery/tiles/a05.jpg" alt="Archers in salwar kameez drawing their bows on the mats." width="460" height="575" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="archery"><button type="button" class="open" aria-label="Open photograph: The sangat looking on at the Archery Akhara"><img src="/Assets/Archery/tiles/a06.jpg" alt="The sangat looking on at the Archery Akhara." width="460" height="575" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="archery"><button type="button" class="open" aria-label="Open photograph: A young archer in a white chola, bow raised"><img src="/Assets/Archery/tiles/a08.jpg" alt="A young archer in a white chola, bow raised." width="460" height="575" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="archery"><button type="button" class="open" aria-label="Open photograph: Archers at full draw by the gurdwara windows"><img src="/Assets/Archery/tiles/a09.jpg" alt="Archers at full draw by the gurdwara windows." width="460" height="575" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="archery"><button type="button" class="open" aria-label="Open photograph: A line of archers taking aim, arrows ready in their stands"><img src="/Assets/Archery/tiles/a10.jpg" alt="A line of archers taking aim, arrows ready in their stands." width="460" height="575" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="archery"><button type="button" class="open" aria-label="Open photograph: Shastar laid out on a cloth: a dhal, a tabar and a sword"><img src="/Assets/Archery/tiles/a14.jpg" alt="Shastar laid out on a cloth: a dhal, a tabar and a sword." width="460" height="575" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="santhiya"><button type="button" class="open" aria-label="Open Santhiya photograph 2"><img src="/Assets/Santhiya/drift/d02.jpg" alt="" width="520" height="520" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="santhiya"><button type="button" class="open" aria-label="Open Santhiya photograph 4"><img src="/Assets/Santhiya/drift/d04.jpg" alt="" width="520" height="520" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="santhiya"><button type="button" class="open" aria-label="Open Santhiya photograph 5"><img src="/Assets/Santhiya/drift/d05.jpg" alt="" width="520" height="520" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="camps"><button type="button" class="open" aria-label="Open Santhiya photograph 6"><img src="/Assets/Santhiya/drift/d06.jpg" alt="" width="520" height="520" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="santhiya"><button type="button" class="open" aria-label="Open Santhiya photograph 7"><img src="/Assets/Santhiya/drift/d07.jpg" alt="" width="520" height="520" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="santhiya"><button type="button" class="open" aria-label="Open Santhiya photograph 8"><img src="/Assets/Santhiya/drift/d08.jpg" alt="" width="520" height="520" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="camps"><button type="button" class="open" aria-label="Open Santhiya photograph 14"><img src="/Assets/Santhiya/drift/d14.jpg" alt="" width="520" height="520" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="santhiya"><button type="button" class="open" aria-label="Open Santhiya photograph 15"><img src="/Assets/Santhiya/drift/d15.jpg" alt="" width="520" height="520" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="santhiya"><button type="button" class="open" aria-label="Open Santhiya photograph 16"><img src="/Assets/Santhiya/drift/d16.jpg" alt="" width="520" height="520" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="santhiya"><button type="button" class="open" aria-label="Open Santhiya photograph 17"><img src="/Assets/Santhiya/drift/d17.jpg" alt="" width="520" height="520" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="santhiya"><button type="button" class="open" aria-label="Open Santhiya photograph 18"><img src="/Assets/Santhiya/drift/d18.jpg" alt="" width="520" height="520" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="santhiya"><button type="button" class="open" aria-label="Open Santhiya photograph 19"><img src="/Assets/Santhiya/drift/d19.jpg" alt="" width="520" height="520" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="santhiya"><button type="button" class="open" aria-label="Open Santhiya photograph 21"><img src="/Assets/Santhiya/drift/d21.jpg" alt="" width="520" height="520" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="santhiya"><button type="button" class="open" aria-label="Open Santhiya photograph 22"><img src="/Assets/Santhiya/drift/d22.jpg" alt="" width="520" height="520" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="santhiya"><button type="button" class="open" aria-label="Open Santhiya photograph 23"><img src="/Assets/Santhiya/drift/d23.jpg" alt="" width="520" height="520" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="santhiya"><button type="button" class="open" aria-label="Open Santhiya photograph 24"><img src="/Assets/Santhiya/drift/d24.jpg" alt="" width="520" height="520" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="santhiya"><button type="button" class="open" aria-label="Open Santhiya photograph 25"><img src="/Assets/Santhiya/drift/d25.jpg" alt="" width="520" height="520" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="santhiya"><button type="button" class="open" aria-label="Open Santhiya photograph 26"><img src="/Assets/Santhiya/drift/d26.jpg" alt="" width="520" height="520" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="santhiya"><button type="button" class="open" aria-label="Open Santhiya photograph 27"><img src="/Assets/Santhiya/drift/d27.jpg" alt="" width="520" height="520" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="santhiya"><button type="button" class="open" aria-label="Open Santhiya photograph 29"><img src="/Assets/Santhiya/drift/d29.jpg" alt="" width="520" height="520" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="santhiya"><button type="button" class="open" aria-label="Open Santhiya photograph 30"><img src="/Assets/Santhiya/drift/d30.jpg" alt="" width="520" height="520" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="santhiya"><button type="button" class="open" aria-label="Open Santhiya photograph 31"><img src="/Assets/Santhiya/drift/d31.jpg" alt="" width="520" height="520" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="santhiya"><button type="button" class="open" aria-label="Open Santhiya photograph 32"><img src="/Assets/Santhiya/drift/d32.jpg" alt="" width="520" height="520" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="santhiya"><button type="button" class="open" aria-label="Open Santhiya photograph 33"><img src="/Assets/Santhiya/drift/d33.jpg" alt="" width="520" height="520" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="santhiya"><button type="button" class="open" aria-label="Open Santhiya photograph 34"><img src="/Assets/Santhiya/drift/e01.jpg" alt="" width="520" height="520" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="santhiya"><button type="button" class="open" aria-label="Open Santhiya photograph 35"><img src="/Assets/Santhiya/drift/e02.jpg" alt="" width="520" height="520" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="santhiya"><button type="button" class="open" aria-label="Open Santhiya photograph 36"><img src="/Assets/Santhiya/drift/e03.jpg" alt="" width="520" height="520" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="santhiya"><button type="button" class="open" aria-label="Open Santhiya photograph 37"><img src="/Assets/Santhiya/drift/e04.jpg" alt="" width="520" height="520" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="camps"><button type="button" class="open" aria-label="Open Santhiya photograph 38"><img src="/Assets/Santhiya/drift/e05.jpg" alt="" width="520" height="520" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="santhiya"><button type="button" class="open" aria-label="Open Santhiya photograph 39"><img src="/Assets/Santhiya/drift/e06.jpg" alt="" width="520" height="520" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="santhiya"><button type="button" class="open" aria-label="Open Santhiya photograph 40"><img src="/Assets/Santhiya/drift/e07.jpg" alt="" width="520" height="520" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="santhiya"><button type="button" class="open" aria-label="Open Santhiya photograph 41"><img src="/Assets/Santhiya/drift/e08.jpg" alt="" width="520" height="520" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="santhiya"><button type="button" class="open" aria-label="Open Santhiya photograph 42"><img src="/Assets/Santhiya/drift/e09.jpg" alt="" width="520" height="520" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="santhiya"><button type="button" class="open" aria-label="Open Santhiya photograph 43"><img src="/Assets/Santhiya/drift/e10.jpg" alt="" width="520" height="520" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="santhiya"><button type="button" class="open" aria-label="Open Santhiya photograph 44"><img src="/Assets/Santhiya/drift/e11.jpg" alt="" width="520" height="520" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="santhiya"><button type="button" class="open" aria-label="Open Santhiya photograph 45"><img src="/Assets/Santhiya/drift/e12.jpg" alt="" width="520" height="520" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="santhiya"><button type="button" class="open" aria-label="Open Santhiya photograph 46"><img src="/Assets/Santhiya/drift/e13.jpg" alt="" width="520" height="520" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="santhiya"><button type="button" class="open" aria-label="Open Santhiya photograph 47"><img src="/Assets/Santhiya/drift/e14.jpg" alt="" width="520" height="520" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="santhiya"><button type="button" class="open" aria-label="Open Santhiya photograph 48"><img src="/Assets/Santhiya/drift/e15.jpg" alt="" width="520" height="520" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="camps"><button type="button" class="open" aria-label="Open Santhiya photograph 49"><img src="/Assets/Santhiya/drift/e16.jpg" alt="" width="520" height="520" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="camps"><button type="button" class="open" aria-label="Open Santhiya photograph 50"><img src="/Assets/Santhiya/drift/e17.jpg" alt="" width="520" height="520" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="santhiya"><button type="button" class="open" aria-label="Open Santhiya photograph 51"><img src="/Assets/Santhiya/drift/e18.jpg" alt="" width="520" height="520" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="santhiya"><button type="button" class="open" aria-label="Open Santhiya photograph 52"><img src="/Assets/Santhiya/drift/e19.jpg" alt="" width="520" height="520" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="santhiya"><button type="button" class="open" aria-label="Open Santhiya photograph 53"><img src="/Assets/Santhiya/drift/e20.jpg" alt="" width="520" height="520" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="santhiya"><button type="button" class="open" aria-label="Open Santhiya photograph 54"><img src="/Assets/Santhiya/drift/e21.jpg" alt="" width="520" height="520" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="santhiya"><button type="button" class="open" aria-label="Open Santhiya photograph 55"><img src="/Assets/Santhiya/drift/e22.jpg" alt="" width="520" height="520" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="santhiya"><button type="button" class="open" aria-label="Open Santhiya photograph 56"><img src="/Assets/Santhiya/drift/e23.jpg" alt="" width="520" height="520" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="camps"><button type="button" class="open" aria-label="Open Santhiya photograph 57"><img src="/Assets/Santhiya/drift/e24.jpg" alt="" width="520" height="520" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="santhiya"><button type="button" class="open" aria-label="Open Santhiya photograph 58"><img src="/Assets/Santhiya/drift/e25.jpg" alt="" width="520" height="520" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="camps"><button type="button" class="open" aria-label="Open Santhiya photograph 59"><img src="/Assets/Santhiya/drift/e26.jpg" alt="" width="520" height="520" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="santhiya"><button type="button" class="open" aria-label="Open Santhiya photograph 60"><img src="/Assets/Santhiya/drift/e27.jpg" alt="" width="520" height="520" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="camps"><button type="button" class="open" aria-label="Open Santhiya photograph 61"><img src="/Assets/Santhiya/drift/e28.jpg" alt="" width="520" height="520" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="kirtan"><button type="button" class="open" aria-label="Open photograph: Players seated behind the rail before the mirrored wall, dilrubas raised and tabla to one side"><img src="img/p-kirtan-ensemble.jpg" alt="Players seated behind the rail before the mirrored wall, dilrubas raised and tabla to one side." width="560" height="747" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="kirtan"><button type="button" class="open" aria-label="Open photograph: An elder Singh with a white beard at the harmonium, singing into the microphone"><img src="img/p-harmonium-elder.jpg" alt="An elder Singh with a white beard at the harmonium, singing into the microphone." width="560" height="747" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="kirtan"><button type="button" class="open" aria-label="Open photograph: A young player bowing the dilruba between the microphones, tabla beside them"><img src="img/p-kirtan-dilruba.jpg" alt="A young player bowing the dilruba between the microphones, tabla beside them." width="560" height="747" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="kirtan"><button type="button" class="open" aria-label="Open photograph: Two students playing tabla side by side on the floor of the hall"><img src="img/p-tabla-duo.jpg" alt="Two students playing tabla side by side on the floor of the hall." width="560" height="747" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="kirtan"><button type="button" class="open" aria-label="Open photograph: A student in a white keski playing tabla, both hands on the drums"><img src="img/p-tabla-player.jpg" alt="A student in a white keski playing tabla, both hands on the drums." width="560" height="747" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="archery"><button type="button" class="open" aria-label="Open photograph: An archer in a blue chola at full draw, the string drawn back to the face"><img src="img/p-archery-full-draw.jpg" alt="An archer in a blue chola at full draw, the string drawn back to the face." width="560" height="747" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="archery"><button type="button" class="open" aria-label="Open photograph: An archer in a blue chola sighting down the arrow before the release"><img src="img/p-archery-aim.jpg" alt="An archer in a blue chola sighting down the arrow before the release." width="560" height="747" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="archery"><button type="button" class="open" aria-label="Open photograph: Young archers gathered on and around the podium after the competition"><img src="img/p-archery-podium.jpg" alt="Young archers gathered on and around the podium after the competition." width="560" height="420" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="archery"><button type="button" class="open" aria-label="Open photograph: A Singh in white at the microphone, holding up a shastar in each hand"><img src="img/p-shastar-display.jpg" alt="A Singh in white at the microphone, holding up a shastar in each hand." width="560" height="747" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="archery"><button type="button" class="open" aria-label="Open photograph: An old dhal with four bosses, laid on a white cloth"><img src="img/p-shastar-dhal.jpg" alt="An old dhal with four bosses, laid on a white cloth." width="560" height="747" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="santhiya"><button type="button" class="open" aria-label="Open photograph: A reader at the microphone, a pothi open on the stand in front"><img src="img/p-santhiya-reader-mic.jpg" alt="A reader at the microphone, a pothi open on the stand in front." width="560" height="747" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="santhiya"><button type="button" class="open" aria-label="Open photograph: A close-up of a young Singh reading, eyes down on the page"><img src="img/p-santhiya-reader-close.jpg" alt="A close-up of a young Singh reading, eyes down on the page." width="560" height="747" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="santhiya"><button type="button" class="open" aria-label="Open photograph: A Singh reading into the microphone, a tablet propped beside the pothi"><img src="img/p-santhiya-reader-tablet.jpg" alt="A Singh reading into the microphone, a tablet propped beside the pothi." width="560" height="747" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="santhiya"><button type="button" class="open" aria-label="Open photograph: The class at low tables across the red carpet of the hall"><img src="img/p-santhiya-class.jpg" alt="The class at low tables across the red carpet of the hall." width="560" height="420" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="santhiya"><button type="button" class="open" aria-label="Open photograph: A student seen from behind at the reading tables, pothis open along the row"><img src="img/p-santhiya-tables.jpg" alt="A student seen from behind at the reading tables, pothis open along the row." width="560" height="747" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="camps"><button type="button" class="open" aria-label="Open photograph: The Gurbani Vidhya Camp, August 2022: Singhs in a line on the grass in the evening sun"><img src="img/ig-gvc-2022-group.jpg" alt="The Gurbani Vidhya Camp, August 2022: Singhs in a line on the grass in the evening sun." width="560" height="560" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="camps"><button type="button" class="open" aria-label="Open photograph: An elder Singh teaching outside, seated on a mat across from a student"><img src="img/ig-gvc-2022-teaching.jpg" alt="An elder Singh teaching outside, seated on a mat across from a student." width="560" height="560" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="camps"><button type="button" class="open" aria-label="Open photograph: Students reading together on the floor of the hall at the Gurbani Vidhya Camp, 2022"><img src="img/ig-gvc-2022-class.jpg" alt="Students reading together on the floor of the hall at the Gurbani Vidhya Camp, 2022." width="560" height="560" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="camps"><button type="button" class="open" aria-label="Open photograph: Students seated around a laptop and notes, working through a text together"><img src="img/ig-gvc-2022-reading.jpg" alt="Students seated around a laptop and notes, working through a text together." width="560" height="420" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="camps"><button type="button" class="open" aria-label="Open photograph: The Singhs Camp group on a hilltop at dusk, the valley behind them"><img src="img/ig-singhs-camp-hilltop.jpg" alt="The Singhs Camp group on a hilltop at dusk, the valley behind them." width="560" height="316" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="camps"><button type="button" class="open" aria-label="Open photograph: Singhs walking through long grass in the woods, carrying gear between them"><img src="img/ig-singhs-camp-woods.jpg" alt="Singhs walking through long grass in the woods, carrying gear between them." width="560" height="384" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="camps"><button type="button" class="open" aria-label="Open photograph: An evening around the fire at the Singhs Camp, the sangat seated close in"><img src="img/ig-singhs-camp-fire.jpg" alt="An evening around the fire at the Singhs Camp, the sangat seated close in." width="560" height="384" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="camps"><button type="button" class="open" aria-label="Open photograph: Langar cooking in a large pot inside the camp tent"><img src="img/ig-singhs-camp-langar.jpg" alt="Langar cooking in a large pot inside the camp tent." width="560" height="560" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="camps"><button type="button" class="open" aria-label="Open photograph: Singhs gathered on a woodland path at the Singhs Camp, July 2022"><img src="img/ig-singhs-camp-path.jpg" alt="Singhs gathered on a woodland path at the Singhs Camp, July 2022." width="560" height="316" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="camps"><button type="button" class="open" aria-label="Open photograph: Singhs seated around a campfire at night"><img src="img/ig-singhs-camp-night.jpg" alt="Singhs seated around a campfire at night." width="560" height="383" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="camps"><button type="button" class="open" aria-label="Open photograph: The Singhs Camp group lined up on the grass outside a wooden lodge"><img src="img/ig-singhs-camp-lodge.jpg" alt="The Singhs Camp group lined up on the grass outside a wooden lodge." width="560" height="383" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="camps"><button type="button" class="open" aria-label="Open photograph: The camp group standing together on a tree-lined path"><img src="img/ig-singhs-camp-group.jpg" alt="The camp group standing together on a tree-lined path." width="560" height="420" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="camps"><button type="button" class="open" aria-label="Open photograph: The hall full for the Sikhi Camp, children seated in rows on the floor"><img src="img/p-sikhi-camp.jpg" alt="The hall full for the Sikhi Camp, children seated in rows on the floor." width="560" height="747" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="camps"><button type="button" class="open" aria-label="Open photograph: Everyone from the first inter-akhara Gatka Fight Night, May 2024, gathered for a photograph with the trophies"><img src="img/ig-fight-night-2024.jpg" alt="Everyone from the first inter-akhara Gatka Fight Night, May 2024, gathered for a photograph with the trophies." width="560" height="699" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="camps"><button type="button" class="open" aria-label="Open photograph: The sangat at the 25 Singh Larivaar Akhand Paath Sahib, July 2019, gathered in the hall"><img src="img/ig-larivaar-2019.jpg" alt="The sangat at the 25 Singh Larivaar Akhand Paath Sahib, July 2019, gathered in the hall." width="560" height="560" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="camps"><button type="button" class="open" aria-label="Open photograph: The sangat gathered for a group photograph in the hall, seated and standing in rows"><img src="img/p-sangat.jpg" alt="The sangat gathered for a group photograph in the hall, seated and standing in rows." width="560" height="420" loading="lazy" decoding="async"></button></figure>
-    <figure class="tile" data-cat="camps"><button type="button" class="open" aria-label="Open photograph: A Singh leading a white horse across a field"><img src="img/p-hola-horse.jpg" alt="A Singh leading a white horse across a field." width="560" height="747" loading="lazy" decoding="async"></button></figure>
-</div>
+<div class="wrapx paper"><div class="opening" style="padding:calc(var(--u)*4) 0 calc(var(--u)*2)">
+  <figure class="pangti" style="margin:0 0 1em"><p class="gur" lang="pa">ਇਹੁ ਮਨੁ ਆਰਸੀ ਕੋਈ ਗੁਰਮੁਖਿ ਵੇਖੈ ॥</p><figcaption>Sri Guru Granth Sahib Ji, Ang 115</figcaption></figure>
+  <p style="margin:0;color:var(--navy-70);font-size:max(17px,calc(var(--u)*1.2));max-width:56ch">Guru Amar Das Ji calls the mind a mirror, and says a Gurmukh looks into it. A photograph is a smaller mirror. It holds still, for a moment, the low tables and the faces of a Sangat, and lets you look for as long as you like.</p>
+</div></div>
+<!--@gallery-->
 <p class="note">Children appear in some of these photographs. If your child is in one and you would rather they were not,
-  <a href="mailto:gurmat@shaheedibunga.com">tell us</a> and we will take it down. You do not have to give a reason.</p>
+  <a href="mailto:gurmat@shaheedibunga.com">email us</a> and we will take it down. You do not have to give a reason.</p>
+
+<div class="wrapx paper">
+  <section class="band">
+    <h2 data-fade><small>On Instagram</small>Eight years on Instagram</h2>
+    <div class="body">
+      <p data-fade>We have posted on Instagram since February 2018, and the account now holds more than 750 posts and reels of camps, Samagams, Gatka,
+        Kirtan and the weekly classes. Each camp and Samagam is posted there first.</p>
+      <p data-fade>The larger Samagams are also on YouTube, streamed live from the arambh to the bhog.</p>
+      <p data-fade><a href="https://www.instagram.com/shaheedi_bunga_uk/" target="_blank" rel="noopener">See more on Instagram →</a></p>
+    </div>
+  </section>
+</div>
 </main>
 
-<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Photograph" hidden>
-  <button type="button" class="x" data-lb="close">Close ✕</button>
+<dialog class="lb" id="lb" aria-label="Photograph">
+  <button type="button" class="x" data-lb="close">Close &#x2715;</button>
   <figure><img id="lbImg" alt=""></figure>
-  <div class="bar"><button type="button" data-lb="prev">← Prev</button><span class="cap" id="lbCap"></span><span id="lbN"></span><button type="button" data-lb="next">Next →</button></div>
-</div>
+  <div class="bar"><button type="button" data-lb="prev">&larr; Prev</button><span class="cap" id="lbCap"></span><span id="lbN"></span><button type="button" data-lb="next">Next &rarr;</button></div>
+</dialog>
 
 <!--@foot-->
 <!--@scripts-->
@@ -218,73 +161,54 @@ INIT.columns = s => { if (!still) gsap.from(s.querySelectorAll('.dc-col'), { y:8
 document.querySelectorAll('.hx[data-init]').forEach(s => { try { INIT[s.dataset.init](s); } catch (e) { console.error(s.dataset.init, e); } });
 })();
 </script>
-<script src="lib/Flip.min.js"></script>
 <script>
-/* filter + viewer: plain JS, so both work with motion off. With motion on,
-   the filter is a Flip: tiles slide to their new places instead of jumping. */
+/* "See all" and the viewer: plain JS on a native dialog, so focus is trapped and Escape closes it */
 (function(){
-  var grid = document.getElementById("grid"), tiles = [].slice.call(grid.querySelectorAll(".tile"));
-  var btns = document.querySelectorAll(".filters button"), current = "all";
-  function shown(){ return tiles.filter(function(t){ return !t.hidden; }); }
-  function apply(f){
-    var animate = window.Flip && window.gsap && !KIT.reduce;
-    var state = animate ? Flip.getState(tiles) : null;
-    tiles.forEach(function(t){ t.hidden = !(f === "all" || t.dataset.cat === f); });
-    btns.forEach(function(b){ b.setAttribute("aria-pressed", b.dataset.f === f); });
-    document.getElementById("fcount").textContent = "Showing " + shown().length + " photographs";
-    current = f;
-    if(animate){
-      /* not absolute:true: in this grid it left each tile translated by its
-         old offset (a 700px gap above the first photo after filtering).
-         Whatever Flip leaves, the end state is cleared to the grid's own. */
-      var tidy = function(){ gsap.set(tiles, { clearProps:"transform,translate,rotate,scale,opacity" });
-        if(window.ScrollTrigger) ScrollTrigger.refresh(); };
-      Flip.from(state, { duration:.7, ease:"power3.inOut", stagger:.01,
-        onEnter:function(el){ return gsap.fromTo(el, { opacity:0, scale:.92 }, { opacity:1, scale:1, duration:.6 }); },
-        onComplete:tidy, onInterrupt:tidy });
-    }
+  var lb = document.getElementById("lb"), im = document.getElementById("lbImg"), cap = document.getElementById("lbCap"), num = document.getElementById("lbN"),
+      list = [], i = 0, opener = null;
+  /* "See all" opens the rest of a year; pressed again it folds back to the first row */
+  [].forEach.call(document.querySelectorAll(".more-btn"), function(b){
+    var sec = b.closest(".yr"), extra = [].slice.call(sec.querySelectorAll(".tile[hidden]")), n = sec.querySelectorAll(".tile").length, word = b.textContent;
+    b.addEventListener("click", function(){
+      var open = b.getAttribute("aria-expanded") !== "true";
+      extra.forEach(function(t){ t.hidden = !open; });
+      b.setAttribute("aria-expanded", open); b.textContent = open ? "Show fewer" : word;
+      if(!open) sec.scrollIntoView({ block:"start" });
+      if(window.ScrollTrigger) ScrollTrigger.refresh();
+    });
+  });
+  function lock(){
+    var any = !!document.querySelector("dialog[open]");
+    document.documentElement.style.overflow = any ? "hidden" : "";
+    if(KIT.lenis){ any ? KIT.lenis.stop() : KIT.lenis.start(); }
   }
-  btns.forEach(function(b){ b.addEventListener("click", function(){ if(b.dataset.f !== current) apply(b.dataset.f); }); });
-
-  var lb = document.getElementById("lb"), img = document.getElementById("lbImg"), cap = document.getElementById("lbCap"),
-      num = document.getElementById("lbN"), list = [], i = 0, opener = null;
+  /* a photograph: the viewer steps through the year's photographs that are showing */
   function show(k){
     i = (k + list.length) % list.length;
-    var src = list[i].querySelector("img");
-    img.src = src.src; img.alt = src.alt; cap.textContent = src.alt; num.textContent = (i + 1) + " / " + list.length;
+    var t = list[i], g = t.querySelector("img");
+    im.src = t.querySelector(".open").dataset.full; im.alt = g.alt;
+    cap.textContent = g.alt + (t.dataset.event ? " · " + t.dataset.event : "");
+    num.textContent = (i + 1) + " / " + list.length;
   }
-  function open(t){
-    list = shown(); opener = t.querySelector(".open"); show(list.indexOf(t));
-    lb.hidden = false; requestAnimationFrame(function(){ lb.classList.add("on"); });
-    if(KIT.lenis) KIT.lenis.stop(); document.body.style.overflow = "hidden";
-    lb.querySelector(".x").focus();
-  }
-  function close(){
-    lb.classList.remove("on"); setTimeout(function(){ lb.hidden = true; }, 350);
-    if(KIT.lenis) KIT.lenis.start(); document.body.style.overflow = "";
-    if(opener) opener.focus();
-  }
-  tiles.forEach(function(t){ t.querySelector(".open").addEventListener("click", function(){ open(t); }); });
+  document.addEventListener("click", function(e){
+    var b = e.target.closest && e.target.closest(".open"); if(!b) return;
+    var t = b.closest(".tile"); opener = b;
+    list = [].slice.call(t.parentNode.querySelectorAll(".tile")).filter(function(x){ return !x.hidden; });
+    show(list.indexOf(t)); lb.showModal(); lock();
+  });
+  lb.addEventListener("close", function(){ lock(); if(opener) opener.focus(); });
   lb.addEventListener("click", function(e){
-    var a = e.target.closest("[data-lb]"); if(a){ ({ close:close, prev:function(){ show(i - 1); }, next:function(){ show(i + 1); } })[a.dataset.lb](); return; }
-    if(e.target === lb || e.target.tagName === "FIGURE") close();
+    var a = e.target.closest("[data-lb]");
+    if(a){ if(a.dataset.lb === "close") lb.close(); else show(i + (a.dataset.lb === "next" ? 1 : -1)); return; }
+    if(e.target === lb || e.target.tagName === "FIGURE") lb.close();
   });
   addEventListener("keydown", function(e){
-    if(lb.hidden) return;
-    if(e.key === "Escape") close(); else if(e.key === "ArrowLeft") show(i - 1); else if(e.key === "ArrowRight") show(i + 1);
-    else if(e.key === "Tab"){   /* keep focus inside the viewer while it is open */
-      var f = lb.querySelectorAll("button"), first = f[0], last = f[f.length - 1];
-      if(e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
-      else if(!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
-    }
+    if(!lb.open) return;
+    if(e.key === "ArrowLeft") show(i - 1); else if(e.key === "ArrowRight") show(i + 1);
   });
 })();
 
-KIT.start(function(gsap, ST){
-  gsap.registerPlugin(Flip);
-  ST.batch(".tile", { start:"top 92%", once:true,
-    onEnter:function(b){ gsap.from(b, { opacity:0, y:40, duration:1, stagger:.05, ease:"expo.out" }); } });
-});
+KIT.start();
 </script>
 </body>
 </html>

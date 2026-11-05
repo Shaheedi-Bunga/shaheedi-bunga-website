@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- the site loads everything from itself and sends nothing anywhere (see /privacy/); this says so to the browser.
+     Inline script and style stay allowed: every page carries its own. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; media-src 'self'; font-src 'self'; connect-src 'self'; object-src 'none'; frame-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Beyond the Vidyala · Shaheedi Bunga</title>
+<meta name="description" content="What Shaheedi Bunga runs outside the classes: the Sikh World Championships, the Sikh Chess School, the Sikhi Calendar, our YouTube channel and Khalsa Sports.">
+<link rel="canonical" href="https://www.shaheedibunga.com/beyond/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Shaheedi Bunga">
+<meta property="og:title" content="Beyond the Vidyala &middot; Shaheedi Bunga">
+<meta property="og:description" content="What Shaheedi Bunga runs outside the classes: the Sikh World Championships, the Sikh Chess School, the Sikhi Calendar, our YouTube channel and Khalsa Sports.">
+<meta property="og:url" content="https://www.shaheedibunga.com/beyond/">
+<meta property="og:image" content="https://www.shaheedibunga.com/share/home.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/Assets/Brand/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="/Assets/Brand/apple-touch-icon-180.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="stylesheet" href="/lib/fonts.css">
+<link rel="stylesheet" href="/kit/kit.css">
+<!-- before paint: light unless this viewer chose dark (or ?mood= asks), so
+     there is never a flash of the wrong mode -->
+<script>(function(){var m=(/[?&]mood=(light|dark)/.exec(location.search)||[])[1];
+  if(!m){try{m=localStorage.getItem("sb-mood");}catch(e){}}
+  document.documentElement.dataset.mood=m==="dark"?"dark":"light";})();</script>
+
+<style>
+/* the picked hero's tokens, from the kit's (as on Katha and Camps); here with a single column, no picture */
+.hx{ --ink:var(--navy); --muted:var(--navy-70); --gold:var(--gold-text); --gold-lite:#B8902F; --night:#070E1E; --night-2:#101C37; --sans:var(--body); }
+html[data-mood="dark"] .hx{ --ink:#F3EEE2; --muted:rgba(243,238,226,.74); --gold:#EBCD88; --gold-lite:#D4AC57; }
+.hx .k{font:11px/1.4 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+.hx.hero{position:relative;display:grid;grid-template-columns:minmax(0,1fr);min-height:0;padding-block:96px 72px;padding-left:max(16px,4vw,env(safe-area-inset-left,0px));padding-right:max(16px,4vw,env(safe-area-inset-right,0px));border-top:1px solid var(--line);overflow:clip}
+.hx.hero.night{background:radial-gradient(90% 70% at 70% 40%,#13203A,var(--night));color:#F3EEE2;--muted:rgba(243,238,226,.74);--gold:#EBCD88;--line:rgba(243,238,226,.14)}
+.hx .copy{min-width:0;max-width:760px}
+.hx .copy h1{font:500 clamp(46px,6.8vw,104px)/.98 var(--display);margin:14px 0 0}
+.hx .copy h1 em{font-style:italic;color:var(--gold)}
+.hx .hxlede{color:var(--muted);max-width:52ch;margin-top:18px;font-size:clamp(16px,1.3vw,19px)}
+.tail{ margin:calc(var(--u)*4) 0 calc(var(--u)*10); color:var(--navy-70); font-size:max(17px,calc(var(--u)*1.2)); max-width:60ch; }
+.tail a{ color:var(--gold-text); }
+.opens a{ text-decoration:none; }
+
+.ways{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:calc(var(--u)*2); padding:calc(var(--u)*6) 0 0; }
+.way{ display:flex; flex-direction:column; border:1px solid var(--line); border-radius:4px; padding:calc(var(--u)*3); background:var(--cream-2); }
+.way .k2{ font-family:var(--mono); font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--gold-text); margin:0 0 .8em; }
+.way h2{ font-family:var(--display); font-weight:500; font-size:max(28px,calc(var(--u)*3)); line-height:1; margin:0 0 .5em; letter-spacing:-.01em; }
+.way p{ margin:0 0 1em; color:var(--navy-70); font-size:max(16px,calc(var(--u)*1.1)); max-width:46ch; }
+.way .open{ margin-top:auto; align-self:flex-start; display:inline-flex; gap:.6em; font-family:var(--mono); font-size:11px; letter-spacing:.16em; text-transform:uppercase;
+  text-decoration:none; color:var(--gold-text); border:1px solid var(--line); border-radius:100px; padding:11px 16px; transition:border-color .3s, background .3s; }
+.way .open:hover{ border-color:var(--gold); background:var(--cream-3); }
+@media(max-width:800px){ .ways{ grid-template-columns:1fr; } }
+
+/* each initiative gets its own plate, the way each Press book has its own cover: own colour, own lettering, drawn in CSS (nothing fetched) */
+.way{ padding:0; overflow:hidden; }
+.way .txt{ padding:calc(var(--u)*3); display:flex; flex-direction:column; flex:1; }
+.plate{ position:relative; aspect-ratio:16/9; overflow:hidden; display:flex; align-items:flex-end; padding:18px 20px; color:#F6F0E2; isolation:isolate; }
+.plate::after{ content:""; position:absolute; inset:0; z-index:-1; pointer-events:none; opacity:.18; mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+.plate .tag{ position:absolute; top:16px; left:20px; font:11px/1 var(--mono); letter-spacing:.2em; text-transform:uppercase; opacity:.85; }
+.way.feature{ grid-column:1 / -1; display:grid; grid-template-columns:minmax(0,1.15fr) minmax(0,1fr); }
+.way.feature .plate{ aspect-ratio:auto; min-height:300px; }
+@media(max-width:800px){ .way.feature{ grid-template-columns:1fr; } .way.feature .plate{ min-height:220px; } }
+/* Sikh World Championships: crimson to saffron, a big italic monogram, a ring of light */
+.p-swc{ background:radial-gradient(120% 90% at 85% 15%,#F2A541 0%,#C8611E 32%,#7E1F2B 70%,#3A0E1B 100%); }
+.p-swc .mono{ position:absolute; right:-.04em; bottom:-.2em; font:italic 600 clamp(120px,17vw,250px)/1 var(--display); letter-spacing:-.04em; color:rgba(255,240,215,.92); text-shadow:0 10px 40px rgba(58,14,27,.45); }
+.p-swc .ring{ position:absolute; width:62%; aspect-ratio:1; right:-12%; top:-30%; border-radius:50%; border:1px solid rgba(255,236,200,.45); box-shadow:0 0 0 18px rgba(255,236,200,.06), 0 0 0 44px rgba(255,236,200,.04); }
+.p-swc .say{ position:relative; font:500 clamp(20px,2vw,28px)/1.1 var(--display); max-width:12ch; }
+/* Chess School: ivory and ink squares, a knight */
+.p-chess{ background-color:#EFE6D2; color:#14130F;
+  background-image:conic-gradient(#1C1A15 25%,transparent 0 50%,#1C1A15 0 75%,transparent 0); background-size:25% 44.44%; }
+.p-chess::before{ content:""; position:absolute; inset:0; background:linear-gradient(180deg,rgba(239,230,210,0) 30%,rgba(239,230,210,.92) 100%); }
+.p-chess .piece{ position:absolute; right:8%; top:50%; transform:translateY(-50%); font:clamp(120px,13vw,190px)/1 "Georgia",serif; color:#C9A04A; text-shadow:0 6px 0 #1C1A15, 0 14px 30px rgba(0,0,0,.35); }
+.p-chess .tag, .p-chess .say{ position:relative; color:#14130F; }
+.p-chess .say{ font:600 13px/1.3 var(--mono); letter-spacing:.16em; text-transform:uppercase; background:#EFE6D2; padding:6px 10px; }
+.p-chess .tag{ background:#EFE6D2; padding:5px 8px; top:12px; left:14px; position:absolute; }
+/* Sikhi Calendar: navy, a gold dial of twelve months */
+.p-cal{ background:radial-gradient(80% 90% at 30% 30%,#203466,#0B1731 70%); }
+.p-cal .dialw{ position:absolute; width:min(72%,280px); aspect-ratio:1; right:4%; top:50%; transform:translateY(-50%); }
+.p-cal .dial{ position:absolute; inset:0; border-radius:50%; background:repeating-conic-gradient(from -3deg,#E2C27A 0 6deg,transparent 6deg 30deg);
+  -webkit-mask:radial-gradient(closest-side,transparent 78%,#000 79% 92%,transparent 93%); mask:radial-gradient(closest-side,transparent 78%,#000 79% 92%,transparent 93%); }
+.p-cal .sun{ position:absolute; inset:31%; border-radius:50%; background:radial-gradient(circle at 40% 35%,#F6DE9E,#C9A04A 60%,#8A6A22); box-shadow:0 0 50px rgba(226,194,122,.45); }
+.p-cal .say{ position:relative; font:italic 500 clamp(26px,2.6vw,36px)/1 var(--display); color:#F6DE9E; }
+/* YouTube: deep red ink, a play mark cut from light */
+.p-yt{ background:linear-gradient(135deg,#5E0C14,#22060B 75%); }
+.p-yt .play{ position:absolute; right:12%; top:50%; transform:translateY(-50%); width:clamp(80px,9vw,120px); aspect-ratio:1/1.1;
+  background:linear-gradient(160deg,#FFE9D0,#F1B49A); clip-path:polygon(0 0,100% 50%,0 100%); filter:drop-shadow(0 10px 24px rgba(0,0,0,.4)); }
+.p-yt .bars{ position:absolute; left:0; right:0; bottom:0; height:6px; background:linear-gradient(90deg,#E8483A 62%,rgba(255,255,255,.25) 62%); }
+.p-yt .say{ position:relative; font:600 clamp(18px,1.7vw,22px)/1.2 var(--body); letter-spacing:-.01em; margin-bottom:10px; }
+/* Khalsa Sports: saffron and navy in bold diagonal bands, stacked italic words */
+.p-sport{ background:repeating-linear-gradient(-28deg,#16294A 0 26px,#1D3561 26px 52px); }
+.p-sport{ align-items:center; }
+.p-sport::before{ content:""; position:absolute; left:-10%; right:-10%; top:calc(50% - .62em); height:1.24em; font:italic 600 clamp(28px,3vw,42px)/.92 var(--display); background:#E07A1F; transform:rotate(-3deg); box-shadow:0 0 0 6px rgba(224,122,31,.22); }
+.p-sport .stack{ position:relative; font:italic 600 clamp(28px,3vw,42px)/.92 var(--display); color:#FFF3E0; text-transform:none; }
+.p-sport .stack span{ display:block; }
+.p-sport .stack span:nth-child(2){ color:#16294A; padding-left:.8em; }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="mast">
+  <a class="brand" href="/" aria-label="Shaheedi Bunga, home"><img src="/kit/img/gurmat-vidyala-84.png" alt="" width="40" height="40" srcset="/kit/img/webp/gurmat-vidyala-84-84.webp">
+    <span><b>Shaheedi Bunga</b><i>Gurmat Vidyala</i></span></a>
+  <nav aria-label="Main" id="site-nav"><div class="vid"><button class="vid-btn" type="button" aria-expanded="false" aria-controls="vid-panel">Vidyale<i aria-hidden="true"></i></button><div class="vid-panel" id="vid-panel"><div class="vid-grid"><a class="vid-item" href="/santhiya/"><span class="vid-gur" lang="pa">ਸੰਥਿਆ ਵਿਦਿਆਲਾ</span><b>Santhiya</b><small>Reading sudh Gurbani</small></a><a class="vid-item" href="/saaj/dilruba/"><span class="vid-gur" lang="pa">ਕੀਰਤਨ ਵਿਦਿਆਲਾ</span><b>Kirtan</b><small>Tanti Saaj and Raag</small></a><a class="vid-item" href="/akhara/archery/"><span class="vid-gur" lang="pa">ਤੀਰ ਅੰਦਾਜ਼ੀ</span><b>Archery Akhara</b><small>Traditional archery</small></a><a class="vid-item" href="/tabla/"><span class="vid-gur" lang="pa">ਤਬਲਾ ਤੇ ਜੋੜੀ</span><b>Tabla &amp; Jori</b><small>Locally and online</small></a><a class="vid-item" href="/katha/"><span class="vid-gur" lang="pa">ਕਥਾ ਵਿਦਿਆਲਾ</span><b>Katha</b><small>Explaining Gurbani to a Sangat</small></a><a class="vid-item" href="/itihaas/"><span class="vid-gur" lang="pa">ਇਤਿਹਾਸ ਵਿਦਿਆਲਾ</span><b>Itihaas</b><small>Sikh history</small></a></div><div class="vid-foot"><a href="/classes/">All classes →</a><a href="/camps/">Camps →</a></div></div></div><a href="/events/">Events</a><a href="/sikhi-calendar/">Calendar</a><a href="/gallery/">Gallery</a><a href="/resources/">Resources</a><a href="/press/">Press</a><a href="/beyond/" aria-current="page">Beyond the Vidyala</a><a href="/about/">About</a><a href="/contact/">Contact</a><a href="/donate/">Donate</a></nav>
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav"><span>Menu</span><i aria-hidden="true"></i></button>
+  <a class="wa" href="https://wa.me/447394848407?text=Sat%20Sri%20Akal%20%E2%80%94%20I'd%20like%20to%20ask%20about%20Beyond%20the%20Vidyala." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.6 2 2.18 6.42 2.18 11.86c0 1.74.46 3.44 1.32 4.94L2.1 22l5.34-1.4a9.8 9.8 0 0 0 4.6 1.17h.01c5.43 0 9.85-4.42 9.85-9.86 0-2.63-1.02-5.11-2.88-6.97A9.79 9.79 0 0 0 12.04 2z"/></svg>WhatsApp</a>
+</header>
+
+<main id="main">
+<section data-hero class="hx hero night">
+  <div class="copy"><p class="k">Beyond the Vidyala</p>
+    <h1>More than <em>the classes.</em></h1>
+    <p class="hxlede">Our classes are only part of what we do. These are the other things we run and keep, for the same Sangat.</p></div>
+</section>
+<div class="wrapx paper">
+  <div class="opening" style="padding:calc(var(--u)*4) 0 0">
+  <figure class="pangti" style="margin:0 0 1em"><p class="gur" lang="pa">ਦੀਪਕ ਤੇ ਦੀਪਕੁ ਪਰਗਾਸਿਆ ਤ੍ਰਿਭਵਣ ਜੋਤਿ ਦਿਖਾਈ ॥੭॥</p><figcaption>Sri Guru Granth Sahib Ji, Ang 907</figcaption></figure>
+  <p style="margin:0 0 1em;color:var(--navy-70);font-size:max(17px,calc(var(--u)*1.2));max-width:56ch">Guru Nanak Dev Ji speaks of one lamp lighting another. The Vidyala is one lamp. Our other initiatives carry its flame beyond the weekly classes, to anyone who wants to learn. Here is the rest of what we do.</p>
+  </div>
+  <div class="ways">
+    <article class="way feature" data-fade><div class="plate p-swc" aria-hidden="true"><span class="ring"></span><span class="tag">Competition</span><span class="mono">SWC</span><span class="say">Different Teams. One community.</span></div><div class="txt"><p class="k2">Competition</p><h2>Sikh World Championships</h2>
+      <p>Esports, sport and mind games, played between teams from across the community. Their tagline is &ldquo;Different Teams. One community.&rdquo;</p>
+      <a class="open" href="https://sikhchampionships.com" target="_blank" rel="noopener">sikhchampionships.com ↗</a></div></article>
+    <article class="way" data-fade><div class="plate p-chess" aria-hidden="true"><span class="tag">Chess</span><span class="piece">♞</span><span class="say">Every age, every level</span></div><div class="txt"><p class="k2">Chess</p><h2>Sikh Chess School</h2>
+      <p>A chess school for all ages, and part of the Sikh World Championships.</p>
+      <a class="open" href="https://scc-chess-school.pages.dev" target="_blank" rel="noopener">Open the chess school ↗</a></div></article>
+    <article class="way" data-fade><div class="plate p-cal" aria-hidden="true"><span class="tag">Calendar</span><span class="dialw"><span class="dial"></span><span class="sun"></span></span><span class="say">Nanakshahi</span></div><div class="txt"><p class="k2">Calendar</p><h2>Sikhi Calendar</h2>
+      <p>Today&rsquo;s date in the Nanakshahi calendar, the gurpurabs and sangrands coming up, and the whole month and year.</p>
+      <a class="open" href="/sikhi-calendar/">Open the calendar →</a></div></article>
+    <article class="way" data-fade><div class="plate p-yt" aria-hidden="true"><span class="tag">Watch and listen</span><span class="play"></span><span class="say">Katha · Kirtan · Santhiya</span><span class="bars"></span></div><div class="txt"><p class="k2">Watch and listen</p><h2>Our YouTube channel</h2>
+      <p>Katha, talks, Kirtan and Santhiya, free for anyone to watch.</p>
+      <a class="open" href="https://www.youtube.com/@shaheedibunga" target="_blank" rel="noopener">@shaheedibunga ↗</a></div></article>
+    <article class="way" data-fade><div class="plate p-sport" aria-hidden="true"><span class="tag">Khalsa Sports</span><span class="stack"><span>Gatka</span><span>War Games</span><span>Archery</span></span></div><div class="txt"><p class="k2">Khalsa Sports</p><h2>Gatka, War Games and Archery</h2>
+      <p>Gatka Fight Night, Hola Mohalla War Games and Tag Archery. The posters are in our events archive.</p>
+      <a class="open" href="/events/">See the events →</a></div></article>
+  </div>
+  <p class="tail" data-fade>Have a question about any of these? <a href="/contact/">Send us a message on WhatsApp</a> and we will point you to the right people.</p>
+</div>
+</main>
+<footer class="foot">
+  <p class="big">Come and sit<br>with the <em>sangat.</em></p>
+  <div class="cols">
+    <div><h2>Shaheedi Bunga</h2><p style="margin:0;max-width:34ch">A Sikh education charity in Leicester. Every class is free and taught by volunteers.</p></div>
+    <div><h2>Vidyale</h2><a href="/santhiya/">Santhiya</a><a href="/saaj/dilruba/">Kirtan</a><a href="/akhara/archery/">Archery</a><a href="/classes/">All classes</a><a href="/camps/">Camps</a><a href="/events/">Events</a><a href="/sikhi-calendar/">Calendar</a></div>
+    <div><h2>Charity</h2><a href="/about/">About</a><a href="/donate/">Donate</a><a href="/gallery/">Gallery</a><a href="/resources/">Resources</a><a href="/library/">Library</a><a href="/beyond/">Beyond the Vidyala</a><a href="/press/">Press</a></div>
+    <div><h2>Contact</h2><a href="https://wa.me/447394848407" target="_blank" rel="noopener">+44 7394 848407</a><a href="mailto:gurmat@shaheedibunga.com">gurmat@shaheedibunga.com</a><a href="/safeguarding/">Safeguarding</a><a href="/privacy/">Privacy</a></div>
+  </div>
+  <div class="legal"><span>Registered charity in England &amp; Wales · 1185103</span><a href="/" style="display:inline-block;padding:4px 0">Home · the Parikrama</a></div>
+</footer>
+
+<script src="/kit/lib/gsap.min.js"></script>
+<script src="/kit/lib/ScrollTrigger.min.js"></script>
+<script src="/kit/lib/SplitText.min.js"></script>
+<script src="/kit/lib/lenis.min.js"></script>
+<script src="/kit/kit.js"></script>
+
+<script>KIT.start();</script>
+</body>
+</html>
