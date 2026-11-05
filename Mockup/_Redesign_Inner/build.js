@@ -157,78 +157,47 @@ ${sorted.filter(e => year(e) === y).map(e => {
   </section>`).join('\n');
 }
 
-/* THE GALLERY. gallery.json -> /gallery/: one section per year, newest first.
-   Inside a year, an album card for every event with six or more photographs,
-   then a "More from YEAR" card holding the rest. Every photograph sits in an
-   album; the page's script opens an album in a dialog and filters by subject. */
+/* THE GALLERY. gallery.json -> /gallery/: one tab per year, newest first, each a
+   plain grid of photographs (the user's pick, 2026-11-05: years only, no albums or
+   subject filters). Thin years share a tab, so there are five: 2024, 2023, 2022,
+   2019-2021, and "Earlier years" (2018 and every photograph with no year). */
 const GAL = JSON.parse(fs.readFileSync(path.join(here, 'gallery.json'), 'utf8'));
-const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-const slug = s => s.toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 const photoWord = n => n + (n === 1 ? ' photograph' : ' photographs');
-const GAL_MIN = 6;
+const GAL_TABS = [ { id:'2024', label:'2024', years:['2024'] }, { id:'2023', label:'2023', years:['2023'] },
+  { id:'2022', label:'2022', years:['2022'] }, { id:'2019-2021', label:'2019–2021', years:['2021', '2020', '2019'] },
+  { id:'earlier', label:'Earlier years', years:['2018', null] } ];
 function galleryData(){
-  const subs = GAL.subjects, P = GAL.photos, seen = new Set();
+  const P = GAL.photos, seen = new Set();
   for (const p of P) {
-    for (const k of ['img', 'alt', 'subject']) if (!p[k]) throw new Error(`gallery.json: a photo has no ${k}: ${JSON.stringify(p)}`);
-    if (!subs.includes(p.subject)) throw new Error(`gallery.json: ${p.img} has the unknown subject ${p.subject}`);
+    for (const k of ['img', 'alt']) if (!p[k]) throw new Error(`gallery.json: a photo has no ${k}: ${JSON.stringify(p)}`);
     if (seen.has(p.img)) throw new Error(`gallery.json: ${p.img} appears twice`);
     seen.add(p.img);
     const f = p.img.startsWith('/') ? path.join(ROOT, p.img) : path.join(here, p.img);
     if (!fs.existsSync(f)) throw new Error(`gallery.json: ${p.img} does not exist`);
+    if (!GAL_TABS.some(t => t.years.includes(p.year || null))) throw new Error(`gallery.json: ${p.img} has the year ${p.year}, which no tab holds`);
   }
-  const years = [...new Set(P.map(p => p.year).filter(Boolean))].sort((a, b) => b.localeCompare(a));
-  const groups = years.concat(P.some(p => !p.year) ? [null] : []);
-  return { subs, P, groups };
+  const tabs = GAL_TABS.map(t => ({ ...t, ph: t.years.flatMap(y => P.filter(p => (p.year || null) === y)) })).filter(t => t.ph.length);
+  return { P, tabs };
 }
-function monthKey(m){ const x = /^(\w+) (\d{4})$/.exec(m || ''); return x ? +x[2] * 12 + MONTHS.indexOf(x[1]) : -1; }
 function galleryTile(p){
-  return `<figure class="tile" data-subject="${slug(p.subject)}"${p.event ? ` data-event="${html(p.event)}"` : ''}>`
+  return `<figure class="tile"${p.event ? ` data-event="${html(p.event)}"` : ''}>`
     + `<button type="button" class="open" data-full="${p.img}" aria-label="Open photograph: ${html(p.alt)}">`
-    + `<img src="${p.img}" alt="${html(p.alt)}" data-sizes="(max-width:760px) 50vw, 25vw" loading="lazy" decoding="async"></button></figure>`;
-}
-function galleryCard(name, when, ph, cover, more){
-  return `      <article class="album${more ? ' more' : ''}" data-name="${html(name)}" data-when="${html(when)}">
-        <button type="button" class="alb-open" aria-haspopup="dialog" aria-label="Open the album ${html(name)}, ${photoWord(ph.length)}">
-          <span class="alb-cover"><img src="${cover.img}" alt="" data-sizes="(max-width:760px) 50vw, 25vw" loading="lazy" decoding="async"></span>
-          <span class="alb-txt"><b class="alb-name">${html(name)}</b><small><span class="alb-when">${html(when)}</span> &middot; <span class="alb-n">${photoWord(ph.length)}</span></small></span>
-        </button>
-        <div class="alb-photos" hidden>
-${ph.map(p => '          ' + galleryTile(p)).join('\n')}
-        </div>
-      </article>`;
+    + `<img src="${p.img}" alt="${html(p.alt)}" data-sizes="(max-width:760px) 34vw, 20vw" loading="lazy" decoding="async"></button></figure>`;
 }
 function gallery(){
-  const { subs, P, groups } = galleryData();
-  const filters = `<div class="filters" role="group" aria-label="Show photographs of">
-  <button type="button" data-f="all" aria-pressed="true">All<span>${P.length}</span></button>
-${subs.map(s => `  <button type="button" data-f="${slug(s)}" aria-pressed="false">${html(s)}<span>${P.filter(p => p.subject === s).length}</span></button>`).join('\n')}
-</div>
-<p class="sr" id="fcount" aria-live="polite"></p>`;
-  const body = groups.map(y => {
-    const here_ = P.filter(p => (p.year || null) === y);
-    const label = y || 'Earlier years';
-    const byEv = new Map();
-    for (const p of here_) if (p.event) (byEv.get(p.event) || byEv.set(p.event, []).get(p.event)).push(p);
-    const big = [...byEv].filter(([, a]) => a.length >= GAL_MIN)
-      .sort((a, b) => monthKey(GAL.events[b[0]] && GAL.events[b[0]].month) - monthKey(GAL.events[a[0]] && GAL.events[a[0]].month) || b[1].length - a[1].length);
-    const inBig = new Set(big.flatMap(([, a]) => a));
-    const rest = here_.filter(p => !inBig.has(p));
-    const cards = big.map(([name, a]) => {
-      const meta = GAL.events[name] || {};
-      const cover = a.find(p => p.img === meta.cover) || a[0];
-      return galleryCard(name, meta.month || (y || ''), a, cover, false);
-    });
-    if (rest.length) cards.push(galleryCard(y ? `More from ${y}` : 'More from earlier years', y ? y : 'Date not recorded', rest, rest.find(p => p.img === (GAL.more || {})[y || 'earlier']) || rest[0], true));
-    return `  <section class="yr" data-year="${y || 'earlier'}" aria-labelledby="h-${y || 'earlier'}">
-    <h2 class="yr-h" id="h-${y || 'earlier'}">${label}<span class="yr-n">${photoWord(here_.length)}</span></h2>
-    <div class="albums">
-${cards.join('\n')}
+  const { tabs } = galleryData();
+  const bar = `<div class="filters" role="tablist" aria-label="Photographs by year">
+${tabs.map((t, i) => `  <button type="button" role="tab" id="t-${t.id}" aria-controls="p-${t.id}" aria-selected="${i === 0}" tabindex="${i === 0 ? 0 : -1}">${html(t.label)}<span>${t.ph.length}</span></button>`).join('\n')}
+</div>`;
+  const body = tabs.map((t, i) => `  <section class="yr" id="p-${t.id}" role="tabpanel" aria-labelledby="t-${t.id}"${i ? ' hidden' : ''}>
+    <h2 class="yr-h">${html(t.label)}<span class="yr-n">${photoWord(t.ph.length)}</span></h2>
+    <div class="ygrid">
+${t.ph.map(p => '      ' + galleryTile(p)).join('\n')}
     </div>
-  </section>`;
-  }).join('\n');
-  return filters + '\n<div id="gal">\n' + body + '\n</div>';
+  </section>`).join('\n');
+  return bar + '\n<div id="gal">\n' + body + '\n</div>';
 }
-const galleryStats = () => { const g = galleryData(); return { photos: g.P.length, years: g.groups.length }; };
+const galleryStats = () => { const g = galleryData(); return { photos: g.P.length, years: g.tabs.length }; };
 
 /* Search engines read who the charity is (About, Contact) and what it runs
    (Events) from these blocks. Facts only from the pages themselves: the
