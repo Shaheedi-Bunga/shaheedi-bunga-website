@@ -53,6 +53,9 @@ window.KIT = (function(){
     var btn = document.querySelector(".menu-btn"), nav = document.getElementById("site-nav"), html = document.documentElement;
     var m = document.querySelector(".mast");
     if(!btn || !nav || !m) return;
+    /* Lenis swallows wheel and touch while stopped (it is stopped while the menu is open), so the
+       panel, which is taller than a phone screen, could not scroll: this attribute lets it scroll natively */
+    nav.setAttribute("data-lenis-prevent", "");
     function set(open, refocus){
       html.classList.toggle("menu-open", open);
       btn.setAttribute("aria-expanded", open);

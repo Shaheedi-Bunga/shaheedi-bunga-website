@@ -60,6 +60,10 @@ html[data-mood="dark"] .hx{ --ink:#F3EEE2; --muted:rgba(243,238,226,.74); --gold
 .solo figcaption small{ display:block; font-family:var(--mono); font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--gold-text); margin-top:4px; }
 .inkind figcaption small{ display:block; font-family:var(--mono); font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--gold-text); margin-top:4px; }
 @media(max-width:700px){ .inkind{ grid-template-columns:1fr 1fr; } .inkind figure:last-child{ display:none; } }
+.gp{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; margin-top:calc(var(--u)*4); }
+.gp figure{ margin:0; } .gp img{ width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:3px; display:block; filter:var(--photo); }
+.gp figcaption{ font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--navy-70); margin-top:8px; }
+@media(max-width:700px){ .gp{ grid-template-columns:1fr 1fr; } }
 </style>
 </head>
 <body>
@@ -78,6 +82,7 @@ html[data-mood="dark"] .hx{ --ink:#F3EEE2; --muted:rgba(243,238,226,.74); --gold
   <section class="band">
     <h2 data-fade><small>How to give</small>Give by bank transfer.</h2>
     <div class="body">
+      <p>Guru Nanak Dev Ji speaks of someone who works for their own bread and gives something from their own hands. That is how the Vidyala is kept open. Every teacher is a volunteer and no trustee is paid, so a gift made here goes toward keeping every class free.</p>
       <p data-fade>Your gift goes straight into the charity's own account. You don't need to fill in a form or sign up.</p>
       <div class="bank" data-fade>
         <div class="ttl"><b>Shaheedi Bunga</b><span>Registered charity · 1185103</span></div>
@@ -102,6 +107,13 @@ html[data-mood="dark"] .hx{ --ink:#F3EEE2; --muted:rgba(243,238,226,.74); --gold
     </div>
   </section>
 
+  <section class="band">
+  <div class="gp">
+    <figure><img src="img/lib/2020/2020-01-tent-langar-1-jan-2020-136.jpg" data-sizes="(max-width:700px) 50vw, 30vw" alt="Two Singhs seated in a white tent preparing langar over large pans." loading="lazy"><figcaption>Langar Seva · January 2020</figcaption></figure>
+    <figure><img src="img/lib/2022/2022-10-home-gathering-1-oct-2022-398.jpg" data-sizes="(max-width:700px) 50vw, 30vw" alt="A Singh in a navy waistcoat frying at the stove in a home kitchen, a large pan in front." loading="lazy"><figcaption>Langar Seva · October 2022</figcaption></figure>
+    <figure><img src="img/lib/2023/2023-11-misc-567.jpg" data-sizes="(max-width:700px) 50vw, 30vw" alt="Three people cooking langar in a steel-lined kitchen, large pans on the stove." loading="lazy"><figcaption>Langar Seva · November 2023</figcaption></figure>
+  </div>
+  </section>
   <section class="band">
     <h2 data-fade><small>Seva in kind</small>Give an instrument, a Granth or a Pothi.</h2>
     <div class="body">

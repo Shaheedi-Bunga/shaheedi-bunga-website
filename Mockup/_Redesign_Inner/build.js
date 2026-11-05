@@ -55,7 +55,8 @@ function responsive(h, name){
 const ROUTES = { classes:'classes', santhiya:'santhiya', kirtan:'saaj/dilruba', archery:'akhara/archery',
   camps:'camps', about:'about', donate:'donate', contact:'contact', gallery:'gallery',
   resources:'resources', library:'library', safeguarding:'safeguarding', privacy:'privacy', events:'events',
-  tabla:'tabla', katha:'katha', itihaas:'itihaas' };   /* the three published 2026-10-29 */
+  tabla:'tabla', katha:'katha', itihaas:'itihaas',   /* the three published 2026-10-29 */
+  beyond:'beyond', press:'press' };
 
 /* pages that live on the site but are not built here: the calendar is the
    calendar app's page, fitted by _tools/fit-calendar.py */
@@ -67,16 +68,16 @@ const ELSEWHERE = { calendar:'sikhi-calendar' };
 /* The top row. 'vidyale' is the drop-down below; Library sits in the footer
    until it has items (2026-10-27). */
 const NAV = [['vidyale', 'Vidyale'], ['events', 'Events'], ['calendar', 'Calendar'], ['gallery', 'Gallery'],
-             ['resources', 'Resources'], ['about', 'About'], ['contact', 'Contact'], ['donate', 'Donate']];
+             ['resources', 'Resources'], ['press', 'Press'], ['beyond', 'Beyond the Vidyala'], ['about', 'About'], ['contact', 'Contact'], ['donate', 'Donate']];
 
 /* Each vidyala has its own page (all six since 2026-10-29). Gurmukhi names as on the Classes page. */
 const VIDYALE = [
   { href:'santhiya.html', gur:'ਸੰਥਿਆ ਵਿਦਿਆਲਾ', en:'Santhiya', note:'Reading sudh Gurbani' },
-  { href:'kirtan.html', gur:'ਕੀਰਤਨ ਵਿਦਿਆਲਾ', en:'Kirtan', note:'Tanti saaj and raag' },
-  { href:'archery.html', gur:'ਤੀਰ ਅੰਦਾਜ਼ੀ', en:'Archery Akhara', note:'Sundays, ages 14 and over' },
-  { href:'tabla.html', gur:'ਤਬਲਾ ਤੇ ਜੋੜੀ', en:'Tabla & Jori', note:'At all our gurdwaras' },
-  { href:'katha.html', gur:'ਕਥਾ ਵਿਦਿਆਲਾ', en:'Katha', note:'Explaining Gurbani to a sangat' },
-  { href:'itihaas.html', gur:'ਇਤਿਹਾਸ ਵਿਦਿਆਲਾ', en:'Itihaas', note:'Wednesday evenings' } ];
+  { href:'kirtan.html', gur:'ਕੀਰਤਨ ਵਿਦਿਆਲਾ', en:'Kirtan', note:'Tanti Saaj and Raag' },
+  { href:'archery.html', gur:'ਤੀਰ ਅੰਦਾਜ਼ੀ', en:'Archery Akhara', note:'Traditional archery' },
+  { href:'tabla.html', gur:'ਤਬਲਾ ਤੇ ਜੋੜੀ', en:'Tabla & Jori', note:'Locally and online' },
+  { href:'katha.html', gur:'ਕਥਾ ਵਿਦਿਆਲਾ', en:'Katha', note:'Explaining Gurbani to a Sangat' },
+  { href:'itihaas.html', gur:'ਇਤਿਹਾਸ ਵਿਦਿਆਲਾ', en:'Itihaas', note:'Sikh history' } ];
 const VIDYALE_PAGES = ['santhiya', 'kirtan', 'archery', 'tabla', 'katha', 'itihaas', 'classes', 'camps'];
 
 function mast(a){
@@ -145,7 +146,7 @@ ${sorted.filter(e => year(e) === y).map(e => {
       if (!e.img && !e.yt) throw new Error(`events.json: ${e.id} has neither a poster nor a video`);
       if (e.img && !fs.existsSync(path.join(here, e.img))) throw new Error(`events.json: ${e.img} does not exist`);
       const pic = e.img
-        ? `<button class="ev-pic" type="button" data-full="${e.img}" aria-label="Open the poster for ${html(e.title)}"><img src="${e.img}" alt="The poster for ${html(e.title)}." loading="lazy"></button>`
+        ? `<button class="ev-pic" type="button" data-full="${e.img}" aria-label="Open the ${e.alt ? 'photograph' : 'poster'} for ${html(e.title)}"><img src="${e.img}" alt="${e.alt ? html(e.alt) : `The poster for ${html(e.title)}.`}" loading="lazy"></button>`
         : `<a class="ev-pic ev-yt" href="https://www.youtube.com/watch?v=${encodeURIComponent(e.yt)}" target="_blank" rel="noopener"><span class="ev-yt-in"><i aria-hidden="true"></i><b>Watch on YouTube</b><small>${html(e.type)} · ${html((e.start || e.posted).slice(0, 4))}</small></span><span class="sr">${html(e.title)}, on YouTube</span></a>`;
       return `      <article class="ev" data-type="${html(e.type)}" data-fade>
         ${pic}
@@ -155,6 +156,79 @@ ${sorted.filter(e => year(e) === y).map(e => {
     </div>
   </section>`).join('\n');
 }
+
+/* THE GALLERY. gallery.json -> /gallery/: one section per year, newest first.
+   Inside a year, an album card for every event with six or more photographs,
+   then a "More from YEAR" card holding the rest. Every photograph sits in an
+   album; the page's script opens an album in a dialog and filters by subject. */
+const GAL = JSON.parse(fs.readFileSync(path.join(here, 'gallery.json'), 'utf8'));
+const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+const slug = s => s.toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+const photoWord = n => n + (n === 1 ? ' photograph' : ' photographs');
+const GAL_MIN = 6;
+function galleryData(){
+  const subs = GAL.subjects, P = GAL.photos, seen = new Set();
+  for (const p of P) {
+    for (const k of ['img', 'alt', 'subject']) if (!p[k]) throw new Error(`gallery.json: a photo has no ${k}: ${JSON.stringify(p)}`);
+    if (!subs.includes(p.subject)) throw new Error(`gallery.json: ${p.img} has the unknown subject ${p.subject}`);
+    if (seen.has(p.img)) throw new Error(`gallery.json: ${p.img} appears twice`);
+    seen.add(p.img);
+    const f = p.img.startsWith('/') ? path.join(ROOT, p.img) : path.join(here, p.img);
+    if (!fs.existsSync(f)) throw new Error(`gallery.json: ${p.img} does not exist`);
+  }
+  const years = [...new Set(P.map(p => p.year).filter(Boolean))].sort((a, b) => b.localeCompare(a));
+  const groups = years.concat(P.some(p => !p.year) ? [null] : []);
+  return { subs, P, groups };
+}
+function monthKey(m){ const x = /^(\w+) (\d{4})$/.exec(m || ''); return x ? +x[2] * 12 + MONTHS.indexOf(x[1]) : -1; }
+function galleryTile(p){
+  return `<figure class="tile" data-subject="${slug(p.subject)}"${p.event ? ` data-event="${html(p.event)}"` : ''}>`
+    + `<button type="button" class="open" data-full="${p.img}" aria-label="Open photograph: ${html(p.alt)}">`
+    + `<img src="${p.img}" alt="${html(p.alt)}" data-sizes="(max-width:760px) 50vw, 25vw" loading="lazy" decoding="async"></button></figure>`;
+}
+function galleryCard(name, when, ph, cover, more){
+  return `      <article class="album${more ? ' more' : ''}" data-name="${html(name)}" data-when="${html(when)}">
+        <button type="button" class="alb-open" aria-haspopup="dialog" aria-label="Open the album ${html(name)}, ${photoWord(ph.length)}">
+          <span class="alb-cover"><img src="${cover.img}" alt="" data-sizes="(max-width:760px) 50vw, 25vw" loading="lazy" decoding="async"></span>
+          <span class="alb-txt"><b class="alb-name">${html(name)}</b><small><span class="alb-when">${html(when)}</span> &middot; <span class="alb-n">${photoWord(ph.length)}</span></small></span>
+        </button>
+        <div class="alb-photos" hidden>
+${ph.map(p => '          ' + galleryTile(p)).join('\n')}
+        </div>
+      </article>`;
+}
+function gallery(){
+  const { subs, P, groups } = galleryData();
+  const filters = `<div class="filters" role="group" aria-label="Show photographs of">
+  <button type="button" data-f="all" aria-pressed="true">All<span>${P.length}</span></button>
+${subs.map(s => `  <button type="button" data-f="${slug(s)}" aria-pressed="false">${html(s)}<span>${P.filter(p => p.subject === s).length}</span></button>`).join('\n')}
+</div>
+<p class="sr" id="fcount" aria-live="polite"></p>`;
+  const body = groups.map(y => {
+    const here_ = P.filter(p => (p.year || null) === y);
+    const label = y || 'Earlier years';
+    const byEv = new Map();
+    for (const p of here_) if (p.event) (byEv.get(p.event) || byEv.set(p.event, []).get(p.event)).push(p);
+    const big = [...byEv].filter(([, a]) => a.length >= GAL_MIN)
+      .sort((a, b) => monthKey(GAL.events[b[0]] && GAL.events[b[0]].month) - monthKey(GAL.events[a[0]] && GAL.events[a[0]].month) || b[1].length - a[1].length);
+    const inBig = new Set(big.flatMap(([, a]) => a));
+    const rest = here_.filter(p => !inBig.has(p));
+    const cards = big.map(([name, a]) => {
+      const meta = GAL.events[name] || {};
+      const cover = a.find(p => p.img === meta.cover) || a[0];
+      return galleryCard(name, meta.month || (y || ''), a, cover, false);
+    });
+    if (rest.length) cards.push(galleryCard(y ? `More from ${y}` : 'More from earlier years', y ? y : 'Date not recorded', rest, rest.find(p => p.img === (GAL.more || {})[y || 'earlier']) || rest[0], true));
+    return `  <section class="yr" data-year="${y || 'earlier'}" aria-labelledby="h-${y || 'earlier'}">
+    <h2 class="yr-h" id="h-${y || 'earlier'}">${label}<span class="yr-n">${photoWord(here_.length)}</span></h2>
+    <div class="albums">
+${cards.join('\n')}
+    </div>
+  </section>`;
+  }).join('\n');
+  return filters + '\n<div id="gal">\n' + body + '\n</div>';
+}
+const galleryStats = () => { const g = galleryData(); return { photos: g.P.length, years: g.groups.length }; };
 
 /* Search engines read who the charity is (About, Contact) and what it runs
    (Events) from these blocks. Facts only from the pages themselves: the
@@ -194,7 +268,10 @@ function page(f, live){
        .replace(/<!--@foot-->/, () => part('foot.html'))
        .replace(/<!--@scripts-->/, () => part('scripts.html'))
        .replace(/<!--@shelf-->/, () => shelf())
-       .replace(/<!--@events-->/, () => events());
+       .replace(/<!--@events-->/, () => events())
+       .replace(/<!--@gallery-->/, () => gallery())
+       .replace(/\{\{gallery-photos\}\}/g, () => String(galleryStats().photos))
+       .replace(/\{\{gallery-years\}\}/g, () => String(galleryStats().years));
   const left = h.match(/<!--@\w+/);
   if (left) throw new Error(`${f}: ${left[0]} was not filled in`);
   h = responsive(h, name);

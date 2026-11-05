@@ -38,6 +38,10 @@ html[data-mood="dark"] .hx{ --ink:#F3EEE2; --muted:rgba(243,238,226,.74); --gold
 .facts3 dd{ margin:.3em 0 0; font-family:var(--display); font-size:max(24px,calc(var(--u)*2.6)); line-height:1.15; }
 .record li{ margin:.7em 0; max-width:70ch; }
 @media(max-width:700px){ .facts3{ grid-template-columns:1fr; } }
+.gp{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; margin-top:calc(var(--u)*4); }
+.gp figure{ margin:0; } .gp img{ width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:3px; display:block; filter:var(--photo); }
+.gp figcaption{ font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--navy-70); margin-top:8px; }
+@media(max-width:700px){ .gp{ grid-template-columns:1fr 1fr; } }
 </style>
 </head>
 <body>
@@ -50,8 +54,11 @@ html[data-mood="dark"] .hx{ --ink:#F3EEE2; --muted:rgba(243,238,226,.74); --gold
 <div class="wrapx paper">
   <section class="band" style="border-top:0">
     <h2>What is taught</h2>
-    <p>The class reads the history of the Guru Sahiban, the shaheeds and the Panth from the Granths of Itihaas. It has been reading Sri Nanak Parkash, on the life of Guru Nanak Dev Ji.</p>
-    <p>Most weeks, students bring a homework project to the class, usually a model of the sakhi they have just heard. In February 2026 they built Chamkaur di Garhi, with LEGO for the fort, clay for the hill around it, and LED lights for the jot of Guru Gobind Singh Ji.</p>
+    <div class="body">
+      <p>Guru Nanak Dev Ji says: place your head on your palm and come down my lane. The picture is plain: a head held out on an open palm. Itihaas Vidyala tells the sakhian of the Panth and the story of the shaheeds, and the Shaheedan da Bunga we are named for belongs to that story.</p>
+      <p>The class reads the history of the Guru Sahiban, the shaheeds and the Panth from the Granths of Itihaas. It has been reading Sri Nanak Parkash, on the life of Guru Nanak Dev Ji.</p>
+      <p>Most weeks, students bring a homework project to the class, usually a model of the sakhi they have just heard. In February 2026 they built Chamkaur di Garhi, with LEGO for the fort, clay for the hill around it, and LED lights for the jot of Guru Gobind Singh Ji.</p>
+    </div>
     <div class="models">
       <figure><img src="img/p-itihaas-chamkaur-model.jpg" data-sizes="(max-width:700px) 100vw, 50vw" alt="A clay model of the garhi at Chamkaur, its gateway flanked by two dark towers, with small toy soldiers in blue, orange and green in front of it." loading="lazy"><figcaption>Chamkaur di Garhi, made by the class · February 2026</figcaption></figure>
       <figure><img src="img/p-itihaas-fort-model.jpg" data-sizes="(max-width:700px) 100vw, 50vw" alt="A square clay fort decorated with coloured pins, beside a bow and arrows, a spear and two swords made of card and foil." loading="lazy"><figcaption>A fort and shastar, made for the same sakhi</figcaption></figure>
@@ -63,6 +70,14 @@ html[data-mood="dark"] .hx{ --ink:#F3EEE2; --muted:rgba(243,238,226,.74); --gold
       <li>October 2025. A working clay well, for the sakhi of Bhai Bhagata Ji and the Sangat who finished their well in one night.</li>
       <li>November 2025. A map of the places Guru Nanak Dev Ji visited, from Talwandi and Sultanpur to Batala, Lahore, Eminabad and Sri Nankana Sahib, with the sakhi of each place and the gurdwara that stands there now.</li>
     </ul>
+  </section>
+  <section class="band">
+  <div class="gp">
+    <figure><img src="img/lib/2023/2023-02-misc-492.jpg" data-sizes="(max-width:700px) 50vw, 30vw" alt="A gurdwara lit up at night in pink and blue, a Singh in white and orange walking the red carpet towards it." loading="lazy"><figcaption>Punjab trip · February 2023</figcaption></figure>
+    <figure><img src="img/lib/2023/2023-02-misc-491.jpg" data-sizes="(max-width:700px) 50vw, 30vw" alt="A white gateway with two domed pavilions and an ornate arched entrance, under an evening sky." loading="lazy"><figcaption>Punjab trip · February 2023</figcaption></figure>
+    <figure><img src="img/lib/2023/2023-02-misc-499.jpg" data-sizes="(max-width:700px) 50vw, 30vw" alt="Singhs standing together in a courtyard of old red-brick buildings with arched gateways." loading="lazy"><figcaption>Punjab trip · February 2023</figcaption></figure>
+    <figure><img src="img/lib/2023/2023-02-misc-488.jpg" data-sizes="(max-width:700px) 50vw, 30vw" alt="Inside a gurdwara, a gilded canopy over a draped palki, with a person seated before it." loading="lazy"><figcaption>Punjab trip · February 2023</figcaption></figure>
+  </div>
   </section>
   <section class="band">
     <h2>What we have run before</h2>
