@@ -1,7 +1,4 @@
 <!--@head title="Tabla & Jori"-->
-<!-- DRAFT, held back (2026-10-27): not in ROUTES, so it is built only as a
-     noindex preview beside build.js and is linked from nowhere. Places and
-     unknowns settled by the user 2026-10-27: all gurdwaras, contact us to inquire. -->
 <style>
 /* the picked hero (lifted from the hero mockups, 2026-10-28): its own tokens, from the kit's */
 .hx{ --ink:var(--navy); --muted:var(--navy-70); --gold:var(--gold-text); --gold-lite:#B8902F; --night:#070E1E; --night-2:#101C37; --sans:var(--body); }
@@ -29,18 +26,20 @@ html[data-mood="dark"] .hx{ --ink:#F3EEE2; --muted:rgba(243,238,226,.74); --gold
 .hx .mq-copy{grid-row:2}}
 
 .tbc{ background:rgba(184,144,47,.16); border-bottom:1px dashed var(--gold); padding:0 .2em; font-style:normal; }
-.draftbar{ position:sticky; top:var(--mastH,74px); z-index:5; background:var(--navy); color:var(--cream); font:12px/1.4 var(--mono);
-  letter-spacing:.08em; text-transform:uppercase; text-align:center; padding:8px 16px; }
 .facts3{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:calc(var(--u)*2); border-top:1px solid var(--line); padding-top:calc(var(--u)*2); margin-top:calc(var(--u)*3); }
 .facts3 dt{ font-family:var(--mono); font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--gold-text); }
 .facts3 dd{ margin:.3em 0 0; font-family:var(--display); font-size:max(24px,calc(var(--u)*2.6)); line-height:1.15; }
 .record li{ margin:.7em 0; max-width:70ch; }
 @media(max-width:700px){ .facts3{ grid-template-columns:1fr; } }
+.hx .hxlede{color:var(--muted);max-width:40ch;margin-top:18px;font-size:clamp(16px,1.3vw,19px)}
+.gp{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; margin-top:calc(var(--u)*4); }
+.gp figure{ margin:0; } .gp img{ width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:3px; display:block; filter:var(--photo); }
+.gp figcaption{ font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--navy-70); margin-top:8px; }
+@media(max-width:700px){ .gp{ grid-template-columns:1fr 1fr; } }
 </style>
 </head>
 <body>
-<!--@mast current="vidyale"-->
-<p class="draftbar">Draft for checking · not on the site yet</p>
+<!--@mast current="tabla"-->
 <main id="main">
 <section data-hero class="hx hero2 mq" data-init="marquee">
   <div class="mq-rows" aria-hidden="true">
@@ -49,26 +48,49 @@ html[data-mood="dark"] .hx{ --ink:#F3EEE2; --muted:rgba(243,238,226,.74); --gold
     <div class="mq-row gur" lang="pa"><span>ਧਾ ਧਿੰ ਧਿੰ ਧਾ · ਧਾ ਧਿੰ ਧਿੰ ਧਾ · ਧਾ ਤਿੰ ਤਿੰ ਤਾ · ਤਾ ਧਿੰ ਧਿੰ ਧਾ · </span></div>
   </div>
   <img class="mq-fig" src="img/hero/tabla-8d8e3a65.webp" width="760" height="760" alt="A young Singh in blue bana playing tabla and jori.">
-  <div class="mq-copy"><p class="k">Gurmat Vidyala · 04 · Tabla</p><span class="gur-mid" lang="pa">ਤਬਲਾ ਤੇ ਜੋੜੀ</span><h1>Tabla <em>&amp; Jori</em></h1>
-    <div class="meta"><span>Theka<b>Teentaal, 16 matra</b></span><span>Where<b>All our gurdwaras</b></span><span>Fee<b>None</b></span></div></div>
+  <div class="mq-copy"><p class="k">Gurmat Vidyala · 04 · Tabla</p><span class="gur-mid" lang="pa">ਤਬਲਾ ਤੇ ਜੋੜੀ</span><h1>Tabla <em>&amp; Jori</em></h1><p class="hxlede">Learn to play Tabla and Jori, and to keep the Taal that Kirtan rests on.</p>
+    <figure class="pangti"><p class="gur" lang="pa">ਵਾਜਾ ਮਤਿ ਪਖਾਵਜੁ ਭਾਉ ॥</p><figcaption>Sri Guru Granth Sahib Ji, Ang 350</figcaption></figure>
+    <div class="meta"><span>Theka<b>Teentaal, 16 matra</b></span><span>Where<b>Locally and online</b></span><span>Fee<b>None</b></span></div></div>
 </section>
 <div class="wrapx paper">
   <section class="band" style="border-top:0">
     <h2>What is taught</h2>
-    <p>Beginners are welcome. The class starts from the bols and the theka, and works towards accompanying kirtan in the taals the Kirtan Vidyala sings in. <a href="contact.html">Contact us</a> to inquire more about the level groups and who teaches.</p>
+    <div class="body">
+      <p>Guru Nanak Dev Ji says: let understanding be the instrument, and love the pakhavaj. A pakhavaj is a drum, and the Taal is its heartbeat. In this class you learn the theka, the basic pattern of beats, that keeps Kirtan steady, and you learn to listen as closely as you play.</p>
+      <p>Beginners are welcome. You start with the bols and the theka, and work up to accompanying Kirtan in the Taals the Kirtan Vidyala sings in. Jori is taught alongside Tabla.</p>
+    </div>
   </section>
   <section class="band">
-    <h2>From the record</h2>
+  <div class="gp">
+    <figure><img src="img/lib/2024/2024-05-baba-surjit-singh-ji-visit-may-2024-635.jpg" data-sizes="(max-width:700px) 50vw, 30vw" alt="The class seated in a circle on the red carpet, tabla in front of them and a Singh with a white beard at the centre." loading="lazy"><figcaption>Tabla class · May 2024</figcaption></figure>
+    <figure><img src="img/lib/2024/2024-05-baba-surjit-singh-ji-visit-may-2024-636.jpg" data-sizes="(max-width:700px) 50vw, 30vw" alt="The same circle from further back, students with tabla and other instruments around the hall." loading="lazy"><figcaption>Tabla class · May 2024</figcaption></figure>
+    <figure><img src="img/lib/2020/2020-05-tabla-140.jpg" data-sizes="(max-width:700px) 50vw, 30vw" alt="A Singh in an orange dastaar at the tabla with a young child in orange beside them, a second pair of drums in front." loading="lazy"><figcaption>Tabla · May 2020</figcaption></figure>
+    <figure><img src="img/lib/2019/2019-01-misc-009.jpg" data-sizes="(max-width:700px) 50vw, 30vw" alt="A Singh in blue playing a pair of tabla, seated on a patterned rug." loading="lazy"><figcaption>Tabla · January 2019</figcaption></figure>
+    <figure><img src="img/lib/2022/2022-08-gurbani-vidhya-camp-2022-278.jpg" data-sizes="(max-width:700px) 50vw, 30vw" alt="A young Singh playing tabla, one hand raised over the drums." loading="lazy"><figcaption>Gurbani Vidhya Camp · August 2022</figcaption></figure>
+    <figure><img src="img/lib/2022/2022-08-gurbani-vidhya-camp-2022-280.jpg" data-sizes="(max-width:700px) 50vw, 30vw" alt="A child in a dark chola playing tabla, one hand lifted." loading="lazy"><figcaption>Gurbani Vidhya Camp · August 2022</figcaption></figure>
+    <figure><img src="img/lib/2022/2022-08-gurbani-vidhya-camp-2022-304.jpg" data-sizes="(max-width:700px) 50vw, 30vw" alt="Students seated in a circle on the blue carpet with tabla and a harmonium." loading="lazy"><figcaption>Gurbani Vidhya Camp · August 2022</figcaption></figure>
+  </div>
+  </section>
+  <section class="band">
+    <h2>What we have run before</h2>
     <ul class="record">
-      <li>Mon to Fri at Gurdwara Sri Guru Dasmesh Sahib, Leicester LE4 6RB: santhiya and kirtan classes, plus tabla and jori for beginners (from the charity's Instagram).</li>
-      <li>A weekly round-up of Gurbani, Kirtan, Santhiya, Gatka, tabla, Jori and Itihaas classes across Leicester's gurdware.</li>
+      <li>Santhiya and Kirtan classes at Gurdwara Sri Guru Dasmesh Sahib, Leicester LE4 6RB, with Tabla and Jori for beginners (as posted on our Instagram).</li>
+      <li>A weekly round-up of Gurbani, Kirtan, Santhiya, Gatka, Tabla, Jori and Itihaas classes at gurdwaras across Leicester.</li>
+      <li>The six-week Santhiya camp in summer 2025, where students learnt Kirtan and Tabla alongside Santhiya.</li>
+      <li>A five-day Sikhi Camp in October 2025, with Tabla and Jori classes beside Dilruba, vaja and Santhiya.</li>
     </ul>
     <p><a href="events.html">Every event since 2017 ↗</a></p>
   </section>
   <section class="band">
-    <h2>Ask before you come.</h2>
-    <p>Send a message and someone will tell you the day, the room and who is teaching.
-      <a href="https://wa.me/447394848407" target="_blank" rel="noopener">WhatsApp +44 7394 848407</a> or
+    <h2>Watch and listen on YouTube.</h2>
+    <p>Our YouTube channel has Jori recordings from the Vidyala, among them a Jori paran on a chhand from Dasam Bani, posted in October 2023.</p>
+    <p>It also has An Evening with Ustad Surjeet Singh Ji Cheema Sahib Wale, a 54-minute interview with the master of Kirtan and Tabla. Ustad Ji talks about their own teachers, and about poetry and music.</p>
+    <p><a href="https://www.youtube.com/@shaheedibunga" target="_blank" rel="noopener">Our YouTube channel ↗</a></p>
+  </section>
+  <section class="band">
+    <h2>Ask us before your first class.</h2>
+    <p>Send us a message and we'll tell you the day, the room and who is teaching. You can reach us on
+      <a href="https://wa.me/447394848407" target="_blank" rel="noopener">WhatsApp +44 7394 848407</a> or at
       <a href="mailto:gurmat@shaheedibunga.com">gurmat@shaheedibunga.com</a>.</p>
   </section>
 </div>

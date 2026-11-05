@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- the site loads everything from itself and sends nothing anywhere (see /privacy/); this says so to the browser.
+     Inline script and style stay allowed: every page carries its own. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; media-src 'self'; font-src 'self'; connect-src 'self'; object-src 'none'; frame-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Shaheedi Bunga Press · Shaheedi Bunga</title>
+<meta name="description" content="The printed editions Shaheedi Bunga is preparing: Bachan Sain, Chaupa Singh Rehatnama, the Nitnem Pothi, Vichar Sagar and more.">
+<link rel="canonical" href="https://www.shaheedibunga.com/press/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Shaheedi Bunga">
+<meta property="og:title" content="Shaheedi Bunga Press &middot; Shaheedi Bunga">
+<meta property="og:description" content="The printed editions Shaheedi Bunga is preparing: Bachan Sain, Chaupa Singh Rehatnama, the Nitnem Pothi, Vichar Sagar and more.">
+<meta property="og:url" content="https://www.shaheedibunga.com/press/">
+<meta property="og:image" content="https://www.shaheedibunga.com/share/home.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/Assets/Brand/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="/Assets/Brand/apple-touch-icon-180.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="stylesheet" href="/lib/fonts.css">
+<link rel="stylesheet" href="/kit/kit.css">
+<!-- before paint: light unless this viewer chose dark (or ?mood= asks), so
+     there is never a flash of the wrong mode -->
+<script>(function(){var m=(/[?&]mood=(light|dark)/.exec(location.search)||[])[1];
+  if(!m){try{m=localStorage.getItem("sb-mood");}catch(e){}}
+  document.documentElement.dataset.mood=m==="dark"?"dark":"light";})();</script>
+
+<style>
+/* the picked hero's tokens, from the kit's (as on Katha and Camps); here with a single column, no picture */
+.hx{ --ink:var(--navy); --muted:var(--navy-70); --gold:var(--gold-text); --gold-lite:#B8902F; --night:#070E1E; --night-2:#101C37; --sans:var(--body); }
+html[data-mood="dark"] .hx{ --ink:#F3EEE2; --muted:rgba(243,238,226,.74); --gold:#EBCD88; --gold-lite:#D4AC57; }
+.hx .k{font:11px/1.4 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+.hx.hero{position:relative;display:grid;grid-template-columns:minmax(0,1fr);min-height:0;padding-block:96px 72px;padding-left:max(16px,4vw,env(safe-area-inset-left,0px));padding-right:max(16px,4vw,env(safe-area-inset-right,0px));border-top:1px solid var(--line);overflow:clip}
+.hx.hero.night{background:radial-gradient(90% 70% at 70% 40%,#13203A,var(--night));color:#F3EEE2;--muted:rgba(243,238,226,.74);--gold:#EBCD88;--line:rgba(243,238,226,.14)}
+.hx .copy{min-width:0;max-width:760px}
+.hx .copy h1{font:500 clamp(46px,6.8vw,104px)/.98 var(--display);margin:14px 0 0}
+.hx .copy h1 em{font-style:italic;color:var(--gold)}
+.hx .hxlede{color:var(--muted);max-width:52ch;margin-top:18px;font-size:clamp(16px,1.3vw,19px)}
+.tail{ margin:calc(var(--u)*4) 0 calc(var(--u)*10); color:var(--navy-70); font-size:max(17px,calc(var(--u)*1.2)); max-width:60ch; }
+.tail a{ color:var(--gold-text); }
+.opens a{ text-decoration:none; }
+
+.pl{ list-style:none; margin:0; padding:calc(var(--u)*5) 0 0; display:grid; gap:calc(var(--u)*2); }
+.pl li{ display:grid; grid-template-columns:120px minmax(0,1fr); gap:calc(var(--u)*3); align-items:start; border-top:1px solid var(--line); padding-top:calc(var(--u)*2); }
+.pl h2{ font-family:var(--display); font-weight:500; font-size:max(26px,calc(var(--u)*2.8)); line-height:1; margin:0 0 .4em; letter-spacing:-.01em; }
+.pl p{ margin:0; color:var(--navy-70); font-size:max(16px,calc(var(--u)*1.1)); max-width:56ch; }
+.pl .st{ font-family:var(--mono); font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--gold-text); margin:0 0 .6em; }
+.cv{ aspect-ratio:2/3; border-radius:3px 6px 6px 3px; background:linear-gradient(150deg,#1B2C52,#0B1731); color:#F4EFE4; display:flex; flex-direction:column; justify-content:space-between;
+  padding:12px 10px; border-left:4px solid #D4AC57; box-shadow:0 6px 18px rgba(11,23,49,.22); }
+.cv-t{ font-family:var(--display); font-size:15px; line-height:1.1; }
+.cv-s{ font-family:var(--mono); font-size:9px; letter-spacing:.14em; text-transform:uppercase; color:#EBCD88; }
+.prep{ margin:calc(var(--u)*5) 0 0; padding-top:calc(var(--u)*2); border-top:1px solid var(--line); }
+.prep h2{ font-family:var(--display); font-weight:500; font-size:max(26px,calc(var(--u)*2.8)); margin:0 0 .5em; }
+.prep p{ margin:0; color:var(--navy-70); font-size:max(16px,calc(var(--u)*1.1)); max-width:60ch; }
+.opens{ margin-top:calc(var(--u)*4); }
+.open{ display:inline-flex; gap:.6em; font-family:var(--mono); font-size:11px; letter-spacing:.16em; text-transform:uppercase; text-decoration:none; color:var(--gold-text);
+  border:1px solid var(--line); border-radius:100px; padding:11px 16px; transition:border-color .3s, background .3s; }
+.open:hover{ border-color:var(--gold); background:var(--cream-2); }
+@media(max-width:600px){ .pl li{ grid-template-columns:90px minmax(0,1fr); gap:16px; } }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="mast">
+  <a class="brand" href="/" aria-label="Shaheedi Bunga, home"><img src="/kit/img/gurmat-vidyala-84.png" alt="" width="40" height="40" srcset="/kit/img/webp/gurmat-vidyala-84-84.webp">
+    <span><b>Shaheedi Bunga</b><i>Gurmat Vidyala</i></span></a>
+  <nav aria-label="Main" id="site-nav"><div class="vid"><button class="vid-btn" type="button" aria-expanded="false" aria-controls="vid-panel">Vidyale<i aria-hidden="true"></i></button><div class="vid-panel" id="vid-panel"><div class="vid-grid"><a class="vid-item" href="/santhiya/"><span class="vid-gur" lang="pa">ਸੰਥਿਆ ਵਿਦਿਆਲਾ</span><b>Santhiya</b><small>Reading sudh Gurbani</small></a><a class="vid-item" href="/saaj/dilruba/"><span class="vid-gur" lang="pa">ਕੀਰਤਨ ਵਿਦਿਆਲਾ</span><b>Kirtan</b><small>Tanti Saaj and Raag</small></a><a class="vid-item" href="/akhara/archery/"><span class="vid-gur" lang="pa">ਤੀਰ ਅੰਦਾਜ਼ੀ</span><b>Archery Akhara</b><small>Traditional archery</small></a><a class="vid-item" href="/tabla/"><span class="vid-gur" lang="pa">ਤਬਲਾ ਤੇ ਜੋੜੀ</span><b>Tabla &amp; Jori</b><small>Locally and online</small></a><a class="vid-item" href="/katha/"><span class="vid-gur" lang="pa">ਕਥਾ ਵਿਦਿਆਲਾ</span><b>Katha</b><small>Explaining Gurbani to a Sangat</small></a><a class="vid-item" href="/itihaas/"><span class="vid-gur" lang="pa">ਇਤਿਹਾਸ ਵਿਦਿਆਲਾ</span><b>Itihaas</b><small>Sikh history</small></a></div><div class="vid-foot"><a href="/classes/">All classes →</a><a href="/camps/">Camps →</a></div></div></div><a href="/events/">Events</a><a href="/sikhi-calendar/">Calendar</a><a href="/gallery/">Gallery</a><a href="/resources/">Resources</a><a href="/press/" aria-current="page">Press</a><a href="/beyond/">Beyond the Vidyala</a><a href="/about/">About</a><a href="/contact/">Contact</a><a href="/donate/">Donate</a></nav>
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav"><span>Menu</span><i aria-hidden="true"></i></button>
+  <a class="wa" href="https://wa.me/447394848407?text=Sat%20Sri%20Akal%20%E2%80%94%20I'd%20like%20to%20ask%20about%20the%20Press." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.6 2 2.18 6.42 2.18 11.86c0 1.74.46 3.44 1.32 4.94L2.1 22l5.34-1.4a9.8 9.8 0 0 0 4.6 1.17h.01c5.43 0 9.85-4.42 9.85-9.86 0-2.63-1.02-5.11-2.88-6.97A9.79 9.79 0 0 0 12.04 2z"/></svg>WhatsApp</a>
+</header>
+
+<main id="main">
+<section data-hero class="hx hero night">
+  <div class="copy"><p class="k">Shaheedi Bunga Press</p>
+    <h1>Our own <em>printed editions.</em></h1>
+    <p class="hxlede">We are preparing Granths and Pothis for print. This is where each one stands.</p></div>
+</section>
+<div class="wrapx paper">
+  <div class="opening" style="padding:calc(var(--u)*4) 0 0">
+  <figure class="pangti" style="margin:0 0 1em"><p class="gur" lang="pa">ਸਚੁ ਕਾਗਦੁ ਕਲਮ ਮਸਵਾਣੀ ਸਚੁ ਲਿਖਿ ਸਚਿ ਸਮਾਵਣਿਆ ॥੭॥</p><figcaption>Sri Guru Granth Sahib Ji, Ang 123</figcaption></figure>
+  <p style="margin:0 0 1em;color:var(--navy-70);font-size:max(17px,calc(var(--u)*1.2));max-width:56ch">Guru Amar Das Ji names the paper, the pen and the inkwell, and calls each of them true. Shaheedi Bunga Press takes that care into print. Our books are set and checked by us, so that a reader can trust the page in their hands.</p>
+  </div>
+  <ol class="pl">
+    <li data-fade><div class="cv" aria-hidden="true"><span class="cv-t">Bachan Sain</span><span class="cv-s">B5 · bilingual</span></div><div><p class="st">Coming soon</p><h2>Bachan Sain</h2>
+      <p>Bilingual, B5 (171 &times; 246 mm), all 289 bachans, 576 pages.</p></div></li>
+    <li data-fade><div class="cv" aria-hidden="true"><span class="cv-t">Chaupa Singh Rehatnama</span><span class="cv-s">A5 · bilingual</span></div><div><p class="st">Next to print</p><h2>Chaupa Singh Rehatnama</h2>
+      <p>A5, bilingual.</p></div></li>
+    <li data-fade><div class="cv" aria-hidden="true"><span class="cv-t">Nitnem Pothi</span><span class="cv-s">Taksali Gutka Sahib</span></div><div><p class="st">Then</p><h2>Nitnem Pothi</h2>
+      <p>Set from the Taksali Gutka Sahib, which governs the paath, the visraam and the contents.</p></div></li>
+    <li data-fade><div class="cv" aria-hidden="true"><span class="cv-t">Vichar Sagar</span><span class="cv-s">6 &times; 9 · bilingual</span></div><div><p class="st">Then</p><h2>Vichar Sagar</h2>
+      <p>Bilingual, 6 &times; 9, 1,502 pages.</p></div></li>
+  </ol>
+  <div class="prep" data-fade><h2>In preparation</h2>
+    <p>Gurmat Sanskar, Panj Granthi, Bai Vaaran, Arth Bhandar Hawale, Moksh Panth Parkash, Atam Gian Vichar and Baal Updesh.</p></div>
+  <p class="opens" data-fade><a class="open" href="/contact/">Message us on WhatsApp to be told when it is ready →</a></p>
+  <p class="tail" data-fade>Meanwhile, the free online Granths are on <a href="/resources/">Resources</a> and <a href="/library/">Library</a>.</p>
+</div>
+</main>
+<footer class="foot">
+  <p class="big">Come and sit<br>with the <em>sangat.</em></p>
+  <div class="cols">
+    <div><h2>Shaheedi Bunga</h2><p style="margin:0;max-width:34ch">A Sikh education charity in Leicester. Every class is free and taught by volunteers.</p></div>
+    <div><h2>Vidyale</h2><a href="/santhiya/">Santhiya</a><a href="/saaj/dilruba/">Kirtan</a><a href="/akhara/archery/">Archery</a><a href="/classes/">All classes</a><a href="/camps/">Camps</a><a href="/events/">Events</a><a href="/sikhi-calendar/">Calendar</a></div>
+    <div><h2>Charity</h2><a href="/about/">About</a><a href="/donate/">Donate</a><a href="/gallery/">Gallery</a><a href="/resources/">Resources</a><a href="/library/">Library</a><a href="/beyond/">Beyond the Vidyala</a><a href="/press/">Press</a></div>
+    <div><h2>Contact</h2><a href="https://wa.me/447394848407" target="_blank" rel="noopener">+44 7394 848407</a><a href="mailto:gurmat@shaheedibunga.com">gurmat@shaheedibunga.com</a><a href="/safeguarding/">Safeguarding</a><a href="/privacy/">Privacy</a></div>
+  </div>
+  <div class="legal"><span>Registered charity in England &amp; Wales · 1185103</span><a href="/" style="display:inline-block;padding:4px 0">Home · the Parikrama</a></div>
+</footer>
+
+<script src="/kit/lib/gsap.min.js"></script>
+<script src="/kit/lib/ScrollTrigger.min.js"></script>
+<script src="/kit/lib/SplitText.min.js"></script>
+<script src="/kit/lib/lenis.min.js"></script>
+<script src="/kit/kit.js"></script>
+
+<script>KIT.start();</script>
+</body>
+</html>

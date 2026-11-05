@@ -94,6 +94,12 @@ a.way:hover .go{ transform:translate(6px,-6px); }
 .social a{ font-family:var(--display); font-size:max(22px,calc(var(--u)*2)); text-decoration:none; padding:.4em 1em; border:1px solid var(--line);
   border-radius:100px; transition:border-color .3s, background .3s; }
 .social a:hover{ border-color:var(--gold); background:var(--cream-2); }
+/* two portrait photographs side by side (after about.html's .sangat figure) */
+.pair{ display:grid; grid-template-columns:1fr 1fr; gap:calc(var(--u)*1.4); margin:calc(var(--u)*4) 0; max-width:960px; }
+.pair figure{ margin:0; }
+.pair img{ width:100%; aspect-ratio:3/4; object-fit:cover; border-radius:3px; display:block; filter:var(--photo); }
+.pair figcaption{ font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--navy-70); margin-top:12px; }
+@media(max-width:600px){ .pair{ grid-template-columns:1fr; } }
 </style>
 </head>
 <body>
@@ -101,7 +107,7 @@ a.way:hover .go{ transform:translate(6px,-6px); }
 <header class="mast">
   <a class="brand" href="/" aria-label="Shaheedi Bunga, home"><img src="/kit/img/gurmat-vidyala-84.png" alt="" width="40" height="40" srcset="/kit/img/webp/gurmat-vidyala-84-84.webp">
     <span><b>Shaheedi Bunga</b><i>Gurmat Vidyala</i></span></a>
-  <nav aria-label="Main" id="site-nav"><div class="vid"><button class="vid-btn" type="button" aria-expanded="false" aria-controls="vid-panel">Vidyale<i aria-hidden="true"></i></button><div class="vid-panel" id="vid-panel"><div class="vid-grid"><a class="vid-item" href="/santhiya/"><span class="vid-gur" lang="pa">ਸੰਥਿਆ ਵਿਦਿਆਲਾ</span><b>Santhiya</b><small>Reading sudh Gurbani</small></a><a class="vid-item" href="/saaj/dilruba/"><span class="vid-gur" lang="pa">ਕੀਰਤਨ ਵਿਦਿਆਲਾ</span><b>Kirtan</b><small>Tanti saaj and raag</small></a><a class="vid-item" href="/akhara/archery/"><span class="vid-gur" lang="pa">ਤੀਰ ਅੰਦਾਜ਼ੀ</span><b>Archery Akhara</b><small>Sundays, ages 14 and over</small></a><a class="vid-item" href="/classes/#tabla"><span class="vid-gur" lang="pa">ਤਬਲਾ ਤੇ ਜੋੜੀ</span><b>Tabla &amp; Jori</b><small>Running: ask</small></a><a class="vid-item" href="/classes/#katha"><span class="vid-gur" lang="pa">ਕਥਾ ਵਿਦਿਆਲਾ</span><b>Katha</b><small>Page coming</small></a><a class="vid-item" href="/classes/#itihaas"><span class="vid-gur" lang="pa">ਇਤਿਹਾਸ ਵਿਦਿਆਲਾ</span><b>Itihaas</b><small>Wednesday evenings</small></a></div><div class="vid-foot"><a href="/classes/">All classes →</a><a href="/camps/">Camps →</a></div></div></div><a href="/events/">Events</a><a href="/sikhi-calendar/">Calendar</a><a href="/gallery/">Gallery</a><a href="/resources/">Resources</a><a href="/about/">About</a><a href="/contact/" aria-current="page">Contact</a><a href="/donate/">Donate</a></nav>
+  <nav aria-label="Main" id="site-nav"><div class="vid"><button class="vid-btn" type="button" aria-expanded="false" aria-controls="vid-panel">Vidyale<i aria-hidden="true"></i></button><div class="vid-panel" id="vid-panel"><div class="vid-grid"><a class="vid-item" href="/santhiya/"><span class="vid-gur" lang="pa">ਸੰਥਿਆ ਵਿਦਿਆਲਾ</span><b>Santhiya</b><small>Reading sudh Gurbani</small></a><a class="vid-item" href="/saaj/dilruba/"><span class="vid-gur" lang="pa">ਕੀਰਤਨ ਵਿਦਿਆਲਾ</span><b>Kirtan</b><small>Tanti Saaj and Raag</small></a><a class="vid-item" href="/akhara/archery/"><span class="vid-gur" lang="pa">ਤੀਰ ਅੰਦਾਜ਼ੀ</span><b>Archery Akhara</b><small>Traditional archery</small></a><a class="vid-item" href="/tabla/"><span class="vid-gur" lang="pa">ਤਬਲਾ ਤੇ ਜੋੜੀ</span><b>Tabla &amp; Jori</b><small>Locally and online</small></a><a class="vid-item" href="/katha/"><span class="vid-gur" lang="pa">ਕਥਾ ਵਿਦਿਆਲਾ</span><b>Katha</b><small>Explaining Gurbani to a Sangat</small></a><a class="vid-item" href="/itihaas/"><span class="vid-gur" lang="pa">ਇਤਿਹਾਸ ਵਿਦਿਆਲਾ</span><b>Itihaas</b><small>Sikh history</small></a></div><div class="vid-foot"><a href="/classes/">All classes →</a><a href="/camps/">Camps →</a></div></div></div><a href="/events/">Events</a><a href="/sikhi-calendar/">Calendar</a><a href="/gallery/">Gallery</a><a href="/resources/">Resources</a><a href="/press/">Press</a><a href="/beyond/">Beyond the Vidyala</a><a href="/about/">About</a><a href="/contact/" aria-current="page">Contact</a><a href="/donate/">Donate</a></nav>
   <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav"><span>Menu</span><i aria-hidden="true"></i></button>
   <a class="wa" href="https://wa.me/447394848407?text=Sat%20Sri%20Akal%20%E2%80%94%20I'd%20like%20to%20ask%20about%20classes." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.6 2 2.18 6.42 2.18 11.86c0 1.74.46 3.44 1.32 4.94L2.1 22l5.34-1.4a9.8 9.8 0 0 0 4.6 1.17h.01c5.43 0 9.85-4.42 9.85-9.86 0-2.63-1.02-5.11-2.88-6.97A9.79 9.79 0 0 0 12.04 2z"/></svg>WhatsApp</a>
 </header>
@@ -113,7 +119,7 @@ a.way:hover .go{ transform:translate(6px,-6px); }
     <div class="fg-row gur" lang="pa"><span>ਵਾਹਿਗੁਰੂ ਜੀ ਕਾ ਖ਼ਾਲਸਾ ॥ ਵਾਹਿਗੁਰੂ ਜੀ ਕੀ ਫ਼ਤਹਿ ॥ </span></div>
     <div class="fg-row o"><span>Waheguru Ji Ka Khalsa · Waheguru Ji Ki Fateh · </span></div></div>
   <div class="fg-copy"><p class="k">Contact</p><span class="gur-mid" lang="pa">ਸੰਪਰਕ</span><h1>Come and <em>find us.</em></h1>
-    <p class="hxlede">WhatsApp is quickest. Someone will tell you this week's classes and where to turn up. No booking, no fee.</p>
+    <p class="hxlede">WhatsApp is the quickest way to reach us. We'll reply with this week's classes and where to go. There is no booking and no fee.</p><figure class="pangti"><p class="gur" lang="pa">ਵਿਚਿ ਦੁਨੀਆ ਸੇਵ ਕਮਾਈਐ ॥</p><figcaption>Sri Guru Granth Sahib Ji, Ang 26</figcaption></figure>
     <div class="fg-places"><div><b>Gipsy Lane</b><span>Gurudwara Shri Guru Dashmesh Sahib</span></div><div><b>East Park Road</b><span>Guru Tegh Bahadur Gurdwara</span></div></div></div>
   <div class="fg-art"><img src="/kit/img/hero/contact-b16388b5.webp" width="900" height="1115" alt="Two Singhs greet each other with joined hands before a glowing gurdwara doorway, a Nishan Sahib beside it.">
     <a class="mg-btn fg-btn" href="#contact"><span>WhatsApp<br><small>+44 7394 848407</small></span></a></div>
@@ -126,24 +132,45 @@ a.way:hover .go{ transform:translate(6px,-6px); }
   </div>
 
   <section class="band" style="border-top:0">
+    <h2 data-fade><small>Ask us</small>What people message us about</h2>
+    <div class="body">
+      <figure class="pangti" style="margin:0 0 1em"><p class="gur" lang="pa">ਖੋਲਿ ਕਪਾਟ ਮਹਲਿ ਕਿ ਨ ਜਾਹੀ ॥</p><figcaption>Sri Guru Granth Sahib Ji, Ang 341</figcaption></figure>
+      <p>Bhagat Kabeer Ji says: open the door, and why do you not go in? At Shaheedi Bunga the door is a message. WhatsApp is the quickest way to reach us. Tell us which class you would like, or that you are not sure yet, and one of the teachers will reply. Nobody is asked to book or to pay.</p>
+      <p data-fade><b>Which class to start with.</b> Send us a message and we'll help you choose.</p>
+      <p data-fade><b>The next camp.</b> Ask us and we'll tell you when the next one opens.</p>
+      <p data-fade><b>Giving an instrument, a Granth or a Pothi.</b> Please ask before you buy anything.</p>
+      <p data-fade><b>A photograph.</b> If your child is in one of our photographs and you would rather they were not, tell us and we will take it down.</p>
+    </div>
+  </section>
+
+  <section class="band">
     <h2 data-fade><small>Where</small>Two gurdware in Leicester.</h2>
     <div class="body">
       <div class="vcards">
         <div class="vcard" data-fade><div class="pic"><img src="/kit/img/p-archery-full-draw.jpg" alt="An archer in a blue chola at full draw, the string drawn back to the face." loading="lazy" width="1200" height="1600" srcset="/kit/img/webp/p-archery-full-draw-480.webp 480w, /kit/img/webp/p-archery-full-draw-960.webp 960w, /kit/img/p-archery-full-draw.jpg 1200w" sizes="(max-width:760px) 100vw, 27vw"></div>
           <div class="t"><h3>Guru Tegh Bahadur Gurdwara</h3>
-            <p>106 East Park Road, Leicester LE5 4QB · santhiya, tabla, and the Archery Akhara on Sundays</p>
+            <p>106 East Park Road, Leicester LE5 4QB. Santhiya, Tabla, and the Archery Akhara.</p>
             <a href="https://maps.google.com/?q=106+East+Park+Road+Leicester+LE5+4QB" target="_blank" rel="noopener">Open in Maps ↗</a></div></div>
         <div class="vcard" data-fade><div class="pic"><img src="/kit/img/k-k02.jpg" alt="A student bowing the dilruba, seated at the microphone." loading="lazy" width="560" height="700" srcset="/kit/img/webp/k-k02-480.webp 480w, /kit/img/k-k02.jpg 560w" sizes="(max-width:760px) 100vw, 27vw"></div>
           <div class="t"><h3>Gurudwara Shri Guru Dashmesh Sahib</h3>
-            <p>49 Gipsy Lane, Leicester · the Kirtan Vidyala, nine classes a week, tabla and jori, and santhiya every day</p>
+            <p>49 Gipsy Lane, Leicester. The Kirtan Vidyala, Tabla and Jori, and Santhiya every day.</p>
             <a href="https://maps.google.com/?q=49+Gipsy+Lane+Leicester+LE4+6RB" target="_blank" rel="noopener">Open in Maps ↗</a></div></div>
       </div>
+      <p data-fade style="margin-top:calc(var(--u)*2.4)">Some of the larger Samagams are held at Gurdwara Gur Panth Parkash, 19 Ashford Road, Leicester.
+        The poster for each event gives its venue.</p>
     </div>
   </section>
+  <div class="pair">
+    <figure data-fade><img src="/kit/img/p-gurdwara-visit.jpg" alt="Two Singhs standing barefoot beside a Gurmantar and Mool Mantar board in a gurdwara, one in white bana, the other in white with a blue parna." loading="lazy" width="1500" height="2000" srcset="/kit/img/webp/p-gurdwara-visit-480.webp 480w, /kit/img/webp/p-gurdwara-visit-960.webp 960w, /kit/img/p-gurdwara-visit.jpg 1500w" sizes="(max-width:600px) 100vw, 45vw"><figcaption>At the gurdwara</figcaption></figure>
+    <figure data-fade><img src="/kit/img/p-sevadars.jpg" alt="Three Singhs in bana and parnas standing together in a gurdwara hall." loading="lazy" width="1500" height="2000" srcset="/kit/img/webp/p-sevadars-480.webp 480w, /kit/img/webp/p-sevadars-960.webp 960w, /kit/img/p-sevadars.jpg 1500w" sizes="(max-width:600px) 100vw, 45vw"><figcaption>In the gurdwara hall</figcaption></figure>
+  </div>
 
   <section class="band">
-    <h2 data-fade><small>Online</small>Classes, talks and samagams.</h2>
+    <h2 data-fade><small>Online</small>Follow us on Instagram and YouTube.</h2>
     <div class="body">
+      <p data-fade>We announce camps and Samagams first on Instagram, at @shaheedi_bunga_uk.</p>
+      <p data-fade>On YouTube there is a new episode of the Katha of Sri Guru Granth Sahib Ji almost every day, and the larger Samagams are streamed live
+        from the first day to the bhog.</p>
       <div class="social" data-fade>
         <a href="https://www.instagram.com/shaheedi_bunga_uk/" target="_blank" rel="noopener">Instagram</a>
         <a href="https://www.youtube.com/@shaheedibunga" target="_blank" rel="noopener">YouTube</a>
@@ -153,9 +180,9 @@ a.way:hover .go{ transform:translate(6px,-6px); }
   </section>
 
   <section class="band">
-    <h2 data-fade><small>Charity</small>1185103</h2>
-    <div class="body"><p data-fade>Registered in England and Wales. If something about a child's safety worries you, see
-      <a href="/safeguarding/">raising a concern</a>.</p></div>
+    <h2 data-fade><small>Charity</small>Registered charity 1185103</h2>
+    <div class="body"><p data-fade>Shaheedi Bunga is a registered charity in England and Wales. If you are worried about a child's safety, read
+      <a href="/safeguarding/">how to raise a concern</a>.</p></div>
   </section>
   <div style="height:calc(var(--u)*8)"></div>
 </div>
@@ -166,7 +193,7 @@ a.way:hover .go{ transform:translate(6px,-6px); }
   <div class="cols">
     <div><h2>Shaheedi Bunga</h2><p style="margin:0;max-width:34ch">A Sikh education charity in Leicester. Every class is free and taught by volunteers.</p></div>
     <div><h2>Vidyale</h2><a href="/santhiya/">Santhiya</a><a href="/saaj/dilruba/">Kirtan</a><a href="/akhara/archery/">Archery</a><a href="/classes/">All classes</a><a href="/camps/">Camps</a><a href="/events/">Events</a><a href="/sikhi-calendar/">Calendar</a></div>
-    <div><h2>Charity</h2><a href="/about/">About</a><a href="/donate/">Donate</a><a href="/gallery/">Gallery</a><a href="/resources/">Resources</a><a href="/library/">Library</a></div>
+    <div><h2>Charity</h2><a href="/about/">About</a><a href="/donate/">Donate</a><a href="/gallery/">Gallery</a><a href="/resources/">Resources</a><a href="/library/">Library</a><a href="/beyond/">Beyond the Vidyala</a><a href="/press/">Press</a></div>
     <div><h2>Contact</h2><a href="https://wa.me/447394848407" target="_blank" rel="noopener">+44 7394 848407</a><a href="mailto:gurmat@shaheedibunga.com">gurmat@shaheedibunga.com</a><a href="/safeguarding/">Safeguarding</a><a href="/privacy/">Privacy</a></div>
   </div>
   <div class="legal"><span>Registered charity in England &amp; Wales · 1185103</span><a href="/" style="display:inline-block;padding:4px 0">Home · the Parikrama</a></div>

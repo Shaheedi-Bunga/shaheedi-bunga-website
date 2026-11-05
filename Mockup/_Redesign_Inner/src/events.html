@@ -14,6 +14,7 @@ html[data-mood="dark"] .hx{ --ink:#F3EEE2; --muted:rgba(243,238,226,.74); --gold
 .hx.hero2 h1{font:500 clamp(46px,6.8vw,104px)/.98 var(--display);margin:0}
 .hx.hero2 h1 em{font-style:italic;color:var(--gold)}
 .hx .gur-mid{display:block;font:600 clamp(26px,3vw,40px)/1.4 var(--gur);color:var(--gold);margin:10px 0 2px}
+.hx .hxlede{color:var(--muted);max-width:40ch;margin-top:18px;font-size:clamp(16px,1.3vw,19px)}
 .hx.zm{padding:0;min-height:0}
 .hx .zm-pin{position:relative;height:100svh;min-height:600px;overflow:hidden;perspective:900px}
 .hx .zm-stage{position:absolute;inset:0;transform-style:preserve-3d;z-index:1}
@@ -84,6 +85,10 @@ a.oncard:hover{ transform:translateY(-3px); }
 .pv form{ display:flex; justify-content:flex-end; margin-top:10px; }
 .pv button{ background:transparent; color:#F4EFE4; border:1px solid rgba(244,239,228,.35); border-radius:100px; padding:10px 18px; min-height:44px; cursor:pointer;
   font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; }
+.gp{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; margin-top:calc(var(--u)*4); }
+.gp figure{ margin:0; } .gp img{ width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:3px; display:block; filter:var(--photo); }
+.gp figcaption{ font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--navy-70); margin-top:8px; }
+@media(max-width:700px){ .gp{ grid-template-columns:1fr 1fr; } }
 </style>
 </head>
 <body>
@@ -91,21 +96,62 @@ a.oncard:hover{ transform:translateY(-3px); }
 <main id="main">
 <section data-hero class="hx hero2 zm night" data-init="zoomthru">
   <div class="zm-pin"><div class="zm-stage"><img class="zm-i" style="--i:0" src="img/hero/events-a528e8a2.webp" width="1000" height="1334" alt=""><img class="zm-i" style="--i:1" src="img/hero/events-d79bc1fd.webp" width="1000" height="1334" alt=""><img class="zm-i" style="--i:2" src="img/hero/events-a42a8f80.webp" width="1000" height="1334" alt=""><img class="zm-i" style="--i:3" src="img/hero/events-2325f63c.webp" width="1000" height="1334" alt=""><img class="zm-i" style="--i:4" src="img/hero/events-43b5004e.webp" width="1000" height="1250" alt=""><img class="zm-i" style="--i:5" src="img/hero/events-f7f6f660.webp" width="1000" height="1250" alt=""><img class="zm-i" style="--i:6" src="img/hero/events-a03aecf4.webp" width="1000" height="1250" alt=""><img class="zm-i" style="--i:7" src="img/hero/events-037fca34.webp" width="1000" height="1250" alt=""><img class="zm-i" style="--i:8" src="img/hero/events-b7f730ae.webp" width="1000" height="1250" alt=""><img class="zm-i" style="--i:9" src="img/hero/events-b828b8d3.webp" width="1000" height="1243" alt=""></div>
-    <div class="zm-copy"><p class="k">Events</p><span class="gur-mid" lang="pa">ਸਮਾਗਮ</span><h1>What's on, <em>and what has been.</em></h1><div class="meta"><span>On record<b>114</b></span><span>Since<b>2017</b></span><span>Fee<b>None</b></span></div></div></div>
+    <div class="zm-copy"><p class="k">Events</p><span class="gur-mid" lang="pa">ਸਮਾਗਮ</span><h1>What's on, <em>and what has been.</em></h1><p class="hxlede">What runs every week and through the year, then the poster for every Samagam, camp, talk and tournament on record, newest first.</p><figure class="pangti"><p class="gur" lang="pa">ਜਿਥੈ ਜਾਇ ਬਹੈ ਮੇਰਾ ਸਤਿਗੁਰੂ ਸੋ ਥਾਨੁ ਸੁਹਾਵਾ ਰਾਮ ਰਾਜੇ ॥</p><figcaption>Sri Guru Granth Sahib Ji, Ang 450</figcaption></figure><div class="meta"><span>On record<b>114</b></span><span>Since<b>2017</b></span><span>Fee<b>None</b></span></div></div></div>
 </section>
 
 <div class="wrapx paper">
+  <div class="opening" style="padding:calc(var(--u)*4) 0 0">
+  <p style="margin:0 0 1em;color:var(--navy-70);font-size:max(17px,calc(var(--u)*1.2));max-width:56ch">Guru Ram Das Ji sings of the place where their Satguru goes and sits, and calls it lovely. A Samagam, a gathering of the Sangat, is built on that picture. A hall is cleared, the Sangat sits together, and the room becomes what the people in it make it.</p>
+  </div>
   <section aria-labelledby="on-h">
     <h2 id="on-h" class="eyebrow">What's on</h2>
     <div class="on3">
       <a class="oncard ink" href="classes.html" data-fade><small>Every week</small><b>The classes</b>
-        <p>Santhiya, kirtan, tabla, archery and katha, free, at Gipsy Lane and Guru Tegh Bahadur Gurdwara.</p><span class="go">The timetable →</span></a>
+        <p>Free classes in Santhiya, Kirtan, Tabla, archery and Katha, in Leicester, at our Vidyalas worldwide, and online.</p><span class="go">See the classes →</span></a>
       <a class="oncard" href="calendar.html" data-fade><small>Gurpurabs</small><b>The Sikhi Calendar</b>
-        <p>Every gurpurab, sangrand and masya, worked out from the Nanakshahi jantri.</p><span class="go">Open the calendar →</span></a>
+        <p>Every gurpurab, sangrand and masya, calculated from the Nanakshahi jantri.</p><span class="go">Open the calendar →</span></a>
       <a class="oncard" href="https://www.instagram.com/shaheedi_bunga_uk/" target="_blank" rel="noopener" data-fade><small>Camps</small><b>Announced first on Instagram</b>
-        <p>Camps and samagams go out on Instagram before anywhere else. To be told directly, message us.</p><span class="go">@shaheedi_bunga_uk →</span></a>
+        <p>We post camps and Samagams on Instagram before anywhere else, often less than a week before they start. To hear about them directly, message us.</p><span class="go">Follow @shaheedi_bunga_uk →</span></a>
     </div>
   </section>
+
+  <section class="band">
+    <h2 data-fade><small>Through the year</small>The year at Shaheedi Bunga</h2>
+    <div class="body">
+      <p data-fade>Most of the events in the archive below come round every year, at roughly these times.</p>
+      <p data-fade><b>February to May.</b> Gurbani Santhiya Camps at Gurudwara Shri Guru Dashmesh Sahib in the half-term and Easter holidays.</p>
+      <p data-fade><b>March.</b> The Patshahi Dasvi National Hola Mohalla UK, with Gatka and tag archery tournaments.</p>
+      <p data-fade><b>The school holidays.</b> The Sikhi Camp for children aged 5 to 18. <a href="contact.html">Contact us</a> to ask about the next one.</p>
+      <p data-fade><b>August.</b> The Gurbani Vidhya Camp, two weeks at Guru Tegh Bahadur Gurdwara reading one Granth through.</p>
+      <p data-fade><b>Late November or early December.</b> The 25 Singh Lareevaar Sri Akhand Paath Samagam, over three days. It has been held every winter since 2021.</p>
+    </div>
+  </section>
+
+  <section class="band">
+    <h2 data-fade><small>On YouTube</small>Watch the Samagams live</h2>
+    <div class="body">
+      <p data-fade>If you can't be in Leicester, you can watch the larger Samagams on our YouTube channel, streamed from the first day to the bhog. Recorded talks and the Katha of Sri Guru Granth Sahib Ji are on the channel too.</p>
+      <p data-fade><a href="https://www.youtube.com/@shaheedibunga" target="_blank" rel="noopener">Watch on YouTube →</a></p>
+    </div>
+  </section>
+
+  <section class="band">
+  <div class="gp">
+    <figure><img src="img/lib/2019/2019-03-hola-mohalla-2019-mela-048.jpg" data-sizes="(max-width:700px) 50vw, 30vw" alt="Two gatka fighters sparring with shields and swords on the dusty mela ground, a crowd around them." loading="lazy"><figcaption>Hola Mohalla · March 2019</figcaption></figure>
+    <figure><img src="img/lib/2019/2019-03-hola-mohalla-2019-mela-049.jpg" data-sizes="(max-width:700px) 50vw, 30vw" alt="Gatka fighters in blue bana at the mela, swords and shields up, banners behind them." loading="lazy"><figcaption>Hola Mohalla · March 2019</figcaption></figure>
+    <figure><img src="img/lib/2019/2019-03-hola-mohalla-build-up-2019-055.jpg" data-sizes="(max-width:700px) 50vw, 30vw" alt="A group of Singhs in white and blue standing together by the tents." loading="lazy"><figcaption>Hola Mohalla build-up · March 2019</figcaption></figure>
+    <figure><img src="img/lib/2024/2024-03-hola-mohalla-uk-2024-leicester-591.jpg" data-sizes="(max-width:700px) 50vw, 30vw" alt="A Singh in blue bana drawing a bow in the open air, a brick building behind." loading="lazy"><figcaption>Hola Mohalla UK · March 2024</figcaption></figure>
+    <figure><img src="img/lib/2024/2024-03-hola-mohalla-uk-2024-leicester-593.jpg" data-sizes="(max-width:700px) 50vw, 30vw" alt="Kirtan from the stage at Hola Mohalla UK 2024, the Sangat seated below." loading="lazy"><figcaption>Hola Mohalla UK · March 2024</figcaption></figure>
+    <figure><img src="img/lib/2019/2019-11-nagar-kirtan-leicester-3-nov-2019-127.jpg" data-sizes="(max-width:700px) 50vw, 30vw" alt="Singhs in blue performing gatka on a town street, passers-by looking on." loading="lazy"><figcaption>Nagar Kirtan, Leicester · November 2019</figcaption></figure>
+    <figure><img src="img/lib/2019/2019-11-nagar-kirtan-leicester-3-nov-2019-128.jpg" data-sizes="(max-width:700px) 50vw, 30vw" alt="Two Singhs in blue sparring with sticks and shields on the street, onlookers around them." loading="lazy"><figcaption>Nagar Kirtan, Leicester · November 2019</figcaption></figure>
+    <figure><img src="img/lib/2024/2024-04-vaisakhi-john-lewis-april-2024-620.jpg" data-sizes="(max-width:700px) 50vw, 30vw" alt="A Happy Vaisakhi display, mannequins in Sikh dress in blues framed by white flowers." loading="lazy"><figcaption>Vaisakhi · April 2024</figcaption></figure>
+    <figure><img src="img/lib/2024/2024-04-vaisakhi-john-lewis-april-2024-621.jpg" data-sizes="(max-width:700px) 50vw, 30vw" alt="A glass case of old shastar under a Khanda banner, with notices beside it." loading="lazy"><figcaption>Vaisakhi · April 2024</figcaption></figure>
+  </div>
+  </section>
+<figure class="chart"><figcaption class="chart-t">Events on record, year by year</figcaption>
+<svg viewBox="0 0 640 260" role="img" aria-label="Bar chart of events per year, 2017 to 2026: 2017 4, 2018 6, 2019 7, 2020 1, 2021 11, 2022 16, 2023 12, 2024 15, 2025 31, 2026 11."><line class="g" x1="34" x2="632" y1="230.0" y2="230.0"/><text class="ax" x="28" y="234.0" text-anchor="end">0</text><line class="g" x1="34" x2="632" y1="170.0" y2="170.0"/><text class="ax" x="28" y="174.0" text-anchor="end">10</text><line class="g" x1="34" x2="632" y1="110.0" y2="110.0"/><text class="ax" x="28" y="114.0" text-anchor="end">20</text><line class="g" x1="34" x2="632" y1="50.0" y2="50.0"/><text class="ax" x="28" y="54.0" text-anchor="end">30</text><rect class="br" x="44.8" y="206.0" width="38.3" height="24.0" rx="2"/><text class="lb" x="63.9" y="200.0" text-anchor="middle">4</text><text class="ax" x="63.9" y="250" text-anchor="middle">2017</text><rect class="br" x="104.6" y="194.0" width="38.3" height="36.0" rx="2"/><text class="lb" x="123.7" y="188.0" text-anchor="middle">6</text><text class="ax" x="123.7" y="250" text-anchor="middle">2018</text><rect class="br" x="164.4" y="188.0" width="38.3" height="42.0" rx="2"/><text class="lb" x="183.5" y="182.0" text-anchor="middle">7</text><text class="ax" x="183.5" y="250" text-anchor="middle">2019</text><rect class="br" x="224.2" y="224.0" width="38.3" height="6.0" rx="2"/><text class="lb" x="243.3" y="218.0" text-anchor="middle">1</text><text class="ax" x="243.3" y="250" text-anchor="middle">2020</text><rect class="br" x="284.0" y="164.0" width="38.3" height="66.0" rx="2"/><text class="lb" x="303.1" y="158.0" text-anchor="middle">11</text><text class="ax" x="303.1" y="250" text-anchor="middle">2021</text><rect class="br" x="343.8" y="134.0" width="38.3" height="96.0" rx="2"/><text class="lb" x="362.9" y="128.0" text-anchor="middle">16</text><text class="ax" x="362.9" y="250" text-anchor="middle">2022</text><rect class="br" x="403.6" y="158.0" width="38.3" height="72.0" rx="2"/><text class="lb" x="422.7" y="152.0" text-anchor="middle">12</text><text class="ax" x="422.7" y="250" text-anchor="middle">2023</text><rect class="br" x="463.4" y="140.0" width="38.3" height="90.0" rx="2"/><text class="lb" x="482.5" y="134.0" text-anchor="middle">15</text><text class="ax" x="482.5" y="250" text-anchor="middle">2024</text><rect class="br" x="523.2" y="44.0" width="38.3" height="186.0" rx="2"/><text class="lb" x="542.3" y="38.0" text-anchor="middle">31</text><text class="ax" x="542.3" y="250" text-anchor="middle">2025</text><rect class="br" x="583.0" y="164.0" width="38.3" height="66.0" rx="2"/><text class="lb" x="602.1" y="158.0" text-anchor="middle">11</text><text class="ax" x="602.1" y="250" text-anchor="middle">2026</text></svg>
+<p class="chart-c">Samagams, camps, talks, tournaments and classes in the archive, 114 in all, by the year each began. 2026 is to the end of October. Source: the events archive on this site.</p>
+<details class="chart-n"><summary>Show the numbers</summary><table><thead><tr><th>Year</th><th>Events</th></tr></thead><tbody><tr><td>2017</td><td>4</td></tr><tr><td>2018</td><td>6</td></tr><tr><td>2019</td><td>7</td></tr><tr><td>2020</td><td>1</td></tr><tr><td>2021</td><td>11</td></tr><tr><td>2022</td><td>16</td></tr><tr><td>2023</td><td>12</td></tr><tr><td>2024</td><td>15</td></tr><tr><td>2025</td><td>31</td></tr><tr><td>2026</td><td>11</td></tr></tbody></table></details></figure>
 
   <div class="filters" role="group" aria-label="Show events of one kind">
     <button type="button" aria-pressed="true" data-f="all">All</button>

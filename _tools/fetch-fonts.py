@@ -24,7 +24,8 @@ CSS_URL = ("https://fonts.googleapis.com/css2"
            # the four the Sikhi Calendar page uses. It linked Google directly,
            # which would have undone the whole point of self-hosting - and made
            # the privacy page's "this site contacts nobody" untrue again.
-           "&family=Cormorant+Garamond:wght@400;500;600"
+           # italic too: the gold <em> words were a slanted roman without it
+           "&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600"
            "&family=Spectral:wght@400;500;600"
            "&family=Jost:wght@400;500;600"
            "&family=Noto+Sans+Gurmukhi:wght@400;500;600"
@@ -82,13 +83,19 @@ def main():
     os.makedirs(FONT_DIR, exist_ok=True)
     slug = lambda s: re.sub(r"[^a-z0-9]+", "-", s.lower()).strip("-")
 
-    out, written, kept = [HEADER], {}, 0
+    out, written, by_url, kept = [HEADER], {}, {}, 0
     for block, subset in blocks:
         if subset not in KEEP:
             continue
         fam = re.search(r"font-family:\s*'([^']+)'", block).group(1)
         url = re.search(r"url\((https://[^)]+)\)", block).group(1)
-        name = f"{slug(fam)}-{subset}.woff2"
+        italic = re.search(r"font-style:\s*italic", block) is not None
+        name = f"{slug(fam)}{'-italic' if italic else ''}-{subset}.woff2"
+
+        # One file, one name: a variable family serves the same URL for every
+        # weight, and three names for it would be three downloads.
+        if url in by_url:
+            name = by_url[url]
 
         # A variable family serves one file for every weight, so family+subset
         # is a unique name. A static family serves one file PER WEIGHT, and
@@ -106,6 +113,7 @@ def main():
             with open(os.path.join(FONT_DIR, name), "wb") as fh:
                 fh.write(data)
             written[name] = url
+            by_url[url] = name
             print(f"  {len(data):>8,}B  {name}")
 
         new = re.sub(r"url\(https://[^)]+\)", f"url(/lib/fonts/{name})", block)

@@ -91,6 +91,12 @@ html[data-mood="dark"] .hx{ --ink:#F3EEE2; --muted:rgba(243,238,226,.74); --gold
 .soon b{ font-family:var(--display); font-weight:500; font-size:max(24px,calc(var(--u)*2.2)); display:block; }
 .soon span{ font-family:var(--mono); font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--gold-text); }
 .empty{ display:none; color:var(--navy-70); font-size:17px; } .empty.on{ display:block; }
+/* two portrait photographs side by side (after about.html's .sangat figure) */
+.pair{ display:grid; grid-template-columns:1fr 1fr; gap:calc(var(--u)*1.4); margin:calc(var(--u)*4) 0; max-width:960px; }
+.pair figure{ margin:0; }
+.pair img{ width:100%; aspect-ratio:3/4; object-fit:cover; border-radius:3px; display:block; filter:var(--photo); }
+.pair figcaption{ font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--navy-70); margin-top:12px; }
+@media(max-width:600px){ .pair{ grid-template-columns:1fr; } }
 </style>
 </head>
 <body>
@@ -98,7 +104,7 @@ html[data-mood="dark"] .hx{ --ink:#F3EEE2; --muted:rgba(243,238,226,.74); --gold
 <header class="mast">
   <a class="brand" href="index.html" aria-label="Shaheedi Bunga, home"><img src="img/gurmat-vidyala-84.png" alt="" width="40" height="40" srcset="img/webp/gurmat-vidyala-84-84.webp">
     <span><b>Shaheedi Bunga</b><i>Gurmat Vidyala</i></span></a>
-  <nav aria-label="Main" id="site-nav"><div class="vid"><button class="vid-btn" type="button" aria-expanded="false" aria-controls="vid-panel">Vidyale<i aria-hidden="true"></i></button><div class="vid-panel" id="vid-panel"><div class="vid-grid"><a class="vid-item" href="santhiya.html"><span class="vid-gur" lang="pa">ਸੰਥਿਆ ਵਿਦਿਆਲਾ</span><b>Santhiya</b><small>Reading sudh Gurbani</small></a><a class="vid-item" href="kirtan.html"><span class="vid-gur" lang="pa">ਕੀਰਤਨ ਵਿਦਿਆਲਾ</span><b>Kirtan</b><small>Tanti saaj and raag</small></a><a class="vid-item" href="archery.html"><span class="vid-gur" lang="pa">ਤੀਰ ਅੰਦਾਜ਼ੀ</span><b>Archery Akhara</b><small>Sundays, ages 14 and over</small></a><a class="vid-item" href="classes.html#tabla"><span class="vid-gur" lang="pa">ਤਬਲਾ ਤੇ ਜੋੜੀ</span><b>Tabla &amp; Jori</b><small>Running: ask</small></a><a class="vid-item" href="classes.html#katha"><span class="vid-gur" lang="pa">ਕਥਾ ਵਿਦਿਆਲਾ</span><b>Katha</b><small>Page coming</small></a><a class="vid-item" href="classes.html#itihaas"><span class="vid-gur" lang="pa">ਇਤਿਹਾਸ ਵਿਦਿਆਲਾ</span><b>Itihaas</b><small>Wednesday evenings</small></a></div><div class="vid-foot"><a href="classes.html">All classes →</a><a href="camps.html">Camps →</a></div></div></div><a href="events.html">Events</a><a href="calendar.html">Calendar</a><a href="gallery.html">Gallery</a><a href="resources.html" aria-current="page">Resources</a><a href="about.html">About</a><a href="contact.html">Contact</a><a href="donate.html">Donate</a></nav>
+  <nav aria-label="Main" id="site-nav"><div class="vid"><button class="vid-btn" type="button" aria-expanded="false" aria-controls="vid-panel">Vidyale<i aria-hidden="true"></i></button><div class="vid-panel" id="vid-panel"><div class="vid-grid"><a class="vid-item" href="santhiya.html"><span class="vid-gur" lang="pa">ਸੰਥਿਆ ਵਿਦਿਆਲਾ</span><b>Santhiya</b><small>Reading sudh Gurbani</small></a><a class="vid-item" href="kirtan.html"><span class="vid-gur" lang="pa">ਕੀਰਤਨ ਵਿਦਿਆਲਾ</span><b>Kirtan</b><small>Tanti Saaj and Raag</small></a><a class="vid-item" href="archery.html"><span class="vid-gur" lang="pa">ਤੀਰ ਅੰਦਾਜ਼ੀ</span><b>Archery Akhara</b><small>Traditional archery</small></a><a class="vid-item" href="tabla.html"><span class="vid-gur" lang="pa">ਤਬਲਾ ਤੇ ਜੋੜੀ</span><b>Tabla &amp; Jori</b><small>Locally and online</small></a><a class="vid-item" href="katha.html"><span class="vid-gur" lang="pa">ਕਥਾ ਵਿਦਿਆਲਾ</span><b>Katha</b><small>Explaining Gurbani to a Sangat</small></a><a class="vid-item" href="itihaas.html"><span class="vid-gur" lang="pa">ਇਤਿਹਾਸ ਵਿਦਿਆਲਾ</span><b>Itihaas</b><small>Sikh history</small></a></div><div class="vid-foot"><a href="classes.html">All classes →</a><a href="camps.html">Camps →</a></div></div></div><a href="events.html">Events</a><a href="calendar.html">Calendar</a><a href="gallery.html">Gallery</a><a href="resources.html" aria-current="page">Resources</a><a href="press.html">Press</a><a href="beyond.html">Beyond the Vidyala</a><a href="about.html">About</a><a href="contact.html">Contact</a><a href="donate.html">Donate</a></nav>
   <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav"><span>Menu</span><i aria-hidden="true"></i></button>
   <a class="wa" href="https://wa.me/447394848407?text=Sat%20Sri%20Akal%20%E2%80%94%20I'd%20like%20to%20ask%20about%20classes." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.6 2 2.18 6.42 2.18 11.86c0 1.74.46 3.44 1.32 4.94L2.1 22l5.34-1.4a9.8 9.8 0 0 0 4.6 1.17h.01c5.43 0 9.85-4.42 9.85-9.86 0-2.63-1.02-5.11-2.88-6.97A9.79 9.79 0 0 0 12.04 2z"/></svg>WhatsApp</a>
 </header>
@@ -106,7 +112,7 @@ html[data-mood="dark"] .hx{ --ink:#F3EEE2; --muted:rgba(243,238,226,.74); --gold
 
 <main id="main">
 <section data-hero class="hx hero2 tys night" data-init="typesearch">
-  <div class="tys-head"><p class="k">Resources</p><span class="gur-mid" lang="pa">ਪੋਥੀਆਂ</span><h1>Granths, pothis <em>and talks.</em></h1></div>
+  <div class="tys-head"><p class="k">Resources</p><span class="gur-mid" lang="pa">ਪੋਥੀਆਂ</span><h1>Granths, Pothis <em>and talks.</em></h1><figure class="pangti"><p class="gur" lang="pa">ਪੋਥੀ ਪਰਮੇਸਰ ਕਾ ਥਾਨੁ ॥</p><figcaption>Sri Guru Granth Sahib Ji, Ang 1226</figcaption></figure></div>
   <label class="tys-box"><span class="k">Search 44 titles</span><input type="search" placeholder="Search" autocomplete="off" aria-label="Search the resources"></label>
   <p class="k tys-n" aria-live="polite">44 titles</p>
   <ol class="tys-list"><li><span>1604 Kartarpuri Bir Some Photos.pdf</span><small>Santheya Granths · 118.2 MB</small></li><li><span>Kabit Bhai Gurdas Ji.pdf</span><small>Santheya Granths · 3.5 MB</small></li><li><span>Sri Guru Granth Sahib Ji.pdf</span><small>Santheya Granths · 464.9 MB</small></li><li><span>VaranBhaiGurdasJiVolII.pdf</span><small>Santheya Granths · 4.4 MB</small></li><li lang="pa"><span>ਸੰਪੂਰਨ ਭਾਈ ਨੰਦਲਾਲ ਜੀ ਗ੍ਰੰਥਾਵਲੀ — ਸੰਥਿਆ ਪੋਥੀ</span><small>Santheya Granths · 99.3 MB</small></li><li lang="pa"><span>ਟਕਸਾਲੀ ਗੁਟਕਾ ਸਾਹਿਬ (ਭਿੰਡਰਾਂ)</span><small>Santheya Granths · 79.7 MB</small></li><li lang="pa"><span>ਪੰਜ ਗ੍ਰੰਥੀ ਲੜੀਵਾਰ</span><small>Santheya Granths · 66.3 MB</small></li><li lang="pa"><span>ਬਾਈ ਵਾਰਾਂ ਲੜੀਵਾਰ</span><small>Santheya Granths · 287.3 MB</small></li><li lang="pa"><span>ਭਗਤ ਬਾਣੀ ਲੜੀਵਾਰ</span><small>Santheya Granths · 80.6 MB</small></li><li lang="pa"><span>ਲੜੀਵਾਰ ਦਸ ਗ੍ਰੰਥੀ (ਨਿਊ ਛਾਪਾ)</span><small>Santheya Granths · 199.9 MB</small></li><li lang="pa"><span>ਲੜੀਵਾਰ ਪੰਜ ਗ੍ਰੰਥੀ (ਦਮਦਮੀ ਟਕਸਾਲ)</span><small>Santheya Granths · 64.2 MB</small></li><li lang="pa"><span>ਅਸਟਮ ਬਲਬੀਰਾ — ਜੀਵਨੀ ਗੁਰੂ ਹਰਿ ਕ੍ਰਿਸਨ ਜੀ</span><small>Katha Granths · 63.3 MB</small></li><li lang="pa"><span>ਆਦਿ ਸਿੱਖ ਤੇ ਆਦਿ ਸਾਖੀਆਂ — ਸਤਿਬੀਰ ਸਿੰਘ</span><small>Katha Granths · 11.1 MB</small></li><li lang="pa"><span>ਇਤਿ ਜਿਨਿ ਕਰੀ — ਜੀਵਨੀ ਗੁਰੂ ਤੇਗ ਬਹਾਦਰ ਸਾਹਿਬ ਜੀ</span><small>Katha Granths · 11.2 MB</small></li><li lang="pa"><span>ਸਿੱਖ ਸੰਪ੍ਰਦਾਵਲੀ</span><small>Katha Granths · 19.7 MB</small></li><li lang="pa"><span>ਸਿੱਖ ਸੰਪਰਦਾਵਲੀ — ਪਿਆਰਾ ਸਿੰਘ ਪਦਮ</span><small>Katha Granths · 19.7 MB</small></li><li lang="pa"><span>ਸ੍ਰੀ ਗੁਰੂ ਗ੍ਰੰਥ ਪ੍ਰਕਾਸ</span><small>Katha Granths · 8.7 MB</small></li><li lang="pa"><span>ਕੁਦਰਤੀ ਨੂਰ — ਜੀਵਨੀ ਗੁਰੂ ਅੰਗਦ ਦੇਵ ਜੀ</span><small>Katha Granths · 138.8 MB</small></li><li lang="pa"><span>ਖਾਲਸਈ ਬੋਲੇ — ਪ੍ਰੋ ਪਿਆਰਾ ਸਿੰਘ ਪਦਮ</span><small>Katha Granths · 1,015 KB</small></li><li lang="pa"><span>ਗੁਰੁ ਭਾਰੀ — ਜੀਵਨੀ ਗੁਰੂ ਹਰਿਗੋਬਿੰਦ ਸਾਹਿਬ ਜੀ</span><small>Katha Granths · 63.2 MB</small></li><li lang="pa"><span>ਗੁਰੂ ਕੀਆਂ ਸਾਖੀਆਂ</span><small>Katha Granths · 14.9 MB</small></li><li lang="pa"><span>ਨਿਰਭਉ ਨਿਰਵੈਰ — ਜੀਵਨੀ ਗੁਰੂ ਹਰਿ ਰਾਇ ਜੀ</span><small>Katha Granths · 66.8 MB</small></li><li lang="pa"><span>ਪਰਤਖ੍ਹ ਹਰਿ — ਜੀਵਨੀ ਗੁਰੂ ਅਰਜਨ ਦੇਵ ਜੀ</span><small>Katha Granths · 33.1 MB</small></li><li lang="pa"><span>ਪਰਬਤੁ ਮੇਰਾਣੁ — ਜੀਵਨੀ ਗੁਰੂ ਅਮਰਦਾਸ ਜੀ</span><small>Katha Granths · 33 MB</small></li><li lang="pa"><span>ਪੁਰਖ ਭਗਵੰਤ — ਜੀਵਨੀ ਗੁਰੂ ਗੋਬਿੰਦ ਸਿੰਘ ਜੀ</span><small>Katha Granths · 76.4 MB</small></li><li lang="pa"><span>ਪੂਰੀ ਹੋਈ ਕਰਾਮਾਤ — ਜੀਵਨੀ ਗੁਰੂ ਰਾਮਦਾਸ ਜੀ</span><small>Katha Granths · 18.9 MB</small></li><li lang="pa"><span>ਬਚਨ ਸਾਈਂ ਲੋਕਾਂ ਦੇ ਤਥਾ ਸੰਤ ਬਚਨਾਵਲੀ</span><small>Katha Granths · 14.7 MB</small></li><li lang="pa"><span>ਬਲਿਓ ਚਿਰਾਗ — ਜੀਵਨੀ ਸ੍ਰੀ ਗੁਰੂ ਨਾਨਕ ਦੇਵ ਜੀ</span><small>Katha Granths · 49 MB</small></li><li><span>Guru Nanak Dev Ji — folder</span><small>Sri Nanak Prakash · —</small></li><li><span>Raas 9, Suraj Parkash Granth.pdf</span><small>Sri Nanak Prakash · 39.2 MB</small></li><li><span>Week 1 — Katha Sri Guru Tegh Bahadur Sahib Ji (Chapters 1–14)</span><small>Weekly Talks · 116.6 MB</small></li><li><span>Week 2 — Beyond the Mind</span><small>Weekly Talks · 7.8 MB</small></li><li><span>Week 3 — The Importance of Sri Dasam Guru Granth Sahib Ji</span><small>Weekly Talks · 3.8 MB</small></li><li><span>Week 4 — The Early Life of Patshahi 9</span><small>Weekly Talks · 49.2 MB</small></li><li><span>Week 5 — The Common Sense of Khalistan, by Bhai Deep Singh Ji</span><small>Weekly Talks · 24.4 MB</small></li><li><span>Week 6 — Role of Akal Takhat in Sikh Governance</span><small>Weekly Talks · 29.8 MB</small></li><li><span>Week 7 — Sincerity to Sikhi</span><small>Weekly Talks · 20 MB</small></li><li><span>Week 8 — Power of Sangat</span><small>Weekly Talks · 1.4 MB</small></li><li><span>Week 9 — The Evolution of Sri Guru Granth Sahib Ji Maharaj, by Bhai Amarjeet Singh</span><small>Weekly Talks · 8.9 MB</small></li><li><span>Week 10 — Katha Sri Guru Tegh Bahadur Sahib Ji (Chapters 15–23)</span><small>Weekly Talks · 116.6 MB</small></li><li><span>Week 11 — Katha Sri Guru Tegh Bahadur Sahib Ji (Chapters 23–29)</span><small>Weekly Talks · 136.4 MB</small></li><li><span>Week 12 — Social Media and Sikhi</span><small>Weekly Talks · 28.8 MB</small></li><li><span>Week 13 — Emergency, Grooming and Targeting of Sikhs (national seminar)</span><small>Weekly Talks · 10.9 MB</small></li><li><span>Week 14 — Katha Sri Guru Tegh Bahadur Sahib Ji (Chapters 30–32)</span><small>Weekly Talks · 12.6 MB</small></li></ol>
@@ -114,10 +120,17 @@ html[data-mood="dark"] .hx{ --ink:#F3EEE2; --muted:rgba(243,238,226,.74); --gold
 
 <a class="cal" href="/sikhi-calendar/" data-fade>
   <span class="gur" lang="pa">ਸਿੱਖੀ ਕੈਲੰਡਰ</span>
-  <span><b>Sikhi Calendar</b><p>The Nanakshahi calendar: today's date, the gurpurabs coming up, and the month and the year at a glance.
-    Panjabi dates first, English dates underneath.</p></span>
+  <span><b>Sikhi Calendar</b><p>See today's date in the Nanakshahi calendar, the gurpurabs coming up, and the whole month and year.
+    Panjabi dates come first, with the English dates underneath.</p></span>
   <span class="go">Open the calendar →</span>
 </a>
+
+<div class="wrapx paper">
+  <div class="pair">
+    <figure data-fade><img src="img/p-paath-reading.jpg" alt="A Singh reading from the saroop of Sri Guru Granth Sahib Ji at a paath samagam, the hall behind." loading="lazy" width="1500" height="2000" srcset="img/webp/p-paath-reading-480.webp 480w, img/webp/p-paath-reading-960.webp 960w, img/p-paath-reading.jpg 1500w" sizes="(max-width:600px) 100vw, 45vw"><figcaption>Paath samagam</figcaption></figure>
+    <figure data-fade><img src="img/p-santhiya-mic.jpg" alt="A Singh in a santhiya class reading from a pothi on a rehal into a microphone." loading="lazy" width="1500" height="2000" srcset="img/webp/p-santhiya-mic-480.webp 480w, img/webp/p-santhiya-mic-960.webp 960w, img/p-santhiya-mic.jpg 1500w" sizes="(max-width:600px) 100vw, 45vw"><figcaption>Santhiya class</figcaption></figure>
+  </div>
+</div>
 
 <div class="lib paper">
   <nav class="toc" aria-label="Collections">
@@ -125,17 +138,22 @@ html[data-mood="dark"] .hx{ --ink:#F3EEE2; --muted:rgba(243,238,226,.74); --gold
     <a href="#katha">Katha Granths<span>17</span></a>
     <a href="#nanak">Sri Nanak Prakash<span>2</span></a>
     <a href="#talks">Weekly Talks<span>14</span></a>
+    <a href="#watch">Watch and listen</a>
     <a href="#soon">Coming soon<span>2</span></a>
   </nav>
   <div>
-    <label class="find"><span class="sr">Find a granth or talk</span>
-      <input type="search" id="q" placeholder="Find a granth or a talk…" autocomplete="off">
+    <label class="find"><span class="sr">Find a Granth or talk</span>
+      <input type="search" id="q" placeholder="Find a Granth or a talk…" autocomplete="off">
       <output id="qn" for="q" aria-live="polite"></output></label>
-    <p class="empty" id="empty">Nothing matches that. Try a shorter word, or the Gurmukhi spelling.</p>
+    <p class="empty" id="empty">Nothing matches that search. Try a shorter word, or the Gurmukhi spelling.</p>
 
+    <div class="opening" style="padding:calc(var(--u)*4) 0 0">
+    <figure class="pangti" style="margin:0 0 1em"><p class="gur" lang="pa">ਅਖੁਟੁ ਖਜਾਨਾ ਸਤਿਗੁਰਿ ਦੀਆ ਤੋਟਿ ਨਹੀ ਰੇ ਮੂਕੇ ॥੨॥</p><figcaption>Sri Guru Granth Sahib Ji, Ang 215</figcaption></figure>
+    <p style="margin:0 0 1em;color:var(--navy-70);font-size:max(17px,calc(var(--u)*1.2));max-width:56ch">Guru Arjan Dev Ji sings of a treasure that was given and never runs short. The Granths, Pothis and talks on this page are kept in that spirit, as a store a student can return to again and again. Take what you need, and come back for more.</p>
+    </div>
     <section class="coll" id="santheya">
       <div class="coll-head"><h2>Santheya Granths</h2><span class="coll-meta">11 files · about 1.5 GB</span></div>
-      <p class="about">The pothis santhiya is read from: larivaar granths, gutke, and the Kartarpuri Bir photographs.</p>
+      <p class="about">Santhiya classes read from these Pothis. They include larivaar Granths, Gutke and photographs of the Kartarpuri Bir.</p>
       <ul class="files">
         <li><span class="nm">1604 Kartarpuri Bir Some Photos.pdf</span><span class="sz">118.2 MB</span></li>
         <li><span class="nm">Kabit Bhai Gurdas Ji.pdf</span><span class="sz">3.5 MB</span></li>
@@ -154,7 +172,7 @@ html[data-mood="dark"] .hx{ --ink:#F3EEE2; --muted:rgba(243,238,226,.74); --gold
 
     <section class="coll" id="katha">
       <div class="coll-head"><h2>Katha Granths</h2><span class="coll-meta">17 files · about 0.6 GB</span></div>
-      <p class="about">The jeevani of each Guru Sahib, the sakhian, and the sampardavali: what katha is prepared from.</p>
+      <p class="about">Katha is prepared from these Granths: the jeevani of each Guru Sahib, the sakhian, and the sampardavali.</p>
       <ul class="files">
         <li><span class="nm gur" lang="pa">ਅਸਟਮ ਬਲਬੀਰਾ — ਜੀਵਨੀ ਗੁਰੂ ਹਰਿ ਕ੍ਰਿਸਨ ਜੀ</span><span class="sz">63.3 MB</span></li>
         <li><span class="nm gur" lang="pa">ਆਦਿ ਸਿੱਖ ਤੇ ਆਦਿ ਸਾਖੀਆਂ — ਸਤਿਬੀਰ ਸਿੰਘ</span><span class="sz">11.1 MB</span></li>
@@ -178,8 +196,8 @@ html[data-mood="dark"] .hx{ --ink:#F3EEE2; --muted:rgba(243,238,226,.74); --gold
     </section>
 
     <section class="coll" id="nanak">
-      <div class="coll-head"><h2>Sri Nanak Prakash</h2><span class="coll-meta">a folder · and one pothi</span></div>
-      <p class="about">Suraj Parkash Granth, and a folder of Guru Nanak Dev Ji.</p>
+      <div class="coll-head"><h2>Sri Nanak Prakash</h2><span class="coll-meta">a folder and one Pothi</span></div>
+      <p class="about">This holds one raas of the Suraj Parkash Granth and a folder on Guru Nanak Dev Ji.</p>
       <ul class="files">
         <li><span class="nm">Guru Nanak Dev Ji — folder</span><span class="sz">—</span></li>
         <li><span class="nm">Raas 9, Suraj Parkash Granth.pdf</span><span class="sz">39.2 MB</span></li>
@@ -189,7 +207,7 @@ html[data-mood="dark"] .hx{ --ink:#F3EEE2; --muted:rgba(243,238,226,.74); --gold
 
     <section class="coll" id="talks">
       <div class="coll-head"><h2>Weekly Talks</h2><span class="coll-meta">14 talks · about 0.6 GB</span></div>
-      <p class="about">The Monday Night Talks, written up. Fourteen so far.</p>
+      <p class="about">These are the Monday Night Talks, written up. You can watch the recordings on our YouTube channel, under Watch and listen below.</p>
       <ul class="files">
         <li><span class="nm">Week 1 — Katha Sri Guru Tegh Bahadur Sahib Ji (Chapters 1–14)</span><span class="sz">116.6 MB</span></li>
         <li><span class="nm">Week 2 — Beyond the Mind</span><span class="sz">7.8 MB</span></li>
@@ -209,6 +227,18 @@ html[data-mood="dark"] .hx{ --ink:#F3EEE2; --muted:rgba(243,238,226,.74); --gold
       <a class="open" href="https://drive.google.com/drive/folders/1UjYsBl4pe6IMmdTQdffbGhps8qHxz-k4" target="_blank" rel="noopener">Open in Drive ↗</a>
     </section>
 
+    <section class="coll" id="watch">
+      <div class="coll-head"><h2>Watch and listen</h2></div>
+      <p class="about">Our YouTube channel, @shaheedibunga, has the recordings of our Katha, talks, Kirtan and Santhiya, free for anyone to watch.</p>
+      <p class="about">The larivaar Katha of Sri Guru Granth Sahib Ji goes up almost every day. There are more than 280 episodes so far, taken in order of the Angs, and the Katha has now passed Ang 570.</p>
+      <p class="about">The channel also has 77 Gurmat vichar talks and 52 recordings of Raag Kirtan. For learners there are 32 videos on Kirtan, Tabla and Jori, and 89 videos of Santhiya from Sri Dasam Guru Granth Sahib Ji.</p>
+      <figure class="chart"><figcaption class="chart-t">What is on our YouTube channel</figcaption>
+<svg viewBox="0 0 640 420" role="img" aria-label="Bar chart of our YouTube videos by kind: Katha of Sri Guru Granth Sahib Ji 285, Santhiya of Sri Dasam Guru Granth Sahib Ji 89, Gurmat Vichar talks 77, Live Samagams 73, Camps and events 69, Shorts 61, Gurbani Kirtan 54, Katha of other Granths 52, Raag Kirtan 52, Sakhis and history 48, Gatka and Khalsa sports 34, Learn Kirtan, Tabla and Jori 32, Gurdwara Itihaas 25, Dhadi and Kavishri 23, For children 11, Weekly Divaan 8."><text class="ax" x="240" y="21" text-anchor="end">Katha of Sri Guru Granth Sahib Ji</text><rect class="br" x="250" y="9" width="332.5" height="16" rx="2"/><text class="lb" x="588.5" y="21">285</text><text class="ax" x="240" y="47" text-anchor="end">Santhiya of Sri Dasam Guru Granth Sahib Ji</text><rect class="br" x="250" y="35" width="103.8" height="16" rx="2"/><text class="lb" x="359.8" y="47">89</text><text class="ax" x="240" y="73" text-anchor="end">Gurmat Vichar talks</text><rect class="br" x="250" y="61" width="89.8" height="16" rx="2"/><text class="lb" x="345.8" y="73">77</text><text class="ax" x="240" y="99" text-anchor="end">Live Samagams</text><rect class="br" x="250" y="87" width="85.2" height="16" rx="2"/><text class="lb" x="341.2" y="99">73</text><text class="ax" x="240" y="125" text-anchor="end">Camps and events</text><rect class="br" x="250" y="113" width="80.5" height="16" rx="2"/><text class="lb" x="336.5" y="125">69</text><text class="ax" x="240" y="151" text-anchor="end">Shorts</text><rect class="br" x="250" y="139" width="71.2" height="16" rx="2"/><text class="lb" x="327.2" y="151">61</text><text class="ax" x="240" y="177" text-anchor="end">Gurbani Kirtan</text><rect class="br" x="250" y="165" width="63.0" height="16" rx="2"/><text class="lb" x="319.0" y="177">54</text><text class="ax" x="240" y="203" text-anchor="end">Katha of other Granths</text><rect class="br" x="250" y="191" width="60.7" height="16" rx="2"/><text class="lb" x="316.7" y="203">52</text><text class="ax" x="240" y="229" text-anchor="end">Raag Kirtan</text><rect class="br" x="250" y="217" width="60.7" height="16" rx="2"/><text class="lb" x="316.7" y="229">52</text><text class="ax" x="240" y="255" text-anchor="end">Sakhis and history</text><rect class="br" x="250" y="243" width="56.0" height="16" rx="2"/><text class="lb" x="312.0" y="255">48</text><text class="ax" x="240" y="281" text-anchor="end">Gatka and Khalsa sports</text><rect class="br" x="250" y="269" width="39.7" height="16" rx="2"/><text class="lb" x="295.7" y="281">34</text><text class="ax" x="240" y="307" text-anchor="end">Learn Kirtan, Tabla and Jori</text><rect class="br" x="250" y="295" width="37.3" height="16" rx="2"/><text class="lb" x="293.3" y="307">32</text><text class="ax" x="240" y="333" text-anchor="end">Gurdwara Itihaas</text><rect class="br" x="250" y="321" width="29.2" height="16" rx="2"/><text class="lb" x="285.2" y="333">25</text><text class="ax" x="240" y="359" text-anchor="end">Dhadi and Kavishri</text><rect class="br" x="250" y="347" width="26.8" height="16" rx="2"/><text class="lb" x="282.8" y="359">23</text><text class="ax" x="240" y="385" text-anchor="end">For children</text><rect class="br" x="250" y="373" width="12.8" height="16" rx="2"/><text class="lb" x="268.8" y="385">11</text><text class="ax" x="240" y="411" text-anchor="end">Weekly Divaan</text><rect class="br" x="250" y="399" width="9.3" height="16" rx="2"/><text class="lb" x="265.3" y="411">8</text></svg>
+<p class="chart-c">Public videos on @shaheedibunga by kind, 993 in all (October 2026). Source: our YouTube channel.</p>
+<details class="chart-n"><summary>Show the numbers</summary><table><thead><tr><th>Kind</th><th>Videos</th></tr></thead><tbody><tr><td>Katha of Sri Guru Granth Sahib Ji</td><td>285</td></tr><tr><td>Santhiya of Sri Dasam Guru Granth Sahib Ji</td><td>89</td></tr><tr><td>Gurmat Vichar talks</td><td>77</td></tr><tr><td>Live Samagams</td><td>73</td></tr><tr><td>Camps and events</td><td>69</td></tr><tr><td>Shorts</td><td>61</td></tr><tr><td>Gurbani Kirtan</td><td>54</td></tr><tr><td>Katha of other Granths</td><td>52</td></tr><tr><td>Raag Kirtan</td><td>52</td></tr><tr><td>Sakhis and history</td><td>48</td></tr><tr><td>Gatka and Khalsa sports</td><td>34</td></tr><tr><td>Learn Kirtan, Tabla and Jori</td><td>32</td></tr><tr><td>Gurdwara Itihaas</td><td>25</td></tr><tr><td>Dhadi and Kavishri</td><td>23</td></tr><tr><td>For children</td><td>11</td></tr><tr><td>Weekly Divaan</td><td>8</td></tr></tbody></table></details></figure>
+      <a class="open" href="https://www.youtube.com/@shaheedibunga" target="_blank" rel="noopener">Open on YouTube ↗</a>
+    </section>
+
     <section class="coll" id="soon" style="border-bottom:0">
       <div class="coll-head"><h2>Coming soon</h2></div>
       <div class="soon" style="margin-top:calc(var(--u)*1.6)">
@@ -225,7 +255,7 @@ html[data-mood="dark"] .hx{ --ink:#F3EEE2; --muted:rgba(243,238,226,.74); --gold
   <div class="cols">
     <div><h2>Shaheedi Bunga</h2><p style="margin:0;max-width:34ch">A Sikh education charity in Leicester. Every class is free and taught by volunteers.</p></div>
     <div><h2>Vidyale</h2><a href="santhiya.html">Santhiya</a><a href="kirtan.html">Kirtan</a><a href="archery.html">Archery</a><a href="classes.html">All classes</a><a href="camps.html">Camps</a><a href="events.html">Events</a><a href="calendar.html">Calendar</a></div>
-    <div><h2>Charity</h2><a href="about.html">About</a><a href="donate.html">Donate</a><a href="gallery.html">Gallery</a><a href="resources.html">Resources</a><a href="library.html">Library</a></div>
+    <div><h2>Charity</h2><a href="about.html">About</a><a href="donate.html">Donate</a><a href="gallery.html">Gallery</a><a href="resources.html">Resources</a><a href="library.html">Library</a><a href="beyond.html">Beyond the Vidyala</a><a href="press.html">Press</a></div>
     <div><h2>Contact</h2><a href="https://wa.me/447394848407" target="_blank" rel="noopener">+44 7394 848407</a><a href="mailto:gurmat@shaheedibunga.com">gurmat@shaheedibunga.com</a><a href="safeguarding.html">Safeguarding</a><a href="privacy.html">Privacy</a></div>
   </div>
   <div class="legal"><span>Registered charity in England &amp; Wales · 1185103</span><a href="index.html" style="display:inline-block;padding:4px 0">Home · the Parikrama</a></div>

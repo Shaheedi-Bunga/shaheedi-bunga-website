@@ -1,0 +1,69 @@
+<!--@head title="Shaheedi Bunga Press"-->
+<style>
+/* the picked hero's tokens, from the kit's (as on Katha and Camps); here with a single column, no picture */
+.hx{ --ink:var(--navy); --muted:var(--navy-70); --gold:var(--gold-text); --gold-lite:#B8902F; --night:#070E1E; --night-2:#101C37; --sans:var(--body); }
+html[data-mood="dark"] .hx{ --ink:#F3EEE2; --muted:rgba(243,238,226,.74); --gold:#EBCD88; --gold-lite:#D4AC57; }
+.hx .k{font:11px/1.4 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+.hx.hero{position:relative;display:grid;grid-template-columns:minmax(0,1fr);min-height:0;padding-block:96px 72px;padding-left:max(16px,4vw,env(safe-area-inset-left,0px));padding-right:max(16px,4vw,env(safe-area-inset-right,0px));border-top:1px solid var(--line);overflow:clip}
+.hx.hero.night{background:radial-gradient(90% 70% at 70% 40%,#13203A,var(--night));color:#F3EEE2;--muted:rgba(243,238,226,.74);--gold:#EBCD88;--line:rgba(243,238,226,.14)}
+.hx .copy{min-width:0;max-width:760px}
+.hx .copy h1{font:500 clamp(46px,6.8vw,104px)/.98 var(--display);margin:14px 0 0}
+.hx .copy h1 em{font-style:italic;color:var(--gold)}
+.hx .hxlede{color:var(--muted);max-width:52ch;margin-top:18px;font-size:clamp(16px,1.3vw,19px)}
+.tail{ margin:calc(var(--u)*4) 0 calc(var(--u)*10); color:var(--navy-70); font-size:max(17px,calc(var(--u)*1.2)); max-width:60ch; }
+.tail a{ color:var(--gold-text); }
+.opens a{ text-decoration:none; }
+
+.pl{ list-style:none; margin:0; padding:calc(var(--u)*5) 0 0; display:grid; gap:calc(var(--u)*2); }
+.pl li{ display:grid; grid-template-columns:120px minmax(0,1fr); gap:calc(var(--u)*3); align-items:start; border-top:1px solid var(--line); padding-top:calc(var(--u)*2); }
+.pl h2{ font-family:var(--display); font-weight:500; font-size:max(26px,calc(var(--u)*2.8)); line-height:1; margin:0 0 .4em; letter-spacing:-.01em; }
+.pl p{ margin:0; color:var(--navy-70); font-size:max(16px,calc(var(--u)*1.1)); max-width:56ch; }
+.pl .st{ font-family:var(--mono); font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--gold-text); margin:0 0 .6em; }
+.cv{ aspect-ratio:2/3; border-radius:3px 6px 6px 3px; background:linear-gradient(150deg,#1B2C52,#0B1731); color:#F4EFE4; display:flex; flex-direction:column; justify-content:space-between;
+  padding:12px 10px; border-left:4px solid #D4AC57; box-shadow:0 6px 18px rgba(11,23,49,.22); }
+.cv-t{ font-family:var(--display); font-size:15px; line-height:1.1; }
+.cv-s{ font-family:var(--mono); font-size:9px; letter-spacing:.14em; text-transform:uppercase; color:#EBCD88; }
+.prep{ margin:calc(var(--u)*5) 0 0; padding-top:calc(var(--u)*2); border-top:1px solid var(--line); }
+.prep h2{ font-family:var(--display); font-weight:500; font-size:max(26px,calc(var(--u)*2.8)); margin:0 0 .5em; }
+.prep p{ margin:0; color:var(--navy-70); font-size:max(16px,calc(var(--u)*1.1)); max-width:60ch; }
+.opens{ margin-top:calc(var(--u)*4); }
+.open{ display:inline-flex; gap:.6em; font-family:var(--mono); font-size:11px; letter-spacing:.16em; text-transform:uppercase; text-decoration:none; color:var(--gold-text);
+  border:1px solid var(--line); border-radius:100px; padding:11px 16px; transition:border-color .3s, background .3s; }
+.open:hover{ border-color:var(--gold); background:var(--cream-2); }
+@media(max-width:600px){ .pl li{ grid-template-columns:90px minmax(0,1fr); gap:16px; } }
+</style>
+</head>
+<body>
+<!--@mast current="press" wa="the Press"-->
+<main id="main">
+<section data-hero class="hx hero night">
+  <div class="copy"><p class="k">Shaheedi Bunga Press</p>
+    <h1>Our own <em>printed editions.</em></h1>
+    <p class="hxlede">We are preparing Granths and Pothis for print. This is where each one stands.</p></div>
+</section>
+<div class="wrapx paper">
+  <div class="opening" style="padding:calc(var(--u)*4) 0 0">
+  <figure class="pangti" style="margin:0 0 1em"><p class="gur" lang="pa">ਸਚੁ ਕਾਗਦੁ ਕਲਮ ਮਸਵਾਣੀ ਸਚੁ ਲਿਖਿ ਸਚਿ ਸਮਾਵਣਿਆ ॥੭॥</p><figcaption>Sri Guru Granth Sahib Ji, Ang 123</figcaption></figure>
+  <p style="margin:0 0 1em;color:var(--navy-70);font-size:max(17px,calc(var(--u)*1.2));max-width:56ch">Guru Amar Das Ji names the paper, the pen and the inkwell, and calls each of them true. Shaheedi Bunga Press takes that care into print. Our books are set and checked by us, so that a reader can trust the page in their hands.</p>
+  </div>
+  <ol class="pl">
+    <li data-fade><div class="cv" aria-hidden="true"><span class="cv-t">Bachan Sain</span><span class="cv-s">B5 · bilingual</span></div><div><p class="st">Coming soon</p><h2>Bachan Sain</h2>
+      <p>Bilingual, B5 (171 &times; 246 mm), all 289 bachans, 576 pages.</p></div></li>
+    <li data-fade><div class="cv" aria-hidden="true"><span class="cv-t">Chaupa Singh Rehatnama</span><span class="cv-s">A5 · bilingual</span></div><div><p class="st">Next to print</p><h2>Chaupa Singh Rehatnama</h2>
+      <p>A5, bilingual.</p></div></li>
+    <li data-fade><div class="cv" aria-hidden="true"><span class="cv-t">Nitnem Pothi</span><span class="cv-s">Taksali Gutka Sahib</span></div><div><p class="st">Then</p><h2>Nitnem Pothi</h2>
+      <p>Set from the Taksali Gutka Sahib, which governs the paath, the visraam and the contents.</p></div></li>
+    <li data-fade><div class="cv" aria-hidden="true"><span class="cv-t">Vichar Sagar</span><span class="cv-s">6 &times; 9 · bilingual</span></div><div><p class="st">Then</p><h2>Vichar Sagar</h2>
+      <p>Bilingual, 6 &times; 9, 1,502 pages.</p></div></li>
+  </ol>
+  <div class="prep" data-fade><h2>In preparation</h2>
+    <p>Gurmat Sanskar, Panj Granthi, Bai Vaaran, Arth Bhandar Hawale, Moksh Panth Parkash, Atam Gian Vichar and Baal Updesh.</p></div>
+  <p class="opens" data-fade><a class="open" href="contact.html">Message us on WhatsApp to be told when it is ready →</a></p>
+  <p class="tail" data-fade>Meanwhile, the free online Granths are on <a href="resources.html">Resources</a> and <a href="library.html">Library</a>.</p>
+</div>
+</main>
+<!--@foot-->
+<!--@scripts-->
+<script>KIT.start();</script>
+</body>
+</html>

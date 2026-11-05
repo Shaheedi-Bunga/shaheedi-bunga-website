@@ -35,6 +35,7 @@ def wanted():
             if f.endswith('.html'):
                 texts.append(open(os.path.join(KIT, d, f), encoding='utf8').read())
     texts.append(open(os.path.join(KIT, 'events.json'), encoding='utf8').read())
+    texts.append(open(os.path.join(KIT, 'gallery.json'), encoding='utf8').read())
     for t in texts:
         for m in re.finditer(r'(?:src|"img")\s*[=:]\s*"((?:img|/Assets)/[^"#?]+\.(?:jpe?g|png))"', t, re.I):
             found.add(m.group(1))
