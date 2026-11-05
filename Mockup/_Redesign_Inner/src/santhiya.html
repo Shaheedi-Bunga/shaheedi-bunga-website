@@ -84,6 +84,10 @@ html[data-mood="dark"] .manifesto{ border-bottom:1px solid var(--line); }
 .room .f4{ grid-column:2/5; aspect-ratio:1; } .room .f5{ grid-column:5/9; aspect-ratio:4/3; margin-top:calc(var(--u)*-6); }
 @media(max-width:800px){ .room > *{ grid-column:1/-1 !important; margin-top:0 !important; } }
 
+.gp{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; margin-top:calc(var(--u)*4); }
+.gp figure{ margin:0; } .gp img{ width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:3px; display:block; filter:var(--photo); }
+.gp figcaption{ font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--navy-70); margin-top:8px; }
+@media(max-width:700px){ .gp{ grid-template-columns:1fr 1fr; } }
 </style>
 </head>
 <body>
@@ -121,6 +125,14 @@ html[data-mood="dark"] .manifesto{ border-bottom:1px solid var(--line); }
  </div>
 </section>
 
+<!-- opening: Gurbani metaphor -->
+<div class="wrapx paper">
+  <div class="opening" style="padding:calc(var(--u)*4) 0 0">
+  <figure class="pangti" style="margin:0 0 1em"><p class="gur" lang="pa">ਸਬਦੁ ਦੀਪਕੁ ਵਰਤੈ ਤਿਹੁ ਲੋਇ ॥</p><figcaption>Sri Guru Granth Sahib Ji, Ang 664</figcaption></figure>
+  <p style="margin:0 0 1em;color:var(--navy-70);font-size:max(17px,calc(var(--u)*1.2));max-width:56ch">Guru Amar Das Ji calls the Shabad a lamp that lights all three worlds. Santhiya is learning to carry that lamp without letting it flicker. Every lagga matra is part of the flame, and a pause in the wrong place can dim a whole line. You sit with an ustad. They read a line, you read it back, and you move on only when it burns clear.</p>
+  </div>
+</div>
+
 <!-- 2 · manifesto -->
 <section class="sec manifesto paper">
   <p class="eyebrow">What Santhiya is</p>
@@ -147,6 +159,18 @@ html[data-mood="dark"] .manifesto{ border-bottom:1px solid var(--line); }
   </div>
   <div class="pbar"><i id="pfill"></i></div>
  </div>
+</section>
+
+<section class="sec paper" style="padding-top:calc(var(--u)*6)">
+  <div class="gp">
+    <figure><img src="img/lib/2022/2022-08-gurbani-vidhya-camp-2022-294.jpg" data-sizes="(max-width:700px) 50vw, 30vw" alt="Students reading in long rows at low tables, pothis open on stands and a microphone in front." loading="lazy"><figcaption>Gurbani Vidhya Camp · August 2022</figcaption></figure>
+    <figure><img src="img/lib/2022/2022-08-gurbani-vidhya-camp-2022-290.jpg" data-sizes="(max-width:700px) 50vw, 30vw" alt="Singhs seated on the floor reading, each with a pothi open on a white stand." loading="lazy"><figcaption>Gurbani Vidhya Camp · August 2022</figcaption></figure>
+    <figure><img src="img/lib/2022/2022-08-gurbani-vidhya-camp-2022-292.jpg" data-sizes="(max-width:700px) 50vw, 30vw" alt="A reader in orange at an open pothi on a stand, others reading close around them." loading="lazy"><figcaption>Gurbani Vidhya Camp · August 2022</figcaption></figure>
+    <figure><img src="img/lib/2022/2022-08-gurbani-vidhya-camp-2022-291.jpg" data-sizes="(max-width:700px) 50vw, 30vw" alt="A circle of readers on the floor, each with a pothi open on a stand." loading="lazy"><figcaption>Gurbani Vidhya Camp · August 2022</figcaption></figure>
+    <figure><img src="img/lib/2022/2022-08-gurbani-vidhya-camp-2022-269.jpg" data-sizes="(max-width:700px) 50vw, 30vw" alt="A young Singh in white seated against the wall, reading from a small gutka." loading="lazy"><figcaption>Gurbani Vidhya Camp · August 2022</figcaption></figure>
+    <figure><img src="img/lib/2022/2022-08-gurbani-vidhya-camp-2022-296.jpg" data-sizes="(max-width:700px) 50vw, 30vw" alt="A Singh in a grey jacket reading from a pothi, a wall of paper leaves behind." loading="lazy"><figcaption>Gurbani Vidhya Camp · August 2022</figcaption></figure>
+    <figure><img src="img/lib/2022/2022-08-gurbani-vidhya-camp-2022-289.jpg" data-sizes="(max-width:700px) 50vw, 30vw" alt="Readers seated on the floor with pothis open on stands, the hall behind them." loading="lazy"><figcaption>Gurbani Vidhya Camp · August 2022</figcaption></figure>
+  </div>
 </section>
 
 <!-- 4 · the room -->

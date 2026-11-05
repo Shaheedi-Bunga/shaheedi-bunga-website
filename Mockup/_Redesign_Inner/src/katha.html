@@ -34,6 +34,10 @@ html[data-mood="dark"] .hx{ --ink:#F3EEE2; --muted:rgba(243,238,226,.74); --gold
 .facts3 dd{ margin:.3em 0 0; font-family:var(--display); font-size:max(24px,calc(var(--u)*2.6)); line-height:1.15; }
 .record li{ margin:.7em 0; max-width:70ch; }
 @media(max-width:700px){ .facts3{ grid-template-columns:1fr; } }
+.gp{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; margin-top:calc(var(--u)*4); }
+.gp figure{ margin:0; } .gp img{ width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:3px; display:block; filter:var(--photo); }
+.gp figcaption{ font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--navy-70); margin-top:8px; }
+@media(max-width:700px){ .gp{ grid-template-columns:1fr 1fr; } }
 </style>
 </head>
 <body>
@@ -50,9 +54,21 @@ html[data-mood="dark"] .hx{ --ink:#F3EEE2; --muted:rgba(243,238,226,.74); --gold
 <div class="wrapx paper">
   <section class="band" style="border-top:0">
     <h2>What is taught</h2>
-    <p>You learn to read a Shabad closely, work out what it is saying, and explain it to a Sangat plainly and correctly.</p>
-    <p>In 2019 students were learning Katha of Sri Gur Partap Suraj Granth with us, and students from the class gave Katha on stage.</p>
+    <div class="body">
+      <figure class="pangti" style="margin:0 0 1em"><p class="gur" lang="pa">ਜਿਉ ਧਰਤੀ ਸੋਭ ਕਰੇ ਜਲੁ ਬਰਸੈ ਤਿਉ ਸਿਖੁ ਗੁਰ ਮਿਲਿ ਬਿਗਸਾਈ ॥੧੬॥</p><figcaption>Sri Guru Granth Sahib Ji, Ang 758</figcaption></figure>
+      <p>Guru Ram Das Ji says that as the earth is adorned when rain falls on it, so a Sikh comes into bloom on meeting Guru Sahib Ji. Katha asks for that kind of listening. A Shabad is opened one word at a time and explained plainly to the Sangat, until the meaning reaches each person the way rain reaches a field.</p>
+      <p>You learn to read a Shabad closely, work out what it is saying, and explain it to a Sangat plainly and correctly.</p>
+      <p>In 2019 students were learning Katha of Sri Gur Partap Suraj Granth with us, and students from the class gave Katha on stage.</p>
+    </div>
     <figure class="phero-art"><div class="arch"><img src="img/p-katha-teaching.jpg" data-sizes="(max-width:800px) 100vw, 33vw" alt="A Singh in a white kurta and chola and a black waistcoat, standing in the hall and explaining with one hand raised." loading="lazy"></div><figcaption>Sikhi Camp · January 2024</figcaption></figure>
+  </section>
+  <section class="band">
+  <div class="gp">
+    <figure><img src="img/lib/2024/2024-08-misc-647.jpg" data-sizes="(max-width:700px) 50vw, 30vw" alt="An elder Singh with a white beard and glasses reading from a pothi, a microphone in front of them." loading="lazy"><figcaption>Katha · August 2024</figcaption></figure>
+    <figure><img src="img/lib/2024/2024-01-misc-578.jpg" data-sizes="(max-width:700px) 50vw, 30vw" alt="Two Singhs seated at microphones before a wall of gold mirrors, one holding a pothi open." loading="lazy"><figcaption>Katha · January 2024</figcaption></figure>
+    <figure><img src="img/lib/2024/2024-01-misc-580.jpg" data-sizes="(max-width:700px) 50vw, 30vw" alt="A Singh seated at a microphone before a draped manji, flowers arranged on either side." loading="lazy"><figcaption>Katha · January 2024</figcaption></figure>
+    <figure><img src="img/lib/2023/2023-12-misc-572.jpg" data-sizes="(max-width:700px) 50vw, 30vw" alt="A large sangat seated on the floor beneath white arches, listening." loading="lazy"><figcaption>The sangat listening · December 2023</figcaption></figure>
+  </div>
   </section>
   <section class="band">
     <h2><small>Listen anywhere</small>Katha of Sri Guru Granth Sahib Ji, Ang by Ang.</h2>

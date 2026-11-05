@@ -32,6 +32,10 @@ html[data-mood="dark"] .hx{ --ink:#F3EEE2; --muted:rgba(243,238,226,.74); --gold
 .record li{ margin:.7em 0; max-width:70ch; }
 @media(max-width:700px){ .facts3{ grid-template-columns:1fr; } }
 .hx .hxlede{color:var(--muted);max-width:40ch;margin-top:18px;font-size:clamp(16px,1.3vw,19px)}
+.gp{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; margin-top:calc(var(--u)*4); }
+.gp figure{ margin:0; } .gp img{ width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:3px; display:block; filter:var(--photo); }
+.gp figcaption{ font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--navy-70); margin-top:8px; }
+@media(max-width:700px){ .gp{ grid-template-columns:1fr 1fr; } }
 </style>
 </head>
 <body>
@@ -51,7 +55,21 @@ html[data-mood="dark"] .hx{ --ink:#F3EEE2; --muted:rgba(243,238,226,.74); --gold
 <div class="wrapx paper">
   <section class="band" style="border-top:0">
     <h2>What is taught</h2>
-    <p>Beginners are welcome. You start with the bols and the theka, and work up to accompanying Kirtan in the Taals the Kirtan Vidyala sings in. Jori is taught alongside Tabla.</p>
+    <div class="body">
+      <p>Guru Nanak Dev Ji says: let understanding be the instrument, and love the pakhavaj. A pakhavaj is a drum, and the Taal is its heartbeat. In this class you learn the theka, the basic pattern of beats, that keeps Kirtan steady, and you learn to listen as closely as you play.</p>
+      <p>Beginners are welcome. You start with the bols and the theka, and work up to accompanying Kirtan in the Taals the Kirtan Vidyala sings in. Jori is taught alongside Tabla.</p>
+    </div>
+  </section>
+  <section class="band">
+  <div class="gp">
+    <figure><img src="img/lib/2024/2024-05-baba-surjit-singh-ji-visit-may-2024-635.jpg" data-sizes="(max-width:700px) 50vw, 30vw" alt="The class seated in a circle on the red carpet, tabla in front of them and a Singh with a white beard at the centre." loading="lazy"><figcaption>Tabla class · May 2024</figcaption></figure>
+    <figure><img src="img/lib/2024/2024-05-baba-surjit-singh-ji-visit-may-2024-636.jpg" data-sizes="(max-width:700px) 50vw, 30vw" alt="The same circle from further back, students with tabla and other instruments around the hall." loading="lazy"><figcaption>Tabla class · May 2024</figcaption></figure>
+    <figure><img src="img/lib/2020/2020-05-tabla-140.jpg" data-sizes="(max-width:700px) 50vw, 30vw" alt="A Singh in an orange dastaar at the tabla with a young child in orange beside them, a second pair of drums in front." loading="lazy"><figcaption>Tabla · May 2020</figcaption></figure>
+    <figure><img src="img/lib/2019/2019-01-misc-009.jpg" data-sizes="(max-width:700px) 50vw, 30vw" alt="A Singh in blue playing a pair of tabla, seated on a patterned rug." loading="lazy"><figcaption>Tabla · January 2019</figcaption></figure>
+    <figure><img src="img/lib/2022/2022-08-gurbani-vidhya-camp-2022-278.jpg" data-sizes="(max-width:700px) 50vw, 30vw" alt="A young Singh playing tabla, one hand raised over the drums." loading="lazy"><figcaption>Gurbani Vidhya Camp · August 2022</figcaption></figure>
+    <figure><img src="img/lib/2022/2022-08-gurbani-vidhya-camp-2022-280.jpg" data-sizes="(max-width:700px) 50vw, 30vw" alt="A child in a dark chola playing tabla, one hand lifted." loading="lazy"><figcaption>Gurbani Vidhya Camp · August 2022</figcaption></figure>
+    <figure><img src="img/lib/2022/2022-08-gurbani-vidhya-camp-2022-304.jpg" data-sizes="(max-width:700px) 50vw, 30vw" alt="Students seated in a circle on the blue carpet with tabla and a harmonium." loading="lazy"><figcaption>Gurbani Vidhya Camp · August 2022</figcaption></figure>
+  </div>
   </section>
   <section class="band">
     <h2>What we have run before</h2>
