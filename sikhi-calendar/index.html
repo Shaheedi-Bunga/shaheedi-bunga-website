@@ -179,6 +179,17 @@ html[data-mood="dark"] .sbcal{
 .sbcal__fv small { font-family: var(--body); font-size: 13px; font-weight: 400; color: var(--ink-3); }
 
 /* ---------------------------------------------------------------- sections */
+.sbcal__app { margin-top: 28px; padding: 22px 24px; border: 1px solid rgba(142,104,29,.35); border-radius: 18px;
+  background: #fffaf0; display: flex; flex-wrap: wrap; gap: 18px 28px; align-items: center; justify-content: space-between; }
+.sbcal__apptext { flex: 1 1 320px; }
+.sbcal__appline { margin: 6px 0 0; line-height: 1.5; }
+.sbcal__appline span { display: block; }
+.sbcal__appline span[lang="en"] { color: var(--stone); font-size: 15px; }
+.sbcal__stores { display: flex; flex-wrap: wrap; gap: 12px; }
+.sbcal__store { display: inline-flex; flex-direction: column; min-width: 150px; padding: 10px 18px; border-radius: 12px;
+  background: var(--ink); color: var(--cream); text-decoration: none; font-family: var(--util); font-size: 12px; letter-spacing: .02em; }
+.sbcal__store b { font-size: 19px; font-weight: 600; letter-spacing: 0; }
+.sbcal__store:hover { opacity: .9; }
 .sbcal__sec { margin-top: 54px; }
 .sbcal__sechead {
   display: flex; align-items: baseline; justify-content: space-between;
@@ -362,6 +373,18 @@ html[data-mood="dark"] .sbcal{
         <h1 class="sbcal__h1" lang="pa">ਸਿੱਖੀ ਕੈਲੰਡਰ<span lang="en">The Sikh Calendar</span></h1>
       </div>
     </header>
+
+    <section class="sbcal__app" aria-label="Get the Sikhi Calendar app">
+      <div class="sbcal__apptext">
+        <h2 class="sbcal__h2" lang="pa">ਐਪ ਲਵੋ <em lang="en">Get the app</em></h2>
+        <p class="sbcal__appline"><span class="gur" lang="pa">ਹਰ ਗੁਰਪੁਰਬ ਸਹੀ ਦਿਨ ਉੱਤੇ, ਇੱਕ ਸ਼ਾਮ ਪਹਿਲਾਂ ਯਾਦ — ਮੁਫ਼ਤ, ਬਿਨਾਂ ਇਸ਼ਤਿਹਾਰ ।</span>
+        <span lang="en">Every Gurpurab on the right day, a reminder the evening before — free, no ads, works without internet.</span></p>
+      </div>
+      <div class="sbcal__stores">
+        <a class="sbcal__store" href="https://apps.apple.com/app/sikhi-calendar/id1503298667" rel="noopener">iPhone &amp; iPad<b>App Store</b></a>
+        <a class="sbcal__store" href="https://play.google.com/store/apps/details?id=com.apptec24.sikhicalendar" rel="noopener">Android<b>Google Play</b></a>
+      </div>
+    </section>
 
     <section class="sbcal__today" id="sbToday"></section>
 
