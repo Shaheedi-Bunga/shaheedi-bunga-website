@@ -1,0 +1,118 @@
+/* ==========================================================================
+   Raag Explorer — Shaheedi Bunga brand (look E3 'Navy strip', picked 2026-11-10)
+   Cream · gold · white base with the charity's brand navy #16294A as ink and a
+   slim navy bar for the medallion + title. Loaded after styles.css; overrides only.
+   ========================================================================== */
+
+/* ---- phone layout: compact filter row, tidy notation key ---- */
+/* phone layout */
+.brand-mark{ background:none !important; box-shadow:none !important; width:52px; height:52px; border-radius:50%; }
+.brand-mark img{ width:100%; height:100%; object-fit:contain; display:block; }
+.legend .notation-note{ display:block; margin-left:0; flex-basis:100%; line-height:1.8; border-top:1px dashed var(--line); padding-top:8px; }
+.legend .notation-note b{ white-space:nowrap; }
+@media (max-width:640px){
+  .toolbar{ padding:10px 0; }
+  .toolbar-row{ gap:8px; }
+  .search{ height:42px; flex-basis:100%; }
+  .select-group{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:6px; width:100%; }
+  .select{ height:48px; padding:5px 22px 5px 11px; border-radius:12px; flex-direction:column; align-items:flex-start; justify-content:center; min-width:0; }
+  .select label{ font-size:10px; margin:0; line-height:1.1; }
+  .select select{ font-size:13.5px; height:auto; width:100%; padding:0; text-overflow:ellipsis; }
+  .select::after{ right:9px; top:50%; transform:translateY(-50%); }
+  #toggleVariants{ grid-column:1/-1; height:38px; border-radius:12px; }
+}
+
+/* ---- cream / gold / white palette ---- */
+:root{
+  --blue:#3A2C14; --blue-dark:#2E2414; --blue-soft:#F6EEDC;
+  --orange:#B8892B; --orange-dark:#8E681D; --orange-soft:#F6EEDC;
+  --ink:#2E2414; --ink-soft:rgba(46,36,20,.72); --ink-faint:rgba(46,36,20,.45);
+  --line:#EADFC8; --line-strong:#DCCBA8; --surface:#FFFFFF;
+  --font-display:"Source Serif 4",Georgia,serif; --font-gurmukhi:"Noto Serif Gurmukhi",serif;
+  --font-body:"Archivo","Helvetica Neue",Arial,sans-serif;
+}
+.hero{ color:var(--ink); }
+.hero-tag{ color:var(--ink-soft); } .hero-tag b{ color:var(--ink); }
+.brand .gur{ color:var(--orange-dark); opacity:1; }
+.stat{ background:#fff; border-color:var(--line-strong); color:var(--ink); } .stat b{ color:var(--orange-dark); }
+.btn.primary{ background:var(--orange-dark); color:#fff; }
+.btn:hover{ border-color:var(--orange-dark); }
+.select select{ color:var(--ink); }
+.card-name{ color:var(--ink); } .card-gur{ color:var(--orange-dark); }
+.badge.variant-badge{ background:#F6EEDC; color:var(--orange-dark); }
+/* detail + clock headers: cream, not navy */
+.modal-hd,.clock-hd{ background:linear-gradient(170deg,#FBF6EA,#F3E7CC); color:var(--ink); }
+.modal-hd .gur{ color:var(--orange-dark); }
+.modal-hd .close,.clock-hd .close{ background:#fff; color:var(--ink); border:1px solid var(--line-strong); }
+.modal-hd .close:hover,.clock-hd .close:hover{ background:#F6EEDC; }
+.modal-hd .subline .badge{ background:#fff; color:var(--ink); border:1px solid var(--line-strong); }
+.modal-eyebrow,.modal-eyebrow .link-parent{ color:var(--orange-dark); }
+.clock-hd p{ color:var(--ink-soft); }
+
+/* fact boxes + soft panels: cream, not blue-grey */
+:root{ --header-bg:#FBF7EE; }
+.fact{ background:#FBF7EE; border-color:var(--line); }
+.fact .v{ color:var(--ink); }
+
+/* ---- brand navy as ink ---- */
+:root{ --blue:#16294A; --blue-dark:#16294A; --blue-soft:#EEF1F6; --ink:#16294A;
+  --ink-soft:rgba(22,41,74,.72); --ink-faint:rgba(22,41,74,.45); }
+.select select,.card-name,.fact .v{ color:#16294A; }
+.badge.variant-badge{ background:#F6EEDC; color:#8E681D; }
+
+/* ---- E3 navy strip ---- */
+body{ background:#fff; }
+.hero{ background:#F6EEDC; padding-top:0; }
+.hero::after{ height:3px; background:#8E681D; }
+.hero-top{ flex-wrap:nowrap; background:#16294A; padding:14px 0; box-shadow:0 0 0 100vmax #16294A; clip-path:inset(0 -100vmax); }
+.brand{ min-width:0; }
+.brand h1{ color:#fff; font-size:22px; white-space:nowrap; } .brand .gur{ color:#E2C27A; white-space:nowrap; font-size:13.5px; }
+.brand-mark{ background:#fff !important; padding:2px; width:46px !important; height:46px !important; }
+.btn.primary{ background:#C9A24A; color:#16294A; height:38px; padding:0 13px; font-size:13px; white-space:nowrap; flex:none; }
+.hero-tag{ margin-top:18px; }
+.toolbar{ background:rgba(255,255,255,.94); }
+.legend{ background:#FBF7EE; }
+.modal-hd,.clock-hd{ border-top:6px solid #16294A; }
+
+/* ==========================================================================
+   Review fixes (2026-11-11): contrast, keyboard focus, tap targets, small phones
+   ========================================================================== */
+/* contrast — every text colour here measures 4.5:1 or better on its background */
+:root{ --ink-faint: rgba(22,41,74,.68); }
+.badge.thaat{ color: color-mix(in srgb, var(--accent) 45%, #16294A); }
+.badge.time{ color:#6b4e12; }
+.badge.sggs{ color:#13643f; }
+.modal-hd .gur, .modal-eyebrow, .modal-eyebrow .link-parent{ color:#6b4e12; }
+.card-gur{ color:#7a5a17; }
+
+/* keyboard focus is always visible */
+:focus-visible{ outline:3px solid #16294A; outline-offset:2px; }
+.card:focus-visible{ outline-offset:3px; }
+.select:focus-within{ box-shadow:0 0 0 3px rgba(22,41,74,.35); border-color:#16294A; }
+.clock-dot:focus-visible{ outline:none; stroke:#16294A; stroke-width:3; }
+
+/* result-line actions are real buttons now */
+.chip-clear{ background:none; border:0; padding:8px 4px; font:inherit; font-weight:700; color:#6b4e12; cursor:pointer; min-height:44px; }
+
+/* notes under the swar lines */
+.swar-note{ margin:4px 0 14px; padding:10px 12px; border-left:3px solid #C9A24A; background:#FBF7EE; color:var(--ink-soft); font-size:13.5px; line-height:1.5; border-radius:0 8px 8px 0; }
+
+/* tap targets: 44px or more */
+.modal-hd .close, .clock-hd .close{ width:44px; height:44px; }
+.pill{ min-height:44px; }
+.clock-side .list-item{ min-height:44px; }
+
+@media (max-width:640px){
+  /* 16px stops iPhone Safari zooming in on every tap */
+  .search input, .select select{ font-size:16px; }
+  #toggleVariants{ height:44px; }
+  .btn.primary{ height:44px; }
+}
+/* very small phones (320–360px): let the Raag Clock button drop under the title */
+@media (max-width:360px){
+  .hero-top{ flex-wrap:wrap; row-gap:10px; }
+}
+
+/* credit line under the title (2026-11-12) */
+.hero-credit{ margin:16px 0 0; font-family:var(--font-display); font-size:15px; font-weight:600; color:#6b4e12; }
+.hero-credit + .hero-tag{ margin-top:6px; }
