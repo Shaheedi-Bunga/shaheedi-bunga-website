@@ -1,0 +1,105 @@
+/* Escape the Fort — the game's own look, built on the kit's tokens so light and dark mood both work.
+   Buttons are at least 48px tall for small hands on phones. Gurmukhi is never letter-spaced. */
+.eft-page{ background:var(--cream); color:var(--navy); padding:96px var(--gx,16px) 72px; }
+.eft-hero{ max-width:760px; margin:0 auto 28px; }
+.eft-hero h1{ font-family:var(--display); font-weight:600; font-size:clamp(44px,8vw,84px); line-height:1; margin:.15em 0 .2em; }
+.eft-k{ font:11px/1.4 var(--mono); letter-spacing:.18em; text-transform:uppercase; color:var(--gold-text); margin:0; }
+.eft-k [lang="pa"], .eft-gur-inline{ font-family:var(--gur); letter-spacing:0; text-transform:none; font-size:14px; }
+.eft-lead{ font-size:clamp(17px,2.2vw,20px); line-height:1.55; max-width:60ch; }
+.eft{ max-width:760px; margin:0 auto; }
+.eft[lang="pa"]{ font-family:var(--gur); }
+.eft[lang="pa"] .eft-k, .eft[lang="pa"] .eft-btn{ letter-spacing:0; text-transform:none; }
+.eft[lang="pa"] .eft-k{ font-family:var(--gur); font-size:14px; }
+.eft-bar{ display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin-bottom:14px; }
+.eft-dots{ display:flex; gap:4px; flex-wrap:wrap; margin-left:auto; }
+.eft-dots i{ font-style:normal; min-width:26px; height:26px; padding:0 4px; border-radius:6px; display:grid; place-items:center;
+  font:700 12px/1 var(--body); border:1px solid var(--line); color:var(--navy-70); }
+.eft-dots i.on{ background:var(--saffron); border-color:var(--saffron); color:#FFF8EE; }
+.eft-lang{ font:600 14px/1 var(--body); padding:10px 14px; min-height:40px; border-radius:999px; border:1px solid var(--line);
+  background:var(--cream-2); color:var(--navy); cursor:pointer; }
+.eft-card{ background:var(--cream-2); border:1px solid var(--line); border-radius:18px; padding:clamp(18px,4vw,36px); }
+.eft-card h2{ font-family:var(--display); font-weight:600; font-size:clamp(30px,5vw,46px); line-height:1.05; margin:.25em 0 .4em; }
+.eft[lang="pa"] .eft-card h2{ font-family:var(--gur); font-weight:700; }
+.eft-story{ background:var(--cream); border-left:4px solid var(--gold); border-radius:6px; padding:14px 18px; margin:6px 0 18px; }
+.eft-story p{ margin:0 0 8px; line-height:1.6; font-size:17px; }
+.eft-more{ color:var(--navy-70); }
+.eft-link{ background:none; border:0; padding:6px 0; color:var(--gold-text); font:600 15px/1.3 var(--body); text-decoration:underline; cursor:pointer; min-height:36px; }
+.eft-task{ font:700 18px/1.4 var(--body); margin:8px 0 12px; }
+.eft[lang="pa"] .eft-task{ font-family:var(--gur); }
+.eft-small{ font-size:14px; color:var(--navy-70); margin:4px 0; }
+.eft-fine{ font-size:13px; color:var(--navy-70); margin-top:22px; }
+.eft-q{ font-size:clamp(19px,2.6vw,23px); font-weight:600; line-height:1.4; min-height:2.8em; margin:8px 0 14px; }
+.eft-row{ display:flex; gap:10px; align-items:center; margin:12px 0; }
+.eft-row.wrap{ flex-wrap:wrap; }
+.eft-col{ display:flex; flex-direction:column; gap:8px; margin:10px 0; }
+.eft-grid2{ display:grid; grid-template-columns:1fr 1fr; gap:8px; margin:10px 0; }
+.eft-btn{ font:600 16px/1.2 var(--body); min-height:50px; padding:12px 20px; border-radius:12px; border:2px solid var(--navy);
+  background:var(--navy); color:var(--cream); cursor:pointer; touch-action:manipulation; }
+.eft[lang="pa"] .eft-btn{ font-family:var(--gur); }
+.eft-btn.ghost, .eft-btn.opt{ background:var(--cream); color:var(--navy); }
+.eft-btn.opt{ text-align:left; display:flex; flex-direction:column; align-items:flex-start; gap:2px; }
+.eft-btn.opt small{ font-weight:400; color:var(--navy-70); }
+.eft-btn[aria-pressed="true"]{ background:var(--saffron); border-color:var(--saffron); color:#FFF8EE; }
+.eft-btn[aria-pressed="true"] small{ color:#FFF1DF; }
+.eft-btn.used{ opacity:.35; }
+.eft-btn.big{ min-height:64px; font-size:19px; padding:16px 30px; user-select:none; -webkit-user-select:none; }
+.eft-btn:focus-visible, .eft-link:focus-visible, .eft-tile:focus-visible, .eft-chola:focus-visible, .eft-lang:focus-visible{ outline:3px solid var(--focus); outline-offset:2px; }
+.eft-say{ min-height:1.6em; font-weight:600; margin:10px 0 0; }
+.eft-say.ok{ color:#2E6B3F; } .eft-say.no{ color:#A33A1A; }
+html[data-mood="dark"] .eft-say.ok{ color:#8FD3A0; } html[data-mood="dark"] .eft-say.no{ color:#F2A07E; }
+.eft-code{ font:800 clamp(28px,7vw,46px)/1.1 var(--mono); letter-spacing:.12em; margin:6px 0 12px; color:var(--saffron); }
+.eft-solved{ font:600 15px/1.4 var(--mono); color:var(--navy-70); }
+/* level 4 */
+.eft-stack{ position:relative; margin:10px auto; max-width:100%; border-bottom:3px solid var(--navy); background:linear-gradient(var(--cream),var(--cream-3)); border-radius:8px 8px 0 0; overflow:hidden; cursor:pointer; touch-action:manipulation; }
+.eft-stone{ position:absolute; border-radius:4px; background:#B98B4E; border:2px solid #7E5A2C; }
+.eft-stone.base{ background:#7E5A2C; } .eft-stone.moving{ background:#D9A85F; }
+.shake{ animation:eftshake .35s; } @keyframes eftshake{ 25%{transform:translateX(-6px)} 75%{transform:translateX(6px)} }
+@media (prefers-reduced-motion: reduce){ .shake{ animation:none; } }
+/* level 6 */
+.eft-clues{ margin:4px 0 6px 20px; padding:0; line-height:1.5; }
+.eft-cholas{ display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin-top:10px; }
+@media(max-width:560px){ .eft-cholas{ grid-template-columns:repeat(2,1fr); } }
+.eft-chola{ --robe:#F3E7C9; --sl:#EADCB8; --edge:#7E5A2C; background:var(--cream); border:2px solid var(--line); border-radius:12px; padding:8px; cursor:pointer;
+  display:flex; flex-direction:column; align-items:center; gap:4px; color:var(--navy); font:13px/1.3 var(--body); min-height:150px; }
+.eft-chola svg{ width:100%; max-width:120px; height:auto; }
+.eft-chola.bad{ opacity:.35; text-decoration:line-through; } .eft-chola.ok{ border-color:#2E6B3F; }
+/* level 7 */
+.eft-pairs{ display:grid; grid-template-columns:repeat(4,1fr); gap:8px; max-width:420px; margin:10px auto; }
+.eft-tile{ aspect-ratio:1; font-size:30px; border-radius:12px; border:2px solid var(--navy); background:var(--navy); color:var(--cream); cursor:pointer; }
+.eft-tile.up{ background:var(--cream); } .eft-tile.got{ border-color:var(--saffron); background:var(--cream-3); }
+/* levels 8 and 12 */
+.eft-got{ margin:6px 0 6px 22px; padding:0; line-height:1.7; font-weight:600; }
+/* level 9 */
+.eft-face{ font-size:54px; line-height:1; margin:6px 0 0; text-align:right; }
+.eft-track{ position:relative; height:56px; border-radius:28px; background:var(--cream-3); margin:10px 0; }
+.eft-lion{ position:absolute; left:0; top:6px; font-size:38px; line-height:1; }
+.eft-pillow{ position:absolute; right:8px; top:8px; font-size:36px; line-height:1; }
+/* level 11 */
+.eft-maze{ display:grid; gap:2px; width:min(100%,380px); margin:10px auto; touch-action:none; }
+.eft-cell{ aspect-ratio:1; display:grid; place-items:center; font-size:clamp(16px,4.6vw,24px); background:var(--cream); border-radius:3px; }
+.eft-cell.wall{ background:var(--navy); } .eft-cell.gate{ background:#CFE8D4; }
+.eft-pad{ display:grid; grid-template-columns:repeat(3,64px); grid-template-rows:repeat(2,58px); gap:6px; justify-content:center; }
+.eft-pad .up{ grid-column:2; grid-row:1; } .eft-pad .left{ grid-column:1; grid-row:2; } .eft-pad .down{ grid-column:2; grid-row:2; } .eft-pad .right{ grid-column:3; grid-row:2; }
+.eft-pad .eft-btn{ align-items:center; justify-content:center; font-size:24px; padding:0; }
+/* win, final, certificate */
+.eft-win{ text-align:center; }
+.eft-letter{ font:700 clamp(80px,18vw,140px)/1 var(--display); color:var(--saffron); margin:6px 0; }
+.eft-tip{ background:var(--cream); border-radius:12px; padding:14px 18px; margin:16px auto; max-width:56ch; text-align:left; }
+.eft-tip b{ font:600 12px/1.4 var(--mono); letter-spacing:.14em; text-transform:uppercase; color:var(--gold-text); }
+.eft[lang="pa"] .eft-tip b{ font-family:var(--gur); letter-spacing:0; text-transform:none; font-size:15px; }
+.eft-tip p{ margin:6px 0 0; }
+.eft-tiles{ display:flex; flex-wrap:wrap; gap:6px; margin:14px 0; }
+.eft-tiles span{ min-width:46px; height:52px; padding:0 6px; display:grid; place-items:center; font:700 24px/1 var(--body);
+  border-radius:8px; background:var(--saffron); color:#FFF8EE; }
+.eft-tiles span.gap{ margin-right:18px; }
+.eft-input{ font:16px/1.2 var(--body); min-height:50px; padding:10px 14px; border-radius:12px; border:2px solid var(--navy); background:var(--cream); color:var(--navy); flex:1; min-width:200px; }
+.eft-big{ font:800 clamp(30px,6vw,52px)/1.1 var(--body); color:var(--saffron); margin:8px 0 0; }
+.eft-gur{ font-family:var(--gur); font-weight:700; font-size:clamp(26px,5vw,40px); margin:4px 0 12px; letter-spacing:0; }
+.eft-cert{ border:3px double var(--gold); border-radius:14px; padding:22px; margin:18px 0; background:var(--cream); }
+.eft-cert-title{ font:600 clamp(28px,5vw,40px)/1.1 var(--display); margin:6px 0; }
+.eft-cert-name{ font:italic 600 clamp(22px,4vw,32px)/1.2 var(--display); min-height:1.3em; border-bottom:1px solid var(--line); margin:10px auto; max-width:30ch; }
+@media print{
+  .mast, .foot, .eft-hero, .eft-bar, .noprint, .skip{ display:none !important; }
+  .eft-page{ padding:0; } .eft-card{ border:0; background:none; }
+  .eft-win > :not(#eft-cert){ display:none; } .eft-cert{ margin:0; }
+}
